@@ -1333,6 +1333,140 @@
       if (data["image"]) handled.add("image");
     }
 
+    // ── SOFTWAREAPPLICATION (App Store card) ──
+    if (cfg.type === "SoftwareApplication") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("app-store");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Remove hero — we'll use the image as a compact app icon
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount.querySelector(".hero")) heroMount.querySelector(".hero").remove();
+
+      // App Store header: icon + name + developer + category
+      const appHeader = document.createElement("div"); appHeader.className = "app-store-header";
+
+      const iconUrl = data["image"];
+      if (iconUrl) {
+        const iconEl = document.createElement("img"); iconEl.className = "app-store-icon";
+        iconEl.src = iconUrl; iconEl.alt = data[cfg.titleProp] || "";
+        iconEl.loading = "lazy";
+        appHeader.appendChild(iconEl);
+        handled.add("image");
+      }
+
+      const appMeta = document.createElement("div"); appMeta.className = "app-store-meta";
+      const h1 = document.createElement("h1"); h1.className = "app-store-name";
+      h1.textContent = data[cfg.titleProp] || "";
+      appMeta.appendChild(h1);
+      handled.add("name");
+
+      const developer = data["author"];
+      if (developer) {
+        const devEl = document.createElement("div"); devEl.className = "app-store-developer";
+        devEl.textContent = developer;
+        appMeta.appendChild(devEl);
+        handled.add("author");
+      }
+
+      const category = data["applicationCategory"];
+      if (category) {
+        const catEl = document.createElement("div"); catEl.className = "app-store-category";
+        catEl.textContent = category;
+        appMeta.appendChild(catEl);
+        handled.add("applicationCategory");
+      }
+
+      appHeader.appendChild(appMeta);
+      heroMount.appendChild(appHeader);
+
+      // Rating + GET row
+      const actionRow = document.createElement("div"); actionRow.className = "app-store-action-row";
+
+      const aggRating = data["aggregateRating"];
+      if (aggRating !== undefined) {
+        const rval = typeof aggRating === "object" ? aggRating.ratingValue : aggRating;
+        const rcnt = typeof aggRating === "object" ? aggRating.reviewCount : null;
+        const r = formatRating(rval, "aggregateRating");
+        if (r) {
+          const ratingEl = document.createElement("div"); ratingEl.className = "app-store-rating";
+          let stars = "";
+          for (let i = 0; i < r.full; i++) stars += "★";
+          if (r.half) stars += "½";
+          for (let i = 0; i < r.empty; i++) stars += "☆";
+          const starsSpan = document.createElement("span"); starsSpan.className = "app-store-stars"; starsSpan.textContent = stars;
+          const scoreSpan = document.createElement("span"); scoreSpan.className = "app-store-score"; scoreSpan.textContent = parseFloat(rval).toFixed(1);
+          ratingEl.append(starsSpan, scoreSpan);
+          if (rcnt) {
+            const countSpan = document.createElement("span"); countSpan.className = "app-store-review-count";
+            const n = parseInt(rcnt);
+            countSpan.textContent = isNaN(n) ? rcnt : (n >= 1000 ? Math.round(n / 1000) + "K" : n) + " ratings";
+            ratingEl.appendChild(countSpan);
+          }
+          actionRow.appendChild(ratingEl);
+        }
+        handled.add("aggregateRating");
+      }
+
+      // GET button
+      const offerPrice = data["offers"] && data["offers"].price;
+      const isFree = offerPrice === "0" || offerPrice === 0 || String(offerPrice) === "0";
+      const getBtn = document.createElement("button"); getBtn.className = "app-store-get-btn";
+      getBtn.textContent = isFree ? "GET" : (offerPrice ? "$" + offerPrice : "GET");
+      if (isFree) {
+        const freeLabel = document.createElement("span"); freeLabel.className = "app-store-get-sub"; freeLabel.textContent = "Free";
+        getBtn.innerHTML = ""; getBtn.appendChild(document.createTextNode("GET"));
+        getBtn.insertAdjacentHTML("beforeend", '<span class="app-store-get-sub">Free</span>');
+      }
+      getBtn.type = "button";
+      actionRow.appendChild(getBtn);
+      handled.add("offers");
+
+      view.appendChild(actionRow);
+
+      // OS + version + size chips
+      const chipItems = [];
+      const os = data["operatingSystem"];
+      if (os) chipItems.push({ icon: "\u{1F4F1}", val: os, prop: "operatingSystem" });
+      const ver = data["version"];
+      if (ver) chipItems.push({ icon: "v", val: ver, prop: "version" });
+      const size = data["fileSize"];
+      if (size) chipItems.push({ icon: "\u{1F4BE}", val: size, prop: "fileSize" });
+
+      if (chipItems.length) {
+        const chips = document.createElement("div"); chips.className = "app-store-chips";
+        chipItems.forEach(c => {
+          const chip = document.createElement("span"); chip.className = "app-store-chip";
+          chip.innerHTML = "<span class=\"app-chip-icon\">" + c.icon + "</span>" + c.val;
+          chips.appendChild(chip);
+          handled.add(c.prop);
+        });
+        view.appendChild(chips);
+      }
+
+      // Description
+      const desc = data["description"];
+      if (desc) {
+        const descEl = document.createElement("div"); descEl.className = "app-store-desc";
+        descEl.textContent = desc;
+        view.appendChild(descEl);
+        handled.add("description");
+      }
+
+      // Store link CTA
+      const url = data["url"];
+      if (url) {
+        const cta = document.createElement("a"); cta.className = "app-store-cta";
+        cta.href = url; cta.target = "_blank"; cta.rel = "noopener";
+        cta.innerHTML = "View in App Store <span>↗</span>";
+        view.appendChild(cta);
+        handled.add("url");
+      }
+    }
+
     return handled;
   }
 

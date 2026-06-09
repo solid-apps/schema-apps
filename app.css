@@ -2252,6 +2252,153 @@ footer a:hover { color: var(--accent-2); }
 }
 
 /* ──────────────────────────────────────────────
+   App Store card layout
+   ────────────────────────────────────────────── */
+.card.app-store { background: #f9f9fb; }
+.card.app-store .hd.hidden { display: none; }
+
+.app-store-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  padding: 1.8rem 2rem 1.2rem;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+}
+.app-store-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  box-shadow: 0 2px 12px rgba(0,0,0,.1);
+  flex-shrink: 0;
+  object-fit: cover;
+}
+.app-store-meta { flex: 1; min-width: 0; padding-top: .25rem; }
+.app-store-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  margin: 0 0 .2rem;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.app-store-developer {
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: .15rem;
+}
+.app-store-category {
+  font-size: .75rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.app-store-action-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: .75rem 2rem;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+}
+.app-store-rating {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  flex: 1;
+}
+.app-store-stars {
+  color: var(--accent);
+  font-size: 1rem;
+  letter-spacing: .04em;
+}
+.app-store-score {
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.app-store-review-count {
+  font-size: .72rem;
+  color: var(--muted);
+}
+.app-store-get-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: .3rem 1.2rem;
+  min-width: 64px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 22px;
+  font-size: .9rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font);
+  letter-spacing: .01em;
+  transition: background .18s, transform .15s;
+  line-height: 1.2;
+}
+.app-store-get-btn:hover { background: color-mix(in oklab, var(--accent) 85%, #000); transform: scale(1.04); }
+.app-store-get-sub {
+  font-size: .6rem;
+  font-weight: 500;
+  opacity: .85;
+  display: block;
+}
+
+.app-store-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  padding: .9rem 2rem .6rem;
+}
+.app-store-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .3rem .7rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: .75rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  box-shadow: 0 1px 3px rgba(0,0,0,.04);
+}
+.app-chip-icon { font-size: .8rem; }
+
+.app-store-desc {
+  padding: .8rem 2rem 1rem;
+  font-size: .88rem;
+  color: var(--ink-2);
+  line-height: 1.65;
+}
+
+.app-store-cta {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  margin: .2rem 2rem 1.6rem;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+}
+.app-store-cta:hover { text-decoration: underline; }
+.app-store-cta span { font-size: .85rem; }
+
+@media (prefers-color-scheme: dark) {
+  .card.app-store { background: #1a1a1e; }
+  .app-store-header { background: #1c1c20; border-color: rgba(255,255,255,.08); }
+  .app-store-action-row { background: #1c1c20; border-color: rgba(255,255,255,.08); }
+  .app-store-chip { background: #2a2a2e; border-color: rgba(255,255,255,.08); }
+}
+
+/* ──────────────────────────────────────────────
    Responsive / Mobile — small-screen polish.
    Stacks label/value grid, scales header,
    full-width card with comfortable tap targets.
@@ -2396,4 +2543,8 @@ footer a:hover { color: var(--accent-2); }
   .job-chips { padding: .5rem 1.2rem .2rem; }
   .job-details { padding: .3rem 1.2rem; }
   .job-cta { width: calc(100% - 2.4rem); margin: .6rem 1.2rem; }
+  /* App Store mobile */
+  .app-store-header { flex-direction: row; padding: 1.4rem 1.2rem 1rem; gap: 1rem; }
+  .app-store-icon { width: 72px; height: 72px; border-radius: 16px; }
+  .app-store-action-row { padding: .4rem 1.2rem .6rem; }
 }
