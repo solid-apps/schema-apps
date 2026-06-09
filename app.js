@@ -689,6 +689,120 @@
       }
     }
 
+    // ── ORGANIZATION ──
+    if (cfg.type === "Organization") {
+      // Legal name + founding year as meta chips
+      const chips = [];
+      const legal = data["legalName"];
+      if (legal && legal !== data[cfg.titleProp]) chips.push({ label: "Legal name", val: legal });
+      const founded = data["foundingDate"];
+      if (founded) { const d = formatDate(founded); chips.push({ label: "Founded", val: d || founded }); }
+      if (chips.length) {
+        const strip = document.createElement("div"); strip.className = "stats-strip org-chips";
+        chips.forEach((s, i) => {
+          if (i > 0) { const sep = document.createElement("span"); sep.className = "stats-sep"; strip.appendChild(sep); }
+          const chip = document.createElement("span"); chip.className = "stat-chip";
+          chip.innerHTML = "<small>" + s.label + "</small>" + s.val;
+          strip.appendChild(chip);
+        });
+        view.appendChild(strip);
+      }
+      if (legal) handled.add("legalName");
+      if (founded) handled.add("foundingDate");
+
+      // Contact block: address, phone, email, website
+      const contacts = [];
+      const addr = data["address"];
+      if (addr) contacts.push({ label: "Address", val: addr, icon: "📍" });
+      const phone = data["telephone"];
+      if (phone) contacts.push({ label: "Phone", val: phone, icon: "📞" });
+      const email = data["email"];
+      if (email) contacts.push({ label: "Email", val: email, icon: "✉️" });
+      const web = data["url"];
+      if (web) contacts.push({ label: "Web", val: web, icon: "🌐" });
+
+      if (contacts.length) {
+        const block = document.createElement("div"); block.className = "contact-block";
+        contacts.forEach(c => {
+          const row = document.createElement("div"); row.className = "contact-row";
+          const icon = document.createElement("span"); icon.className = "contact-icon"; icon.textContent = c.icon;
+          const txt = document.createElement("span"); txt.className = "contact-text";
+          if (c.label === "Email") {
+            const a = document.createElement("a"); a.href = "mailto:" + c.val; a.textContent = c.val;
+            txt.appendChild(a);
+          } else if (c.label === "Web") {
+            const a = document.createElement("a"); a.href = c.val; a.textContent = c.val; a.target = "_blank"; a.rel = "noopener";
+            txt.appendChild(a);
+          } else {
+            txt.textContent = c.val;
+          }
+          row.append(icon, txt);
+          block.appendChild(row);
+        });
+        view.appendChild(block);
+        contacts.forEach(c => {
+          if (c.label === "Address") handled.add("address");
+          if (c.label === "Phone") handled.add("telephone");
+          if (c.label === "Email") handled.add("email");
+          if (c.label === "Web") handled.add("url");
+        });
+      }
+    }
+
+    // ── RESTAURANT ──
+    if (cfg.type === "Restaurant") {
+      // Cuisine + price range as prominent badges
+      const badges = [];
+      const cuisine = data["servesCuisine"];
+      if (cuisine) badges.push({ label: "Cuisine", val: cuisine });
+      const price = data["priceRange"];
+      if (price) badges.push({ label: "Price", val: price });
+
+      if (badges.length) {
+        const strip = document.createElement("div"); strip.className = "stats-strip restaurant-chips";
+        badges.forEach((s, i) => {
+          if (i > 0) { const sep = document.createElement("span"); sep.className = "stats-sep"; strip.appendChild(sep); }
+          const chip = document.createElement("span"); chip.className = "stat-chip";
+          chip.innerHTML = "<small>" + s.label + "</small>" + s.val;
+          strip.appendChild(chip);
+        });
+        view.appendChild(strip);
+      }
+      if (cuisine) handled.add("servesCuisine");
+      if (price) handled.add("priceRange");
+
+      // Contact block: address, phone
+      const contacts = [];
+      const addr = data["address"];
+      if (addr) contacts.push({ label: "Address", val: addr, icon: "📍" });
+      const phone = data["telephone"];
+      if (phone) contacts.push({ label: "Phone", val: phone, icon: "📞" });
+
+      if (contacts.length) {
+        const block = document.createElement("div"); block.className = "contact-block";
+        contacts.forEach(c => {
+          const row = document.createElement("div"); row.className = "contact-row";
+          const icon = document.createElement("span"); icon.className = "contact-icon"; icon.textContent = c.icon;
+          const txt = document.createElement("span"); txt.className = "contact-text"; txt.textContent = c.val;
+          row.append(icon, txt);
+          block.appendChild(row);
+        });
+        view.appendChild(block);
+        if (addr) handled.add("address");
+        if (phone) handled.add("telephone");
+      }
+
+      // Visit link
+      const url = data["url"];
+      if (url) {
+        const cta = document.createElement("a"); cta.className = "course-cta";
+        cta.href = url; cta.textContent = "Visit Restaurant →";
+        cta.target = "_blank"; cta.rel = "noopener";
+        view.appendChild(cta);
+        handled.add("url");
+      }
+    }
+
     return handled;
   }
 

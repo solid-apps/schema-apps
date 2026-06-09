@@ -745,6 +745,42 @@ textarea.inline-edit {
   transform: translateY(-1px);
 }
 
+/* ── Shared contact block (Organization, Restaurant) ── */
+.contact-block {
+  margin: .5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+}
+.contact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: .5rem;
+  font-size: .85rem;
+  color: var(--ink-2);
+}
+.contact-icon {
+  font-size: .9rem;
+  flex-shrink: 0;
+  width: 1.2rem;
+  text-align: center;
+  padding-top: .1rem;
+}
+.contact-text {
+  line-height: 1.5;
+}
+.contact-text a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.contact-text a:hover {
+  text-decoration: underline;
+}
+.org-chips .stat-chip,
+.restaurant-chips .stat-chip {
+  font-size: .8rem;
+}
+
 /* ── Price / currency ── */
 .rich-price {
   font-weight: 700;
@@ -953,6 +989,12 @@ footer a:hover { color: var(--accent-2); }
   }
   .provider-badge {
     background: color-mix(in oklab, var(--accent) 12%, var(--surface));
+  }
+  .contact-row {
+    color: var(--ink-2);
+  }
+  .contact-text a {
+    color: var(--accent);
   }
 }
 
