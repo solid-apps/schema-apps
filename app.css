@@ -911,47 +911,182 @@ textarea.inline-edit {
 .spec-cell small { font-size: .58rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: .15rem; }
 .spec-cell span { font-size: .85rem; font-weight: 500; color: var(--ink-2); }
 
-/* ── Per-type bespoke: Event ── */
-.event-date-hero {
+/* ── Per-type bespoke: Event — Concert Poster ── */
+
+.card.event-poster {
+  overflow: hidden;
+  border-color: rgba(0,0,0,.06);
+  box-shadow:
+    0 2px 8px rgba(0,0,0,.06),
+    0 12px 40px rgba(0,0,0,.1),
+    0 32px 72px rgba(0,0,0,.06);
+}
+.card.event-poster .hd.hidden { display: none; }
+
+/* Poster hero — vibrant gradient */
+.poster-hero {
+  position: relative;
+  min-height: 300px;
+  padding: 2.5rem 1.6rem 2rem;
+  background: linear-gradient(135deg,
+    color-mix(in oklab, var(--accent) 60%, #0f0520) 0%,
+    color-mix(in oklab, var(--accent) 40%, #1a0a30) 40%,
+    color-mix(in oklab, var(--accent) 20%, #0d0d2b) 100%
+  );
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: .6rem 1.2rem .5rem;
-  margin: .2rem auto .3rem;
-  background: linear-gradient(145deg, var(--accent), var(--accent-2));
-  border-radius: 12px;
-  color: #fff;
+  justify-content: center;
   text-align: center;
-  width: fit-content;
-  box-shadow: 0 4px 14px color-mix(in oklab, var(--accent) 30%, transparent);
+  overflow: hidden;
 }
-.event-day {
-  font-size: 2.4rem;
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -.03em;
+
+/* Decorative radial glow */
+.poster-hero::before {
+  content: "";
+  position: absolute;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in oklab, var(--accent) 25%, transparent) 0%, transparent 70%);
+  top: -80px; right: -60px;
+  pointer-events: none;
 }
-.event-month {
-  font-size: .75rem;
+.poster-hero::after {
+  content: "";
+  position: absolute;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in oklab, var(--accent) 15%, transparent) 0%, transparent 70%);
+  bottom: -40px; left: -30px;
+  pointer-events: none;
+}
+
+/* Date block */
+.poster-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: .8rem;
+  position: relative;
+  z-index: 1;
+}
+.poster-month {
+  font-size: .82rem;
   font-weight: 700;
-  letter-spacing: .12em;
+  letter-spacing: .2em;
   text-transform: uppercase;
+  color: rgba(255,255,255,.7);
+}
+.poster-day {
+  font-size: 4.5rem;
+  font-weight: 900;
+  line-height: 1;
+  color: #fff;
+  letter-spacing: -.04em;
+  text-shadow: 0 4px 24px rgba(0,0,0,.3);
+}
+.poster-year {
+  font-size: .78rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.5);
+  letter-spacing: .15em;
   margin-top: .1rem;
 }
-.event-year {
-  font-size: .68rem;
-  opacity: .7;
-  font-weight: 500;
-  margin-top: .05rem;
+
+/* Title */
+.poster-title {
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -.03em;
+  line-height: 1.15;
+  margin: 0;
+  text-shadow: 0 2px 16px rgba(0,0,0,.3);
+  position: relative;
+  z-index: 1;
 }
-.event-range {
-  text-align: center;
+
+/* End date range */
+.poster-range {
   font-size: .78rem;
-  color: var(--muted);
-  margin-bottom: .3rem;
+  font-weight: 500;
+  color: rgba(255,255,255,.55);
+  margin-top: .3rem;
+  position: relative;
+  z-index: 1;
 }
-.event-chips .stat-chip {
-  font-size: .8rem;
+
+/* Body */
+.card.event-poster .bd {
+  background: #faf9fc;
+  padding-top: .6rem;
+}
+.card.event-poster .bd::before { display: none; }
+
+/* Meta rows */
+.poster-meta {
+  padding: .3rem 0;
+}
+.poster-meta-row {
+  display: flex;
+  align-items: flex-start;
+  gap: .5rem;
+  padding: .35rem 0;
+  font-size: .85rem;
+  color: var(--ink-2);
+}
+.poster-meta-icon {
+  font-size: .9rem;
+  line-height: 1.6;
+  flex-shrink: 0;
+}
+
+/* Description */
+.poster-desc {
+  font-size: .85rem;
+  line-height: 1.7;
+  color: var(--muted);
+  padding: .3rem 0;
+}
+
+/* Get Tickets CTA */
+.poster-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  width: 100%;
+  padding: .8rem;
+  margin: .7rem 0 .2rem;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2, var(--accent)) 100%);
+  color: #fff;
+  font-size: .9rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: .02em;
+  transition: all .2s ease;
+  box-shadow: 0 4px 14px color-mix(in oklab, var(--accent) 30%, transparent);
+}
+.poster-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 22px color-mix(in oklab, var(--accent) 40%, transparent);
+}
+.poster-cta-text { }
+.poster-cta-arrow {
+  font-size: 1.1rem;
+  transition: transform .2s ease;
+}
+.poster-cta:hover .poster-cta-arrow {
+  transform: translateX(3px);
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .card.event-poster { border-color: rgba(255,255,255,.06); }
+  .card.event-poster .bd { background: #13111a; }
+  .poster-meta-row { color: rgba(255,255,255,.6); }
+  .poster-desc { color: rgba(255,255,255,.45); }
 }
 
 /* ── Per-type bespoke: MusicAlbum — Spotify Immersive ── */
@@ -1836,8 +1971,10 @@ footer a:hover { color: var(--accent-2); }
   .stat-chip { padding: .35rem .65rem; font-size: .8rem; }
   .price-amount { font-size: 1.7rem; }
   .spec-grid { grid-template-columns: 1fr; }
-  .event-day { font-size: 2rem; }
-  .event-date-hero { padding: .5rem 1rem .4rem; }
+  /* Event poster mobile */
+  .poster-hero { min-height: 240px; padding: 2rem 1.2rem 1.6rem; }
+  .poster-day { font-size: 3.5rem; }
+  .poster-title { font-size: 1.35rem; }
   /* Cinematic mobile */
   .card.cinematic .cinematic-hero { height: 280px; }
   .cinematic-title { font-size: 1.5rem; }
