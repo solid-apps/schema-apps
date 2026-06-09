@@ -359,6 +359,26 @@ textarea.inline-edit {
   opacity: .4;
 }
 
+/* ── Rating stars ── */
+.rich-rating {
+  color: #f59e0b;
+  letter-spacing: .05em;
+  font-size: 1.1em;
+}
+.rating-num {
+  font-size: .7em;
+  color: var(--muted);
+  margin-left: .3rem;
+  letter-spacing: 0;
+}
+
+/* ── Price / currency ── */
+.rich-price {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.01em;
+}
+
 /* ── Disclosures ── */
 details {
   margin-top: 1rem;
