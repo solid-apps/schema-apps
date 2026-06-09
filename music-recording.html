@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MusicRecording — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicRecording",
+  "name": "Bohemian Rhapsody",
+  "image": "https://picsum.photos/seed/bohemian-rhapsody-track/800/450",
+  "description": "A six-minute suite of rock, opera, and ballad — widely regarded as one of the greatest songs ever recorded. Freddie Mercury's visionary composition defied every convention of radio-friendly pop, weaving together distinct sections into a single breathless journey. The song spent nine weeks at #1 in the UK and was inducted into the Grammy Hall of Fame.",
+  "byArtist": "Queen",
+  "inAlbum": "A Night at the Opera",
+  "duration": "PT5M55S",
+  "datePublished": "1975-10-31",
+  "url": "https://open.spotify.com/track/4u7EnebtmKWzUH433cf5Qv"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "MusicRecording",
+    titleProp: "name",
+    icon: "🎵",
+    accent: "#10b981",
+    fields: [
+      { prop: "name",           label: "Track",        type: "text" },
+      { prop: "image",          label: "Artwork",      type: "image" },
+      { prop: "description",    label: "About",        type: "textarea" },
+      { prop: "byArtist",       label: "Artist",       type: "text" },
+      { prop: "inAlbum",        label: "Album",        type: "text" },
+      { prop: "duration",       label: "Duration",     type: "text" },
+      { prop: "datePublished",  label: "Released",     type: "text" },
+      { prop: "url",            label: "Listen",       type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
