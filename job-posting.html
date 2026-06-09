@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>JobPosting — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "JobPosting",
+  "title": "Senior Solid Pod Engineer",
+  "image": "https://picsum.photos/seed/solid-engineer-job/800/400",
+  "hiringOrganization": "Inrupt",
+  "jobLocation": "Boston, MA (Hybrid)",
+  "employmentType": "Full-time",
+  "baseSalary": "150000 USD",
+  "datePosted": "2026-05-20",
+  "description": "Join the team building the next generation of personal data infrastructure. You will design and implement Solid Pod server features, contribute to the LDP and WAC specifications, and build developer tools that make it easy for apps to interact with user-controlled data pods. Requires deep experience with Linked Data, RDF, and decentralized identity."
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "JobPosting",
+    titleProp: "title",
+    icon: "💼",
+    accent: "#2563eb",
+    fields: [
+      { prop: "title",             label: "Position",   type: "text" },
+      { prop: "image",             label: "Image",      type: "image" },
+      { prop: "hiringOrganization",label: "Company",    type: "text" },
+      { prop: "jobLocation",       label: "Location",   type: "text" },
+      { prop: "employmentType",    label: "Type",       type: "text" },
+      { prop: "baseSalary",        label: "Salary",     type: "text" },
+      { prop: "datePosted",        label: "Posted",     type: "text" },
+      { prop: "description",       label: "Description",type: "textarea" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
