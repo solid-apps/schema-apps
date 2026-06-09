@@ -881,52 +881,88 @@
       }
     }
 
-    // ── COURSE ──
+    // ── COURSE (Coursera/Udemy hero) ──
     if (cfg.type === "Course") {
-      // Provider prominent
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("course-hero");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Hero banner with image + gradient overlay
+      const heroMount = document.getElementById("hero-mount");
+      const existing = heroMount.querySelector(".hero");
+      if (existing) existing.remove();
+
+      const banner = document.createElement("div"); banner.className = "course-banner";
+      const imgUrl = data["image"];
+      if (imgUrl) {
+        const img = document.createElement("div"); img.className = "course-banner-img";
+        img.style.backgroundImage = "url(" + imgUrl + ")";
+        banner.appendChild(img);
+        handled.add("image");
+      }
+      const scrim = document.createElement("div"); scrim.className = "course-banner-scrim";
+      banner.appendChild(scrim);
+
+      const overlay = document.createElement("div"); overlay.className = "course-banner-overlay";
+      // Provider badge
       const provider = data["provider"];
       if (provider) {
-        const pb = document.createElement("div"); pb.className = "course-provider";
-        pb.innerHTML = "<span class=\"provider-badge\">Provider</span> <strong>" + provider + "</strong>";
-        view.appendChild(pb);
+        const pb = document.createElement("div"); pb.className = "course-provider-badge";
+        pb.textContent = provider;
+        overlay.appendChild(pb);
         handled.add("provider");
       }
+      // Title
+      const h1 = document.createElement("h1"); h1.className = "course-title";
+      h1.textContent = data[cfg.titleProp] || "";
+      overlay.appendChild(h1);
+      handled.add("name");
+      banner.appendChild(overlay);
+      heroMount.appendChild(banner);
 
-      // Level + code as chips
-      const chips = [];
+      // Info bar: level + code chips
       const level = data["educationalLevel"];
-      if (level) chips.push({ label: "Level", val: level });
       const code = data["courseCode"];
-      if (code) chips.push({ label: "Code", val: code });
-
-      if (chips.length) {
-        const strip = document.createElement("div"); strip.className = "stats-strip";
-        chips.forEach((s, i) => {
-          if (i > 0) { const sep = document.createElement("span"); sep.className = "stats-sep"; strip.appendChild(sep); }
-          const chip = document.createElement("span"); chip.className = "stat-chip";
-          chip.innerHTML = "<small>" + s.label + "</small>" + s.val;
-          strip.appendChild(chip);
-        });
-        view.appendChild(strip);
+      if (level || code) {
+        const bar = document.createElement("div"); bar.className = "course-info-bar";
+        if (code) {
+          const chip = document.createElement("span"); chip.className = "course-chip";
+          chip.textContent = code;
+          bar.appendChild(chip);
+          handled.add("courseCode");
+        }
+        if (level) {
+          const chip = document.createElement("span"); chip.className = "course-chip";
+          chip.textContent = level;
+          bar.appendChild(chip);
+          handled.add("educationalLevel");
+        }
+        view.appendChild(bar);
       }
-      if (level) handled.add("educationalLevel");
-      if (code) handled.add("courseCode");
 
-      // Description as body
+      // About this course
       const desc = data["description"];
       if (desc) {
+        const section = document.createElement("div"); section.className = "course-about";
+        const label = document.createElement("div"); label.className = "course-about-label";
+        label.textContent = "About this course";
+        section.appendChild(label);
         const body = document.createElement("div"); body.className = "prose-body";
         body.textContent = desc;
-        view.appendChild(body);
+        section.appendChild(body);
+        view.appendChild(section);
         handled.add("description");
       }
 
-      // CTA link
+      // Enroll CTA
       const url = data["url"];
       if (url) {
         const cta = document.createElement("a"); cta.className = "course-cta";
-        cta.href = url; cta.textContent = "View Course →";
-        cta.target = "_blank"; cta.rel = "noopener";
+        cta.href = url; cta.target = "_blank"; cta.rel = "noopener";
+        cta.innerHTML = "<span class=\"course-cta-text\">Start Learning</span><span class=\"course-cta-arrow\">\u2192</span>";
         view.appendChild(cta);
         handled.add("url");
       }
