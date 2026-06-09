@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Movie — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Movie",
+  "name": "Blade Runner 2049",
+  "image": "https://picsum.photos/seed/blade-runner-poster/800/400",
+  "director": "Denis Villeneuve",
+  "genre": "Science Fiction, Drama, Thriller",
+  "datePublished": "2017-10-06",
+  "duration": "PT2H44M",
+  "description": "Officer K, a new blade runner for the Los Angeles Police Department, unearths a long-buried secret that has the potential to plunge what's left of society into chaos. His discovery leads him on a quest to find Rick Deckard, a former blade runner who has been missing for thirty years."
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Movie",
+    titleProp: "name",
+    icon: "🎬",
+    accent: "#b91c1c",
+    fields: [
+      { prop: "name",          label: "Title",       type: "text" },
+      { prop: "image",         label: "Poster",      type: "image" },
+      { prop: "director",      label: "Director",    type: "text" },
+      { prop: "genre",         label: "Genre",       type: "text" },
+      { prop: "datePublished", label: "Released",    type: "text" },
+      { prop: "duration",      label: "Duration",    type: "text" },
+      { prop: "description",   label: "Description", type: "textarea" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
