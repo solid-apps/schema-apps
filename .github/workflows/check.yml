@@ -1,0 +1,19 @@
+name: App gate
+
+on:
+  pull_request:
+  push:
+    branches: [gh-pages]
+  workflow_dispatch:
+
+jobs:
+  app-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install --no-save jsdom@^24.1.0
+      - name: Validate every schema.org app (structure + renders in a DOM)
+        run: node gate/check.mjs

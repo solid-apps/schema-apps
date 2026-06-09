@@ -1,0 +1,12 @@
+{
+  "name": "schema-apps",
+  "private": true,
+  "type": "module",
+  "description": "Single-page HTML apps for schema.org types — JSON-LD data islands with auto-generated render + edit UIs",
+  "scripts": {
+    "check": "node gate/check.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "^24.1.0"
+  }
+}
