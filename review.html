@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Review — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "name": "Blade Runner 2049",
+  "image": "https://picsum.photos/seed/blade-runner-review/800/400",
+  "author": "Roger Ebert",
+  "reviewRating": "4.5",
+  "reviewBody": "A visually breathtaking sequel that honors the original while carving out its own identity. Denis Villeneuve crafts a meditative, slow-burn science fiction epic that asks the same existential questions that haunted Ridley Scott's 1982 masterpiece — what does it mean to be human? — and answers them with haunting new resonance. Roger Deakins' cinematography is nothing short of masterful, every frame a painting worth pausing on.",
+  "datePublished": "2017-10-06"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Review",
+    titleProp: "name",
+    icon: "⭐",
+    accent: "#d97706",
+    fields: [
+      { prop: "name",          label: "Title",       type: "text" },
+      { prop: "image",         label: "Image",       type: "image" },
+      { prop: "author",        label: "Author",      type: "text" },
+      { prop: "reviewRating",  label: "Rating",      type: "text" },
+      { prop: "datePublished", label: "Published",   type: "text" },
+      { prop: "reviewBody",    label: "Review",      type: "textarea" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
