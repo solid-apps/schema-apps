@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Organization — schema.org app</title>
+<!--
+  Reference app for solid-apps/schema-apps.
+  Contract (see README.md): one JSON-LD island (#data) holding a schema.org
+  instance, a read view (#view), and an auto-generated edit form (#edit) that
+  writes changes back into the island. Self-contained, no build, no deps.
+  To make an app for another type: copy this file, change TYPE, FIELDS and the
+  island's sample data. Nothing else needs to change.
+-->
+<style>
+  :root { --fg:#1a1a2e; --muted:#6b7280; --line:#e5e7eb; --accent:#2d6cdf; --bg:#f7f8fa; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:16px/1.55 system-ui, sans-serif; color:var(--fg); background:var(--bg); }
+  .wrap { max-width:680px; margin:2rem auto; padding:0 1rem; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:12px; padding:1.5rem; box-shadow:0 1px 3px rgba(0,0,0,.05); }
+  h1 { font-size:1.1rem; color:var(--muted); font-weight:600; margin:0 0 1rem; letter-spacing:.02em; text-transform:uppercase; }
+  .view h2 { margin:.2rem 0 .1rem; font-size:1.5rem; }
+  .view .row { display:flex; gap:.5rem; padding:.35rem 0; border-top:1px solid var(--line); }
+  .view .row:first-of-type { border-top:0; }
+  .view .k { color:var(--muted); min-width:120px; }
+  .view .v { font-weight:500; }
+  .view .v a { color:var(--accent); text-decoration:none; }
+  details { margin-top:1.25rem; }
+  summary { cursor:pointer; color:var(--accent); font-weight:600; }
+  form { margin-top:1rem; display:grid; gap:.75rem; }
+  label { display:grid; gap:.25rem; font-size:.85rem; color:var(--muted); }
+  input, textarea { font:inherit; padding:.5rem .6rem; border:1px solid var(--line); border-radius:8px; }
+  textarea { min-height:4rem; resize:vertical; }
+  .src { margin-top:1.25rem; }
+  pre { background:#0f172a; color:#e2e8f0; padding:1rem; border-radius:8px; overflow:auto; font-size:.8rem; }
+</style>
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Acme Corporation",
+  "legalName": "Acme Corp Ltd",
+  "url": "https://example.org/acme",
+  "email": "info@acme.example.org",
+  "telephone": "+1 555 0199",
+  "address": "123 Main Street, Springfield, IL 62701",
+  "foundingDate": "1985-04-12"
+}
+</script>
+
+<div class="wrap">
+  <div class="card">
+    <h1 id="type-label">Organization</h1>
+    <div id="view" class="view"></div>
+
+    <details>
+      <summary>Edit</summary>
+      <form id="edit"></form>
+    </details>
+
+    <details class="src">
+      <summary>JSON-LD source</summary>
+      <pre id="src"></pre>
+    </details>
+  </div>
+</div>
+
+<script>
+  // --- per-type configuration (the ONLY thing that changes between apps) ---
+  const TYPE = "Organization";
+  const FIELDS = [
+    { prop: "name",         label: "Name",          type: "text" },
+    { prop: "legalName",    label: "Legal name",    type: "text" },
+    { prop: "url",          label: "Website",       type: "url" },
+    { prop: "email",        label: "Email",         type: "email" },
+    { prop: "telephone",    label: "Telephone",     type: "tel" },
+    { prop: "address",      label: "Address",       type: "text" },
+    { prop: "foundingDate", label: "Founding date", type: "text" },
+  ];
+  const TITLE_PROP = "name"; // which property is shown as the heading
+
+  // --- generic engine (identical across every app) ---
+  const island = document.getElementById("data");
+  let data = JSON.parse(island.textContent);
+
+  function writeIsland() {
+    island.textContent = "\n" + JSON.stringify(data, null, 2) + "\n";
+    document.getElementById("src").textContent = island.textContent.trim();
+  }
+
+  function render() {
+    const view = document.getElementById("view");
+    view.innerHTML = "";
+    const h = document.createElement("h2");
+    h.textContent = data[TITLE_PROP] || "(untitled)";
+    view.appendChild(h);
+    for (const f of FIELDS) {
+      if (f.prop === TITLE_PROP) continue;
+      const val = data[f.prop];
+      if (val === undefined || val === "") continue;
+      const row = document.createElement("div"); row.className = "row";
+      const k = document.createElement("span"); k.className = "k"; k.textContent = f.label;
+      const v = document.createElement("span"); v.className = "v";
+      if (f.type === "url" || f.type === "email") {
+        const a = document.createElement("a");
+        a.href = (f.type === "email" ? "mailto:" : "") + val;
+        a.textContent = val; v.appendChild(a);
+      } else { v.textContent = val; }
+      row.append(k, v); view.appendChild(row);
+    }
+  }
+
+  function buildForm() {
+    const form = document.getElementById("edit");
+    form.innerHTML = "";
+    for (const f of FIELDS) {
+      const label = document.createElement("label");
+      label.textContent = f.label;
+      const input = f.type === "textarea" ? document.createElement("textarea")
+                                          : document.createElement("input");
+      if (f.type !== "textarea") input.type = f.type;
+      input.value = data[f.prop] || "";
+      input.dataset.prop = f.prop;
+      input.addEventListener("input", () => {
+        const val = input.value;
+        if (val === "") delete data[f.prop]; else data[f.prop] = val;
+        writeIsland(); render();
+      });
+      label.appendChild(input);
+      form.appendChild(label);
+    }
+  }
+
+  document.getElementById("type-label").textContent = TYPE;
+  render(); buildForm(); writeIsland();
+</script>
+</body>
+</html>
