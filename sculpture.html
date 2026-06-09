@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sculpture — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Sculpture",
+  "name": "David",
+  "image": "https://picsum.photos/seed/david-michelangelo/800/600",
+  "description": "Standing 5.17 metres tall, Michelangelo's David was carved from a single block of Carrara marble between 1501 and 1504. Commissioned for the Cathedral of Florence, the statue instead became a civic symbol of the Republic, installed in the Piazza della Signoria. Depicting the biblical hero before his battle with Goliath, David's tense expression and contrapposto stance embody the Renaissance ideal of terribilità — divine power channeled through human form. It has resided in the Galleria dell'Accademia since 1873.",
+  "artist": "Michelangelo Buonarroti",
+  "dateCreated": "1504",
+  "artMedium": "Carrara marble"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Sculpture",
+    titleProp: "name",
+    icon: "🗿",
+    accent: "#78716c",
+    fields: [
+      { prop: "name",         label: "Title",        type: "text" },
+      { prop: "image",        label: "Image",        type: "image" },
+      { prop: "description",  label: "About",        type: "textarea" },
+      { prop: "artist",       label: "Sculptor",     type: "text" },
+      { prop: "dateCreated",  label: "Created",      type: "text" },
+      { prop: "artMedium",    label: "Material",     type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
