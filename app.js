@@ -1799,6 +1799,87 @@
       view.appendChild(cta);
     }
 
+    // ── LOCALBUSINESS (Google Maps card) ──
+    if (cfg.type === "LocalBusiness") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("local-biz");
+
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Hero
+      const hm = document.getElementById("hero-mount");
+      const img = data["image"];
+      if (img && hm) {
+        const heroImg = document.createElement("img");
+        heroImg.src = img; heroImg.alt = ""; heroImg.className = "hero";
+        hm.appendChild(heroImg);
+      }
+      handled.add("image");
+
+      // Name
+      const title = data[cfg.titleProp];
+      if (title) {
+        const h1 = document.createElement("h1"); h1.className = "biz-name";
+        h1.textContent = title;
+        view.appendChild(h1);
+        handled.add(cfg.titleProp);
+      }
+
+      // Opening hours badge
+      const hours = data["openingHours"];
+      if (hours) {
+        const badge = document.createElement("div"); badge.className = "biz-hours-badge";
+        badge.innerHTML = "\u{1F552} " + hours;
+        view.appendChild(badge);
+        handled.add("openingHours");
+      }
+
+      // Description
+      const desc = data["description"];
+      if (desc) {
+        const d = document.createElement("p"); d.className = "biz-desc";
+        d.textContent = desc;
+        view.appendChild(d);
+        handled.add("description");
+      }
+
+      // Info chips: price range + phone + address
+      const info = document.createElement("div"); info.className = "biz-info";
+      const price = data["priceRange"];
+      if (price) {
+        const chip = document.createElement("span"); chip.className = "biz-chip";
+        chip.textContent = price;
+        info.appendChild(chip);
+        handled.add("priceRange");
+      }
+      const phone = data["telephone"];
+      if (phone) {
+        const row = document.createElement("div"); row.className = "biz-contact-row";
+        row.innerHTML = "\u{1F4DE} " + phone;
+        info.appendChild(row);
+        handled.add("telephone");
+      }
+      const addr = data["address"];
+      if (addr) {
+        const row = document.createElement("div"); row.className = "biz-contact-row";
+        row.innerHTML = "\u{1F4CD} " + addr;
+        info.appendChild(row);
+        handled.add("address");
+      }
+      if (info.children.length) view.appendChild(info);
+
+      // CTA
+      const url = data["url"];
+      if (url) {
+        const cta = document.createElement("a"); cta.className = "biz-cta";
+        cta.href = url; cta.target = "_blank"; cta.rel = "noopener";
+        cta.textContent = "Visit Website \u2192";
+        view.appendChild(cta);
+        handled.add("url");
+      }
+    }
+
     return handled;
   }
 
