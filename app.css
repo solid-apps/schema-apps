@@ -831,7 +831,168 @@ textarea.inline-edit {
   font-size: .8rem;
 }
 
-/* ── Per-type bespoke: MusicAlbum ── */
+/* ── Per-type bespoke: MusicAlbum — Spotify Immersive ── */
+
+.card.album-immersive {
+  background: #121212;
+  border-color: rgba(255,255,255,.04);
+  box-shadow:
+    0 2px 8px rgba(0,0,0,.4),
+    0 12px 40px rgba(0,0,0,.5),
+    0 32px 80px rgba(0,0,0,.3);
+  overflow: hidden;
+}
+.card.album-immersive .hd.hidden { display: none; }
+
+/* Cover hero — square, with ambient gradient backdrop */
+.card.album-immersive .album-cover-hero {
+  position: relative;
+  height: auto;
+  aspect-ratio: 1;
+  max-height: 360px;
+  overflow: hidden;
+  border-radius: 0;
+  margin: 0;
+  background: #1a1a2e;
+}
+.album-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.album-backdrop {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+    rgba(18,18,18,0) 60%,
+    rgba(18,18,18,.5) 80%,
+    rgba(18,18,18,1) 100%
+  );
+  pointer-events: none;
+}
+
+/* Body surface — dark */
+.card.album-immersive .bd {
+  background: #121212;
+  color: rgba(255,255,255,.85);
+  padding-top: 1rem;
+}
+.card.album-immersive .bd::before {
+  display: none;
+}
+
+/* Album info block */
+.album-info {
+  padding: .5rem 0;
+}
+.album-type-badge {
+  display: inline-block;
+  font-size: .6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: rgba(255,255,255,.45);
+  margin-bottom: .3rem;
+}
+.album-title {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+  letter-spacing: -.02em;
+  margin: 0 0 .35rem;
+}
+.album-artist-line {
+  font-size: .92rem;
+  color: rgba(255,255,255,.65);
+  font-weight: 400;
+  margin-bottom: .3rem;
+}
+.album-artist-line strong {
+  color: #fff;
+  font-weight: 700;
+}
+.album-meta {
+  font-size: .78rem;
+  color: rgba(255,255,255,.4);
+  letter-spacing: .02em;
+}
+
+/* Tracklist */
+.tracklist-wrap {
+  margin-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,.06);
+  padding-top: .5rem;
+}
+.tracklist-header {
+  display: grid;
+  grid-template-columns: 2rem 1fr 3.5rem;
+  padding: .3rem 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  margin-bottom: .2rem;
+  color: rgba(255,255,255,.35);
+  font-size: .7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+.tracklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: none;
+}
+.track-row {
+  display: grid;
+  grid-template-columns: 2rem 1fr 3.5rem;
+  align-items: center;
+  padding: .45rem 0;
+  border-radius: 4px;
+  transition: background .15s;
+  cursor: default;
+}
+.track-row:hover {
+  background: rgba(255,255,255,.05);
+}
+.track-num {
+  font-size: .78rem;
+  color: rgba(255,255,255,.35);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.track-row:hover .track-num {
+  color: rgba(255,255,255,.6);
+}
+.track-title {
+  font-size: .88rem;
+  color: rgba(255,255,255,.85);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.track-dur {
+  font-size: .78rem;
+  color: rgba(255,255,255,.35);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Edit/JSON-LD in immersive */
+.card.album-immersive details {
+  border-color: rgba(255,255,255,.08);
+}
+.card.album-immersive summary {
+  color: rgba(255,255,255,.4);
+}
+.card.album-immersive .row .k {
+  color: rgba(255,255,255,.4);
+}
+.card.album-immersive .row .v {
+  color: rgba(255,255,255,.75);
+}
+
+/* Old album-artist (kept for safety) */
 .album-artist {
   text-align: center;
   font-size: 1rem;
@@ -1280,4 +1441,8 @@ footer a:hover { color: var(--accent-2); }
   .card.cinematic .cinematic-hero { height: 280px; }
   .cinematic-title { font-size: 1.5rem; }
   .cinematic-overlay { padding: 0 1.2rem 1.2rem; }
+  /* Album immersive mobile */
+  .card.album-immersive .album-cover-hero { max-height: 280px; }
+  .album-title { font-size: 1.3rem; }
+  .track-title { font-size: .82rem; }
 }

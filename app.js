@@ -570,39 +570,79 @@
       }
     }
 
-    // ── MUSICALBUM ──
+    // ── MUSICALBUM (Spotify-style immersive) ──
     if (cfg.type === "MusicAlbum") {
-      // Prominent 'by Artist'
-      const artist = data["byArtist"];
-      if (artist) {
-        const artistBlock = document.createElement("div"); artistBlock.className = "album-artist";
-        artistBlock.innerHTML = "by <strong>" + artist + "</strong>";
-        view.appendChild(artistBlock);
-        handled.add("byArtist");
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("album-immersive");
+
+      // Rebuild hero as square cover art
+      const heroMount = document.getElementById("hero-mount");
+      const coverUrl = data["image"];
+      if (coverUrl && heroMount.querySelector(".hero")) {
+        const hero = heroMount.querySelector(".hero");
+        hero.classList.add("album-cover-hero");
+        // Remove old img, re-add as square
+        hero.innerHTML = "";
+        const img = document.createElement("img"); img.src = coverUrl; img.alt = data[cfg.titleProp] || "";
+        img.className = "album-cover-img"; img.loading = "lazy";
+        hero.appendChild(img);
+        // Ambient gradient backdrop behind cover
+        const backdrop = document.createElement("div"); backdrop.className = "album-backdrop";
+        hero.appendChild(backdrop);
       }
 
-      // Meta chips: genre, year, tracks
-      const chips = [];
-      const genre = data["genre"];
-      if (genre) chips.push({ label: "Genre", val: genre.split(",")[0].trim() });
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Album info block (beside/below cover)
+      const info = document.createElement("div"); info.className = "album-info";
+      const typeBadge = document.createElement("span"); typeBadge.className = "album-type-badge";
+      typeBadge.textContent = "ALBUM";
+      const h1 = document.createElement("h1"); h1.className = "album-title";
+      h1.textContent = data[cfg.titleProp] || "";
+      const artistLine = document.createElement("div"); artistLine.className = "album-artist-line";
+      artistLine.innerHTML = "by <strong>" + (data["byArtist"] || "Unknown") + "</strong>";
+
+      // Meta: year · genre · N tracks
+      const metaParts = [];
       const datePub = data["datePublished"];
-      if (datePub) { const d = formatDate(datePub); chips.push({ label: "Released", val: d || datePub }); }
-      const tracks = data["numTracks"];
-      if (tracks) chips.push({ label: "Tracks", val: tracks });
+      if (datePub) metaParts.push(new Date(datePub).getFullYear().toString());
+      const genre = data["genre"];
+      if (genre) metaParts.push(genre.split(",")[0].trim());
+      const numTracks = data["numTracks"];
+      if (numTracks) metaParts.push(numTracks + " tracks");
+      const meta = document.createElement("div"); meta.className = "album-meta";
+      meta.textContent = metaParts.join("  ·  ");
 
-      if (chips.length) {
-        const strip = document.createElement("div"); strip.className = "stats-strip";
-        chips.forEach((s, i) => {
-          if (i > 0) { const sep = document.createElement("span"); sep.className = "stats-sep"; strip.appendChild(sep); }
-          const chip = document.createElement("span"); chip.className = "stat-chip";
-          chip.innerHTML = "<small>" + s.label + "</small>" + s.val;
-          strip.appendChild(chip);
+      info.append(typeBadge, h1, artistLine, meta);
+      view.appendChild(info);
+
+      handled.add("name"); handled.add("image"); handled.add("byArtist");
+      handled.add("datePublished"); handled.add("genre"); handled.add("numTracks");
+
+      // Tracklist
+      const trackData = data["track"];
+      if (Array.isArray(trackData) && trackData.length) {
+        const listWrap = document.createElement("div"); listWrap.className = "tracklist-wrap";
+        const listHeader = document.createElement("div"); listHeader.className = "tracklist-header";
+        listHeader.innerHTML = "<span class=\"th-num\">#</span><span class=\"th-title\">Title</span><span class=\"th-dur\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"currentColor\"><circle cx=\"8\" cy=\"8\" r=\"1.2\"/><circle cx=\"2\" cy=\"8\" r=\"1.2\"/><circle cx=\"14\" cy=\"8\" r=\"1.2\"/></svg></span>";
+        listWrap.appendChild(listHeader);
+
+        const ol = document.createElement("ol"); ol.className = "tracklist";
+        trackData.forEach((t, i) => {
+          const li = document.createElement("li"); li.className = "track-row";
+          const num = document.createElement("span"); num.className = "track-num"; num.textContent = i + 1;
+          const title = document.createElement("span"); title.className = "track-title"; title.textContent = t.name || "";
+          const dur = document.createElement("span"); dur.className = "track-dur";
+          if (t.duration) { const d = formatDuration(t.duration); dur.textContent = d || ""; }
+          li.append(num, title, dur);
+          ol.appendChild(li);
         });
-        view.appendChild(strip);
+        listWrap.appendChild(ol);
+        view.appendChild(listWrap);
+        handled.add("track");
       }
-      if (genre) handled.add("genre");
-      if (datePub) handled.add("datePublished");
-      if (tracks) handled.add("numTracks");
     }
 
     // ── BOOK ──
