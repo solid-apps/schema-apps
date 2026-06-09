@@ -1547,6 +1547,80 @@
       }
     }
 
+    // ── TOURISTATTRACTION (Tripadvisor-style travel card) ──
+    if (cfg.type === "TouristAttraction") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("travel-card");
+
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Full-bleed hero with overlay
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount.querySelector(".hero")) heroMount.querySelector(".hero").remove();
+
+      const hero = document.createElement("div"); hero.className = "travel-hero";
+      const imgUrl = data["image"];
+      if (imgUrl) {
+        const img = document.createElement("img"); img.src = imgUrl; img.alt = data[cfg.titleProp] || "";
+        img.className = "travel-hero-img"; img.loading = "lazy";
+        hero.appendChild(img);
+        handled.add("image");
+      }
+
+      const scrim = document.createElement("div"); scrim.className = "travel-scrim";
+      hero.appendChild(scrim);
+
+      const overlay = document.createElement("div"); overlay.className = "travel-overlay";
+      const h1 = document.createElement("h1"); h1.className = "travel-name";
+      h1.textContent = data[cfg.titleProp] || "";
+      overlay.appendChild(h1);
+      handled.add("name");
+
+      const addr = data["address"];
+      if (addr) {
+        const loc = document.createElement("div"); loc.className = "travel-location";
+        loc.innerHTML = "📍 " + addr;
+        overlay.appendChild(loc);
+        handled.add("address");
+      }
+
+      hero.appendChild(overlay);
+      heroMount.appendChild(hero);
+
+      // "Best for" tag chips
+      const bestFor = data["touristType"];
+      if (bestFor) {
+        const tags = document.createElement("div"); tags.className = "travel-tags";
+        bestFor.split(/,\s*/).forEach(t => {
+          const chip = document.createElement("span"); chip.className = "travel-tag";
+          chip.textContent = t.trim();
+          tags.appendChild(chip);
+        });
+        view.appendChild(tags);
+        handled.add("touristType");
+      }
+
+      // Description
+      const desc = data["description"];
+      if (desc) {
+        const descEl = document.createElement("div"); descEl.className = "travel-desc";
+        descEl.textContent = desc;
+        view.appendChild(descEl);
+        handled.add("description");
+      }
+
+      // Directions CTA
+      const url = data["url"];
+      if (url) {
+        const cta = document.createElement("a"); cta.className = "travel-cta";
+        cta.href = url; cta.target = "_blank"; cta.rel = "noopener";
+        cta.innerHTML = "🗺️ Plan Your Visit →";
+        view.appendChild(cta);
+        handled.add("url");
+      }
+    }
+
     return handled;
   }
 

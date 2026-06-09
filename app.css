@@ -2252,6 +2252,87 @@ footer a:hover { color: var(--accent-2); }
 }
 
 /* ──────────────────────────────────────────────
+   TouristAttraction — Tripadvisor travel card
+   ────────────────────────────────────────────── */
+.card.travel-card .hd.hidden { display: none; }
+
+.travel-hero {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+}
+.travel-hero-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .6s ease;
+}
+.travel-card:hover .travel-hero-img { transform: scale(1.04); }
+
+.travel-scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.72) 0%, rgba(0,0,0,.1) 55%, transparent 100%);
+  pointer-events: none;
+}
+.travel-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 1.2rem 1.5rem;
+}
+.travel-name {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 .3rem;
+  letter-spacing: -.02em;
+  line-height: 1.15;
+  text-shadow: 0 1px 4px rgba(0,0,0,.4);
+}
+.travel-location {
+  font-size: .8rem;
+  color: rgba(255,255,255,.88);
+  font-weight: 500;
+}
+
+.travel-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  padding: .9rem 1.5rem .5rem;
+}
+.travel-tag {
+  padding: .25rem .65rem;
+  background: color-mix(in oklab, var(--accent) 12%, transparent);
+  color: var(--accent);
+  border: 1px solid color-mix(in oklab, var(--accent) 30%, transparent);
+  border-radius: 22px;
+  font-size: .75rem;
+  font-weight: 600;
+}
+
+.travel-desc {
+  font-size: .88rem;
+  color: var(--ink-2);
+  line-height: 1.65;
+  padding: .4rem 1.5rem .8rem;
+}
+
+.travel-cta {
+  display: inline-block;
+  margin: .2rem 1.5rem 1.5rem;
+  padding: .55rem 1.2rem;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  font-size: .85rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: filter .18s, transform .15s;
+}
+.travel-cta:hover { filter: brightness(1.12); transform: translateY(-1px); }
+
+/* ──────────────────────────────────────────────
    VideoObject — YouTube-style video card
    ────────────────────────────────────────────── */
 .card.video-card { background: #0f0f0f; color: #f1f1f1; }
