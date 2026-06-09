@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Photograph — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Photograph",
+  "name": "Afghan Girl",
+  "image": "https://picsum.photos/seed/afghan-girl-sharbat/800/600",
+  "description": "Shot at the Nasir Bagh refugee camp near Peshawar in December 1984, Steve McCurry's portrait of a young Pashtun woman became the most recognised photograph in National Geographic's history. Her sea-green eyes — startling against a tattered red scarf — seemed to hold the entire weight of a war-torn homeland. She was approximately twelve years old and had never been photographed before. The image appeared on the June 1985 cover and came to symbolise the plight of Afghanistan's refugees.",
+  "creator": "Steve McCurry",
+  "dateCreated": "1984-12",
+  "contentLocation": "Nasir Bagh Refugee Camp, Peshawar, Pakistan"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Photograph",
+    titleProp: "name",
+    icon: "📷",
+    accent: "#64748b",
+    fields: [
+      { prop: "name",             label: "Title",       type: "text" },
+      { prop: "image",            label: "Photo",       type: "image" },
+      { prop: "description",      label: "About",       type: "textarea" },
+      { prop: "creator",          label: "Photographer", type: "text" },
+      { prop: "dateCreated",      label: "Taken",       type: "text" },
+      { prop: "contentLocation",  label: "Location",    type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
