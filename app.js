@@ -373,6 +373,179 @@
       }
     }
 
+    // ── MOVIE ──
+    if (cfg.type === "Movie") {
+      // Meta chip row: year · genre · duration
+      const chips = [];
+      const year = data["datePublished"];
+      if (year) { const d = formatDate(year); chips.push({ label: "Year", val: d ? new Date(year).getFullYear().toString() : year }); }
+      const genre = data["genre"];
+      if (genre) { const first = genre.split(",")[0].trim(); chips.push({ label: "Genre", val: first }); }
+      const dur = data["duration"];
+      if (dur) { const d = formatDuration(dur); if (d) chips.push({ label: "Runtime", val: d }); }
+
+      if (chips.length) {
+        const strip = document.createElement("div"); strip.className = "stats-strip film-chips";
+        chips.forEach((s, i) => {
+          if (i > 0) { const sep = document.createElement("span"); sep.className = "stats-sep"; strip.appendChild(sep); }
+          const chip = document.createElement("span"); chip.className = "stat-chip";
+          chip.innerHTML = "<small>" + s.label + "</small>" + s.val;
+          strip.appendChild(chip);
+        });
+        view.appendChild(strip);
+      }
+      if (year) handled.add("datePublished");
+      if (genre) handled.add("genre");
+      if (dur) handled.add("duration");
+
+      // Rating stars
+      const aggRating = data["aggregateRating"];
+      if (aggRating !== undefined) {
+        const r = formatRating(aggRating, "aggregateRating");
+        if (r) {
+          const ratingBlock = document.createElement("div"); ratingBlock.className = "rating-hero";
+          let stars = "";
+          for (let i = 0; i < r.full; i++) stars += "\u2605";
+          if (r.half) stars += "\u00BD";
+          for (let i = 0; i < r.empty; i++) stars += "\u2606";
+          const starsSpan = document.createElement("span"); starsSpan.className = "rating-hero-stars"; starsSpan.textContent = stars;
+          const numSpan = document.createElement("span"); numSpan.className = "rating-hero-num"; numSpan.textContent = r.raw + "/" + r.max;
+          ratingBlock.append(starsSpan, numSpan);
+          view.appendChild(ratingBlock);
+        }
+        handled.add("aggregateRating");
+      }
+    }
+
+    // ── PRODUCT ──
+    if (cfg.type === "Product") {
+      // Big prominent price
+      const priceVal = data["price"];
+      if (priceVal) {
+        const priceBlock = document.createElement("div"); priceBlock.className = "price-hero";
+        const price = formatPrice(priceVal, "price");
+        if (price) {
+          const sym = price.symbol || (price.currency ? (CURRENCY_SYMBOLS[price.currency] || price.currency + " ") : "");
+          const amt = price.amount || parseFloat(priceVal.replace(/[^0-9.]/g, ""));
+          priceBlock.innerHTML = "<span class=\"price-symbol\">" + sym + "</span><span class=\"price-amount\">" + (isNaN(amt) ? priceVal : amt.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })) + "</span>";
+        } else {
+          priceBlock.textContent = priceVal;
+        }
+        view.appendChild(priceBlock);
+        handled.add("price");
+      }
+
+      // Specs as compact rows (brand, sku, color, material — all short values)
+      const specProps = ["brand", "sku", "color", "material"];
+      const specs = [];
+      for (const f of cfg.fields) {
+        if (!specProps.includes(f.prop)) continue;
+        const val = data[f.prop];
+        if (!val) continue;
+        specs.push({ label: f.label, val });
+        handled.add(f.prop);
+      }
+      if (specs.length) {
+        const grid = document.createElement("div"); grid.className = "spec-grid";
+        specs.forEach((s) => {
+          const cell = document.createElement("div"); cell.className = "spec-cell";
+          cell.innerHTML = "<small>" + s.label + "</small><span>" + s.val + "</span>";
+          grid.appendChild(cell);
+        });
+        view.appendChild(grid);
+      }
+    }
+
+    // ── EVENT ──
+    if (cfg.type === "Event") {
+      // Bold date block
+      const start = data["startDate"];
+      if (start) {
+        try {
+          const d = new Date(start);
+          if (!isNaN(d.getTime())) {
+            const dateBlock = document.createElement("div"); dateBlock.className = "event-date-hero";
+            const day = document.createElement("span"); day.className = "event-day"; day.textContent = d.getDate();
+            const month = document.createElement("span"); month.className = "event-month"; month.textContent = d.toLocaleDateString("en-US", { month: "short" }).toUpperCase();
+            const year = document.createElement("span"); year.className = "event-year"; year.textContent = d.getFullYear();
+            dateBlock.append(day, month, year);
+            view.appendChild(dateBlock);
+          }
+        } catch(_) {}
+        handled.add("startDate");
+      }
+
+      // End date as range
+      const end = data["endDate"];
+      if (end && end !== start) {
+        try {
+          const d2 = new Date(end);
+          if (!isNaN(d2.getTime())) {
+            const range = document.createElement("div"); range.className = "event-range";
+            range.textContent = "\u2192 " + d2.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+            view.appendChild(range);
+          }
+        } catch(_) {}
+        handled.add("endDate");
+      }
+
+      // Location + organizer chips
+      const loc = data["location"];
+      const org = data["organizer"];
+      if (loc || org) {
+        const strip = document.createElement("div"); strip.className = "stats-strip event-chips";
+        if (loc) {
+          const chip = document.createElement("span"); chip.className = "stat-chip";
+          chip.innerHTML = "<small>Location</small>" + loc;
+          strip.appendChild(chip);
+          handled.add("location");
+        }
+        if (org) {
+          if (loc) { const sep = document.createElement("span"); sep.className = "stats-sep"; strip.appendChild(sep); }
+          const chip = document.createElement("span"); chip.className = "stat-chip";
+          chip.innerHTML = "<small>Organizer</small>" + org;
+          strip.appendChild(chip);
+          handled.add("organizer");
+        }
+        view.appendChild(strip);
+      }
+    }
+
+    // ── MUSICALBUM ──
+    if (cfg.type === "MusicAlbum") {
+      // Prominent 'by Artist'
+      const artist = data["byArtist"];
+      if (artist) {
+        const artistBlock = document.createElement("div"); artistBlock.className = "album-artist";
+        artistBlock.innerHTML = "by <strong>" + artist + "</strong>";
+        view.appendChild(artistBlock);
+        handled.add("byArtist");
+      }
+
+      // Meta chips: genre, year, tracks
+      const chips = [];
+      const genre = data["genre"];
+      if (genre) chips.push({ label: "Genre", val: genre.split(",")[0].trim() });
+      const datePub = data["datePublished"];
+      if (datePub) { const d = formatDate(datePub); chips.push({ label: "Released", val: d || datePub }); }
+      const tracks = data["numTracks"];
+      if (tracks) chips.push({ label: "Tracks", val: tracks });
+
+      if (chips.length) {
+        const strip = document.createElement("div"); strip.className = "stats-strip";
+        chips.forEach((s, i) => {
+          if (i > 0) { const sep = document.createElement("span"); sep.className = "stats-sep"; strip.appendChild(sep); }
+          const chip = document.createElement("span"); chip.className = "stat-chip";
+          chip.innerHTML = "<small>" + s.label + "</small>" + s.val;
+          strip.appendChild(chip);
+        });
+        view.appendChild(strip);
+      }
+      if (genre) handled.add("genre");
+      if (datePub) handled.add("datePublished");
+      if (tracks) handled.add("numTracks");
+    }
+
     return handled;
   }
 

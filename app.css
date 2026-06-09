@@ -556,6 +556,117 @@ textarea.inline-edit {
   font-style: normal;
 }
 
+/* ── Per-type bespoke: Movie ── */
+.film-chips .stat-chip {
+  border-radius: 6px;
+  font-size: .82rem;
+}
+
+/* ── Per-type bespoke: Product ── */
+.price-hero {
+  padding: .6rem 0 .3rem;
+  display: flex;
+  align-items: baseline;
+  gap: .1rem;
+}
+.price-symbol {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent);
+  align-self: flex-start;
+  margin-top: .15rem;
+}
+.price-amount {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -.03em;
+  line-height: 1;
+}
+.spec-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .4rem;
+  margin: .5rem 0;
+}
+.spec-cell {
+  display: flex;
+  flex-direction: column;
+  padding: .55rem .7rem;
+  border-radius: 8px;
+  background: var(--surface);
+  border: 1px solid var(--line-2);
+}
+.spec-cell small {
+  font-size: .58rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted);
+  margin-bottom: .15rem;
+}
+.spec-cell span {
+  font-size: .85rem;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+/* ── Per-type bespoke: Event ── */
+.event-date-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: .6rem 1.2rem .5rem;
+  margin: .2rem auto .3rem;
+  background: linear-gradient(145deg, var(--accent), var(--accent-2));
+  border-radius: 12px;
+  color: #fff;
+  text-align: center;
+  width: fit-content;
+  box-shadow: 0 4px 14px color-mix(in oklab, var(--accent) 30%, transparent);
+}
+.event-day {
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -.03em;
+}
+.event-month {
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-top: .1rem;
+}
+.event-year {
+  font-size: .68rem;
+  opacity: .7;
+  font-weight: 500;
+  margin-top: .05rem;
+}
+.event-range {
+  text-align: center;
+  font-size: .78rem;
+  color: var(--muted);
+  margin-bottom: .3rem;
+}
+.event-chips .stat-chip {
+  font-size: .8rem;
+}
+
+/* ── Per-type bespoke: MusicAlbum ── */
+.album-artist {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--muted);
+  padding: .3rem 0;
+  font-weight: 400;
+}
+.album-artist strong {
+  color: var(--ink-2);
+  font-weight: 700;
+}
+
 /* ── Price / currency ── */
 .rich-price {
   font-weight: 700;
@@ -752,6 +863,13 @@ footer a:hover { color: var(--accent-2); }
   .review-body {
     background: color-mix(in oklab, var(--accent) 6%, var(--surface));
   }
+  .spec-cell {
+    background: color-mix(in oklab, var(--accent) 4%, var(--surface));
+    border-color: color-mix(in oklab, var(--accent) 12%, var(--line));
+  }
+  .price-amount {
+    color: var(--ink);
+  }
 }
 
 /* ──────────────────────────────────────────────
@@ -851,4 +969,8 @@ footer a:hover { color: var(--accent-2); }
   .avatar { width: 76px; height: 76px; margin-top: -38px; }
   .rating-hero-stars { font-size: 1.3rem; }
   .stat-chip { padding: .35rem .65rem; font-size: .8rem; }
+  .price-amount { font-size: 1.7rem; }
+  .spec-grid { grid-template-columns: 1fr; }
+  .event-day { font-size: 2rem; }
+  .event-date-hero { padding: .5rem 1rem .4rem; }
 }
