@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ScholarlyArticle — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "Solid: A Platform for Decentralized Social Applications Based on Linked Data",
+  "image": "https://picsum.photos/seed/solid-linked-data-paper/800/450",
+  "description": "The seminal paper presenting Solid, a decentralised web architecture where users store their data in personal online data stores (Pods) and grant applications fine-grained access through standardised permissions.",
+  "abstract": "Current web applications centralise user data within siloed infrastructure, creating lock-in, surveillance, and single points of failure. We present Solid, a decentralised platform that separates data from applications. Users store data in personal online data stores (Pods) built on linked data principles and standard web protocols (HTTP, WebID, Web Access Control). Applications request scoped access to specific resources, enabling users to switch tools without migrating data. We describe the architecture, the permission model, and show that common social application patterns — profiles, posts, contacts, shared folders — map naturally onto linked data resources in Pods. Evaluation with 12 prototype applications demonstrates feasibility and identifies open challenges in performance and developer ergonomics.",
+  "author": "Tim Berners-Lee, Ruben Verborgh, Kjetil Kjernsmo, Justin Bingham, Amy Guy, Dmitri Zagidulin",
+  "datePublished": "2022-03-15",
+  "publisher": "MIT Press",
+  "url": "https://doi.org/10.1162/99608f23.5ab3e6a9"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "ScholarlyArticle",
+    titleProp: "name",
+    icon: "🎓",
+    accent: "#1e40af",
+    fields: [
+      { prop: "name",           label: "Title",        type: "text" },
+      { prop: "image",          label: "Figure",       type: "image" },
+      { prop: "description",    label: "Summary",      type: "textarea" },
+      { prop: "abstract",       label: "Abstract",     type: "textarea" },
+      { prop: "author",         label: "Authors",      type: "text" },
+      { prop: "datePublished",  label: "Published",    type: "text" },
+      { prop: "publisher",      label: "Publisher",    type: "text" },
+      { prop: "url",            label: "DOI",          type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
