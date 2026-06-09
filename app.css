@@ -1720,6 +1720,108 @@ textarea.inline-edit {
   }
 }
 
+/* ── Per-type bespoke: HowTo — tutorial card ── */
+
+.card.howto-card { overflow: hidden; }
+.card.howto-card .hd.hidden { display: none; }
+
+.howto-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1.25;
+  margin: 0;
+  padding: 1rem 1.5rem .2rem;
+  color: var(--ink);
+}
+
+.howto-desc {
+  font-size: .85rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+  margin: 0;
+  padding: .3rem 1.5rem .4rem;
+}
+
+/* Stats strip */
+.howto-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  padding: .3rem 1.5rem .5rem;
+}
+.howto-stat-chip {
+  font-size: .72rem;
+  font-weight: 600;
+  padding: .25rem .6rem;
+  border-radius: 6px;
+  background: color-mix(in oklab, var(--accent) 8%, var(--surface));
+  color: var(--ink-2);
+}
+.howto-tool-chip {
+  background: color-mix(in oklab, var(--accent) 5%, var(--surface));
+  border: 1px solid color-mix(in oklab, var(--accent) 12%, transparent);
+}
+
+/* Steps */
+.howto-steps-section {
+  padding: .4rem 1.5rem .6rem;
+}
+.howto-section-label {
+  font-size: .68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--muted);
+  margin-bottom: .4rem;
+}
+
+.step-list {
+  list: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: step-counter;
+}
+.step-item {
+  counter-increment: step-counter;
+  position: relative;
+  padding: .45rem 0 .45rem 2.2rem;
+  font-size: .84rem;
+  line-height: 1.55;
+  color: var(--ink);
+  border-bottom: 1px solid color-mix(in oklab, var(--accent) 6%, transparent);
+}
+.step-item:last-child { border-bottom: none; }
+.step-item::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: 0;
+  top: .45rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: color-mix(in oklab, var(--accent) 12%, var(--surface));
+  color: var(--accent);
+  font-size: .7rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .howto-stat-chip {
+    background: color-mix(in oklab, var(--accent) 10%, rgba(255,255,255,.05));
+  }
+  .step-item {
+    border-bottom-color: color-mix(in oklab, var(--accent) 8%, rgba(255,255,255,.04));
+  }
+  .step-item::before {
+    background: color-mix(in oklab, var(--accent) 15%, rgba(255,255,255,.06));
+  }
+}
+
 /* ── Per-type bespoke: Course — Coursera/Udemy hero ── */
 
 .card.course-hero { overflow: hidden; }
@@ -2729,4 +2831,9 @@ footer a:hover { color: var(--accent-2); }
   .app-store-header { flex-direction: row; padding: 1.4rem 1.2rem 1rem; gap: 1rem; }
   .app-store-icon { width: 72px; height: 72px; border-radius: 16px; }
   .app-store-action-row { padding: .4rem 1.2rem .6rem; }
+  /* HowTo mobile */
+  .howto-title { font-size: 1.2rem; padding-left: 1.2rem; padding-right: 1.2rem; }
+  .howto-desc { padding-left: 1.2rem; padding-right: 1.2rem; }
+  .howto-stats { padding-left: 1.2rem; padding-right: 1.2rem; }
+  .howto-steps-section { padding-left: 1.2rem; padding-right: 1.2rem; }
 }
