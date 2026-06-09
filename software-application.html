@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SoftwareApplication — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Darkroom",
+  "image": "https://picsum.photos/seed/darkroom-app/120/120",
+  "description": "Professional photo editing for iPhone and iPad. Non-destructive RAW editing, curves, selective adjustments, and one-tap AI enhancements — all in a beautifully minimal interface.",
+  "applicationCategory": "Photo & Video",
+  "operatingSystem": "iOS 16+",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "124500"
+  },
+  "author": "Bergen Co",
+  "version": "5.7.2",
+  "fileSize": "87 MB",
+  "url": "https://apps.apple.com/app/darkroom-photo-video-editor/id953286746"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "SoftwareApplication",
+    titleProp: "name",
+    icon: "💻",
+    accent: "#007aff",
+    fields: [
+      { prop: "name",                label: "App Name",    type: "text" },
+      { prop: "image",               label: "Icon",        type: "image" },
+      { prop: "description",         label: "Description", type: "textarea" },
+      { prop: "applicationCategory", label: "Category",    type: "text" },
+      { prop: "operatingSystem",     label: "Requires",    type: "text" },
+      { prop: "author",              label: "Developer",   type: "text" },
+      { prop: "version",             label: "Version",     type: "text" },
+      { prop: "fileSize",            label: "Size",        type: "text" },
+      { prop: "url",                 label: "Store Link",  type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
