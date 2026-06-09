@@ -1965,6 +1965,53 @@
       }
     }
 
+    // ── FAQPAGE (Accordion card) ──
+    if (cfg.type === "FAQPage") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("faq-card");
+
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Title
+      const title = data[cfg.titleProp];
+      if (title) {
+        const h1 = document.createElement("h1"); h1.className = "faq-title";
+        h1.textContent = title;
+        view.appendChild(h1);
+        handled.add(cfg.titleProp);
+      }
+
+      // Description
+      const desc = data["description"];
+      if (desc) {
+        const d = document.createElement("p"); d.className = "faq-desc";
+        d.textContent = desc;
+        view.appendChild(d);
+        handled.add("description");
+      }
+
+      // Accordion from mainEntity
+      const entities = data["mainEntity"];
+      if (Array.isArray(entities)) {
+        const section = document.createElement("div"); section.className = "faq-accordion";
+        entities.forEach((q, i) => {
+          const details = document.createElement("details"); details.className = "faq-item";
+          if (i === 0) details.setAttribute("open", "");
+          const summary = document.createElement("summary"); summary.className = "faq-question";
+          summary.textContent = q.name || "";
+          details.appendChild(summary);
+          const answer = document.createElement("div"); answer.className = "faq-answer";
+          const text = (q.acceptedAnswer && q.acceptedAnswer.text) || "";
+          answer.textContent = text;
+          details.appendChild(answer);
+          section.appendChild(details);
+        });
+        view.appendChild(section);
+      }
+      handled.add("mainEntity");
+    }
+
     return handled;
   }
 
