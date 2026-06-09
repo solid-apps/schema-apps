@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BlogPosting — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "name": "Why I Moved My Entire Digital Life into a Solid Pod",
+  "image": "https://picsum.photos/seed/solid-pod-blog-migration/800/450",
+  "description": "Six months ago I decided to stop trusting my data to siloed platforms and move everything — photos, notes, health records, passwords — into my own Solid Pod. Here is what I learned, what broke, and why I would do it again.",
+  "articleBody": "The hardest part was not the technology. The hardest part was unlearning a decade of muscle memory built around 'just sign in with Google.' I started with something small: my bookmarks. Exported 2,400 of them from Chrome, converted to JSON-LD, and wrote them into /public/bookmarks/ on my pod. Seeing them load in a vanilla web app I had built myself — no tracking, no analytics, no suggested links — felt like hearing music on vinyl for the first time after years of Spotify.\n\nThen came photos. 14,000 of them. I wrote a migration script that preserved all EXIF metadata as linked data alongside each image. The upload took a weekend on my home server, but the result is a photo library I fully own. No one is training AI on my holiday snaps without my say-so.\n\nHealth records were the real test. My GP uses a system with no API, so I exported PDFs and stored them under /private/health/ with WAC rules that only my designated emergency contact can read. When I needed to share a lab result with a specialist, I granted temporary read access to a specific file — not my entire medical history.\n\nThe biggest surprise? Performance. Reading from my local pod is faster than any cloud API I have used. Network latency is zero when the server is in your living room.\n\nWould I recommend it? Not yet for everyone. The tooling is rough. The documentation is sparse. But the feeling of true digital ownership — knowing that no company can deprecate, delete, or monetise my data out from under me — is worth every rough edge.",
+  "author": "Melvin Carvalho",
+  "datePublished": "2026-03-15",
+  "keywords": "solid, pods, data sovereignty, privacy, self-hosting",
+  "url": "https://melvin.example.com/blog/solid-pod-migration"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "BlogPosting",
+    titleProp: "name",
+    icon: "✍️",
+    accent: "#0ea5e9",
+    fields: [
+      { prop: "name",           label: "Title",        type: "text" },
+      { prop: "image",          label: "Cover",        type: "image" },
+      { prop: "description",    label: "Excerpt",      type: "textarea" },
+      { prop: "articleBody",    label: "Body",         type: "textarea" },
+      { prop: "author",         label: "Author",       type: "text" },
+      { prop: "datePublished",  label: "Published",    type: "text" },
+      { prop: "keywords",       label: "Tags",         type: "text" },
+      { prop: "url",            label: "Link",         type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
