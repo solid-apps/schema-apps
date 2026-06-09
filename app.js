@@ -1467,6 +1467,86 @@
       }
     }
 
+    // ── VIDEOOBJECT (YouTube-style video card) ──
+    if (cfg.type === "VideoObject") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("video-card");
+
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Rebuild hero as video thumbnail with play overlay
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount.querySelector(".hero")) heroMount.querySelector(".hero").remove();
+
+      const thumbWrap = document.createElement("div"); thumbWrap.className = "video-thumb";
+      const imgUrl = data["image"];
+      if (imgUrl) {
+        const img = document.createElement("img"); img.src = imgUrl; img.alt = data[cfg.titleProp] || "";
+        img.className = "video-thumb-img"; img.loading = "lazy";
+        thumbWrap.appendChild(img);
+        handled.add("image");
+      }
+
+      // Dark scrim
+      const scrim = document.createElement("div"); scrim.className = "video-scrim";
+      thumbWrap.appendChild(scrim);
+
+      // Play button
+      const play = document.createElement("div"); play.className = "video-play";
+      play.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+      thumbWrap.appendChild(play);
+
+      // Duration badge
+      const dur = data["duration"];
+      if (dur) {
+        const d = formatDuration(dur);
+        if (d) {
+          const badge = document.createElement("span"); badge.className = "video-duration";
+          badge.textContent = d;
+          thumbWrap.appendChild(badge);
+        }
+        handled.add("duration");
+      }
+
+      heroMount.appendChild(thumbWrap);
+
+      // Title
+      const h1 = document.createElement("h1"); h1.className = "video-title";
+      h1.textContent = data[cfg.titleProp] || "";
+      view.appendChild(h1);
+      handled.add("name");
+
+      // Meta: upload date
+      const uploadDate = data["uploadDate"];
+      if (uploadDate) {
+        const d = formatDate(uploadDate);
+        const meta = document.createElement("div"); meta.className = "video-meta";
+        meta.textContent = d || uploadDate;
+        view.appendChild(meta);
+        handled.add("uploadDate");
+      }
+
+      // Description
+      const desc = data["description"];
+      if (desc) {
+        const descEl = document.createElement("div"); descEl.className = "video-desc";
+        descEl.textContent = desc;
+        view.appendChild(descEl);
+        handled.add("description");
+      }
+
+      // Watch CTA
+      const url = data["contentUrl"];
+      if (url) {
+        const cta = document.createElement("a"); cta.className = "video-cta";
+        cta.href = url; cta.target = "_blank"; cta.rel = "noopener";
+        cta.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M8 5v14l11-7z"/></svg> Watch Now';
+        view.appendChild(cta);
+        handled.add("contentUrl");
+      }
+    }
+
     return handled;
   }
 
