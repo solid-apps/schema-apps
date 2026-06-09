@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FAQPage — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "name": "Solid Pod — Frequently Asked Questions",
+  "description": "Common questions about Solid pods, personal data stores, and how they empower user-controlled data sovereignty.",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a Solid Pod?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Solid Pod is a personal online data store that lets you keep all your data in one place under your control. You decide who can access it, and you can revoke that access at any time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my data safe in a Solid Pod?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Solid uses standard web protocols and access control lists (WAC) to protect your data. You choose where your pod is hosted and who can read or write each resource."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I move my data between pod providers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — Solid pods are interoperable. You can export your data from one provider and import it into another, or self-host your own pod server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do apps access my pod?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Apps request specific permissions for the data they need. You grant or deny each request, and can review or revoke access at any time from your pod dashboard."
+      }
+    }
+  ]
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "FAQPage",
+    titleProp: "name",
+    icon: "❓",
+    accent: "#0891b2",
+    fields: [
+      { prop: "name",        label: "Title",       type: "text" },
+      { prop: "description", label: "Description", type: "textarea" },
+      { prop: "mainEntity",  label: "Questions",   type: "textarea" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
