@@ -1005,6 +1005,136 @@ textarea.inline-edit {
   font-weight: 700;
 }
 
+/* ── Per-type bespoke: Person — Premium Portfolio ── */
+
+.card.portfolio {
+  overflow: visible;
+}
+.card.portfolio .hd.hidden { display: none; }
+
+/* Banner area: gradient band + avatar + name + role */
+.portfolio-banner {
+  text-align: center;
+  position: relative;
+  padding-bottom: .8rem;
+}
+.portfolio-band {
+  height: 100px;
+  background: linear-gradient(135deg,
+    color-mix(in oklab, var(--accent) 18%, #f8f9fc) 0%,
+    color-mix(in oklab, var(--accent) 8%, #eef0f6) 50%,
+    #f0f2f8 100%
+  );
+  border-radius: 0;
+  margin: 0;
+}
+
+/* Override avatar for portfolio — larger, centered over band */
+.portfolio-avatar {
+  position: relative;
+  width: 110px; height: 110px;
+  margin: -55px auto 0;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--card);
+  box-shadow:
+    0 4px 12px rgba(0,0,0,.12),
+    0 0 0 1px rgba(0,0,0,.04),
+    0 0 32px color-mix(in oklab, var(--accent) 15%, transparent);
+  z-index: 2;
+  transition: box-shadow .3s ease, transform .3s ease;
+}
+.portfolio-avatar:hover {
+  box-shadow:
+    0 6px 20px rgba(0,0,0,.18),
+    0 0 0 1px rgba(0,0,0,.06),
+    0 0 40px color-mix(in oklab, var(--accent) 22%, transparent);
+  transform: scale(1.04);
+}
+
+.portfolio-name {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -.025em;
+  margin: .7rem 0 .15rem;
+  line-height: 1.15;
+}
+.portfolio-role {
+  font-size: .88rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: .01em;
+}
+
+/* Contact action row */
+.portfolio-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  justify-content: center;
+  padding: .8rem 0;
+  margin-bottom: .3rem;
+}
+.portfolio-contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .35rem .75rem;
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink-2);
+  text-decoration: none;
+  font-size: .78rem;
+  font-weight: 500;
+  border: 1px solid var(--line);
+  transition: all .2s ease;
+}
+.portfolio-contact-btn:hover {
+  background: color-mix(in oklab, var(--accent) 8%, var(--surface));
+  border-color: color-mix(in oklab, var(--accent) 25%, var(--line));
+  color: var(--ink);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+.contact-icon-emoji {
+  font-size: .85rem;
+}
+.contact-btn-text {
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Bio */
+.portfolio-bio {
+  font-size: .9rem;
+  line-height: 1.8;
+  color: var(--muted);
+  text-align: center;
+  padding: .4rem 0;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* Dark mode for portfolio */
+@media (prefers-color-scheme: dark) {
+  .portfolio-band {
+    background: linear-gradient(135deg,
+      color-mix(in oklab, var(--accent) 12%, #1a1d2e) 0%,
+      color-mix(in oklab, var(--accent) 6%, #151828) 50%,
+      #13162060 100%
+    );
+  }
+  .portfolio-role { color: var(--accent); opacity: .85; }
+  .portfolio-contact-btn { background: var(--surface); border-color: var(--line); }
+  .portfolio-contact-btn:hover {
+    background: color-mix(in oklab, var(--accent) 12%, var(--surface));
+  }
+  .portfolio-bio { color: var(--muted-2); }
+}
+
 /* ── Per-type bespoke: Book ── */
 .book-author {
   text-align: center;
@@ -1445,4 +1575,10 @@ footer a:hover { color: var(--accent-2); }
   .card.album-immersive .album-cover-hero { max-height: 280px; }
   .album-title { font-size: 1.3rem; }
   .track-title { font-size: .82rem; }
+  /* Portfolio mobile */
+  .portfolio-band { height: 80px; }
+  .portfolio-avatar { width: 88px; height: 88px; margin-top: -44px; }
+  .portfolio-name { font-size: 1.4rem; }
+  .portfolio-contact { gap: .3rem; }
+  .portfolio-contact-btn { font-size: .72rem; padding: .3rem .55rem; }
 }
