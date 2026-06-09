@@ -748,49 +748,90 @@
       }
     }
 
-    // ── BOOK ──
+        // ── BOOK (book-jacket hero) ──
     if (cfg.type === "Book") {
-      // 'by Author' prominent
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("book-jacket");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Build cover-led layout: cover image on left, info on right
+      const heroMount = document.getElementById("hero-mount");
+      const existingHero = heroMount.querySelector(".hero");
+      if (existingHero) existingHero.remove();
+
+      const layout = document.createElement("div"); layout.className = "book-layout";
+
+      // 3D cover with spine shadow
+      const coverUrl = data["image"];
+      if (coverUrl) {
+        const coverWrap = document.createElement("div"); coverWrap.className = "book-cover-wrap";
+        const coverImg = document.createElement("div"); coverImg.className = "book-cover";
+        const img = document.createElement("img"); img.src = coverUrl; img.alt = data[cfg.titleProp] || "";
+        img.className = "book-cover-img"; img.loading = "lazy";
+        coverImg.appendChild(img);
+        // Spine edge
+        const spine = document.createElement("div"); spine.className = "book-spine";
+        coverWrap.append(coverImg, spine);
+        layout.appendChild(coverWrap);
+        handled.add("image");
+      }
+
+      // Info panel
+      const info = document.createElement("div"); info.className = "book-info";
+
+      // Title
+      const h1 = document.createElement("h1"); h1.className = "book-title";
+      h1.textContent = data[cfg.titleProp] || "";
+      info.appendChild(h1);
+      handled.add("name");
+
+      // Author
       const author = data["author"];
       if (author) {
-        const ab = document.createElement("div"); ab.className = "book-author";
+        const ab = document.createElement("div"); ab.className = "book-by";
         ab.innerHTML = "by <strong>" + author + "</strong>";
-        view.appendChild(ab);
+        info.appendChild(ab);
         handled.add("author");
       }
 
-      // Meta row: pages · published · publisher
+      // Meta chips: pages · published · publisher
       const chips = [];
       const pages = data["numberOfPages"];
-      if (pages) chips.push({ label: "Pages", val: pages });
+      if (pages) chips.push(pages + " pages");
       const pub = data["datePublished"];
-      if (pub) { const d = formatDate(pub); chips.push({ label: "Published", val: d || pub }); }
+      if (pub) { const d = formatDate(pub); chips.push(d || pub); }
       const publisher = data["publisher"];
-      if (publisher) chips.push({ label: "Publisher", val: publisher });
+      if (publisher) chips.push(publisher);
       const isbn = data["isbn"];
-      if (isbn) chips.push({ label: "ISBN", val: isbn });
+      if (isbn) chips.push("ISBN " + isbn);
 
       if (chips.length) {
-        const strip = document.createElement("div"); strip.className = "stats-strip book-chips";
-        chips.forEach((s, i) => {
-          if (i > 0) { const sep = document.createElement("span"); sep.className = "stats-sep"; strip.appendChild(sep); }
-          const chip = document.createElement("span"); chip.className = "stat-chip";
-          chip.innerHTML = "<small>" + s.label + "</small>" + s.val;
-          strip.appendChild(chip);
-        });
-        view.appendChild(strip);
+        const meta = document.createElement("div"); meta.className = "book-meta";
+        meta.textContent = chips.join(" \u00b7 ");
+        info.appendChild(meta);
       }
       if (pages) handled.add("numberOfPages");
       if (pub) handled.add("datePublished");
       if (publisher) handled.add("publisher");
       if (isbn) handled.add("isbn");
 
-      // Description as body prose
+      layout.appendChild(info);
+      heroMount.appendChild(layout);
+
+      // Synopsis
       const desc = data["description"];
       if (desc) {
+        const synopsis = document.createElement("div"); synopsis.className = "book-synopsis";
+        const label = document.createElement("div"); label.className = "book-synopsis-label";
+        label.textContent = "Synopsis";
+        synopsis.appendChild(label);
         const body = document.createElement("div"); body.className = "prose-body";
         body.textContent = desc;
-        view.appendChild(body);
+        synopsis.appendChild(body);
+        view.appendChild(synopsis);
         handled.add("description");
       }
     }
