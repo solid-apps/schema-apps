@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PodcastSeries — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "PodcastSeries",
+  "name": "Decentra Brain",
+  "image": "https://picsum.photos/seed/decentra-brain-podcast/800/450",
+  "description": "A weekly deep-dive into the decentralized web, Solid pods, personal AI, and data sovereignty. Interviews with the builders shaping the future of the open internet — from Tim Berners-Lee's original vision to the apps making it real today.",
+  "author": "Melvin Carvalho",
+  "genre": "Technology, Web Standards",
+  "url": "https://decentrabrain.example.com",
+  "startDate": "2025-09"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "PodcastSeries",
+    titleProp: "name",
+    icon: "🎙️",
+    accent: "#7c3aed",
+    fields: [
+      { prop: "name",        label: "Podcast",      type: "text" },
+      { prop: "image",       label: "Cover Art",    type: "image" },
+      { prop: "description", label: "About",        type: "textarea" },
+      { prop: "author",      label: "Host",         type: "text" },
+      { prop: "genre",       label: "Genre",        type: "text" },
+      { prop: "url",         label: "Listen",       type: "url" },
+      { prop: "startDate",   label: "Since",        type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
