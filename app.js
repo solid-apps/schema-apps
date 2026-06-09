@@ -836,51 +836,88 @@
       }
     }
 
-    // ── ARTICLE ──
+    // ── ARTICLE (editorial magazine) ──
     if (cfg.type === "Article") {
-      // Author + date byline
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("magazine");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Build masthead: headline + byline
+      const masthead = document.createElement("div"); masthead.className = "article-masthead";
+
+      // Big headline
+      const headline = data[cfg.titleProp] || data["headline"];
+      if (headline) {
+        const h1 = document.createElement("h1"); h1.className = "article-headline";
+        h1.textContent = headline;
+        masthead.appendChild(h1);
+        handled.add(cfg.titleProp);
+      }
+
+      // Byline: author · date
       const author = data["author"];
       const datePub = data["datePublished"];
       if (author || datePub) {
         const byline = document.createElement("div"); byline.className = "article-byline";
         const parts = [];
-        if (author) parts.push("<strong>" + author + "</strong>");
+        if (author) {
+          parts.push('<span class="article-author">' + author + '</span>');
+          handled.add("author");
+        }
         if (datePub) {
           const d = formatDate(datePub);
-          parts.push("<span class=\"article-date\">" + (d || datePub) + "</span>");
+          parts.push('<span class="article-pubdate">' + (d || datePub) + '</span>');
+          handled.add("datePublished");
         }
-        byline.innerHTML = parts.join(" · ");
-        view.appendChild(byline);
-        if (author) handled.add("author");
-        if (datePub) handled.add("datePublished");
+        byline.innerHTML = parts.join(' <span class="article-byline-sep">\u00b7</span> ');
+        masthead.appendChild(byline);
       }
 
-      // articleBody as flowing prose
+      // Description as standfirst (italic intro)
+      const desc = data["description"];
+      if (desc) {
+        const standfirst = document.createElement("div"); standfirst.className = "article-standfirst";
+        standfirst.textContent = desc;
+        masthead.appendChild(standfirst);
+        handled.add("description");
+      }
+
+      view.appendChild(masthead);
+
+      // articleBody as flowing prose with drop-cap
       const articleBody = data["articleBody"];
       if (articleBody) {
-        const body = document.createElement("div"); body.className = "prose-body";
-        // Split on double newlines for paragraphs
+        const body = document.createElement("div"); body.className = "article-prose";
         const paras = articleBody.split(/\n\n+/);
-        paras.forEach(p => {
+        paras.forEach((p, i) => {
           if (!p.trim()) return;
           const el = document.createElement("p");
+          if (i === 0) el.classList.add("drop-cap");
           el.textContent = p.trim();
           body.appendChild(el);
         });
+
+        // Pull quote from longest paragraph
+        const longestPara = paras.reduce((a, b) => (b && b.trim().length > a.trim().length) ? b : a, "");
+        if (longestPara.trim().length > 80) {
+          const quote = document.createElement("blockquote"); quote.className = "article-pullquote";
+          const words = longestPara.trim().split(" ");
+          const quoteText = words.slice(0, Math.min(18, words.length)).join(" ");
+          quote.textContent = "\u201C" + quoteText + (words.length > 18 ? "\u2026" : "") + "\u201D";
+          if (body.children.length >= 2) {
+            body.insertBefore(quote, body.children[1]);
+          } else {
+            body.appendChild(quote);
+          }
+        }
+
         view.appendChild(body);
         handled.add("articleBody");
-      } else {
-        // Fallback to description
-        const desc = data["description"];
-        if (desc) {
-          const body = document.createElement("div"); body.className = "prose-body";
-          body.textContent = desc;
-          view.appendChild(body);
-          handled.add("description");
-        }
       }
     }
-
     // ── COURSE (Coursera/Udemy hero) ──
     if (cfg.type === "Course") {
       const card = document.querySelector(".card");

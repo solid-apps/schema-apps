@@ -1507,18 +1507,91 @@ textarea.inline-edit {
   margin: .5rem 0;
 }
 
-/* ── Per-type bespoke: Article ── */
-.article-byline {
-  padding: .3rem 0 .5rem;
-  font-size: .85rem;
-  color: var(--muted);
+/* ── Per-type bespoke: Article — editorial magazine ── */
+
+.card.magazine { overflow: hidden; }
+.card.magazine .hd.hidden { display: none; }
+
+.article-masthead {
+  padding: 1.8rem 1.6rem 1rem;
+  border-bottom: 1px solid var(--border);
 }
-.article-byline strong {
+
+.article-headline {
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: -.035em;
+  line-height: 1.15;
+  margin: 0 0 .6rem;
+  color: var(--ink);
+}
+
+.article-byline {
+  font-size: .82rem;
+  color: var(--muted);
+  margin-bottom: .5rem;
+}
+.article-author {
   color: var(--ink-2);
   font-weight: 600;
 }
-.article-date {
+.article-pubdate {
   font-weight: 400;
+}
+.article-byline-sep {
+  opacity: .4;
+  margin: 0 .2rem;
+}
+
+.article-standfirst {
+  font-size: .95rem;
+  line-height: 1.65;
+  color: var(--ink-2);
+  font-style: italic;
+  margin-top: .5rem;
+}
+
+/* Prose body */
+.article-prose {
+  padding: 1.2rem 1.6rem 1.4rem;
+  max-width: 520px;
+}
+.article-prose p {
+  font-size: .95rem;
+  line-height: 1.8;
+  color: var(--ink-2);
+  margin: 0 0 .8rem;
+}
+.article-prose p:last-child {
+  margin-bottom: 0;
+}
+
+/* Drop cap on first paragraph */
+.article-prose p.drop-cap::first-letter {
+  float: left;
+  font-size: 3.2rem;
+  font-weight: 800;
+  line-height: .8;
+  padding: .05rem .35rem 0 0;
+  color: var(--accent);
+}
+
+/* Pull quote */
+.article-pullquote {
+  margin: 1.2rem 0;
+  padding: 1rem 1.2rem;
+  border-left: 3px solid var(--accent);
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.55;
+  color: var(--ink);
+  quotes: none;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .article-masthead { border-color: rgba(255,255,255,.08); }
 }
 
 /* ── Per-type bespoke: Course — Coursera/Udemy hero ── */
@@ -2187,4 +2260,8 @@ footer a:hover { color: var(--accent-2); }
   .course-banner { min-height: 180px; }
   .course-banner-overlay { min-height: 180px; padding: 1.4rem 1.2rem 1.2rem; }
   .course-title { font-size: 1.3rem; }
+  /* Article magazine mobile */
+  .article-masthead { padding: 1.2rem 1.2rem .8rem; }
+  .article-headline { font-size: 1.4rem; }
+  .article-prose { padding: 1rem 1.2rem; }
 }
