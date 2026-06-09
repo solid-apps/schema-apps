@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MusicGroup — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicGroup",
+  "name": "Radiohead",
+  "image": "https://picsum.photos/seed/radiohead-band/800/450",
+  "description": "Five musicians from Oxfordshire who bent rock into shapes no one had imagined. From the grunge-anthem crescendo of Creep to the fractured electronics of Kid A and the orchestral unease of A Moon Shaped Pool, Radiohead have spent three decades refusing to repeat themselves — and somehow headlining Glastonbury four times along the way.",
+  "genre": "Alternative Rock, Art Rock, Electronic, Experimental",
+  "foundingDate": "1985",
+  "url": "https://radiohead.com"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "MusicGroup",
+    titleProp: "name",
+    icon: "🎸",
+    accent: "#ec4899",
+    fields: [
+      { prop: "name",         label: "Band",         type: "text" },
+      { prop: "image",        label: "Photo",        type: "image" },
+      { prop: "description",  label: "About",        type: "textarea" },
+      { prop: "genre",        label: "Genre",        type: "text" },
+      { prop: "foundingDate", label: "Founded",      type: "text" },
+      { prop: "url",          label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
