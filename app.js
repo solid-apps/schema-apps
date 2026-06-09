@@ -575,58 +575,101 @@
       }
     }
 
-    // ── EVENT ──
+    // ── EVENT (concert poster / event flyer) ──
     if (cfg.type === "Event") {
-      // Bold date block
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("event-poster");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Build poster hero with gradient + date + name
+      const heroMount = document.getElementById("hero-mount");
+      const existing = heroMount.querySelector(".hero");
+      if (existing) existing.remove();
+
+      const poster = document.createElement("div"); poster.className = "poster-hero";
+
+      // Big date block
       const start = data["startDate"];
       if (start) {
         try {
           const d = new Date(start);
           if (!isNaN(d.getTime())) {
-            const dateBlock = document.createElement("div"); dateBlock.className = "event-date-hero";
-            const day = document.createElement("span"); day.className = "event-day"; day.textContent = d.getDate();
-            const month = document.createElement("span"); month.className = "event-month"; month.textContent = d.toLocaleDateString("en-US", { month: "short" }).toUpperCase();
-            const year = document.createElement("span"); year.className = "event-year"; year.textContent = d.getFullYear();
-            dateBlock.append(day, month, year);
-            view.appendChild(dateBlock);
+            const dateBlock = document.createElement("div"); dateBlock.className = "poster-date";
+            const month = document.createElement("span"); month.className = "poster-month";
+            month.textContent = d.toLocaleDateString("en-US", { month: "short" }).toUpperCase();
+            const day = document.createElement("span"); day.className = "poster-day";
+            day.textContent = d.getDate();
+            const year = document.createElement("span"); year.className = "poster-year";
+            year.textContent = d.getFullYear();
+            dateBlock.append(month, day, year);
+            poster.appendChild(dateBlock);
           }
         } catch(_) {}
         handled.add("startDate");
       }
 
-      // End date as range
+      // Name huge
+      const h1 = document.createElement("h1"); h1.className = "poster-title";
+      h1.textContent = data[cfg.titleProp] || "";
+      poster.appendChild(h1);
+      handled.add("name");
+
+      // End date range
       const end = data["endDate"];
       if (end && end !== start) {
         try {
           const d2 = new Date(end);
           if (!isNaN(d2.getTime())) {
-            const range = document.createElement("div"); range.className = "event-range";
-            range.textContent = "\u2192 " + d2.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
-            view.appendChild(range);
+            const range = document.createElement("div"); range.className = "poster-range";
+            range.textContent = d2.toLocaleDateString("en-US", { month: "short", day: "numeric" }) + ", " + d2.getFullYear();
+            poster.appendChild(range);
           }
         } catch(_) {}
         handled.add("endDate");
       }
 
-      // Location + organizer chips
+      heroMount.appendChild(poster);
+
+      // Location + organizer
       const loc = data["location"];
       const org = data["organizer"];
       if (loc || org) {
-        const strip = document.createElement("div"); strip.className = "stats-strip event-chips";
+        const meta = document.createElement("div"); meta.className = "poster-meta";
         if (loc) {
-          const chip = document.createElement("span"); chip.className = "stat-chip";
-          chip.innerHTML = "<small>Location</small>" + loc;
-          strip.appendChild(chip);
+          const row = document.createElement("div"); row.className = "poster-meta-row";
+          row.innerHTML = "<span class=\"poster-meta-icon\">\u{1F4CD}</span><span>" + loc + "</span>";
+          meta.appendChild(row);
           handled.add("location");
         }
         if (org) {
-          if (loc) { const sep = document.createElement("span"); sep.className = "stats-sep"; strip.appendChild(sep); }
-          const chip = document.createElement("span"); chip.className = "stat-chip";
-          chip.innerHTML = "<small>Organizer</small>" + org;
-          strip.appendChild(chip);
+          const row = document.createElement("div"); row.className = "poster-meta-row";
+          row.innerHTML = "<span class=\"poster-meta-icon\">\u{1F3AB}</span><span>" + org + "</span>";
+          meta.appendChild(row);
           handled.add("organizer");
         }
-        view.appendChild(strip);
+        view.appendChild(meta);
+      }
+
+      // Description
+      const desc = data["description"];
+      if (desc) {
+        const body = document.createElement("div"); body.className = "poster-desc";
+        body.textContent = desc;
+        view.appendChild(body);
+        handled.add("description");
+      }
+
+      // Get Tickets CTA
+      const url = data["url"];
+      if (url) {
+        const cta = document.createElement("a"); cta.className = "poster-cta";
+        cta.href = url; cta.target = "_blank"; cta.rel = "noopener";
+        cta.innerHTML = "<span class=\"poster-cta-text\">Get Tickets</span><span class=\"poster-cta-arrow\">\u2192</span>";
+        view.appendChild(cta);
+        handled.add("url");
       }
     }
 
