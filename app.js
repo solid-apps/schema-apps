@@ -908,41 +908,67 @@
       }
     }
 
-    // ── RESTAURANT ──
+    // ── RESTAURANT (premium dining landing) ──
     if (cfg.type === "Restaurant") {
-      // Cuisine + price range as prominent badges
-      const badges = [];
-      const cuisine = data["servesCuisine"];
-      if (cuisine) badges.push({ label: "Cuisine", val: cuisine });
-      const price = data["priceRange"];
-      if (price) badges.push({ label: "Price", val: price });
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("restaurant-hero");
 
-      if (badges.length) {
-        const strip = document.createElement("div"); strip.className = "stats-strip restaurant-chips";
-        badges.forEach((s, i) => {
-          if (i > 0) { const sep = document.createElement("span"); sep.className = "stats-sep"; strip.appendChild(sep); }
-          const chip = document.createElement("span"); chip.className = "stat-chip";
-          chip.innerHTML = "<small>" + s.label + "</small>" + s.val;
-          strip.appendChild(chip);
-        });
-        view.appendChild(strip);
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Convert hero to immersive food photo
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount.querySelector(".hero")) {
+        const hero = heroMount.querySelector(".hero");
+        hero.classList.add("rest-hero-img");
+        hero.innerHTML = "";
+        const img = document.createElement("img"); img.src = data["image"]; img.alt = data[cfg.titleProp] || "";
+        img.className = "rest-photo"; img.loading = "lazy";
+        hero.appendChild(img);
+        // Dark scrim for text overlay
+        const scrim = document.createElement("div"); scrim.className = "rest-scrim";
+        hero.appendChild(scrim);
+        // Overlay: name + badges
+        const overlay = document.createElement("div"); overlay.className = "rest-overlay";
+        const h1 = document.createElement("h1"); h1.className = "rest-name";
+        h1.textContent = data[cfg.titleProp] || "";
+        overlay.appendChild(h1);
+        // Cuisine + price badges
+        const badgeRow = document.createElement("div"); badgeRow.className = "rest-badges";
+        const cuisine = data["servesCuisine"];
+        if (cuisine) {
+          const badge = document.createElement("span"); badge.className = "rest-cuisine-badge";
+          badge.textContent = cuisine.split(",")[0].trim();
+          badgeRow.appendChild(badge);
+          handled.add("servesCuisine");
+        }
+        const price = data["priceRange"];
+        if (price) {
+          const badge = document.createElement("span"); badge.className = "rest-price-badge";
+          badge.textContent = price;
+          badgeRow.appendChild(badge);
+          handled.add("priceRange");
+        }
+        overlay.appendChild(badgeRow);
+        hero.appendChild(overlay);
       }
-      if (cuisine) handled.add("servesCuisine");
-      if (price) handled.add("priceRange");
 
-      // Contact block: address, phone
+      handled.add("name"); handled.add("image");
+
+      // Contact block in warm tones
       const contacts = [];
       const addr = data["address"];
-      if (addr) contacts.push({ label: "Address", val: addr, icon: "📍" });
+      if (addr) contacts.push({ icon: "\u{1F4CD}", text: addr });
       const phone = data["telephone"];
-      if (phone) contacts.push({ label: "Phone", val: phone, icon: "📞" });
+      if (phone) contacts.push({ icon: "\u{1F4DE}", text: phone });
 
       if (contacts.length) {
-        const block = document.createElement("div"); block.className = "contact-block";
+        const block = document.createElement("div"); block.className = "rest-contact";
         contacts.forEach(c => {
-          const row = document.createElement("div"); row.className = "contact-row";
-          const icon = document.createElement("span"); icon.className = "contact-icon"; icon.textContent = c.icon;
-          const txt = document.createElement("span"); txt.className = "contact-text"; txt.textContent = c.val;
+          const row = document.createElement("div"); row.className = "rest-contact-row";
+          const icon = document.createElement("span"); icon.className = "rest-contact-icon"; icon.textContent = c.icon;
+          const txt = document.createElement("span"); txt.className = "rest-contact-text"; txt.textContent = c.text;
           row.append(icon, txt);
           block.appendChild(row);
         });
@@ -951,12 +977,12 @@
         if (phone) handled.add("telephone");
       }
 
-      // Visit link
+      // Reserve CTA
       const url = data["url"];
       if (url) {
-        const cta = document.createElement("a"); cta.className = "course-cta";
-        cta.href = url; cta.textContent = "Visit Restaurant →";
-        cta.target = "_blank"; cta.rel = "noopener";
+        const cta = document.createElement("a"); cta.className = "rest-cta";
+        cta.href = url; cta.target = "_blank"; cta.rel = "noopener";
+        cta.innerHTML = "<span class=\"rest-cta-text\">Reserve a Table</span><span class=\"rest-cta-arrow\">→</span>";
         view.appendChild(cta);
         handled.add("url");
       }

@@ -1372,6 +1372,154 @@ textarea.inline-edit {
   font-size: .8rem;
 }
 
+/* ── Per-type bespoke: Restaurant — Premium Dining Landing ── */
+
+.card.restaurant-hero {
+  overflow: hidden;
+  border-color: rgba(0,0,0,.06);
+  box-shadow:
+    0 2px 8px rgba(0,0,0,.06),
+    0 12px 40px rgba(0,0,0,.08),
+    0 28px 64px rgba(0,0,0,.04);
+}
+.card.restaurant-hero .hd.hidden { display: none; }
+
+/* Food hero — full-bleed with dark scrim */
+.rest-hero-img {
+  position: relative;
+  height: 340px;
+  overflow: hidden;
+  border-radius: 0;
+  margin: 0;
+  background: #1a1410;
+}
+.rest-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.rest-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+    rgba(26,20,16,0) 40%,
+    rgba(26,20,16,.35) 65%,
+    rgba(26,20,16,.85) 90%,
+    rgba(26,20,16,1) 100%
+  );
+  pointer-events: none;
+}
+.rest-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.2rem 1.4rem;
+  z-index: 2;
+}
+.rest-name {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -.025em;
+  line-height: 1.15;
+  margin: 0 0 .4rem;
+  text-shadow: 0 2px 12px rgba(0,0,0,.3);
+}
+.rest-badges {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+}
+.rest-cuisine-badge {
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: rgba(255,255,255,.9);
+  background: rgba(255,255,255,.12);
+  padding: .25rem .65rem;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+}
+.rest-price-badge {
+  font-size: .82rem;
+  font-weight: 700;
+  color: #fbbf24;
+  letter-spacing: .02em;
+}
+
+/* Body */
+.card.restaurant-hero .bd {
+  background: #fffdf9;
+  padding-top: .6rem;
+}
+.card.restaurant-hero .bd::before {
+  display: none;
+}
+
+/* Contact block */
+.rest-contact {
+  padding: .5rem 0;
+}
+.rest-contact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: .5rem;
+  padding: .35rem 0;
+}
+.rest-contact-icon {
+  font-size: .9rem;
+  line-height: 1.6;
+  flex-shrink: 0;
+}
+.rest-contact-text {
+  font-size: .85rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+
+/* Reserve CTA */
+.rest-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  width: 100%;
+  padding: .8rem;
+  margin: .7rem 0 .2rem;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #b91c1c 0%, #dc2626 100%);
+  color: #fff;
+  font-size: .9rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: .01em;
+  transition: all .2s ease;
+  box-shadow: 0 4px 14px rgba(185,28,28,.25);
+}
+.rest-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(185,28,28,.35);
+}
+.rest-cta-text { }
+.rest-cta-arrow {
+  font-size: 1.1rem;
+  transition: transform .2s ease;
+}
+.rest-cta:hover .rest-cta-arrow {
+  transform: translateX(3px);
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .card.restaurant-hero { border-color: rgba(255,255,255,.06); }
+  .card.restaurant-hero .bd { background: #1a1714; }
+  .rest-contact-text { color: rgba(255,255,255,.6); }
+  .rest-cta { background: linear-gradient(135deg, #991b1b 0%, #b91c1c 100%); }
+}
+
 /* ── Price / currency ── */
 .rich-price {
   font-weight: 700;
@@ -1710,4 +1858,7 @@ footer a:hover { color: var(--accent-2); }
   .product-name { font-size: 1.3rem; }
   .pp-amount { font-size: 2.2rem; }
   .product-specs { gap: .25rem; }
+  /* Restaurant hero mobile */
+  .rest-hero-img { height: 260px; }
+  .rest-name { font-size: 1.4rem; }
 }
