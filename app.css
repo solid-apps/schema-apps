@@ -1594,6 +1594,132 @@ textarea.inline-edit {
   .article-masthead { border-color: rgba(255,255,255,.08); }
 }
 
+/* ── Per-type bespoke: JobPosting — LinkedIn/Greenhouse ── */
+
+.card.job-board { overflow: hidden; }
+.card.job-board .hd.hidden { display: none; }
+
+/* Company header */
+.job-header {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: 1.2rem 1.5rem .6rem;
+}
+.job-company-avatar {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  background: color-mix(in oklab, var(--accent) 12%, var(--surface));
+  color: var(--accent);
+  font-size: 1.3rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.job-header-info {
+  min-width: 0;
+}
+.job-company-name {
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.job-posted {
+  font-size: .72rem;
+  color: var(--muted);
+  margin-top: .1rem;
+}
+
+/* Role title */
+.job-role-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1.2;
+  margin: 0;
+  padding: 0 1.5rem;
+  color: var(--ink);
+}
+
+/* Chips */
+.job-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .35rem;
+  padding: .6rem 1.5rem .3rem;
+}
+.job-chip {
+  font-size: .76rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  background: color-mix(in oklab, var(--accent) 7%, var(--surface));
+  padding: .3rem .65rem;
+  border-radius: 6px;
+}
+.job-chip-sep {
+  color: var(--muted);
+  font-size: .9rem;
+  opacity: .5;
+}
+
+/* Job details */
+.job-details {
+  padding: .4rem 1.5rem .2rem;
+}
+.job-details-label {
+  font-size: .68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--muted);
+  margin-bottom: .3rem;
+}
+
+/* Apply CTA */
+.job-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  width: calc(100% - 3rem);
+  margin: .8rem 1.5rem .6rem;
+  padding: .7rem;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-size: .88rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  letter-spacing: .01em;
+  transition: all .2s ease;
+  box-shadow: 0 4px 14px color-mix(in oklab, var(--accent) 30%, transparent);
+}
+.job-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 22px color-mix(in oklab, var(--accent) 40%, transparent);
+}
+.job-cta-arrow {
+  font-size: 1.1rem;
+  transition: transform .2s ease;
+}
+.job-cta:hover .job-cta-arrow {
+  transform: translateX(3px);
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .job-company-avatar {
+    background: color-mix(in oklab, var(--accent) 15%, rgba(255,255,255,.06));
+  }
+  .job-chip {
+    background: color-mix(in oklab, var(--accent) 10%, rgba(255,255,255,.05));
+  }
+}
+
 /* ── Per-type bespoke: Course — Coursera/Udemy hero ── */
 
 .card.course-hero { overflow: hidden; }
@@ -2264,4 +2390,10 @@ footer a:hover { color: var(--accent-2); }
   .article-masthead { padding: 1.2rem 1.2rem .8rem; }
   .article-headline { font-size: 1.4rem; }
   .article-prose { padding: 1rem 1.2rem; }
+  /* Job board mobile */
+  .job-header { padding: 1rem 1.2rem .5rem; }
+  .job-role-title { font-size: 1.25rem; padding: 0 1.2rem; }
+  .job-chips { padding: .5rem 1.2rem .2rem; }
+  .job-details { padding: .3rem 1.2rem; }
+  .job-cta { width: calc(100% - 2.4rem); margin: .6rem 1.2rem; }
 }
