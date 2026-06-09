@@ -1621,6 +1621,78 @@
       }
     }
 
+    // ── HOWTO (developer tutorial card) ──
+    if (cfg.type === "HowTo") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("howto-card");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Skip hero for HowTo — clean tutorial card
+
+      // Title
+      const title = data[cfg.titleProp];
+      if (title) {
+        const h1 = document.createElement("h1"); h1.className = "howto-title";
+        h1.textContent = title;
+        view.appendChild(h1);
+        handled.add(cfg.titleProp);
+      }
+
+      // Description
+      const desc = data["description"];
+      if (desc) {
+        const d = document.createElement("p"); d.className = "howto-desc";
+        d.textContent = desc;
+        view.appendChild(d);
+        handled.add("description");
+      }
+
+      // Stats strip: time + tools
+      const strip = document.createElement("div"); strip.className = "howto-stats";
+      const total = data["totalTime"];
+      if (total) {
+        const chip = document.createElement("span"); chip.className = "howto-stat-chip";
+        chip.innerHTML = "\u{23F1}\uFE0F " + (formatDuration(total) || total);
+        strip.appendChild(chip);
+        handled.add("totalTime");
+      }
+      const tools = data["tool"];
+      if (tools) {
+        tools.split(",").forEach(t => {
+          t = t.trim();
+          if (!t) return;
+          const chip = document.createElement("span"); chip.className = "howto-stat-chip howto-tool-chip";
+          chip.textContent = "\u{1F527} " + t;
+          strip.appendChild(chip);
+        });
+        handled.add("tool");
+      }
+      if (strip.children.length) view.appendChild(strip);
+
+      // Steps (split on ·)
+      const steps = data["step"];
+      if (steps) {
+        const section = document.createElement("div"); section.className = "howto-steps-section";
+        const label = document.createElement("div"); label.className = "howto-section-label";
+        label.textContent = "Steps";
+        section.appendChild(label);
+        const ol = document.createElement("ol"); ol.className = "step-list";
+        steps.split("\u00b7").forEach(s => {
+          s = s.trim();
+          if (!s) return;
+          const li = document.createElement("li"); li.className = "step-item";
+          li.textContent = s;
+          ol.appendChild(li);
+        });
+        section.appendChild(ol);
+        view.appendChild(section);
+        handled.add("step");
+      }
+    }
+
     return handled;
   }
 
