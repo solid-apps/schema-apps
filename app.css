@@ -1822,6 +1822,107 @@ textarea.inline-edit {
   }
 }
 
+/* ── Per-type bespoke: Hotel — Booking.com card ── */
+
+.card.hotel-card { overflow: hidden; }
+.card.hotel-card .hd.hidden { display: none; }
+
+.hotel-hero { width: 100%; height: 260px; object-fit: cover; display: block; }
+
+.hotel-hero-scrim {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 60%;
+  background: linear-gradient(to top, rgba(0,0,0,.72) 0%, rgba(0,0,0,.3) 60%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 0 1.5rem 1rem;
+}
+.hotel-hero-overlay { display: flex; flex-direction: column; gap: .25rem; }
+
+.hotel-name {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+  letter-spacing: -.02em;
+  text-shadow: 0 1px 6px rgba(0,0,0,.4);
+}
+.hotel-stars-badge {
+  font-size: .78rem;
+  color: #fbbf24;
+  font-weight: 700;
+}
+
+/* Meta strip */
+.hotel-meta-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  padding: .6rem 1.5rem .2rem;
+}
+.hotel-price-badge {
+  font-size: .8rem;
+  font-weight: 800;
+  padding: .2rem .6rem;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+}
+.hotel-time-chip {
+  font-size: .72rem;
+  font-weight: 600;
+  padding: .2rem .55rem;
+  border-radius: 6px;
+  background: color-mix(in oklab, var(--accent) 8%, var(--surface));
+  color: var(--ink-2);
+}
+
+.hotel-desc {
+  font-size: .84rem;
+  color: var(--ink-2);
+  line-height: 1.65;
+  margin: 0;
+  padding: .3rem 1.5rem .4rem;
+}
+
+/* Contact */
+.hotel-contact {
+  padding: .2rem 1.5rem .3rem;
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+.hotel-contact-row {
+  font-size: .78rem;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+
+/* CTA */
+.hotel-cta {
+  display: block;
+  margin: .6rem 1.5rem 1rem;
+  padding: .7rem;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-size: .85rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: filter .15s, box-shadow .2s;
+  box-shadow: 0 2px 12px color-mix(in oklab, var(--accent) 30%, transparent);
+}
+.hotel-cta:hover { filter: brightness(1.1); }
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .hotel-time-chip {
+    background: color-mix(in oklab, var(--accent) 12%, rgba(255,255,255,.05));
+  }
+}
+
 /* ── Per-type bespoke: Course — Coursera/Udemy hero ── */
 
 .card.course-hero { overflow: hidden; }
@@ -2836,4 +2937,11 @@ footer a:hover { color: var(--accent-2); }
   .howto-desc { padding-left: 1.2rem; padding-right: 1.2rem; }
   .howto-stats { padding-left: 1.2rem; padding-right: 1.2rem; }
   .howto-steps-section { padding-left: 1.2rem; padding-right: 1.2rem; }
+  /* Hotel mobile */
+  .hotel-hero { height: 180px; }
+  .hotel-name { font-size: 1.2rem; }
+  .hotel-meta-strip { padding-left: 1.2rem; padding-right: 1.2rem; }
+  .hotel-desc { padding-left: 1.2rem; padding-right: 1.2rem; }
+  .hotel-contact { padding-left: 1.2rem; padding-right: 1.2rem; }
+  .hotel-cta { margin-left: 1.2rem; margin-right: 1.2rem; }
 }

@@ -1693,6 +1693,112 @@
       }
     }
 
+    // ── HOTEL (Booking.com card) ──
+    if (cfg.type === "Hotel") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("hotel-card");
+
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Hero with name + stars overlay
+      const hm = document.getElementById("hero-mount");
+      const img = data["image"];
+      if (img && hm) {
+        const heroImg = document.createElement("img");
+        heroImg.src = img; heroImg.alt = ""; heroImg.className = "hero hotel-hero";
+        hm.appendChild(heroImg);
+        // Scrim + overlay
+        const scrim = document.createElement("div"); scrim.className = "hotel-hero-scrim";
+        const overlay = document.createElement("div"); overlay.className = "hotel-hero-overlay";
+        const title = data[cfg.titleProp];
+        if (title) {
+          const h1 = document.createElement("h1"); h1.className = "hotel-name";
+          h1.textContent = title;
+          overlay.appendChild(h1);
+          handled.add(cfg.titleProp);
+        }
+        const stars = data["starRating"];
+        if (stars) {
+          const badge = document.createElement("span"); badge.className = "hotel-stars-badge";
+          badge.innerHTML = "\u2B50".repeat(parseInt(stars) || 0) + " " + stars + "/5";
+          overlay.appendChild(badge);
+          handled.add("starRating");
+        }
+        scrim.appendChild(overlay);
+        hm.appendChild(scrim);
+      }
+      handled.add("image");
+
+      // Price range badge
+      const price = data["priceRange"];
+      if (price) {
+        const strip = document.createElement("div"); strip.className = "hotel-meta-strip";
+        const chip = document.createElement("span"); chip.className = "hotel-price-badge";
+        chip.textContent = price;
+        strip.appendChild(chip);
+        // Check-in / Check-out chips
+        const ci = data["checkinTime"];
+        const co = data["checkoutTime"];
+        if (ci) {
+          const c = document.createElement("span"); c.className = "hotel-time-chip";
+          c.innerHTML = "\u{1F3E6} Check-in " + ci;
+          strip.appendChild(c);
+          handled.add("checkinTime");
+        }
+        if (co) {
+          const c = document.createElement("span"); c.className = "hotel-time-chip";
+          c.innerHTML = "\u{1F513} Check-out " + co;
+          strip.appendChild(c);
+          handled.add("checkoutTime");
+        }
+        view.appendChild(strip);
+        handled.add("priceRange");
+      }
+
+      // Description
+      const desc = data["description"];
+      if (desc) {
+        const d = document.createElement("p"); d.className = "hotel-desc";
+        d.textContent = desc;
+        view.appendChild(d);
+        handled.add("description");
+      }
+
+      // Contact row: address + phone + url
+      const contact = document.createElement("div"); contact.className = "hotel-contact";
+      const addr = data["address"];
+      if (addr) {
+        const r = document.createElement("span"); r.className = "hotel-contact-row";
+        r.innerHTML = "\u{1F4CD} " + addr;
+        contact.appendChild(r);
+        handled.add("address");
+      }
+      const phone = data["telephone"];
+      if (phone) {
+        const r = document.createElement("span"); r.className = "hotel-contact-row";
+        r.innerHTML = "\u{1F4DE} " + phone;
+        contact.appendChild(r);
+        handled.add("telephone");
+      }
+      if (contact.children.length) view.appendChild(contact);
+
+      // Website link
+      const url = data["url"];
+      if (url) {
+        const r = document.createElement("span"); r.className = "hotel-contact-row";
+        r.innerHTML = "\u{1F517} " + url;
+        contact.appendChild(r);
+        handled.add("url");
+      }
+
+      // Book Now CTA
+      const cta = document.createElement("a"); cta.className = "hotel-cta";
+      cta.href = url || "#"; cta.target = "_blank"; cta.rel = "noopener";
+      cta.textContent = "Book Now \u2192";
+      view.appendChild(cta);
+    }
+
     return handled;
   }
 
