@@ -67,6 +67,38 @@
   }
 
   // Render a value with type-awareness
+  const RATING_PROPS = ["ratingValue", "rating", "aggregateRating", "reviewRating", "score"];
+  const PRICE_PROPS = ["price", "priceAmount", "amount", "cost", "value", "salary"];
+  const CURRENCY_SYMBOLS = { USD: "$", EUR: "\u20ac", GBP: "\u00a3", JPY: "\u00a5", CNY: "\u00a5", KRW: "\u20a9", CZK: "K\u010d" };
+
+  // Format rating as star icons
+  function formatRating(val, prop) {
+    const num = parseFloat(val);
+    if (isNaN(num) || num < 0 || num > 10) return null;
+    // Detect if this is a 1-5 or 1-10 scale
+    const maxStars = num <= 5 ? 5 : (num <= 10 ? 10 : null);
+    if (!maxStars) return null;
+    const outOf5 = num / maxStars * 5;
+    const full = Math.floor(outOf5);
+    const half = (outOf5 - full) >= 0.4 ? 1 : 0;
+    const empty = 5 - full - half;
+    return { full, half, empty, raw: num, max: maxStars };
+  }
+
+  // Format price/currency
+  function formatPrice(val, prop) {
+    if (typeof val === "number") return { amount: val, currency: null };
+    if (typeof val !== "string") return null;
+    // Try to detect currency prefix/suffix: $100, €50, 100 USD, 100.00
+    const m = val.match(/^([\$\u20ac\u00a3\u00a5\u20a9])\s*([\d,]+\.?\d*)$/);
+    if (m) return { amount: parseFloat(m[2].replace(",", "")), symbol: m[1] };
+    const m2 = val.match(/^([\d,]+\.?\d*)\s*([A-Z]{3})$/);
+    if (m2) return { amount: parseFloat(m2[1].replace(",", "")), currency: m2[2] };
+    const m3 = val.match(/^([\d,]+\.?\d*)$/);
+    if (m3 && PRICE_PROPS.includes(prop)) return { amount: parseFloat(m3[1].replace(",", "")), currency: null };
+    return null;
+  }
+
   function renderValue(v, f, val) {
     const prop = f.prop;
     const ftype = f.type;
@@ -120,6 +152,43 @@
       const a = document.createElement("a");
       a.href = (ftype === "email" ? "mailto:" : "") + val; a.textContent = val;
       v.appendChild(a);
+      return;
+    }
+
+    // Rating — star icons
+    if (ftype === "rating" || RATING_PROPS.includes(prop) || /rating/i.test(prop)) {
+      const r = formatRating(val, prop);
+      if (r) {
+        const span = document.createElement("span");
+        span.className = "rich-rating";
+        let stars = "";
+        for (let i = 0; i < r.full; i++) stars += "\u2605";
+        if (r.half) stars += "\u00BD";
+        for (let i = 0; i < r.empty; i++) stars += "\u2606";
+        span.textContent = stars + " ";
+        const num = document.createElement("small");
+        num.className = "rating-num";
+        num.textContent = r.raw + "/" + r.max;
+        span.appendChild(num);
+        v.appendChild(span);
+        return;
+      }
+    }
+
+    // Price / currency
+    const price = formatPrice(val, prop);
+    if (price) {
+      const span = document.createElement("span");
+      span.className = "rich-price";
+      if (price.symbol) {
+        span.textContent = price.symbol + price.amount.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      } else if (price.currency) {
+        const sym = CURRENCY_SYMBOLS[price.currency] || price.currency + " ";
+        span.textContent = sym + price.amount.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      } else {
+        span.textContent = price.amount.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }
+      v.appendChild(span);
       return;
     }
 
