@@ -396,6 +396,166 @@ textarea.inline-edit {
   letter-spacing: 0;
 }
 
+/* ── Per-type bespoke: Recipe ── */
+.stats-strip {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .75rem 0 .35rem;
+  margin-bottom: .5rem;
+}
+.stat-chip {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: .45rem .85rem;
+  border-radius: 10px;
+  background: color-mix(in oklab, var(--accent) 7%, var(--surface));
+  border: 1px solid color-mix(in oklab, var(--accent) 12%, var(--line));
+  font-weight: 600;
+  font-size: .85rem;
+  color: var(--ink-2);
+  line-height: 1.3;
+}
+.stat-chip small {
+  font-size: .6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--accent);
+  opacity: .8;
+}
+.stats-sep {
+  width: 1px;
+  height: 24px;
+  background: var(--line);
+}
+
+.section-block {
+  margin: .75rem 0;
+}
+.section-label {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: .4rem;
+}
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: .55rem;
+  padding: .35rem 0;
+  cursor: pointer;
+  transition: opacity .15s;
+}
+.check-box {
+  flex-shrink: 0;
+  width: 18px; height: 18px;
+  border: 2px solid color-mix(in oklab, var(--accent) 40%, var(--line));
+  border-radius: 4px;
+  margin-top: 1px;
+  display: grid;
+  place-items: center;
+  transition: background .15s, border-color .15s;
+}
+.checklist li.checked .check-box {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.checklist li.checked .check-box::after {
+  content: "\2713";
+  color: #fff;
+  font-size: .65rem;
+  font-weight: 700;
+}
+.check-text {
+  line-height: 1.55;
+  color: var(--ink-2);
+  transition: opacity .15s;
+}
+.checklist li.checked .check-text {
+  opacity: .45;
+  text-decoration: line-through;
+}
+.step-list {
+  counter-reset: step;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.step-list li {
+  position: relative;
+  padding: .5rem 0 .5rem 2.2rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+  border-left: 2px solid color-mix(in oklab, var(--accent) 20%, var(--line));
+  margin-left: .6rem;
+}
+.step-list li::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: -13px;
+  top: .45rem;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: .7rem;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,.12);
+}
+
+/* ── Per-type bespoke: Review ── */
+.rating-hero {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .5rem 0 .75rem;
+}
+.rating-hero-stars {
+  font-size: 1.6rem;
+  color: #f59e0b;
+  letter-spacing: .04em;
+  line-height: 1;
+}
+.rating-hero-num {
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+.review-body {
+  margin: .5rem 0 .75rem;
+  padding: 1rem 1.2rem;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+  background: color-mix(in oklab, var(--accent) 4%, var(--surface));
+}
+.review-body p {
+  margin: 0;
+  font-size: .92rem;
+  line-height: 1.7;
+  color: var(--ink-2);
+  font-style: italic;
+}
+.review-byline {
+  display: block;
+  margin-top: .6rem;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--muted);
+  font-style: normal;
+}
+
 /* ── Price / currency ── */
 .rich-price {
   font-weight: 700;
@@ -579,6 +739,19 @@ footer a:hover { color: var(--accent-2); }
   .bd::before { opacity: .15; }
   .avatar { border-color: var(--card); }
   .row .k::before { opacity: .6; }
+  .stat-chip {
+    background: color-mix(in oklab, var(--accent) 10%, var(--surface));
+    border-color: color-mix(in oklab, var(--accent) 18%, var(--line));
+  }
+  .check-box {
+    border-color: color-mix(in oklab, var(--accent) 50%, var(--line));
+  }
+  .step-list li {
+    border-left-color: color-mix(in oklab, var(--accent) 25%, var(--line));
+  }
+  .review-body {
+    background: color-mix(in oklab, var(--accent) 6%, var(--surface));
+  }
 }
 
 /* ──────────────────────────────────────────────
@@ -676,4 +849,6 @@ footer a:hover { color: var(--accent-2); }
   .bd::before { display: none; }
   .hero { height: 170px; }
   .avatar { width: 76px; height: 76px; margin-top: -38px; }
+  .rating-hero-stars { font-size: 1.3rem; }
+  .stat-chip { padding: .35rem .65rem; font-size: .8rem; }
 }

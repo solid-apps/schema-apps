@@ -239,6 +239,10 @@
       }
     }
 
+    // Per-type bespoke layouts — set of props handled by bespoke rendering
+    // so the generic row loop skips them
+    const bespokeProps = renderTypeSpecific(view, heroRendered);
+
     for (const f of cfg.fields) {
       if (f.prop === cfg.titleProp) continue;
       const val = data[f.prop];
@@ -246,6 +250,8 @@
       // Skip image fields already rendered as hero
       const isImage = f.type === "image" || IMAGE_PROPS.includes(f.prop) || isImageUrl(val);
       if (isImage && heroRendered) continue;
+      // Skip props already rendered by bespoke layout
+      if (bespokeProps.has(f.prop)) continue;
       const row = document.createElement("div"); row.className = "row";
       const k = document.createElement("span"); k.className = "k"; k.textContent = f.label;
       const v = document.createElement("span"); v.className = "v";
@@ -258,6 +264,116 @@
     }
     attachInlineEditors(view);
     attachHeroEditor(heroMount);
+  }
+
+  // ── Per-type bespoke layouts ──
+  // Returns a Set of prop names that were handled, so the generic loop can skip them.
+  function renderTypeSpecific(view, heroRendered) {
+    const handled = new Set();
+
+    // ── RECIPE ──
+    if (cfg.type === "Recipe") {
+      // Stats strip: prep, cook, yield
+      const stats = [];
+      const prep = data["prepTime"];
+      if (prep) { const d = formatDuration(prep); if (d) stats.push({ label: "Prep", val: d }); }
+      const cook = data["cookTime"];
+      if (cook) { const d = formatDuration(cook); if (d) stats.push({ label: "Cook", val: d }); }
+      const yield_ = data["recipeYield"];
+      if (yield_) stats.push({ label: "Yield", val: yield_ });
+
+      if (stats.length) {
+        const strip = document.createElement("div"); strip.className = "stats-strip";
+        stats.forEach((s, i) => {
+          if (i > 0) { const sep = document.createElement("span"); sep.className = "stats-sep"; strip.appendChild(sep); }
+          const chip = document.createElement("span"); chip.className = "stat-chip";
+          chip.innerHTML = "<small>" + s.label + "</small>" + s.val;
+          strip.appendChild(chip);
+        });
+        view.appendChild(strip);
+      }
+      if (prep) handled.add("prepTime");
+      if (cook) handled.add("cookTime");
+      if (yield_) handled.add("recipeYield");
+
+      // Ingredients checklist
+      const ingredients = data["recipeIngredient"];
+      if (ingredients) {
+        const items = typeof ingredients === "string" ? ingredients.split(/,(?=[\s])/) : (Array.isArray(ingredients) ? ingredients : [ingredients]);
+        const section = document.createElement("div"); section.className = "section-block";
+        const h = document.createElement("div"); h.className = "section-label"; h.textContent = "Ingredients";
+        section.appendChild(h);
+        const ul = document.createElement("ul"); ul.className = "checklist";
+        items.forEach((item) => {
+          const li = document.createElement("li");
+          const cb = document.createElement("span"); cb.className = "check-box";
+          const txt = document.createElement("span"); txt.className = "check-text"; txt.textContent = item.trim();
+          li.append(cb, txt);
+          li.addEventListener("click", () => li.classList.toggle("checked"));
+          ul.appendChild(li);
+        });
+        section.appendChild(ul);
+        view.appendChild(section);
+        handled.add("recipeIngredient");
+      }
+
+      // Instructions numbered list
+      const instr = data["recipeInstructions"];
+      if (instr) {
+        const steps = typeof instr === "string" ? instr.split(/\n|\.\s+(?=[A-Z])/).filter(s => s.trim()) : (Array.isArray(instr) ? instr : [instr]);
+        const section = document.createElement("div"); section.className = "section-block";
+        const h = document.createElement("div"); h.className = "section-label"; h.textContent = "Instructions";
+        section.appendChild(h);
+        const ol = document.createElement("ol"); ol.className = "step-list";
+        steps.forEach((step) => {
+          const li = document.createElement("li"); li.textContent = step.trim().replace(/^\d+\.\s*/, "");
+          ol.appendChild(li);
+        });
+        section.appendChild(ol);
+        view.appendChild(section);
+        handled.add("recipeInstructions");
+      }
+    }
+
+    // ── REVIEW ──
+    if (cfg.type === "Review") {
+      // Large prominent rating near top
+      const ratingVal = data["reviewRating"];
+      if (ratingVal !== undefined) {
+        const r = formatRating(ratingVal, "reviewRating");
+        if (r) {
+          const ratingBlock = document.createElement("div"); ratingBlock.className = "rating-hero";
+          let stars = "";
+          for (let i = 0; i < r.full; i++) stars += "\u2605";
+          if (r.half) stars += "\u00BD";
+          for (let i = 0; i < r.empty; i++) stars += "\u2606";
+          const starsSpan = document.createElement("span"); starsSpan.className = "rating-hero-stars"; starsSpan.textContent = stars;
+          const numSpan = document.createElement("span"); numSpan.className = "rating-hero-num"; numSpan.textContent = r.raw + "/" + r.max;
+          ratingBlock.append(starsSpan, numSpan);
+          view.appendChild(ratingBlock);
+        }
+        handled.add("reviewRating");
+      }
+
+      // Review body as blockquote with author byline
+      const body = data["reviewBody"];
+      if (body) {
+        const bq = document.createElement("blockquote"); bq.className = "review-body";
+        const p = document.createElement("p"); p.textContent = body;
+        bq.appendChild(p);
+        const author = data["author"];
+        if (author) {
+          const cite = document.createElement("cite"); cite.className = "review-byline";
+          cite.textContent = "\u2014 " + author;
+          bq.appendChild(cite);
+        }
+        view.appendChild(bq);
+        handled.add("reviewBody");
+        if (author) handled.add("author");
+      }
+    }
+
+    return handled;
   }
 
   // ── Inline click-to-edit ──
