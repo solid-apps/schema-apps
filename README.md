@@ -1,46 +1,49 @@
 # schema-apps
 
-Single-page HTML apps for [schema.org](https://schema.org) types. Each app is a
-**self-contained `.html` file** holding a **JSON-LD data island** plus an
-auto-generated **read view** and **edit form** on top of it. No build, no
-dependencies, no framework — open the file and it works. Served straight from
-the `gh-pages` branch (this branch is the site).
+Single-page apps for [schema.org](https://schema.org) types. Each app is a
+JSON-LD **data island** plus an auto-generated **render + edit UI**. All styling
+lives in one shared **`app.css`** and all behaviour in one shared **`app.js`**,
+so every app stays tiny — just its data and a small config — and the whole
+collection is restyled by editing a single file. Served straight from the
+`gh-pages` branch (this branch is the site).
 
-Live: `https://solid-apps.github.io/schema-apps/person.html`
+Live: <https://solid-apps.github.io/schema-apps/>
 
-## The app contract
+## Anatomy of an app
 
-Every `<type>.html` (the reference is [`person.html`](./person.html)) must:
+`person.html` is the reference. Each `<type>.html` contains only:
 
-1. Contain **exactly one** JSON-LD island:
-   `<script type="application/ld+json" id="data"> … </script>` that `JSON.parse`s,
-   with `"@context": "https://schema.org"` and `"@type"` equal to the type.
-2. Declare its config in the page script: `const TYPE = "Person"` and a
-   `FIELDS` array (`{prop, label, type}` per property), and a `TITLE_PROP`.
-3. Be named the **kebab-case** of the type — `Person` → `person.html`,
-   `JobPosting` → `job-posting.html`.
-4. Include the contract elements: `#data` (island), `#view` (render target),
-   and `<form id="edit">`.
-5. **Render and edit with no errors**: on load it shows the island's data, and
-   typing in the form writes changes back into the island live.
+1. A JSON-LD island: `<script type="application/ld+json" id="data"> … </script>`
+   with `"@context": "https://schema.org"` and `"@type"`.
+2. A mount point: `<main id="app"></main>`.
+3. A config object:
+   ```js
+   window.APP = {
+     type: "Person", titleProp: "name", icon: "👤", accent: "#2d6cdf",
+     fields: [ { prop: "name", label: "Name", type: "text" }, … ],
+   };
+   ```
+4. The two shared includes: `<link rel="stylesheet" href="./app.css">` and
+   `<script src="./app.js">`.
 
-## Making an app for a new type
+The filename is the kebab-case of the type (`JobPosting` → `job-posting.html`).
 
-Copy `person.html`, then change **only**:
+## Add an app for a new type
 
-- the island's `@type` and sample data,
-- `const TYPE`, the `FIELDS` array, and `TITLE_PROP`,
-- the `<title>` and the `<h1 id="type-label">` (the script overwrites the
-  latter from `TYPE` anyway).
+Copy `person.html`, then change **only** the island, `window.APP`, and the
+`<title>`. Use real schema.org property names. Do **not** touch `app.css`,
+`app.js`, or any other app.
 
-The generic engine (render / form / write-back) is identical across every app —
-do not rewrite it. Use real schema.org property names for `prop` (e.g. `Event`:
-`startDate`, `location`, `organizer`).
+## Design
+
+All visual design is in **`app.css`** — edit it once and every app updates.
+Each app sets its own `--accent` via `window.APP.accent`; everything else (the
+header band, icon, rows, edit form, source view) is shared.
 
 ## The gate
 
 `npm run check` (CI on every push/PR to `gh-pages`) runs `gate/check.mjs`, which
-loads each app in a real DOM (jsdom) and fails if the island is malformed, the
-`@type`/filename don't match, the contract elements are missing, or the app
-throws / doesn't render. A broken app cannot merge — `gh-pages` is branch-
-protected and requires this check.
+loads each app in a real DOM (jsdom, with `app.js` inlined) and fails if the
+island is malformed, the `@type`/filename don't match, the wiring is missing, or
+the app throws / doesn't render. `gh-pages` is branch-protected and requires this
+check, so a broken app cannot merge.
