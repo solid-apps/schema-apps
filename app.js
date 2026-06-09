@@ -16,6 +16,7 @@
           <div class="type" id="type-label"></div>
           <h1 class="title" id="title"></h1>
         </header>
+        <div id="hero-mount"></div>
         <div class="bd">
           <div class="rows" id="view"></div>
           <details><summary>Edit</summary><form id="edit"></form></details>
@@ -132,6 +133,8 @@
     view.innerHTML = "";
 
     // Render hero image first (if any image field exists)
+    const heroMount = document.getElementById("hero-mount");
+    heroMount.innerHTML = "";
     let heroRendered = false;
     for (const f of cfg.fields) {
       const val = data[f.prop];
@@ -146,9 +149,8 @@
         img.src = val; img.alt = f.label; img.className = "hero-img";
         img.loading = "lazy";
         hero.appendChild(img);
-        view.appendChild(hero);
+        heroMount.appendChild(hero);
         heroRendered = true;
-        // Skip this field from rows below
         continue;
       }
     }
@@ -171,7 +173,7 @@
       row.append(k, v); view.appendChild(row);
     }
     attachInlineEditors(view);
-    attachHeroEditor(view);
+    attachHeroEditor(heroMount);
   }
 
   // ── Inline click-to-edit ──

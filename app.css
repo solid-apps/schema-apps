@@ -267,10 +267,13 @@ textarea.inline-edit {
 
 /* ── Rich rendering ── */
 /* ── Hero image banner ── */
+#hero-mount {
+  /* Container for hero, sits between header and .bd */
+}
 .hero {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 7;
+  height: 220px;
   overflow: hidden;
   cursor: pointer;
 }
@@ -626,4 +629,5 @@ footer a:hover { color: var(--accent-2); }
 
   /* Hide accent left-edge on mobile (card is full-bleed) */
   .bd::before { display: none; }
+  .hero { height: 160px; }
 }
