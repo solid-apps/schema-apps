@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Painting — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Painting",
+  "name": "The Starry Night",
+  "image": "https://picsum.photos/seed/starry-night-vangogh/800/600",
+  "description": "Painted in June 1889 from the east-facing window of his asylum room at Saint-Rémy-de-Provence, The Starry Night depicts a swirling night sky over a quiet village. Van Gogh captured the turbulence of his inner world with bold, rhythmic brushstrokes that transformed a simple view into one of the most recognised images in Western art. The painting now hangs in the Museum of Modern Art, New York.",
+  "artist": "Vincent van Gogh",
+  "dateCreated": "1889-06",
+  "artMedium": "Oil on canvas"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Painting",
+    titleProp: "name",
+    icon: "🖼️",
+    accent: "#f59e0b",
+    fields: [
+      { prop: "name",         label: "Title",        type: "text" },
+      { prop: "image",        label: "Image",        type: "image" },
+      { prop: "description",  label: "About",        type: "textarea" },
+      { prop: "artist",       label: "Artist",       type: "text" },
+      { prop: "dateCreated",  label: "Created",      type: "text" },
+      { prop: "artMedium",    label: "Medium",       type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
