@@ -205,20 +205,35 @@
     const heroMount = document.getElementById("hero-mount");
     heroMount.innerHTML = "";
     let heroRendered = false;
+    const isProfileType = cfg.type === "Person" || cfg.type === "Organization";
     for (const f of cfg.fields) {
       const val = data[f.prop];
       if (val === undefined || val === "") continue;
       const isImage = f.type === "image" || IMAGE_PROPS.includes(f.prop) || isImageUrl(val);
       if (isImage && !heroRendered) {
-        const hero = document.createElement("div"); hero.className = "hero";
-        hero.setAttribute("data-prop", f.prop);
-        hero.setAttribute("title", "Click to change image URL");
-        hero.setAttribute("tabindex", "0");
-        const img = document.createElement("img");
-        img.src = val; img.alt = f.label; img.className = "hero-img";
-        img.loading = "lazy";
-        hero.appendChild(img);
-        heroMount.appendChild(hero);
+        if (isProfileType) {
+          // Avatar: circle overlapping header band
+          const avatar = document.createElement("div"); avatar.className = "avatar";
+          avatar.setAttribute("data-prop", f.prop);
+          avatar.setAttribute("title", "Click to change image URL");
+          avatar.setAttribute("tabindex", "0");
+          const img = document.createElement("img");
+          img.src = val; img.alt = f.label; img.className = "avatar-img";
+          img.loading = "lazy";
+          avatar.appendChild(img);
+          heroMount.appendChild(avatar);
+        } else {
+          // Hero banner: full-width
+          const hero = document.createElement("div"); hero.className = "hero";
+          hero.setAttribute("data-prop", f.prop);
+          hero.setAttribute("title", "Click to change image URL");
+          hero.setAttribute("tabindex", "0");
+          const img = document.createElement("img");
+          img.src = val; img.alt = f.label; img.className = "hero-img";
+          img.loading = "lazy";
+          hero.appendChild(img);
+          heroMount.appendChild(hero);
+        }
         heroRendered = true;
         continue;
       }
@@ -283,19 +298,19 @@
 
   // ── Hero image click-to-edit ──
   function attachHeroEditor(container) {
-    const hero = container.querySelector(".hero");
-    if (!hero) return;
-    hero.addEventListener("click", () => {
-      const prop = hero.getAttribute("data-prop");
+    const target = container.querySelector(".hero") || container.querySelector(".avatar");
+    if (!target) return;
+    target.addEventListener("click", () => {
+      const prop = target.getAttribute("data-prop");
       const current = data[prop] || "";
-      if (hero.querySelector("input")) return;
+      if (target.querySelector("input")) return;
       const input = document.createElement("input");
       input.type = "url";
       input.value = current;
-      input.className = "hero-edit";
+      input.className = target.classList.contains("avatar") ? "avatar-edit" : "hero-edit";
       input.placeholder = "Image URL…";
-      hero.innerHTML = "";
-      hero.appendChild(input);
+      target.innerHTML = "";
+      target.appendChild(input);
       input.focus();
       function save() {
         const val = input.value;
