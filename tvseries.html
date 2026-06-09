@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TVSeries — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "TVSeries",
+  "name": "Chernobyl",
+  "image": "https://picsum.photos/seed/chernobyl-hbo-series/800/450",
+  "description": "A five-part miniseries dramatizing the 1986 nuclear disaster, one of the worst man-made catastrophes in history. Told through the stories of the plant workers, firefighters, and scientists who sacrificed everything to prevent an even greater catastrophe — and the Soviet system that tried to conceal the truth.",
+  "genre": "Drama, Historical, Miniseries",
+  "numberOfSeasons": "1",
+  "numberOfEpisodes": "5",
+  "startDate": "2019-05-06",
+  "endDate": "2019-06-03",
+  "director": "Johan Renck",
+  "url": "https://www.hbo.com/chernobyl"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "TVSeries",
+    titleProp: "name",
+    icon: "📺",
+    accent: "#6d28d9",
+    fields: [
+      { prop: "name",             label: "Series",       type: "text" },
+      { prop: "image",            label: "Poster",       type: "image" },
+      { prop: "description",      label: "Synopsis",     type: "textarea" },
+      { prop: "genre",            label: "Genre",        type: "text" },
+      { prop: "numberOfSeasons",  label: "Seasons",      type: "text" },
+      { prop: "numberOfEpisodes", label: "Episodes",     type: "text" },
+      { prop: "startDate",        label: "Premiered",    type: "text" },
+      { prop: "endDate",          label: "Ended",        type: "text" },
+      { prop: "director",         label: "Director",     type: "text" },
+      { prop: "url",              label: "Watch",        type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
