@@ -99,6 +99,22 @@
     return null;
   }
 
+  function formatSalary(val) {
+    if (typeof val !== "string") return String(val);
+    // "150000 USD" -> "$150,000"
+    const m = val.match(/^([\d,]+\.?\d*)\s*([A-Z]{3})$/);
+    if (m) {
+      const num = parseFloat(m[1].replace(/,/g, ""));
+      return "$" + num.toLocaleString("en-US") + " " + m[2];
+    }
+    // "$150,000" or bare number
+    const m2 = val.match(/^([\$€£¥])\s*([\d,]+\.?\d*)$/);
+    if (m2) return m2[1] + parseFloat(m2[2].replace(/,/g, "")).toLocaleString("en-US");
+    const m3 = val.match(/^([\d,]+\.?\d*)$/);
+    if (m3) return "$" + parseFloat(m3[1].replace(/,/g, "")).toLocaleString("en-US");
+    return val;
+  }
+
   function renderValue(v, f, val) {
     const prop = f.prop;
     const ftype = f.type;
@@ -1217,6 +1233,104 @@
         view.appendChild(bio);
         handled.add("description");
       }
+    }
+
+    // ── JOBPOSTING (LinkedIn/Greenhouse job board) ──
+    if (cfg.type === "JobPosting") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("job-board");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Company header bar
+      const header = document.createElement("div"); header.className = "job-header";
+
+      // Company avatar circle
+      const company = data["hiringOrganization"];
+      const avatar = document.createElement("div"); avatar.className = "job-company-avatar";
+      if (company) {
+        avatar.textContent = company.charAt(0).toUpperCase();
+        header.appendChild(avatar);
+        handled.add("hiringOrganization");
+      }
+
+      const headerInfo = document.createElement("div"); headerInfo.className = "job-header-info";
+      // Company name
+      if (company) {
+        const companyEl = document.createElement("div"); companyEl.className = "job-company-name";
+        companyEl.textContent = company;
+        headerInfo.appendChild(companyEl);
+      }
+      // Posted date
+      const datePosted = data["datePosted"];
+      if (datePosted) {
+        const d = formatDate(datePosted);
+        const postedEl = document.createElement("div"); postedEl.className = "job-posted";
+        postedEl.textContent = "Posted " + (d || datePosted);
+        headerInfo.appendChild(postedEl);
+        handled.add("datePosted");
+      }
+      header.appendChild(headerInfo);
+      view.appendChild(header);
+
+      // Role title (big)
+      const title = data[cfg.titleProp];
+      if (title) {
+        const h1 = document.createElement("h1"); h1.className = "job-role-title";
+        h1.textContent = title;
+        view.appendChild(h1);
+        handled.add(cfg.titleProp);
+      }
+
+      // Chips: location · type · salary
+      const chips = [];
+      const loc = data["jobLocation"];
+      if (loc) chips.push({ icon: "\u{1F4CD}", val: loc, prop: "jobLocation" });
+      const empType = data["employmentType"];
+      if (empType) chips.push({ icon: "\u{1F4CA}", val: empType, prop: "employmentType" });
+      const salary = data["baseSalary"];
+      if (salary) chips.push({ icon: "\u{1F4B0}", val: formatSalary(salary), prop: "baseSalary" });
+
+      if (chips.length) {
+        const strip = document.createElement("div"); strip.className = "job-chips";
+        chips.forEach((c, i) => {
+          if (i > 0) {
+            const sep = document.createElement("span"); sep.className = "job-chip-sep";
+            sep.textContent = "\u00b7";
+            strip.appendChild(sep);
+          }
+          const chip = document.createElement("span"); chip.className = "job-chip";
+          chip.textContent = c.icon + " " + c.val;
+          strip.appendChild(chip);
+          handled.add(c.prop);
+        });
+        view.appendChild(strip);
+      }
+
+      // Description as job details
+      const desc = data["description"];
+      if (desc) {
+        const section = document.createElement("div"); section.className = "job-details";
+        const label = document.createElement("div"); label.className = "job-details-label";
+        label.textContent = "About this role";
+        section.appendChild(label);
+        const body = document.createElement("div"); body.className = "prose-body";
+        body.textContent = desc;
+        section.appendChild(body);
+        view.appendChild(section);
+        handled.add("description");
+      }
+
+      // Apply Now CTA
+      const cta = document.createElement("button"); cta.className = "job-cta";
+      cta.innerHTML = "<span class=\"job-cta-text\">Apply Now</span><span class=\"job-cta-arrow\">\u2192</span>";
+      cta.type = "button";
+      view.appendChild(cta);
+
+      // Also handle image if present (used by generic hero, skip here)
+      if (data["image"]) handled.add("image");
     }
 
     return handled;
