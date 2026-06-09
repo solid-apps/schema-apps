@@ -45,6 +45,25 @@ body {
   padding: 0 1.25rem;
 }
 
+/* ── Global accent identity ── */
+::selection {
+  background: color-mix(in oklab, var(--accent) 25%, transparent);
+  color: var(--ink);
+}
+
+/* Custom scrollbar — accent-tinted thumb */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--accent) 30%, var(--line));
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in oklab, var(--accent) 50%, var(--muted));
+}
+/* Firefox */
+* { scrollbar-color: color-mix(in oklab, var(--accent) 30%, var(--line)) transparent; scrollbar-width: thin; }
+
 /* ── Card ── */
 .card {
   background: var(--card);
@@ -116,10 +135,27 @@ body {
   font-weight: 800;
   letter-spacing: -.02em;
   line-height: 1.2;
+  text-decoration: underline;
+  text-decoration-color: rgba(255,255,255,.25);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
 }
 
 /* ── Body ── */
-.bd { padding: 1.25rem 1.75rem 1.75rem; }
+.bd {
+  padding: 1.25rem 1.75rem 1.75rem;
+  position: relative;
+}
+/* Subtle accent left-edge marker on the body */
+.bd::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--accent), var(--accent-2));
+  opacity: .2;
+  border-radius: 0 2px 2px 0;
+}
 .rows { display: grid; }
 
 .row {
@@ -142,6 +178,18 @@ body {
   letter-spacing: .02em;
   padding-top: .05rem;
   align-self: start;
+  position: relative;
+}
+/* Accent dot before each label */
+.row .k::before {
+  content: "";
+  display: inline-block;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: .5;
+  margin-right: .4rem;
+  vertical-align: middle;
 }
 .row .v {
   font-weight: 500;
@@ -312,6 +360,21 @@ footer a:hover { color: var(--accent-2); }
     border-color: #1a1f2e;
     color: #b8c0d0;
   }
+
+  /* Accent identity in dark */
+  ::selection {
+    background: color-mix(in oklab, var(--accent) 35%, transparent);
+  color: var(--ink);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--accent) 35%, var(--line));
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in oklab, var(--accent) 55%, var(--muted));
+  }
+  * { scrollbar-color: color-mix(in oklab, var(--accent) 35%, var(--line)) transparent; }
+  .bd::before { opacity: .15; }
+  .row .k::before { opacity: .6; }
 }
 
 /* ──────────────────────────────────────────────
@@ -401,4 +464,7 @@ footer a:hover { color: var(--accent-2); }
     padding: .3rem 0;
     font-size: .9rem;
   }
+
+  /* Hide accent left-edge on mobile (card is full-bleed) */
+  .bd::before { display: none; }
 }
