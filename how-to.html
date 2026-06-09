@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HowTo — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Set Up a Solid Pod",
+  "image": "https://picsum.photos/seed/solid-pod-setup/800/450",
+  "description": "A step-by-step guide to installing, configuring, and securing your own Solid Pod server so you own your personal data.",
+  "totalTime": "PT45M",
+  "step": "Install Node.js ≥ 18 · Clone the community server repo · Run npm install · Configure port and storage · Create your first WebID · Set up access control policies · Test read/write with a browser",
+  "tool": "Node.js, Git, Terminal"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "HowTo",
+    titleProp: "name",
+    icon: "📝",
+    accent: "#16a34a",
+    fields: [
+      { prop: "name",        label: "Title",        type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "totalTime",   label: "Time Needed",  type: "text" },
+      { prop: "step",        label: "Steps",        type: "textarea" },
+      { prop: "tool",        label: "Tools",        type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
