@@ -313,3 +313,92 @@ footer a:hover { color: var(--accent-2); }
     color: #b8c0d0;
   }
 }
+
+/* ──────────────────────────────────────────────
+   Responsive / Mobile — small-screen polish.
+   Stacks label/value grid, scales header,
+   full-width card with comfortable tap targets.
+   ────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  :root {
+    --radius: 16px;
+  }
+
+  body { font-size: 14px; }
+
+  .wrap {
+    max-width: 100%;
+    margin: 0;
+    padding: .75rem;
+  }
+
+  .card {
+    border-radius: var(--radius);
+    /* Disable hover lift on touch */
+    transition: none;
+  }
+  .card:hover {
+    transform: none;
+    box-shadow: var(--shadow);
+  }
+
+  /* Header: tighter padding, smaller title */
+  .hd {
+    padding: 1.25rem 1.25rem 1.1rem;
+  }
+  .hd .icon {
+    width: 40px; height: 40px;
+    font-size: 20px;
+    border-radius: 10px;
+  }
+  .hd .type {
+    margin-top: .65rem;
+    font-size: .6rem;
+  }
+  .hd .title {
+    font-size: 1.25rem;
+  }
+
+  /* Body: tighter padding */
+  .bd {
+    padding: 1rem 1.15rem 1.25rem;
+  }
+
+  /* Stack rows to single column */
+  .row {
+    grid-template-columns: 1fr;
+    gap: .2rem;
+    padding: .65rem .5rem;
+    margin: 0 -.5rem;
+  }
+  .row .k {
+    font-size: .7rem;
+    letter-spacing: .04em;
+    padding-top: 0;
+  }
+  .row .v {
+    font-size: .88rem;
+  }
+
+  /* Larger tap targets for inputs */
+  input, textarea {
+    padding: .7rem .7rem;
+    font-size: 16px; /* prevent iOS zoom on focus */
+  }
+  textarea { min-height: 5rem; }
+
+  /* Code block: smaller text, full bleed */
+  pre {
+    font-size: .72rem;
+    padding: .85rem;
+    border-radius: 8px;
+    margin-left: -.15rem;
+    margin-right: -.15rem;
+  }
+
+  /* Summary: larger tap target */
+  summary {
+    padding: .3rem 0;
+    font-size: .9rem;
+  }
+}
