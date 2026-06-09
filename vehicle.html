@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vehicle — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Vehicle",
+  "name": "2023 Škoda Octavia RS",
+  "image": "https://picsum.photos/seed/skoda-octavia-rs/800/450",
+  "description": "A practical yet thrilling Czech sportwagon. The Octavia RS combines 245 hp of turbocharged performance with estate-car practicality — 640 litres of boot space, virtual cockpit, and adaptive chassis control. One careful owner, full service history.",
+  "brand": "Škoda",
+  "model": "Octavia RS TSI",
+  "vehicleModelDate": "2023",
+  "mileageFromOdometer": "18 400 km",
+  "fuelType": "Petrol",
+  "color": "Race Blue",
+  "numberOfDoors": "5",
+  "url": "https://www.skoda-auto.com/models/octavia-rs"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Vehicle",
+    titleProp: "name",
+    icon: "🚗",
+    accent: "#dc2626",
+    fields: [
+      { prop: "name",                  label: "Vehicle",      type: "text" },
+      { prop: "image",                 label: "Photo",        type: "image" },
+      { prop: "description",           label: "Description",  type: "textarea" },
+      { prop: "brand",                 label: "Brand",        type: "text" },
+      { prop: "model",                 label: "Model",        type: "text" },
+      { prop: "vehicleModelDate",      label: "Year",         type: "text" },
+      { prop: "mileageFromOdometer",   label: "Mileage",      type: "text" },
+      { prop: "fuelType",              label: "Fuel",         type: "text" },
+      { prop: "color",                 label: "Color",        type: "text" },
+      { prop: "numberOfDoors",         label: "Doors",        type: "text" },
+      { prop: "url",                   label: "Listing",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
