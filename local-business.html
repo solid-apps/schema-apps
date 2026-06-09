@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LocalBusiness — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Café Louvre",
+  "image": "https://picsum.photos/seed/cafe-louvre-prague/800/450",
+  "description": "A legendary Prague café open since 1902, once frequented by Kafka, Einstein, and Karel Čapek. Art Nouveau interiors, award-winning homemade desserts, and some of the best coffee in the city — still served at the same mahogany tables.",
+  "address": "Národní 22, Prague 1, Czech Republic",
+  "telephone": "+420 224 930 949",
+  "openingHours": "Mo-Fr 08:00-23:30, Sa 09:00-23:30, Su 10:00-23:30",
+  "priceRange": "€€",
+  "url": "https://www.cafelouvre.cz"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "LocalBusiness",
+    titleProp: "name",
+    icon: "🏪",
+    accent: "#b45309",
+    fields: [
+      { prop: "name",         label: "Business",     type: "text" },
+      { prop: "image",        label: "Photo",        type: "image" },
+      { prop: "description",  label: "About",        type: "textarea" },
+      { prop: "address",      label: "Address",      type: "text" },
+      { prop: "telephone",    label: "Phone",        type: "text" },
+      { prop: "openingHours", label: "Hours",        type: "text" },
+      { prop: "priceRange",   label: "Price Range",  type: "text" },
+      { prop: "url",          label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
