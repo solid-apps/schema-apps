@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NewsArticle — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "name": "Tim Berners-Lee Announces Solid Pod 2.0 at Web Conference",
+  "image": "https://picsum.photos/seed/solid-pod-2-launch/800/450",
+  "description": "In a keynote that drew a standing ovation, the inventor of the World Wide Web unveiled the next generation of his personal data platform, promising seamless interoperability between pod providers and a new delegation model that lets users grant AI agents scoped, revocable access to specific data containers.",
+  "articleBody": "Speaking to a packed auditorium at the Web Conference in Seoul, Sir Tim Berners-Lee demonstrated Solid Pod 2.0 live on stage, showing how a user could migrate their entire digital life — photos, health records, banking credentials — between two competing pod providers in under ninety seconds. The new specification introduces a standardised permission vocabulary that lets users grant AI assistants narrow, auditable access to chosen resources without sharing master credentials. 'You should own your data the way you own your wallet,' Berners-Lee said. 'You decide who looks inside.' Early adopters include the governments of Estonia and the Netherlands, who plan to offer Solid Pod 2.0 accounts to citizens as a public digital infrastructure option by 2027.",
+  "author": "Marek Svoboda",
+  "datePublished": "2026-04-28",
+  "dateline": "SEOUL, South Korea —",
+  "url": "https://example.com/solid-pod-2-launch"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "NewsArticle",
+    titleProp: "name",
+    icon: "🗒️",
+    accent: "#475569",
+    fields: [
+      { prop: "name",           label: "Headline",     type: "text" },
+      { prop: "image",          label: "Photo",        type: "image" },
+      { prop: "description",    label: "Standfirst",   type: "textarea" },
+      { prop: "articleBody",    label: "Body",         type: "textarea" },
+      { prop: "author",         label: "Author",       type: "text" },
+      { prop: "datePublished",  label: "Published",    type: "text" },
+      { prop: "dateline",       label: "Dateline",     type: "text" },
+      { prop: "url",            label: "Source",       type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
