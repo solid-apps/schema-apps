@@ -1826,6 +1826,7 @@ textarea.inline-edit {
 
 .card.hotel-card { overflow: hidden; }
 .card.hotel-card .hd.hidden { display: none; }
+.card.hotel-card #hero-mount { position: relative; }
 
 .hotel-hero { width: 100%; height: 260px; object-fit: cover; display: block; }
 
