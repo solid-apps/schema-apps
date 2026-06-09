@@ -476,42 +476,102 @@
       }
     }
 
-    // ── PRODUCT ──
+    // ── PRODUCT (Apple product page) ──
     if (cfg.type === "Product") {
-      // Big prominent price
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("product-showcase");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Convert hero to clean product shot
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount.querySelector(".hero")) {
+        const hero = heroMount.querySelector(".hero");
+        hero.classList.add("product-shot");
+        hero.innerHTML = "";
+        const img = document.createElement("img"); img.src = data["image"]; img.alt = data[cfg.titleProp] || "";
+        img.className = "product-shot-img"; img.loading = "lazy";
+        hero.appendChild(img);
+      }
+
+      handled.add("name"); handled.add("image");
+
+      // Product info block
+      const info = document.createElement("div"); info.className = "product-info";
+
+      // Brand as subtle label
+      const brand = data["brand"];
+      if (brand) {
+        const brandEl = document.createElement("div"); brandEl.className = "product-brand";
+        brandEl.textContent = brand;
+        info.appendChild(brandEl);
+        handled.add("brand");
+      }
+
+      // Name large
+      const h1 = document.createElement("h1"); h1.className = "product-name";
+      h1.textContent = data[cfg.titleProp] || "";
+      info.appendChild(h1);
+
+      // Tagline (description as short prose)
+      const desc = data["description"];
+      if (desc) {
+        const tagline = document.createElement("p"); tagline.className = "product-tagline";
+        tagline.textContent = desc;
+        info.appendChild(tagline);
+        handled.add("description");
+      }
+
+      view.appendChild(info);
+
+      // HUGE price
       const priceVal = data["price"];
       if (priceVal) {
-        const priceBlock = document.createElement("div"); priceBlock.className = "price-hero";
+        const priceBlock = document.createElement("div"); priceBlock.className = "product-price-hero";
         const price = formatPrice(priceVal, "price");
+        let priceText = priceVal;
         if (price) {
           const sym = price.symbol || (price.currency ? (CURRENCY_SYMBOLS[price.currency] || price.currency + " ") : "");
           const amt = price.amount || parseFloat(priceVal.replace(/[^0-9.]/g, ""));
-          priceBlock.innerHTML = "<span class=\"price-symbol\">" + sym + "</span><span class=\"price-amount\">" + (isNaN(amt) ? priceVal : amt.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })) + "</span>";
+          priceText = (isNaN(amt) ? priceVal : amt.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+          priceBlock.innerHTML = "<span class=\"pp-symbol\">" + sym + "</span><span class=\"pp-amount\">" + priceText + "</span>";
         } else {
-          priceBlock.textContent = priceVal;
+          priceBlock.textContent = priceText;
         }
         view.appendChild(priceBlock);
         handled.add("price");
       }
 
-      // Specs as compact rows (brand, sku, color, material — all short values)
-      const specProps = ["brand", "sku", "color", "material"];
-      const specs = [];
+      // Spec chips
+      const specProps = ["color", "material", "sku"];
+      const specItems = [];
       for (const f of cfg.fields) {
         if (!specProps.includes(f.prop)) continue;
         const val = data[f.prop];
         if (!val) continue;
-        specs.push({ label: f.label, val });
+        specItems.push({ label: f.label, val });
         handled.add(f.prop);
       }
-      if (specs.length) {
-        const grid = document.createElement("div"); grid.className = "spec-grid";
-        specs.forEach((s) => {
-          const cell = document.createElement("div"); cell.className = "spec-cell";
-          cell.innerHTML = "<small>" + s.label + "</small><span>" + s.val + "</span>";
-          grid.appendChild(cell);
+      if (specItems.length) {
+        const specs = document.createElement("div"); specs.className = "product-specs";
+        specItems.forEach(s => {
+          const chip = document.createElement("span"); chip.className = "product-spec-chip";
+          chip.innerHTML = "<small>" + s.label + "</small>" + s.val;
+          specs.appendChild(chip);
         });
-        view.appendChild(grid);
+        view.appendChild(specs);
+      }
+
+      // CTA button
+      const url = data["url"];
+      if (url) {
+        const cta = document.createElement("a"); cta.className = "product-cta";
+        cta.href = url; cta.target = "_blank"; cta.rel = "noopener";
+        cta.textContent = "Buy Now";
+        view.appendChild(cta);
+        handled.add("url");
       }
     }
 
