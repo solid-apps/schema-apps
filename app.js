@@ -45,12 +45,69 @@
       const row = document.createElement("div"); row.className = "row";
       const k = document.createElement("span"); k.className = "k"; k.textContent = f.label;
       const v = document.createElement("span"); v.className = "v";
+      v.setAttribute("data-prop", f.prop);
+      v.setAttribute("data-type", f.type);
+      v.setAttribute("tabindex", "0");
+      v.setAttribute("title", "Click to edit");
       if (f.type === "url" || f.type === "email") {
         const a = document.createElement("a");
         a.href = (f.type === "email" ? "mailto:" : "") + val; a.textContent = val;
         v.appendChild(a);
       } else { v.textContent = val; }
       row.append(k, v); view.appendChild(row);
+    }
+    attachInlineEditors(view);
+  }
+
+  // ── Inline click-to-edit ──
+  function attachInlineEditors(container) {
+    container.querySelectorAll(".v[data-prop]").forEach((v) => {
+      v.addEventListener("click", function handler(e) {
+        // Don't trigger on link clicks
+        if (e.target.tagName === "A") return;
+        const prop = v.getAttribute("data-prop");
+        const ftype = v.getAttribute("data-type") || "text";
+        const current = data[prop] || "";
+        // Already editing?
+        if (v.querySelector("input, textarea")) return;
+        v.classList.add("editing");
+        const input = ftype === "textarea" ? document.createElement("textarea") : document.createElement("input");
+        if (ftype !== "textarea") input.type = ftype === "email" ? "email" : ftype === "url" ? "url" : "text";
+        input.value = current;
+        input.className = "inline-edit";
+        v.innerHTML = "";
+        v.appendChild(input);
+        input.focus();
+        function save() {
+          const val = input.value;
+          if (val === "") delete data[prop]; else data[prop] = val;
+          v.classList.remove("editing");
+          writeIsland();
+          render();
+          syncForm(prop, val);
+        }
+        input.addEventListener("blur", save);
+        input.addEventListener("keydown", (ev) => {
+          if (ev.key === "Enter" && ftype !== "textarea") { ev.preventDefault(); input.blur(); }
+          if (ev.key === "Escape") { input.value = current; input.blur(); }
+        });
+      });
+    });
+  }
+
+  // Sync the #edit form after an inline edit
+  function syncForm(prop, val) {
+    const form = document.getElementById("edit");
+    if (!form) return;
+    const inputs = form.querySelectorAll("input, textarea");
+    inputs.forEach((inp) => {
+      if (inp.closest("label") && inp.closest("label").nextElementSibling === null) return;
+      // Walk up to find the label that matches this prop
+    });
+    // Simpler: just rebuild form values
+    for (const f of cfg.fields) {
+      const inp = form.querySelector(`[data-prop="${f.prop}"]`);
+      if (inp) inp.value = data[f.prop] || "";
     }
   }
 
@@ -63,6 +120,7 @@
       const input = f.type === "textarea" ? document.createElement("textarea") : document.createElement("input");
       if (f.type !== "textarea") input.type = f.type;
       input.value = data[f.prop] || "";
+      input.setAttribute("data-prop", f.prop);
       input.addEventListener("input", () => {
         if (input.value === "") delete data[f.prop]; else data[f.prop] = input.value;
         writeIsland(); render();

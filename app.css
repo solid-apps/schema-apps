@@ -222,6 +222,49 @@ body {
   color: color-mix(in oklab, var(--accent) 80%, var(--ink));
 }
 
+/* ── Inline click-to-edit ── */
+.row .v[data-prop]:not(.editing) {
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background .1s ease;
+}
+.row .v[data-prop]:not(.editing):hover {
+  background: color-mix(in oklab, var(--accent) 6%, transparent);
+}
+.row .v[data-prop]:not(.editing)::after {
+  content: "\270E";
+  font-size: .65em;
+  opacity: 0;
+  margin-left: .4rem;
+  color: var(--muted);
+  transition: opacity .15s;
+  vertical-align: middle;
+}
+.row .v[data-prop]:not(.editing):hover::after {
+  opacity: .5;
+}
+.row .v.editing {
+  background: color-mix(in oklab, var(--accent) 4%, var(--surface));
+  border-radius: 6px;
+  padding: .15rem .25rem;
+  margin: -.15rem -.25rem;
+}
+.inline-edit {
+  font: inherit;
+  color: var(--ink);
+  width: 100%;
+  padding: .25rem .4rem;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  background: var(--card);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 12%, transparent);
+  outline: none;
+}
+textarea.inline-edit {
+  min-height: 3rem;
+  resize: vertical;
+}
+
 /* ── Disclosures ── */
 details {
   margin-top: 1rem;
