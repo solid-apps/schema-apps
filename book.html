@@ -11,13 +11,14 @@
 {
   "@context": "https://schema.org",
   "@type": "Book",
-  "name": "The Hitchhiker's Guide to the Galaxy",
+  "name": "The Hitchhiker\u2019s Guide to the Galaxy",
+  "image": "https://picsum.photos/seed/hitchhikers-guide/400/600",
   "author": "Douglas Adams",
   "isbn": "978-0-345-39180-3",
   "numberOfPages": "224",
   "datePublished": "1979-10-12",
   "publisher": "Pan Books",
-  "description": "A comedic science fiction series about the adventures of Arthur Dent after Earth is demolished to make way for a hyperspace bypass."
+  "description": "A comedic science fiction series about the adventures of Arthur Dent, a hapless Englishman who escapes Earth moments before it is demolished to make way for a hyperspace bypass. Armed with a towel and a copy of the Guide, he hitchhikes across the galaxy."
 }
 </script>
 
@@ -31,6 +32,7 @@
     accent: "#9333ea",
     fields: [
       { prop: "name",          label: "Title",       type: "text" },
+      { prop: "image",         label: "Cover",       type: "image" },
       { prop: "author",        label: "Author",      type: "text" },
       { prop: "isbn",          label: "ISBN",        type: "text" },
       { prop: "numberOfPages", label: "Pages",       type: "text" },
