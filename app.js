@@ -15,12 +15,11 @@
           <div class="icon" id="icon"></div>
           <div class="type" id="type-label"></div>
           <h1 class="title" id="title"></h1>
-          <button class="theme-toggle" id="theme-toggle" type="button" title="Toggle light/dark theme">\u263E</button>
         </header>
         <div class="bd">
           <div class="rows" id="view"></div>
           <details><summary>Edit</summary><form id="edit"></form></details>
-          <details class="src"><summary>JSON-LD source</summary><div class="src-actions"><button class="copy-btn" id="copy-btn" type="button">Copy</button></div><pre id="src"></pre></details>
+          <details><summary>JSON-LD source</summary><pre id="src"></pre></details>
         </div>
       </div>
       <footer>A <a href="https://schema.org/${cfg.type}">schema.org/${cfg.type}</a> app ·
@@ -73,33 +72,4 @@
   }
 
   render(); buildForm(); writeIsland();
-
-  // ── Theme toggle ──
-  const themeBtn = document.getElementById("theme-toggle");
-  function applyTheme(dark) {
-    document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
-    themeBtn.textContent = dark ? "\u2600" : "\u263E";
-    try { localStorage.setItem("schema-apps-theme", dark ? "dark" : "light"); } catch (_) {}
-  }
-  const stored = (() => { try { return localStorage.getItem("schema-apps-theme"); } catch (_) { return null; } })();
-  if (stored) applyTheme(stored === "dark");
-  themeBtn.addEventListener("click", () => {
-    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-    applyTheme(!isDark);
-  });
-
-  // ── Copy JSON-LD ──
-  const copyBtn = document.getElementById("copy-btn");
-  copyBtn.addEventListener("click", () => {
-    const text = island.textContent.trim();
-    navigator.clipboard.writeText(text).then(() => {
-      copyBtn.textContent = "Copied!";
-      copyBtn.classList.add("copied");
-      setTimeout(() => { copyBtn.textContent = "Copy"; copyBtn.classList.remove("copied"); }, 1500);
-    }).catch(() => {
-      // Fallback for non-HTTPS / jsdom
-      copyBtn.textContent = "Failed";
-      setTimeout(() => { copyBtn.textContent = "Copy"; }, 1500);
-    });
-  });
 })();
