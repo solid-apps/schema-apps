@@ -1880,6 +1880,84 @@
       }
     }
 
+    // ── PODCASTSERIES (Spotify podcast card) ──
+    if (cfg.type === "PodcastSeries") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("podcast-card");
+
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Cover art — no hero, use a dedicated square cover
+      const img = data["image"];
+      if (img) {
+        const wrap = document.createElement("div"); wrap.className = "podcast-cover-wrap";
+        const cover = document.createElement("img"); cover.src = img; cover.alt = ""; cover.className = "podcast-cover";
+        wrap.appendChild(cover);
+        view.appendChild(wrap);
+        handled.add("image");
+      }
+
+      // Name
+      const title = data[cfg.titleProp];
+      if (title) {
+        const h1 = document.createElement("h1"); h1.className = "podcast-title";
+        h1.textContent = title;
+        view.appendChild(h1);
+        handled.add(cfg.titleProp);
+      }
+
+      // Host
+      const author = data["author"];
+      if (author) {
+        const host = document.createElement("div"); host.className = "podcast-host";
+        host.innerHTML = "Hosted by <strong>" + author + "</strong>";
+        view.appendChild(host);
+        handled.add("author");
+      }
+
+      // Genre chips
+      const genre = data["genre"];
+      if (genre) {
+        const chips = document.createElement("div"); chips.className = "podcast-genres";
+        genre.split(",").forEach(g => {
+          const chip = document.createElement("span"); chip.className = "podcast-genre-chip";
+          chip.textContent = g.trim();
+          chips.appendChild(chip);
+        });
+        view.appendChild(chips);
+        handled.add("genre");
+      }
+
+      // Description
+      const desc = data["description"];
+      if (desc) {
+        const d = document.createElement("p"); d.className = "podcast-desc";
+        d.textContent = desc;
+        view.appendChild(d);
+        handled.add("description");
+      }
+
+      // Since
+      const since = data["startDate"];
+      if (since) {
+        const s = document.createElement("div"); s.className = "podcast-since";
+        s.textContent = "Since " + since;
+        view.appendChild(s);
+        handled.add("startDate");
+      }
+
+      // Listen CTA
+      const url = data["url"];
+      if (url) {
+        const cta = document.createElement("a"); cta.className = "podcast-cta";
+        cta.href = url; cta.target = "_blank"; cta.rel = "noopener";
+        cta.textContent = "\u{1F3A4} Listen Now";
+        view.appendChild(cta);
+        handled.add("url");
+      }
+    }
+
     return handled;
   }
 
