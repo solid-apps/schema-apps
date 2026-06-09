@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TVEpisode — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "TVEpisode",
+  "name": "1:23:45",
+  "image": "https://picsum.photos/seed/chernobyl-ep1-12345/800/450",
+  "description": "April 26, 1986. A routine safety test at the Chernobyl Nuclear Power Plant goes catastrophically wrong. Plant workers confront a chain reaction they cannot stop. Firefighters rush to the scene unaware they are battling an invisible enemy. As radiation spreads across Pripyat, the full scale of the disaster remains unknown to those most at risk.",
+  "episodeNumber": "1",
+  "partOfSeries": "Chernobyl",
+  "duration": "PT1H8M",
+  "datePublished": "2019-05-06",
+  "director": "Johan Renck"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "TVEpisode",
+    titleProp: "name",
+    icon: "📺",
+    accent: "#8b5cf6",
+    fields: [
+      { prop: "name",           label: "Episode",      type: "text" },
+      { prop: "image",          label: "Still",        type: "image" },
+      { prop: "description",    label: "Synopsis",     type: "textarea" },
+      { prop: "episodeNumber",  label: "Episode #",    type: "text" },
+      { prop: "partOfSeries",   label: "Series",       type: "text" },
+      { prop: "duration",       label: "Duration",     type: "text" },
+      { prop: "datePublished",  label: "Air Date",     type: "text" },
+      { prop: "director",       label: "Director",     type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
