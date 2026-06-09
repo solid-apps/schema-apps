@@ -266,6 +266,47 @@ textarea.inline-edit {
 }
 
 /* ── Rich rendering ── */
+/* ── Hero image banner ── */
+.hero {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  overflow: hidden;
+  cursor: pointer;
+}
+.hero::after {
+  content: "\\270E";
+  position: absolute;
+  bottom: .6rem; right: .6rem;
+  font-size: .8rem;
+  color: #fff;
+  background: rgba(0,0,0,.4);
+  backdrop-filter: blur(6px);
+  width: 28px; height: 28px;
+  border-radius: 6px;
+  display: grid; place-items: center;
+  opacity: 0;
+  transition: opacity .15s;
+  pointer-events: none;
+}
+.hero:hover::after { opacity: 1; }
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero-edit {
+  width: 100%;
+  height: 100%;
+  font: inherit;
+  color: var(--ink);
+  padding: .6rem .75rem;
+  border: none;
+  background: var(--surface);
+  outline: none;
+}
+
 .rich-img {
   max-width: 100%;
   height: auto;

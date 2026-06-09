@@ -130,10 +130,36 @@
     document.getElementById("title").textContent = data[cfg.titleProp] || "(untitled)";
     const view = document.getElementById("view");
     view.innerHTML = "";
+
+    // Render hero image first (if any image field exists)
+    let heroRendered = false;
+    for (const f of cfg.fields) {
+      const val = data[f.prop];
+      if (val === undefined || val === "") continue;
+      const isImage = f.type === "image" || IMAGE_PROPS.includes(f.prop) || isImageUrl(val);
+      if (isImage && !heroRendered) {
+        const hero = document.createElement("div"); hero.className = "hero";
+        hero.setAttribute("data-prop", f.prop);
+        hero.setAttribute("title", "Click to change image URL");
+        hero.setAttribute("tabindex", "0");
+        const img = document.createElement("img");
+        img.src = val; img.alt = f.label; img.className = "hero-img";
+        img.loading = "lazy";
+        hero.appendChild(img);
+        view.appendChild(hero);
+        heroRendered = true;
+        // Skip this field from rows below
+        continue;
+      }
+    }
+
     for (const f of cfg.fields) {
       if (f.prop === cfg.titleProp) continue;
       const val = data[f.prop];
       if (val === undefined || val === "") continue;
+      // Skip image fields already rendered as hero
+      const isImage = f.type === "image" || IMAGE_PROPS.includes(f.prop) || isImageUrl(val);
+      if (isImage && heroRendered) continue;
       const row = document.createElement("div"); row.className = "row";
       const k = document.createElement("span"); k.className = "k"; k.textContent = f.label;
       const v = document.createElement("span"); v.className = "v";
@@ -145,6 +171,7 @@
       row.append(k, v); view.appendChild(row);
     }
     attachInlineEditors(view);
+    attachHeroEditor(view);
   }
 
   // ── Inline click-to-edit ──
@@ -179,6 +206,37 @@
           if (ev.key === "Enter" && ftype !== "textarea") { ev.preventDefault(); input.blur(); }
           if (ev.key === "Escape") { input.value = current; input.blur(); }
         });
+      });
+    });
+  }
+
+  // ── Hero image click-to-edit ──
+  function attachHeroEditor(container) {
+    const hero = container.querySelector(".hero");
+    if (!hero) return;
+    hero.addEventListener("click", () => {
+      const prop = hero.getAttribute("data-prop");
+      const current = data[prop] || "";
+      if (hero.querySelector("input")) return;
+      const input = document.createElement("input");
+      input.type = "url";
+      input.value = current;
+      input.className = "hero-edit";
+      input.placeholder = "Image URL…";
+      hero.innerHTML = "";
+      hero.appendChild(input);
+      input.focus();
+      function save() {
+        const val = input.value;
+        if (val === "") delete data[prop]; else data[prop] = val;
+        writeIsland();
+        render();
+        syncForm(prop, val);
+      }
+      input.addEventListener("blur", save);
+      input.addEventListener("keydown", (ev) => {
+        if (ev.key === "Enter") { ev.preventDefault(); input.blur(); }
+        if (ev.key === "Escape") { input.value = current; input.blur(); }
       });
     });
   }
