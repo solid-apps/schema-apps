@@ -3,53 +3,209 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>schema-apps — schema.org type apps</title>
+<title>schema-apps — schema.org rendered views</title>
 <style>
-  body { margin:0; font:16px/1.55 system-ui, sans-serif; color:#1a1a2e; background:#f7f8fa; }
-  .wrap { max-width:720px; margin:2.5rem auto; padding:0 1rem; }
-  h1 { font-size:1.6rem; margin:0 0 .25rem; }
-  p.lead { color:#6b7280; margin:0 0 1.5rem; }
-  ul { list-style:none; padding:0; display:grid; gap:.5rem; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); }
-  a.app { display:block; background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:.7rem .9rem;
-          text-decoration:none; color:#2d6cdf; font-weight:600; box-shadow:0 1px 3px rgba(0,0,0,.05); }
-  a.app:hover { border-color:#2d6cdf; }
-  .muted { color:#6b7280; font-size:.85rem; }
-  a.gh { color:#2d6cdf; }
+  *, *::before, *::after { box-sizing: border-box; }
+  :root {
+    --bg: #f5f5f7;
+    --surface: #fff;
+    --text: #1d1d1f;
+    --text-2: #6e6e73;
+    --text-3: #86868b;
+    --border: rgba(0,0,0,.06);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,.04);
+    --shadow-md: 0 4px 16px rgba(0,0,0,.07);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,.1);
+    --radius: 14px;
+  }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Hero header ── */
+  .hero {
+    text-align: center;
+    padding: 4rem 1.5rem 2.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .hero-label {
+    display: inline-block;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: .8rem;
+  }
+  .hero h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -.04em;
+    margin: 0 0 .5rem;
+    line-height: 1.05;
+  }
+  .hero p {
+    font-size: 1.05rem;
+    color: var(--text-2);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* ── Grid ── */
+  .grid-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.5rem 3rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+
+  /* ── Card ── */
+  .card {
+    display: flex;
+    align-items: flex-start;
+    gap: .85rem;
+    padding: 1.1rem 1.2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: inherit;
+    box-shadow: var(--shadow-sm);
+    transition: transform .22s cubic-bezier(.22,1,.36,1),
+                box-shadow .22s cubic-bezier(.22,1,.36,1),
+                border-color .18s ease;
+    cursor: pointer;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: color-mix(in oklab, var(--card-accent, #6366f1) 40%, transparent);
+  }
+
+  /* Icon circle */
+  .card-icon {
+    flex-shrink: 0;
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    background: color-mix(in oklab, var(--card-accent, #6366f1) 10%, transparent);
+    color: var(--card-accent, #6366f1);
+  }
+
+  /* Text */
+  .card-body { min-width: 0; flex: 1; }
+  .card-name {
+    font-size: .92rem;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    margin: 0 0 .15rem;
+    color: var(--text);
+  }
+  .card-tag {
+    font-size: .78rem;
+    color: var(--text-3);
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: .8rem;
+    color: var(--text-3);
+  }
+  .footer a {
+    color: var(--text-2);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .footer a:hover { text-decoration: underline; }
+
+  /* ── Dark mode ── */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0d0d0f;
+      --surface: #1c1c1e;
+      --text: #f5f5f7;
+      --text-2: #a1a1a6;
+      --text-3: #6e6e73;
+      --border: rgba(255,255,255,.07);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,.2);
+      --shadow-md: 0 4px 16px rgba(0,0,0,.3);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,.45);
+    }
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 560px) {
+    .hero { padding: 2.5rem 1.2rem 1.8rem; }
+    .hero h1 { font-size: 2rem; }
+    .hero p { font-size: .92rem; }
+    .grid-wrap { padding: 0 1rem 2rem; }
+    .grid { grid-template-columns: 1fr; gap: .75rem; }
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
+
+<header class="hero">
+  <div class="hero-label">Open Source</div>
   <h1>schema-apps</h1>
-  <p class="lead">Single-page apps for schema.org types — a JSON-LD data island with a render + edit UI in each file.</p>
-  <ul id="apps"><li class="muted">Loading apps…</li></ul>
-  <p class="muted">Each app is one self-contained <code>.html</code> file. Source:
-    <a class="gh" href="https://github.com/solid-apps/schema-apps">github.com/solid-apps/schema-apps</a></p>
+  <p>Beautiful rendered views for schema.org types. Each app is a single HTML file powered by a JSON-LD data island.</p>
+</header>
+
+<div class="grid-wrap">
+  <div class="grid" id="grid"></div>
 </div>
+
+<footer class="footer">
+  <a href="https://github.com/solid-apps/schema-apps">github.com/solid-apps/schema-apps</a> · built with ❤️ by <a href="https://github.com/melvincarvalho">Melvin</a> &amp; Charlie
+</footer>
+
 <script>
-  // List the apps by reading the repo's gh-pages contents (no build, no manifest to maintain).
-  const API = "https://api.github.com/repos/solid-apps/schema-apps/contents?ref=gh-pages";
-  const titleCase = (s) => s.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
-  fetch(API)
-    .then((r) => r.ok ? r.json() : Promise.reject(r.status))
-    .then((items) => {
-      const apps = items
-        .filter((i) => i.type === "file" && i.name.endsWith(".html") && i.name !== "index.html")
-        .map((i) => i.name).sort();
-      const ul = document.getElementById("apps");
-      ul.innerHTML = "";
-      if (!apps.length) { ul.innerHTML = '<li class="muted">No apps yet.</li>'; return; }
-      for (const name of apps) {
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-        a.className = "app"; a.href = "./" + name;
-        a.textContent = titleCase(name.replace(/\.html$/, ""));
-        li.appendChild(a); ul.appendChild(li);
-      }
-    })
-    .catch(() => {
-      document.getElementById("apps").innerHTML =
-        '<li class="muted">Could not load the app list. Browse the <a class="gh" href="https://github.com/solid-apps/schema-apps">repo</a>.</li>';
-    });
+const APPS = [
+  { file: "person.html",        name: "Person",        icon: "\u{1F464}", accent: "#2d6cdf", tag: "Profile" },
+  { file: "organization.html",  name: "Organization",  icon: "\u{1F3E2}", accent: "#0e7490", tag: "Company" },
+  { file: "event.html",         name: "Event",         icon: "\u{1F4C5}", accent: "#7c3aed", tag: "Event poster" },
+  { file: "recipe.html",        name: "Recipe",        icon: "\u{1F373}", accent: "#e8612c", tag: "Recipe card" },
+  { file: "movie.html",         name: "Movie",         icon: "\u{1F3AC}", accent: "#f59e0b", tag: "Cinematic" },
+  { file: "music-album.html",   name: "MusicAlbum",    icon: "\u{1F4BF}", accent: "#10b981", tag: "Album" },
+  { file: "review.html",        name: "Review",        icon: "\u2B50",    accent: "#d97706", tag: "Review" },
+  { file: "course.html",        name: "Course",        icon: "\u{1F393}", accent: "#0284c7", tag: "Course" },
+  { file: "book.html",          name: "Book",          icon: "\u{1F4DA}", accent: "#9333ea", tag: "Book jacket" },
+  { file: "product.html",       name: "Product",       icon: "\u{1F392}", accent: "#b45309", tag: "Product page" },
+  { file: "restaurant.html",    name: "Restaurant",    icon: "\u{1F37D}\uFE0F", accent: "#dc2626", tag: "Restaurant" },
+  { file: "article.html",       name: "Article",       icon: "\u{1F4F0}", accent: "#475569", tag: "Article" },
+  { file: "job-posting.html",   name: "JobPosting",    icon: "\u{1F4BC}", accent: "#6d28d9", tag: "Job" },
+];
+
+const grid = document.getElementById("grid");
+for (const app of APPS) {
+  const a = document.createElement("a");
+  a.className = "card";
+  a.href = "./" + app.file;
+  a.style.setProperty("--card-accent", app.accent);
+  a.innerHTML =
+    '<div class="card-icon">' + app.icon + '</div>' +
+    '<div class="card-body">' +
+      '<p class="card-name">' + app.name + '</p>' +
+      '<p class="card-tag">' + app.tag + '</p>' +
+    '</div>';
+  grid.appendChild(a);
+}
 </script>
 </body>
 </html>
