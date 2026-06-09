@@ -373,47 +373,106 @@
       }
     }
 
-    // ── MOVIE ──
+    // ── MOVIE (cinematic layout) ──
     if (cfg.type === "Movie") {
-      // Meta chip row: year · genre · duration
-      const chips = [];
-      const year = data["datePublished"];
-      if (year) { const d = formatDate(year); chips.push({ label: "Year", val: d ? new Date(year).getFullYear().toString() : year }); }
-      const genre = data["genre"];
-      if (genre) { const first = genre.split(",")[0].trim(); chips.push({ label: "Genre", val: first }); }
-      const dur = data["duration"];
-      if (dur) { const d = formatDuration(dur); if (d) chips.push({ label: "Runtime", val: d }); }
+      // Mark card as cinematic — triggers full CSS override
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("cinematic");
 
-      if (chips.length) {
-        const strip = document.createElement("div"); strip.className = "stats-strip film-chips";
-        chips.forEach((s, i) => {
-          if (i > 0) { const sep = document.createElement("span"); sep.className = "stats-sep"; strip.appendChild(sep); }
-          const chip = document.createElement("span"); chip.className = "stat-chip";
-          chip.innerHTML = "<small>" + s.label + "</small>" + s.val;
-          strip.appendChild(chip);
-        });
-        view.appendChild(strip);
-      }
-      if (year) handled.add("datePublished");
-      if (genre) handled.add("genre");
-      if (dur) handled.add("duration");
+      // Title is already set by render() in #title — move it into the hero overlay
+      const heroMount = document.getElementById("hero-mount");
+      const titleEl = document.getElementById("title");
+      const typeLabel = document.getElementById("type-label");
+      const iconEl = document.getElementById("icon");
 
-      // Rating stars
-      const aggRating = data["aggregateRating"];
-      if (aggRating !== undefined) {
-        const r = formatRating(aggRating, "aggregateRating");
-        if (r) {
-          const ratingBlock = document.createElement("div"); ratingBlock.className = "rating-hero";
-          let stars = "";
-          for (let i = 0; i < r.full; i++) stars += "\u2605";
-          if (r.half) stars += "\u00BD";
-          for (let i = 0; i < r.empty; i++) stars += "\u2606";
-          const starsSpan = document.createElement("span"); starsSpan.className = "rating-hero-stars"; starsSpan.textContent = stars;
-          const numSpan = document.createElement("span"); numSpan.className = "rating-hero-num"; numSpan.textContent = r.raw + "/" + r.max;
-          ratingBlock.append(starsSpan, numSpan);
-          view.appendChild(ratingBlock);
+      // Build cinematic overlay inside hero
+      if (heroMount.querySelector(".hero")) {
+        const hero = heroMount.querySelector(".hero");
+        hero.classList.add("cinematic-hero");
+
+        // Scrim gradient
+        const scrim = document.createElement("div"); scrim.className = "cinematic-scrim";
+        hero.appendChild(scrim);
+
+        // Overlay content: type badge + title
+        const overlay = document.createElement("div"); overlay.className = "cinematic-overlay";
+        const badge = document.createElement("span"); badge.className = "cinematic-type-badge";
+        badge.textContent = (iconEl ? iconEl.textContent + " " : "") + (typeLabel ? typeLabel.textContent : "");
+        const h1 = document.createElement("h1"); h1.className = "cinematic-title";
+        h1.textContent = data[cfg.titleProp] || "";
+        overlay.append(badge, h1);
+
+        // Meta chips inside overlay
+        const chips = [];
+        const year = data["datePublished"];
+        if (year) chips.push(new Date(year).getFullYear().toString());
+        const genre = data["genre"];
+        if (genre) chips.push(genre.split(",")[0].trim());
+        const dur = data["duration"];
+        if (dur) { const d = formatDuration(dur); if (d) chips.push(d); }
+        if (chips.length) {
+          const meta = document.createElement("div"); meta.className = "cinematic-meta";
+          meta.textContent = chips.join("  ·  ");
+          overlay.appendChild(meta);
         }
-        handled.add("aggregateRating");
+
+        // Rating as gold stars inside overlay
+        const aggRating = data["aggregateRating"];
+        if (aggRating !== undefined) {
+          const r = formatRating(aggRating, "aggregateRating");
+          if (r) {
+            const ratingDiv = document.createElement("div"); ratingDiv.className = "cinematic-rating";
+            let stars = "";
+            for (let i = 0; i < r.full; i++) stars += "\u2605";
+            if (r.half) stars += "\u00BD";
+            for (let i = 0; i < r.empty; i++) stars += "\u2606";
+            ratingDiv.innerHTML = "<span class=\"cinematic-stars\">" + stars + "</span><span class=\"cinematic-score\">" + r.raw + "<small>/" + r.max + "</small></span>";
+            overlay.appendChild(ratingDiv);
+          }
+          handled.add("aggregateRating");
+        }
+
+        hero.appendChild(overlay);
+      }
+
+      // Hide normal header since title is now in the hero
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Mark handled
+      handled.add("datePublished");
+      handled.add("genre");
+      handled.add("duration");
+      handled.add("name");
+      handled.add("image");
+
+      // Director as a prominent credit row
+      const director = data["director"];
+      if (director) {
+        const creditRow = document.createElement("div"); creditRow.className = "cinematic-credit";
+        creditRow.innerHTML = "<span class=\"credit-label\">Directed by</span><span class=\"credit-name\">" + director + "</span>";
+        view.appendChild(creditRow);
+        handled.add("director");
+      }
+
+      // Full genre list as tags
+      const genreFull = data["genre"];
+      if (genreFull) {
+        const tags = document.createElement("div"); tags.className = "cinematic-tags";
+        genreFull.split(",").forEach(g => {
+          const tag = document.createElement("span"); tag.className = "cinematic-tag"; tag.textContent = g.trim();
+          tags.appendChild(tag);
+        });
+        view.appendChild(tags);
+      }
+
+      // Description as cinematic synopsis
+      const desc = data["description"];
+      if (desc) {
+        const synopsis = document.createElement("div"); synopsis.className = "cinematic-synopsis";
+        synopsis.textContent = desc;
+        view.appendChild(synopsis);
+        handled.add("description");
       }
     }
 
