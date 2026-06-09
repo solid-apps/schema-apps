@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MusicAlbum — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicAlbum",
+  "name": "Random Access Memories",
+  "image": "https://picsum.photos/seed/random-access-memories/800/400",
+  "byArtist": "Daft Punk",
+  "numTracks": "13",
+  "genre": "Electronic, Funk, Disco, Synth-pop",
+  "datePublished": "2013-05-17"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "MusicAlbum",
+    titleProp: "name",
+    icon: "💿",
+    accent: "#7c3aed",
+    fields: [
+      { prop: "name",          label: "Album",      type: "text" },
+      { prop: "image",         label: "Cover",      type: "image" },
+      { prop: "byArtist",      label: "Artist",     type: "text" },
+      { prop: "numTracks",     label: "Tracks",     type: "text" },
+      { prop: "genre",         label: "Genre",      type: "text" },
+      { prop: "datePublished", label: "Released",   type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
