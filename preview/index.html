@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>schema-apps — schema.org type apps</title>
+<style>
+  body { margin:0; font:16px/1.55 system-ui, sans-serif; color:#1a1a2e; background:#f7f8fa; }
+  .wrap { max-width:720px; margin:2.5rem auto; padding:0 1rem; }
+  h1 { font-size:1.6rem; margin:0 0 .25rem; }
+  p.lead { color:#6b7280; margin:0 0 1.5rem; }
+  ul { list-style:none; padding:0; display:grid; gap:.5rem; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); }
+  a.app { display:block; background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:.7rem .9rem;
+          text-decoration:none; color:#2d6cdf; font-weight:600; box-shadow:0 1px 3px rgba(0,0,0,.05); }
+  a.app:hover { border-color:#2d6cdf; }
+  .muted { color:#6b7280; font-size:.85rem; }
+  a.gh { color:#2d6cdf; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>schema-apps</h1>
+  <p class="lead">Single-page apps for schema.org types — a JSON-LD data island with a render + edit UI in each file.</p>
+  <ul id="apps"><li class="muted">Loading apps…</li></ul>
+  <p class="muted">Each app is one self-contained <code>.html</code> file. Source:
+    <a class="gh" href="https://github.com/solid-apps/schema-apps">github.com/solid-apps/schema-apps</a></p>
+</div>
+<script>
+  // List the apps by reading the repo's gh-pages contents (no build, no manifest to maintain).
+  const API = "https://api.github.com/repos/solid-apps/schema-apps/contents?ref=gh-pages";
+  const titleCase = (s) => s.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+  fetch(API)
+    .then((r) => r.ok ? r.json() : Promise.reject(r.status))
+    .then((items) => {
+      const apps = items
+        .filter((i) => i.type === "file" && i.name.endsWith(".html") && i.name !== "index.html")
+        .map((i) => i.name).sort();
+      const ul = document.getElementById("apps");
+      ul.innerHTML = "";
+      if (!apps.length) { ul.innerHTML = '<li class="muted">No apps yet.</li>'; return; }
+      for (const name of apps) {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.className = "app"; a.href = "./" + name;
+        a.textContent = titleCase(name.replace(/\.html$/, ""));
+        li.appendChild(a); ul.appendChild(li);
+      }
+    })
+    .catch(() => {
+      document.getElementById("apps").innerHTML =
+        '<li class="muted">Could not load the app list. Browse the <a class="gh" href="https://github.com/solid-apps/schema-apps">repo</a>.</li>';
+    });
+</script>
+</body>
+</html>

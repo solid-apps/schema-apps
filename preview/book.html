@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Book — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "name": "The Hitchhiker's Guide to the Galaxy",
+  "author": "Douglas Adams",
+  "isbn": "978-0-345-39180-3",
+  "numberOfPages": "224",
+  "datePublished": "1979-10-12",
+  "publisher": "Pan Books",
+  "description": "A comedic science fiction series about the adventures of Arthur Dent after Earth is demolished to make way for a hyperspace bypass."
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "Book",
+    titleProp: "name",
+    icon: "📚",
+    accent: "#9333ea",
+    fields: [
+      { prop: "name",          label: "Title",       type: "text" },
+      { prop: "author",        label: "Author",      type: "text" },
+      { prop: "isbn",          label: "ISBN",        type: "text" },
+      { prop: "numberOfPages", label: "Pages",       type: "text" },
+      { prop: "datePublished", label: "Published",   type: "text" },
+      { prop: "publisher",     label: "Publisher",   type: "text" },
+      { prop: "description",   label: "Description", type: "textarea" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Article — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Future of Personal Data Sovereignty",
+  "author": "Tim Berners-Lee",
+  "datePublished": "2024-11-20",
+  "description": "An exploration of how Solid Pods give individuals control over their own data.",
+  "articleBody": "For decades, large platforms have held dominion over personal data. Solid changes the equation by putting data back in the hands of the user, stored in personal pods with fine-grained access controls.",
+  "url": "https://example.org/articles/personal-data-sovereignty"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Article",
+    titleProp: "headline",
+    icon: "📰",
+    accent: "#2d6cdf",
+    fields: [
+      { prop: "headline",        label: "Headline",      type: "text" },
+      { prop: "author",         label: "Author",         type: "text" },
+      { prop: "datePublished",  label: "Published",      type: "text" },
+      { prop: "description",    label: "Description",    type: "textarea" },
+      { prop: "articleBody",    label: "Body",           type: "textarea" },
+      { prop: "url",            label: "URL",            type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Event — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "Solid Symposium 2026",
+  "startDate": "2026-09-15",
+  "endDate": "2026-09-17",
+  "location": "MIT Media Lab, Cambridge, MA",
+  "organizer": "W3C Solid Community",
+  "url": "https://example.org/solid-symposium-2026",
+  "description": "Annual gathering of the Solid community to discuss the future of personal data sovereignty."
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "Event",
+    titleProp: "name",
+    icon: "📅",
+    accent: "#7c3aed",
+    fields: [
+      { prop: "name",        label: "Name",        type: "text" },
+      { prop: "startDate",   label: "Starts",      type: "text" },
+      { prop: "endDate",     label: "Ends",        type: "text" },
+      { prop: "location",    label: "Location",    type: "text" },
+      { prop: "organizer",   label: "Organizer",   type: "text" },
+      { prop: "url",         label: "Website",     type: "url" },
+      { prop: "description", label: "Description",  type: "textarea" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

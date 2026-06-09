@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Recipe — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Recipe",
+  "name": "Classic Pancakes",
+  "recipeIngredient": "1 cup flour, 2 tbsp sugar, 1 egg, 1 cup milk, 2 tbsp butter",
+  "recipeInstructions": "Mix dry ingredients. Beat egg and milk together. Combine wet and dry. Cook on a greased griddle until golden.",
+  "prepTime": "PT10M",
+  "cookTime": "PT15M",
+  "recipeYield": "4 servings",
+  "description": "Fluffy American-style pancakes, perfect for a weekend breakfast."
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "Recipe",
+    titleProp: "name",
+    icon: "🍳",
+    accent: "#e8612c",
+    fields: [
+      { prop: "name",               label: "Name",         type: "text" },
+      { prop: "recipeIngredient",   label: "Ingredients",  type: "text" },
+      { prop: "recipeInstructions", label: "Instructions", type: "textarea" },
+      { prop: "prepTime",           label: "Prep time",    type: "text" },
+      { prop: "cookTime",           label: "Cook time",    type: "text" },
+      { prop: "recipeYield",        label: "Yield",        type: "text" },
+      { prop: "description",        label: "Description",  type: "textarea" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

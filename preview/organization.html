@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Organization — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Acme Corporation",
+  "legalName": "Acme Corp Ltd",
+  "url": "https://example.org/acme",
+  "email": "info@acme.example.org",
+  "telephone": "+1 555 0199",
+  "address": "123 Main Street, Springfield, IL 62701",
+  "foundingDate": "1985-04-12"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "Organization",
+    titleProp: "name",
+    icon: "🏢",
+    accent: "#0e7490",
+    fields: [
+      { prop: "name",         label: "Name",       type: "text" },
+      { prop: "legalName",    label: "Legal name", type: "text" },
+      { prop: "url",          label: "Website",    type: "url" },
+      { prop: "email",        label: "Email",      type: "email" },
+      { prop: "telephone",    label: "Telephone",  type: "tel" },
+      { prop: "address",      label: "Address",    type: "text" },
+      { prop: "foundingDate", label: "Founded",    type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
