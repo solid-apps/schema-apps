@@ -34,6 +34,98 @@
     document.getElementById("src").textContent = island.textContent.trim();
   }
 
+  const IMAGE_PROPS = ["image", "photo", "logo", "thumbnailUrl", "avatar", "image", "thumbnail"];
+  const DATE_PROPS = ["datePublished", "dateCreated", "dateModified", "foundingDate", "startDate", "endDate", "birthDate"];
+  const LIST_PROPS = ["recipeIngredient", "recipeInstructions", "ingredients", "instructions"];
+
+  // Detect if a value looks like an image URL
+  function isImageUrl(val) {
+    return typeof val === "string" && /\.(jpg|jpeg|png|gif|webp|svg|avif)(\?|$)/i.test(val.trim());
+  }
+
+  // Format ISO 8601 duration to human-readable
+  function formatDuration(val) {
+    if (typeof val !== "string" || !val.startsWith("PT")) return null;
+    const m = val.match(/PT(?:(\d+)H)?(?:(\d+)M)?/);
+    if (!m) return null;
+    const parts = [];
+    if (m[1]) parts.push(m[1] + "h");
+    if (m[2]) parts.push(m[2] + "min");
+    return parts.length ? parts.join(" ") : val;
+  }
+
+  // Format a date-like value nicely
+  function formatDate(val) {
+    if (typeof val !== "string") return null;
+    if (!/^\d{4}-\d{2}-\d{2}/.test(val)) return null;
+    try {
+      const d = new Date(val);
+      if (isNaN(d.getTime())) return null;
+      return d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+    } catch (_) { return null; }
+  }
+
+  // Render a value with type-awareness
+  function renderValue(v, f, val) {
+    const prop = f.prop;
+    const ftype = f.type;
+
+    // Image fields
+    if (ftype === "image" || IMAGE_PROPS.includes(prop) || isImageUrl(val)) {
+      const img = document.createElement("img");
+      img.src = val; img.alt = f.label; img.className = "rich-img";
+      img.loading = "lazy";
+      v.appendChild(img);
+      return;
+    }
+
+    // Date fields
+    const dateStr = formatDate(val);
+    if (ftype === "date" || DATE_PROPS.includes(prop) || dateStr) {
+      const span = document.createElement("span");
+      span.className = "rich-date";
+      span.textContent = dateStr || val;
+      v.appendChild(span);
+      return;
+    }
+
+    // Duration fields (ISO 8601)
+    const dur = formatDuration(val);
+    if (dur) {
+      const span = document.createElement("span");
+      span.className = "rich-duration";
+      span.textContent = dur;
+      v.appendChild(span);
+      return;
+    }
+
+    // List fields — split comma-separated into <ul>
+    if (ftype === "list" || LIST_PROPS.includes(prop)) {
+      const items = typeof val === "string" ? val.split(/,\s*/) : (Array.isArray(val) ? val : [val]);
+      if (items.length > 1) {
+        const ul = document.createElement("ul"); ul.className = "rich-list";
+        items.forEach((item) => {
+          const li = document.createElement("li"); li.textContent = item.trim();
+          ul.appendChild(li);
+        });
+        v.appendChild(ul);
+        return;
+      }
+      // Single item: fall through to text
+    }
+
+    // URL / Email links
+    if (ftype === "url" || ftype === "email") {
+      const a = document.createElement("a");
+      a.href = (ftype === "email" ? "mailto:" : "") + val; a.textContent = val;
+      v.appendChild(a);
+      return;
+    }
+
+    // Default: plain text
+    v.textContent = val;
+  }
+
   function render() {
     document.getElementById("title").textContent = data[cfg.titleProp] || "(untitled)";
     const view = document.getElementById("view");
@@ -49,11 +141,7 @@
       v.setAttribute("data-type", f.type);
       v.setAttribute("tabindex", "0");
       v.setAttribute("title", "Click to edit");
-      if (f.type === "url" || f.type === "email") {
-        const a = document.createElement("a");
-        a.href = (f.type === "email" ? "mailto:" : "") + val; a.textContent = val;
-        v.appendChild(a);
-      } else { v.textContent = val; }
+      renderValue(v, f, val);
       row.append(k, v); view.appendChild(row);
     }
     attachInlineEditors(view);
