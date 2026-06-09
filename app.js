@@ -902,6 +902,80 @@
       }
     }
 
+    // ── PERSON (premium portfolio) ──
+    if (cfg.type === "Person") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("portfolio");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Convert avatar to portfolio hero
+      const heroMount = document.getElementById("hero-mount");
+      const avatarDiv = heroMount.querySelector(".avatar");
+      if (avatarDiv) {
+        // Wrap avatar in a banner area
+        const banner = document.createElement("div"); banner.className = "portfolio-banner";
+        // Create a decorative gradient band
+        const band = document.createElement("div"); band.className = "portfolio-band";
+        banner.appendChild(band);
+        // Move avatar into banner
+        avatarDiv.classList.add("portfolio-avatar");
+        banner.appendChild(avatarDiv);
+        // Name + title below avatar
+        const nameEl = document.createElement("h1"); nameEl.className = "portfolio-name";
+        nameEl.textContent = data[cfg.titleProp] || "";
+        banner.appendChild(nameEl);
+        const job = data["jobTitle"];
+        if (job) {
+          const titleEl = document.createElement("div"); titleEl.className = "portfolio-role";
+          titleEl.textContent = job;
+          banner.appendChild(titleEl);
+          handled.add("jobTitle");
+        }
+        heroMount.innerHTML = "";
+        heroMount.appendChild(banner);
+      }
+
+      handled.add("name"); handled.add("image");
+
+      // Contact action row
+      const contacts = [];
+      const email = data["email"];
+      if (email) contacts.push({ icon: "\u2709", label: "Email", href: "mailto:" + email, text: email });
+      const phone = data["telephone"];
+      if (phone) contacts.push({ icon: "\u260E", label: "Phone", href: "tel:" + phone.replace(/\s/g, ""), text: phone });
+      const url = data["url"];
+      if (url) contacts.push({ icon: "\u{1F310}", label: "Web", href: url, text: url.replace(/^https?:\/\//, "") });
+
+      if (contacts.length) {
+        const row = document.createElement("div"); row.className = "portfolio-contact";
+        contacts.forEach(c => {
+          const a = document.createElement("a"); a.className = "portfolio-contact-btn";
+          a.href = c.href; a.target = "_blank"; a.rel = "noopener";
+          a.title = c.label;
+          const iconSpan = document.createElement("span"); iconSpan.className = "contact-icon-emoji"; iconSpan.textContent = c.icon;
+          const textSpan = document.createElement("span"); textSpan.className = "contact-btn-text"; textSpan.textContent = c.text;
+          a.append(iconSpan, textSpan);
+          row.appendChild(a);
+        });
+        view.appendChild(row);
+        if (email) handled.add("email");
+        if (phone) handled.add("telephone");
+        if (url) handled.add("url");
+      }
+
+      // Bio as refined prose
+      const desc = data["description"];
+      if (desc) {
+        const bio = document.createElement("div"); bio.className = "portfolio-bio";
+        bio.textContent = desc;
+        view.appendChild(bio);
+        handled.add("description");
+      }
+    }
+
     return handled;
   }
 
