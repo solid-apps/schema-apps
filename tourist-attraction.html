@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TouristAttraction — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristAttraction",
+  "name": "Charles Bridge",
+  "image": "https://picsum.photos/seed/charles-bridge-prague/800/450",
+  "description": "A historic stone bridge crossing the Vltava River in Prague, completed in the early 15th century. Lined with 30 baroque statues and offering sweeping views of Prague Castle, it is one of the most visited monuments in Central Europe.",
+  "address": "Charles Bridge, Prague 1, Czech Republic",
+  "touristType": "Cultural Heritage, Architecture, Photography",
+  "url": "https://www.prague.eu/en/object/places/49-charles-bridge"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "TouristAttraction",
+    titleProp: "name",
+    icon: "🏛️",
+    accent: "#0d9488",
+    fields: [
+      { prop: "name",        label: "Attraction",   type: "text" },
+      { prop: "image",       label: "Photo",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "address",     label: "Address",      type: "text" },
+      { prop: "touristType", label: "Best For",     type: "text" },
+      { prop: "url",         label: "Visit",        type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
