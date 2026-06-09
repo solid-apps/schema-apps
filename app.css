@@ -1521,40 +1521,137 @@ textarea.inline-edit {
   font-weight: 400;
 }
 
-/* ── Per-type bespoke: Course ── */
-.course-provider {
-  padding: .4rem 0 .2rem;
-  font-size: .95rem;
-  color: var(--ink-2);
+/* ── Per-type bespoke: Course — Coursera/Udemy hero ── */
+
+.card.course-hero { overflow: hidden; }
+.card.course-hero .hd.hidden { display: none; }
+
+/* Banner */
+.course-banner {
+  position: relative;
+  min-height: 220px;
+  overflow: hidden;
 }
-.provider-badge {
+.course-banner-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+.course-banner-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+    color-mix(in oklab, var(--accent) 50%, #000) 0%,
+    color-mix(in oklab, var(--accent) 75%, #000) 100%
+  );
+  opacity: .82;
+}
+.course-banner-overlay {
+  position: relative;
+  z-index: 1;
+  padding: 2.2rem 1.6rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 220px;
+}
+
+/* Provider badge */
+.course-provider-badge {
   display: inline-block;
-  font-size: .58rem;
+  align-self: flex-start;
+  font-size: .68rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: .08em;
+  letter-spacing: .12em;
+  color: rgba(255,255,255,.9);
+  background: rgba(255,255,255,.15);
+  backdrop-filter: blur(8px);
+  padding: .25rem .65rem;
+  border-radius: 6px;
+  margin-bottom: .5rem;
+}
+
+/* Title */
+.course-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -.025em;
+  line-height: 1.2;
+  margin: 0;
+  text-shadow: 0 2px 12px rgba(0,0,0,.2);
+}
+
+/* Body */
+.card.course-hero .bd { padding-top: .6rem; }
+.card.course-hero .bd::before { display: none; }
+
+/* Info bar */
+.course-info-bar {
+  display: flex;
+  gap: .5rem;
+  padding: .3rem 0;
+}
+.course-chip {
+  font-size: .72rem;
+  font-weight: 600;
   color: var(--accent);
   background: color-mix(in oklab, var(--accent) 10%, var(--surface));
-  padding: .15rem .45rem;
-  border-radius: 4px;
-  margin-right: .35rem;
-  vertical-align: middle;
+  padding: .3rem .7rem;
+  border-radius: 6px;
+  letter-spacing: .02em;
 }
+
+/* About section */
+.course-about {
+  padding: .3rem 0;
+}
+.course-about-label {
+  font-size: .68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--muted);
+  margin-bottom: .3rem;
+}
+
+/* Enroll CTA */
 .course-cta {
-  display: inline-block;
-  margin-top: .6rem;
-  padding: .55rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  width: 100%;
+  padding: .75rem;
+  margin: .6rem 0 .2rem;
+  border-radius: 10px;
   background: var(--accent);
   color: #fff;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: .85rem;
+  font-size: .88rem;
+  font-weight: 700;
   text-decoration: none;
-  transition: opacity .15s, transform .15s;
+  letter-spacing: .01em;
+  transition: all .2s ease;
+  box-shadow: 0 4px 14px color-mix(in oklab, var(--accent) 30%, transparent);
 }
 .course-cta:hover {
-  opacity: .9;
   transform: translateY(-1px);
+  box-shadow: 0 6px 22px color-mix(in oklab, var(--accent) 40%, transparent);
+}
+.course-cta-text { }
+.course-cta-arrow {
+  font-size: 1.1rem;
+  transition: transform .2s ease;
+}
+.course-cta:hover .course-cta-arrow {
+  transform: translateX(3px);
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .course-chip { color: var(--accent); background: color-mix(in oklab, var(--accent) 15%, rgba(255,255,255,.06)); }
 }
 
 /* ── Shared contact block (Organization, Restaurant) ── */
@@ -1947,9 +2044,6 @@ footer a:hover { color: var(--accent-2); }
   .prose-body {
     color: var(--ink-2);
   }
-  .provider-badge {
-    background: color-mix(in oklab, var(--accent) 12%, var(--surface));
-  }
   .contact-row {
     color: var(--ink-2);
   }
@@ -2089,4 +2183,8 @@ footer a:hover { color: var(--accent-2); }
   .book-cover { width: 140px; }
   .book-info { padding-top: .5rem; }
   .book-synopsis { padding: .6rem 1.2rem 1rem; }
+  /* Course hero mobile */
+  .course-banner { min-height: 180px; }
+  .course-banner-overlay { min-height: 180px; padding: 1.4rem 1.2rem 1.2rem; }
+  .course-title { font-size: 1.3rem; }
 }
