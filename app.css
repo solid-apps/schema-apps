@@ -268,8 +268,42 @@ textarea.inline-edit {
 /* ── Rich rendering ── */
 /* ── Hero image banner ── */
 #hero-mount {
-  /* Container for hero, sits between header and .bd */
+  /* Container for hero/avatar, sits between header and .bd */
 }
+
+/* ── Avatar (Person/Organization) ── */
+.avatar {
+  position: relative;
+  width: 88px; height: 88px;
+  margin: -44px auto 0;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--card);
+  box-shadow: 0 2px 8px rgba(0,0,0,.12), 0 0 0 1px rgba(0,0,0,.04);
+  cursor: pointer;
+  z-index: 1;
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+.avatar:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,.18), 0 0 0 1px rgba(0,0,0,.06);
+  transform: scale(1.03);
+}
+.avatar-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.avatar-edit {
+  width: 100%; height: 100%;
+  font: .65rem/1 var(--font);
+  color: var(--ink);
+  padding: .3rem;
+  border: none;
+  background: var(--surface);
+  text-align: center;
+  outline: none;
+}
+
 .hero {
   position: relative;
   width: 100%;
@@ -553,6 +587,7 @@ footer a:hover { color: var(--accent-2); }
     box-shadow: var(--shadow), 0 0 0 1px color-mix(in oklab, var(--accent) 8%, transparent);
   }
   .bd::before { opacity: .15; }
+  .avatar { border-color: var(--card); }
   .row .k::before { opacity: .6; }
 }
 
@@ -650,4 +685,5 @@ footer a:hover { color: var(--accent-2); }
   /* Hide accent left-edge on mobile (card is full-bleed) */
   .bd::before { display: none; }
   .hero { height: 160px; }
+  .avatar { width: 72px; height: 72px; margin-top: -36px; }
 }
