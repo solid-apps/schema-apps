@@ -356,20 +356,10 @@ textarea.inline-edit {
   align-items: center;
   gap: .35rem;
 }
-.rich-date::before {
-  content: "\\1F4C5";
-  font-size: .85em;
-  opacity: .6;
-}
 .rich-duration {
   display: inline-flex;
   align-items: center;
   gap: .35rem;
-}
-.rich-duration::before {
-  content: "\\23F1";
-  font-size: .85em;
-  opacity: .6;
 }
 .rich-list {
   list-style: none;
