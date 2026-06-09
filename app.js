@@ -1703,6 +1703,8 @@
 
       // Hero with name + stars overlay
       const hm = document.getElementById("hero-mount");
+      const oldHotelHero = hm && hm.querySelector(".hero");
+      if (oldHotelHero) oldHotelHero.remove();
       const img = data["image"];
       if (img && hm) {
         const heroImg = document.createElement("img");
@@ -1809,6 +1811,8 @@
 
       // Hero
       const hm = document.getElementById("hero-mount");
+      const oldBizHero = hm && hm.querySelector(".hero");
+      if (oldBizHero) oldBizHero.remove();
       const img = data["image"];
       if (img && hm) {
         const heroImg = document.createElement("img");
@@ -1889,6 +1893,9 @@
       if (hd) hd.classList.add("hidden");
 
       // Cover art — no hero, use a dedicated square cover
+      const podHm = document.getElementById("hero-mount");
+      const oldPodHero = podHm && podHm.querySelector(".hero");
+      if (oldPodHero) oldPodHero.remove();
       const img = data["image"];
       if (img) {
         const wrap = document.createElement("div"); wrap.className = "podcast-cover-wrap";
