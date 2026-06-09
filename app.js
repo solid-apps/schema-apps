@@ -546,6 +546,149 @@
       if (tracks) handled.add("numTracks");
     }
 
+    // ── BOOK ──
+    if (cfg.type === "Book") {
+      // 'by Author' prominent
+      const author = data["author"];
+      if (author) {
+        const ab = document.createElement("div"); ab.className = "book-author";
+        ab.innerHTML = "by <strong>" + author + "</strong>";
+        view.appendChild(ab);
+        handled.add("author");
+      }
+
+      // Meta row: pages · published · publisher
+      const chips = [];
+      const pages = data["numberOfPages"];
+      if (pages) chips.push({ label: "Pages", val: pages });
+      const pub = data["datePublished"];
+      if (pub) { const d = formatDate(pub); chips.push({ label: "Published", val: d || pub }); }
+      const publisher = data["publisher"];
+      if (publisher) chips.push({ label: "Publisher", val: publisher });
+      const isbn = data["isbn"];
+      if (isbn) chips.push({ label: "ISBN", val: isbn });
+
+      if (chips.length) {
+        const strip = document.createElement("div"); strip.className = "stats-strip book-chips";
+        chips.forEach((s, i) => {
+          if (i > 0) { const sep = document.createElement("span"); sep.className = "stats-sep"; strip.appendChild(sep); }
+          const chip = document.createElement("span"); chip.className = "stat-chip";
+          chip.innerHTML = "<small>" + s.label + "</small>" + s.val;
+          strip.appendChild(chip);
+        });
+        view.appendChild(strip);
+      }
+      if (pages) handled.add("numberOfPages");
+      if (pub) handled.add("datePublished");
+      if (publisher) handled.add("publisher");
+      if (isbn) handled.add("isbn");
+
+      // Description as body prose
+      const desc = data["description"];
+      if (desc) {
+        const body = document.createElement("div"); body.className = "prose-body";
+        body.textContent = desc;
+        view.appendChild(body);
+        handled.add("description");
+      }
+    }
+
+    // ── ARTICLE ──
+    if (cfg.type === "Article") {
+      // Author + date byline
+      const author = data["author"];
+      const datePub = data["datePublished"];
+      if (author || datePub) {
+        const byline = document.createElement("div"); byline.className = "article-byline";
+        const parts = [];
+        if (author) parts.push("<strong>" + author + "</strong>");
+        if (datePub) {
+          const d = formatDate(datePub);
+          parts.push("<span class=\"article-date\">" + (d || datePub) + "</span>");
+        }
+        byline.innerHTML = parts.join(" · ");
+        view.appendChild(byline);
+        if (author) handled.add("author");
+        if (datePub) handled.add("datePublished");
+      }
+
+      // articleBody as flowing prose
+      const articleBody = data["articleBody"];
+      if (articleBody) {
+        const body = document.createElement("div"); body.className = "prose-body";
+        // Split on double newlines for paragraphs
+        const paras = articleBody.split(/\n\n+/);
+        paras.forEach(p => {
+          if (!p.trim()) return;
+          const el = document.createElement("p");
+          el.textContent = p.trim();
+          body.appendChild(el);
+        });
+        view.appendChild(body);
+        handled.add("articleBody");
+      } else {
+        // Fallback to description
+        const desc = data["description"];
+        if (desc) {
+          const body = document.createElement("div"); body.className = "prose-body";
+          body.textContent = desc;
+          view.appendChild(body);
+          handled.add("description");
+        }
+      }
+    }
+
+    // ── COURSE ──
+    if (cfg.type === "Course") {
+      // Provider prominent
+      const provider = data["provider"];
+      if (provider) {
+        const pb = document.createElement("div"); pb.className = "course-provider";
+        pb.innerHTML = "<span class=\"provider-badge\">Provider</span> <strong>" + provider + "</strong>";
+        view.appendChild(pb);
+        handled.add("provider");
+      }
+
+      // Level + code as chips
+      const chips = [];
+      const level = data["educationalLevel"];
+      if (level) chips.push({ label: "Level", val: level });
+      const code = data["courseCode"];
+      if (code) chips.push({ label: "Code", val: code });
+
+      if (chips.length) {
+        const strip = document.createElement("div"); strip.className = "stats-strip";
+        chips.forEach((s, i) => {
+          if (i > 0) { const sep = document.createElement("span"); sep.className = "stats-sep"; strip.appendChild(sep); }
+          const chip = document.createElement("span"); chip.className = "stat-chip";
+          chip.innerHTML = "<small>" + s.label + "</small>" + s.val;
+          strip.appendChild(chip);
+        });
+        view.appendChild(strip);
+      }
+      if (level) handled.add("educationalLevel");
+      if (code) handled.add("courseCode");
+
+      // Description as body
+      const desc = data["description"];
+      if (desc) {
+        const body = document.createElement("div"); body.className = "prose-body";
+        body.textContent = desc;
+        view.appendChild(body);
+        handled.add("description");
+      }
+
+      // CTA link
+      const url = data["url"];
+      if (url) {
+        const cta = document.createElement("a"); cta.className = "course-cta";
+        cta.href = url; cta.textContent = "View Course →";
+        cta.target = "_blank"; cta.rel = "noopener";
+        view.appendChild(cta);
+        handled.add("url");
+      }
+    }
+
     return handled;
   }
 
