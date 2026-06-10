@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>City — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "City",
+  "name": "Prague",
+  "image": "https://picsum.photos/seed/prague-city/600/400",
+  "description": "The capital of the Czech Republic, a city of spires, red rooftops and cobblestone lanes spanning both banks of the Vltava. Over a thousand years of architecture — Romanesque rotundas, Gothic cathedrals, art-nouveau façades and cubist gems — sit alongside thriving modern culture: craft coffee, start-up hubs and a legendary nightlife scene.",
+  "address": "Prague, Czech Republic",
+  "url": "https://example.org/prague"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "City",
+    titleProp: "name",
+    icon: "🏙️",
+    accent: "#475569",
+    fields: [
+      { prop: "name",        label: "Name",        type: "text" },
+      { prop: "image",       label: "Image",       type: "image" },
+      { prop: "description", label: "Description", type: "textarea" },
+      { prop: "address",     label: "Address",     type: "text" },
+      { prop: "url",         label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
