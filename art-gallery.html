@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ArtGallery — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ArtGallery",
+  "name": "Galerie Rudolfinum",
+  "image": "https://picsum.photos/seed/galerie-rudolfinum/600/400",
+  "description": "A leading contemporary art gallery housed in the neo-Renaissance Rudolfinum concert hall on the Vltava riverbank. Curates rotating exhibitions of Czech and international modern art, from painting and sculpture to immersive installations and new media. Free admission to the permanent collection.",
+  "address": "Alšovo nábřeží 12, 110 00 Prague 1, Czech Republic",
+  "telephone": "+420 227 059 346",
+  "openingHours": "Tu-Su 10:00-18:00, Th 10:00-20:00",
+  "priceRange": "Free–250 CZK",
+  "url": "https://example.org/galerie-rudolfinum"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "ArtGallery",
+    titleProp: "name",
+    icon: "🖼️",
+    accent: "#7e22ce",
+    fields: [
+      { prop: "name",        label: "Name",         type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "address",     label: "Address",      type: "text" },
+      { prop: "telephone",   label: "Telephone",    type: "tel" },
+      { prop: "openingHours",label: "Opening hours", type: "text" },
+      { prop: "priceRange",  label: "Price range",  type: "text" },
+      { prop: "url",         label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
