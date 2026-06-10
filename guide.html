@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Guide — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Guide",
+  "name": "Choosing Your First Solid Pod Provider — A Buyer's Guide",
+  "image": "https://picsum.photos/seed/pod-provider-guide/800/450",
+  "description": "A practical guide comparing community and commercial Solid pod providers across the criteria that matter: data-export guarantees, uptime history, WebID portability, storage pricing, backup policy and jurisdiction. Includes a decision flowchart, red flags to avoid, and a migration checklist for moving pods later — because the whole point is that you can.",
+  "about": "Solid pod hosting",
+  "reviewAspect": "portability, pricing, backups, jurisdiction",
+  "datePublished": "2026-05-20",
+  "url": "https://example.org/pod-provider-guide"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "Guide",
+    titleProp: "name",
+    icon: "🧭",
+    accent: "#0369a1",
+    fields: [
+      { prop: "name", label: "Guide", type: "text" },
+      { prop: "image", label: "Cover", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "about", label: "Topic", type: "text" },
+      { prop: "reviewAspect", label: "Compares", type: "text" },
+      { prop: "datePublished", label: "Published", type: "text" },
+      { prop: "url", label: "Read", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
