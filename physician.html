@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Physician — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Physician",
+  "name": "MUDr. Jana Novotná — Praktické lékařství",
+  "image": "https://picsum.photos/seed/physician-novotna-prague/600/400",
+  "description": "Dr Jana Novotná is a board-certified general practitioner with over twenty years of experience in family medicine. Her practice on Vinohrady's Sázavská street occupies the ground floor of a restored Art Nouveau building, with a small waiting room that doubles as a gallery for local painters. She takes a thorough, unhurried approach — consultations typically run twenty to thirty minutes. Services include preventive check-ups, vaccination, chronic-disease management, laboratory referrals and home visits for housebound patients in the district. Fluent in Czech, English and Slovak.",
+  "medicalSpecialty": "General Practice / Family Medicine",
+  "address": "Sázavská 1200/14, 120 00 Prague 2 - Vinohrady, Czech Republic",
+  "telephone": "+420 222 514 380",
+  "openingHours": "Mo, Tu, Th 08:00-16:00; We 08:00-12:00; Fr 08:00-14:00",
+  "priceRange": "CZK 600–900 (consultation); free with public-health insurance",
+  "url": "https://www.prakticky-lekar-novotna.cz"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Physician",
+    titleProp: "name",
+    icon: "🩺",
+    accent: "#0891b2",
+    fields: [
+      { prop: "name",             label: "Name",            type: "text" },
+      { prop: "image",            label: "Image",           type: "image" },
+      { prop: "description",      label: "Description",     type: "textarea" },
+      { prop: "medicalSpecialty", label: "Specialty",       type: "text" },
+      { prop: "address",          label: "Address",         type: "text" },
+      { prop: "telephone",        label: "Phone",           type: "text" },
+      { prop: "openingHours",     label: "Hours",           type: "text" },
+      { prop: "priceRange",       label: "Price Range",     type: "text" },
+      { prop: "url",              label: "Website",         type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
