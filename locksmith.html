@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Locksmith — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Locksmith",
+  "name": "Zámečnictví Klíčník — Locksmith Services",
+  "image": "https://picsum.photos/seed/z-me-nictv-kl-n-k-locksmith-services/800/450",
+  "description": "A locksmith workshop and emergency service: lockouts opened without drilling in nine cases out of ten, security-class cylinder upgrades with insurance certification, and key cutting including the historic warded keys of Prague's old doors. The workshop keeps blanks for Czech building stock going back a century.",
+  "address": "Seifertova 14, 130 00 Praha 3",
+  "telephone": "+420 605 222 111",
+  "openingHours": "Shop Mo-Fr 08:00-18:00; emergency 24/7",
+  "priceRange": "Lockout from 1 190 CZK",
+  "url": "https://example.org/z-me-nictv-kl-n-k-locksmith-services"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "Locksmith",
+    titleProp: "name",
+    icon: "🔐",
+    accent: "#52525b",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "telephone", label: "Phone", type: "tel" },
+      { prop: "openingHours", label: "Open", type: "text" },
+      { prop: "priceRange", label: "Price", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

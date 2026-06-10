@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PostOffice — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "PostOffice",
+  "name": "Pošta Praha 1 — Jindřišská Main Post Office",
+  "image": "https://picsum.photos/seed/po-ta-praha-1-jind-i-sk-main-post-of/800/450",
+  "description": "The grand main post office on Jindřišská street, its 1901 hall painted with allegories of communication beneath a glass roof. Counters handle the full range — parcels, money orders, Czech Point government services and philately — with the self-service parcel zone open extended hours. The building alone justifies the queue.",
+  "address": "Jindřišská 909/14, 110 00 Praha 1",
+  "openingHours": "Mo-Fr 08:00-20:00, Sa 08:00-12:00",
+  "url": "https://example.org/po-ta-praha-1-jind-i-sk-main-post-of"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "PostOffice",
+    titleProp: "name",
+    icon: "📮",
+    accent: "#dc2626",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "openingHours", label: "Open", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
