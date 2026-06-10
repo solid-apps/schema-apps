@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>EmergencyService — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "EmergencyService",
+  "name": "Záchranná služba hlavního města Prahy — Stanice Praha 2",
+  "image": "https://picsum.photos/seed/emergency-praha2/600/400",
+  "description": "The Prague Emergency Medical Service (Záchranná služba hl. m. Prahy, commonly called ZZS Praha) is the municipal ambulance service serving all 1.3 million residents of Prague, operating 24 hours a day, 365 days a year from 13 stations strategically distributed across the city to guarantee a maximum response time of 15 minutes for urgent calls and 8 minutes for life-threatening emergencies within the city limits. This station on Legerova street in Prague 2 — housed in a functionalist building from 1937 that was originally the city's first purpose-built ambulance depot — is the service's operational nerve centre, housing the central dispatch room (operační středisko) where around 80 emergency medical dispatchers field approximately 1,200 calls per day, triaging each one using the internationally standardised Priority Medical Dispatch system and assigning one of four urgency levels: the highest, category A (life-threatening cardiac arrest, major trauma, respiratory failure), deploys a rapid-response vehicle staffed by an emergency physician within 90 seconds of call receipt. ZZS Praha operates a mixed fleet of 62 standard ambulances, 12 rapid-response cars (Škoda Superb estates equipped with full cardiac monitors, intubation kits and thrombolytic drugs), and 4 mobile intensive-care units for inter-hospital critical transfers including neonatal transport with incubators. The service employs over 1,400 staff, including 280 emergency physicians, 420 paramedics and 350 emergency medical technicians, and runs Prague's only helicopter ambulance pad at Motol University Hospital for the air rescue service operated by the Ministry of Health. ZZS Praha is also the teaching base for the emergency medicine residency programme at Charles University's First Faculty of Medicine, and its paramedics train continuously using high-fidelity simulation mannequins in a dedicated simulation centre on the building's top floor. The service played a critical role during the 2020–2022 COVID-19 pandemic, at peak operating 40 additional ambulance shifts per day and converting its training hall into a 30-bed field triage station.",
+  "address": "Legerova 1188/42, Nové Město, Prague 2",
+  "telephone": "+420 224 919 419",
+  "url": "https://www.zzshmp.cz/en"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "EmergencyService",
+    titleProp: "name",
+    icon: "🚨",
+    accent: "#dc2626",
+    fields: [
+      { prop: "name",         label: "Service",     type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "address",      label: "Address",     type: "text" },
+      { prop: "telephone",    label: "Phone",       type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
