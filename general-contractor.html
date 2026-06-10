@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GeneralContractor — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  "name": "Stavby Krása — General Contractor",
+  "image": "https://picsum.photos/seed/stavby-kr-sa-general-contractor/800/450",
+  "description": "A general contractor for apartment renovations and family-house builds, coordinating its own masons, electricians and plumbers under one site manager and one contract. Fixed-price quotes with itemised bills of quantities, a client web portal with weekly photo logs, and a five-year workmanship guarantee backed by insurance.",
+  "address": "Kolbenova 9, 190 00 Praha 9",
+  "telephone": "+420 283 891 200",
+  "openingHours": "Mo-Fr 08:00-17:00",
+  "priceRange": "Renovations from 18 000 CZK/m²",
+  "url": "https://example.org/stavby-kr-sa-general-contractor"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "GeneralContractor",
+    titleProp: "name",
+    icon: "👷",
+    accent: "#f97316",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "telephone", label: "Phone", type: "tel" },
+      { prop: "openingHours", label: "Open", type: "text" },
+      { prop: "priceRange", label: "Price", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

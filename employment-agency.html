@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>EmploymentAgency — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "EmploymentAgency",
+  "name": "JobSpot Agency — Recruitment & Staffing",
+  "image": "https://picsum.photos/seed/jobspot-agency-recruitment-staffing/800/450",
+  "description": "A licensed recruitment agency placing candidates in IT, finance and shared-services roles across Prague and Brno, with temporary staffing for logistics peaks. Candidates get interview coaching and salary benchmarks for free; employers pay success fees only. The agency publishes its placement statistics quarterly — rare transparency in the sector.",
+  "address": "Na Příkopě 22, 110 00 Praha 1",
+  "telephone": "+420 221 967 300",
+  "openingHours": "Mo-Fr 09:00-18:00",
+  "priceRange": "Success fee from 1.5 monthly salaries",
+  "url": "https://example.org/jobspot-agency-recruitment-staffing"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "EmploymentAgency",
+    titleProp: "name",
+    icon: "🤝",
+    accent: "#1e40af",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "telephone", label: "Phone", type: "tel" },
+      { prop: "openingHours", label: "Open", type: "text" },
+      { prop: "priceRange", label: "Price", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

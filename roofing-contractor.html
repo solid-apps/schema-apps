@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RoofingContractor — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "RoofingContractor",
+  "name": "Střechy Beneš — Roofing & Tinsmithing",
+  "image": "https://picsum.photos/seed/st-echy-bene-roofing-tinsmithing/800/450",
+  "description": "Roofers and tinsmiths working Prague's historic roofscape: slate, fired tile, and the copper details that crown the city's towers. The firm maintains several Malá Strana palaces under heritage supervision, offers drone roof surveys with annotated reports, and runs a winter emergency service for storm damage and ice dams.",
+  "address": "Holečkova 21, 150 00 Praha 5",
+  "telephone": "+420 257 215 660",
+  "openingHours": "Mo-Fr 07:00-16:00; storm line 24/7",
+  "priceRange": "Survey from 2 900 CZK",
+  "url": "https://example.org/st-echy-bene-roofing-tinsmithing"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "RoofingContractor",
+    titleProp: "name",
+    icon: "🏚️",
+    accent: "#78716c",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "telephone", label: "Phone", type: "tel" },
+      { prop: "openingHours", label: "Open", type: "text" },
+      { prop: "priceRange", label: "Price", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
