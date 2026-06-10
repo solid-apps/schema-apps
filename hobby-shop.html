@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HobbyShop — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "HobbyShop",
+  "name": "Merkur — Model Railways & Slot Cars, Spálená",
+  "image": "https://picsum.photos/seed/hobby-merkur/600/400",
+  "description": "Merkur is a beloved hobby shop on Spálená street, a short walk from the National Theatre, that takes its name from the iconic Czech tinplate construction toy first produced in Polička, eastern Bohemia, in 1920. The shop has occupied this corner location since 1968 — the year Soviet tanks rolled into Prague — and has weathered every political and economic upheaval since by catering to the Czech passion for meticulous miniature worlds. The ground floor is dedicated to model railways: H0 and TT gauge layouts wind through glass display cases, with locomotives and rolling stock from Märklin, Roco, Piko and the Czech manufacturer MTB Model. A permanent demo layout in the window features a painstakingly detailed model of Prague's main railway station, Praha hl.n., complete with miniature Art Nouveau façade, functional signals and a schedule that runs actual Czech Railhouse locomotive liveries. The mezzanine is the slot car and die-cast zone — Scalextric tracks, Carrera Digital 132 sets, and 1:43 and 1:18 models from AutoArt and Norev including the full range of Škoda models from the 1950s Popular to the modern Enyaq EV. Upstairs is the modelling and crafts department: Revell and Airfix plastic kits, Vallejo acrylic paints organized by RAL colour code, brass etch detail sets for ship modellers, and a curated selection of balsa wood, basswood sheets and Czech-made Kovap clockwork tin toys — the same Kovap factory in Náchod that has been stamping little wind-up tractors and combine harvesters since 1947. The shop runs Saturday morning build-alongs for children aged 6–14, and the staff — most of them modellers themselves — can advise on everything from weathering techniques to DCC decoder installation. Merkur also stocks wargaming miniatures from Games Workshop and Czech producer Raging Heroes, plus modelling terrain materials and a small selection of board games.",
+  "address": "Spálená 112/20, Nové Město, Prague 1",
+  "telephone": "+420 224 946 773",
+  "openingHours": "Mo–Fr 10:00–18:00, Sa 10:00–14:00, Su closed",
+  "priceRange": "CZK 49 (paint pot) – CZK 18,500 (Märklin H0 starter set with digital control)",
+  "url": "https://www.merkur-hobby.cz"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "HobbyShop",
+    titleProp: "name",
+    icon: "🧩",
+    accent: "#f59e0b",
+    fields: [
+      { prop: "name",         label: "Store",       type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "address",      label: "Address",     type: "text" },
+      { prop: "telephone",    label: "Phone",       type: "text" },
+      { prop: "openingHours", label: "Hours",       type: "text" },
+      { prop: "priceRange",   label: "Price",       type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
