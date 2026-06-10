@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SatiricalArticle — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "SatiricalArticle",
+  "name": "Prague Man Achieves Data Sovereignty, Immediately Asked to Reset Mother's Wi-Fi",
+  "image": "https://picsum.photos/seed/prague-man-achieves-data-sovereignty-imm/800/450",
+  "description": "SATIRE — A Žižkov developer who finally moved his entire digital life into a self-hosted pod reportedly enjoyed full data sovereignty for eleven minutes before his mother called about the Wi-Fi. 'I control my photos, my messages, my identity,' he said, restarting her router remotely for the third time this week. At press time he was explaining that no, the pod cannot fix Windows Update. (This article is satirical fiction.)",
+  "author": "Ondřej Svoboda",
+  "datePublished": "2026-06-09",
+  "url": "https://example.org/prague-man-achieves-data-sovereignty-imm"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "SatiricalArticle",
+    titleProp: "name",
+    icon: "🃏",
+    accent: "#7c3aed",
+    fields: [
+      { prop: "name", label: "Headline", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "Summary", type: "textarea" },
+      { prop: "author", label: "Author", type: "text" },
+      { prop: "datePublished", label: "Published", type: "text" },
+      { prop: "url", label: "Read", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
