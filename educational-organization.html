@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>EducationalOrganization — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "Univerzita Karlova",
+  "image": "https://picsum.photos/seed/charles-university/600/400",
+  "description": "The oldest university in Central Europe, founded in 1348 by Holy Roman Emperor Charles IV. Spread across seventeen faculties in Prague, Hradec Králové and Plzeň — spanning medicine, law, natural sciences, humanities and theology. The historic Carolinum in Prague's Old Town has served as the university's seat since the 14th century. Over fifty thousand students enrolled; alumni include Gregor Mendel, Franz Kafka and two Nobel laureates. A founding member of the Coimbra Group and the Europaeum network.",
+  "foundingDate": "1348",
+  "address": "Ovocný trh 5, 116 36 Prague 1, Czech Republic",
+  "url": "https://example.org/charles-university"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "EducationalOrganization",
+    titleProp: "name",
+    icon: "🏫",
+    accent: "#0369a1",
+    fields: [
+      { prop: "name",        label: "Name",         type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "foundingDate",label: "Founded",      type: "text" },
+      { prop: "address",     label: "Address",      type: "text" },
+      { prop: "url",         label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
