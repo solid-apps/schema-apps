@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HomeGoodsStore — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeGoodsStore",
+  "name": "Kika — Interiér & Design, Černý Most",
+  "image": "https://picsum.photos/seed/homegoods-kika/600/400",
+  "description": "Kika is a Czech home goods and furniture chain founded in 1993 in Jindřichův Hradec, South Bohemia, and this flagship store at the Černý Most retail park on the eastern edge of Prague is its largest location — a 5,000 m² showroom spread across two floors that the company describes as a 'home inspiration centre'. The ground floor is given over to room-scale vignettes: fully dressed living rooms, bedrooms, dining rooms and home offices arranged as walk-in dioramas so customers can imagine entire spaces rather than picking individual pieces from a warehouse rack. Kika's in-house design team creates most of the upholstered furniture — sofas, armchairs and beds — at a factory in Třeboň, using certifications for FSC-sourced hardwood frames and OEKO-TEX fabrics, and the company has won multiple Czech Design Grand Prix awards for its modern reinterpretations of Central European furniture traditions: bentwood chairs inspired by Thonet but rendered in powder-coated steel, nesting tables that echo Cubist Prague geometry, and bedroom sets with subtly curved headboards that reference Czech Art Deco. Beyond furniture, the store carries a deep selection of home accessories: Czech-made crystall glass vases and decanters from the Květná glassworks in Moravia (founded 1794, one of the oldest continuously operating glassworks in Europe), hand-printed linen table runners from the Jablonec textile cooperative, ceramic tableware from the Český porcelán factory in Dubí, and candles scented with essential oils blended in Prague. The lighting department features Czech-manufactured pendants and floor lamps alongside European brands, and a dedicated section showcases original mid-century Czech furniture sourced from estate clearances and professionally restored in-house. Kika offers free interior design consultations by appointment, a room-planning service with 3D rendering, and delivers and assembles across the Czech Republic with its own fleet.",
+  "address": "Chlumecká 765/6, Černý Most, Prague 9",
+  "telephone": "+420 225 001 225",
+  "openingHours": "Mo–Sa 09:00–20:00, Su 10:00–18:00",
+  "priceRange": "CZK 149 (scented candle) – CZK 89,000 (corner sofa, premium line)",
+  "url": "https://www.kika.cz/en"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "HomeGoodsStore",
+    titleProp: "name",
+    icon: "🪑",
+    accent: "#92400e",
+    fields: [
+      { prop: "name",         label: "Store",       type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "address",      label: "Address",     type: "text" },
+      { prop: "telephone",    label: "Phone",       type: "text" },
+      { prop: "openingHours", label: "Hours",       type: "text" },
+      { prop: "priceRange",   label: "Price",       type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
