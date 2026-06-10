@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CollegeOrUniversity — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "CollegeOrUniversity",
+  "name": "České vysoké učení technické v Praze",
+  "image": "https://picsum.photos/seed/cvut-prague/600/400",
+  "description": "The oldest technical university in Central Europe, founded in 1707 by Emperor Joseph I. Known universally as ČVUT, it spans eight faculties — civil, mechanical, electrical, nuclear science, architecture, transportation, biomedical engineering and information technology — plus a satellite campus in Děčín. The modern Dejvice campus, anchored by the National Technical Library, serves over eighteen thousand students. Research strengths include robotics, aerospace engineering, cybersecurity and sustainable construction. Notable alumni include physicist Ernst Mach and dozens of Czech industrial leaders.",
+  "foundingDate": "1707",
+  "address": "Zikova 1903/4, 166 36 Prague 6, Czech Republic",
+  "url": "https://example.org/cvut-prague"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "CollegeOrUniversity",
+    titleProp: "name",
+    icon: "🎓",
+    accent: "#7c2d12",
+    fields: [
+      { prop: "name",        label: "Name",         type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "foundingDate",label: "Founded",      type: "text" },
+      { prop: "address",     label: "Address",      type: "text" },
+      { prop: "url",         label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
