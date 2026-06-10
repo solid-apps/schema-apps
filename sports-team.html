@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SportsTeam — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsTeam",
+  "name": "SK Slavia Praha",
+  "image": "https://picsum.photos/seed/slavia-praha/600/400",
+  "description": "One of the oldest and most decorated football clubs in the Czech Republic, founded in 1892 in the heart of Prague. Plays in red-and-white striped kits at the Fortuna Arena in Vršovice. Multiple Czech First League titles and domestic cups; regular participant in UEFA European competitions. Fiercely contested derby with Sparta Prague draws the city to a standstill twice a season.",
+  "sport": "Association football",
+  "foundingDate": "1892",
+  "url": "https://example.org/slavia-praha"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "SportsTeam",
+    titleProp: "name",
+    icon: "🏆",
+    accent: "#15803d",
+    fields: [
+      { prop: "name",        label: "Name",         type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "sport",       label: "Sport",        type: "text" },
+      { prop: "foundingDate",label: "Founded",      type: "text" },
+      { prop: "url",         label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
