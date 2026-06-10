@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TouristDestination — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristDestination",
+  "name": "Český Krumlov — UNESCO Old Town & Castle",
+  "image": "https://picsum.photos/seed/cesky-krumlov-destination/800/450",
+  "description": "A UNESCO-listed destination wrapped in a double meander of the Vltava: the second-largest castle complex in the country, a perfectly preserved Renaissance old town, the baroque theatre with original stage machinery, and the summer rafting run beneath the castle cliff. Best visited overnight — the day-trip crowds leave at five and the lantern-lit lanes belong to those who stay.",
+  "touristType": "Heritage, Architecture, River sports, Photography",
+  "includesAttraction": "Krumlov Castle, Baroque Theatre, Old Town Square, Cloak Bridge, Egon Schiele Art Centrum, Vltava rafting",
+  "url": "https://example.org/cesky-krumlov"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "TouristDestination",
+    titleProp: "name",
+    icon: "🧭",
+    accent: "#0ea5e9",
+    fields: [
+      { prop: "name", label: "Destination", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "touristType", label: "Best for", type: "text" },
+      { prop: "includesAttraction", label: "Highlights", type: "list" },
+      { prop: "url", label: "Plan", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
