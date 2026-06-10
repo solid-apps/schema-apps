@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DanceGroup — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "DanceGroup",
+  "name": "Balet Národního divadla — Czech National Ballet",
+  "image": "https://picsum.photos/seed/dancegroup-ndballet/600/400",
+  "description": "The Czech National Ballet (Balet Národního divadla) is the oldest continuously operating ballet company in Central Europe, founded in 1883 when the National Theatre in Prague established a permanent dance ensemble under the direction of Italian choreographer Augustin Berger. Initially modelled on the Italian ballet tradition, the company evolved through the 20th century under Czech choreographers who blended classical technique with Slavic folk elements, most notably in the landmark productions of Smetana's The Bartered Bride and Dvořák's Slavonic Dances. Today the company comprises 62 dancers from 14 countries, performing a repertory that spans the 19th-century classics (Swan Lake, The Nutcracker, Giselle) through to contemporary works by choreographers such as Jiří Kylián, John Neumeier, William Forsythe and Nacho Duato. The company performs primarily at the National Theatre's historic Neo-Renaissance auditorium on the Vltava embankment and at the State Opera (Státní opera) in Wilsonova street. Since 2022 the artistic director is Czech-Swedish choreographer Filip Barankiewicz, a former principal dancer with the Royal Swedish Ballet. The company tours internationally and has appeared at the Paris Opéra, the Kennedy Center and the Bunka Kaikan in Tokyo.",
+  "foundingDate": "1883",
+  "address": "Národní divadlo, Národní třída 2, Prague 1",
+  "url": "https://www.narodni-divadlo.cz/en/ballet"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "DanceGroup",
+    titleProp: "name",
+    icon: "🩰",
+    accent: "#db2777",
+    fields: [
+      { prop: "name",         label: "Company",     type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "foundingDate", label: "Founded",     type: "text" },
+      { prop: "address",      label: "Home Stage",  type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

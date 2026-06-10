@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TheaterGroup — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "TheaterGroup",
+  "name": "Divadlo na Vinohradech — Vinohrady Theatre Ensemble",
+  "image": "https://picsum.photos/seed/theatergroup-vinohrady/600/400",
+  "description": "Divadlo na Vinohradech (Vinohrady Theatre) is one of Prague's most respected repertory theatre companies, housed since 1907 in a magnificent Art Nouveau building on náměstí Míru (Peace Square) designed by architect Alois Čenský. The ensemble was officially founded in 1905 and opened its permanent home two years later with a production of Jaroslav Vrchlický's drama Godiva. The theatre rapidly became a flagship of Czech dramatic art, premiering works by the Čapek brothers — including Karel Čapek's R.U.R. (1921), the play that gave the world the word robot — and staging controversial productions during the Nazi occupation and Communist era that served as thinly veiled political allegories. Today the 740-seat main hall and the 180-seat studio stage host a rotating repertory of approximately 15 productions per season, ranging from Czech and European classics to contemporary drama and musical theatre. The ensemble comprises 28 actors, a resident director, two guest directors and a full production team. Notable alumni include legendary Czech actors Jaroslav Marvan, Jana Hlaváčová and Ondřej Vetchý. The building itself is a listed cultural monument, its façade crowned with allegorical sculptures of Tragedy and Comedy by Stanislav Sucharda.",
+  "foundingDate": "1905",
+  "address": "náměstí Míru 7, Vinohrady, Prague 2",
+  "url": "https://www.dnv.cz"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "TheaterGroup",
+    titleProp: "name",
+    icon: "🎭",
+    accent: "#b91c1c",
+    fields: [
+      { prop: "name",         label: "Ensemble",    type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "foundingDate", label: "Founded",     type: "text" },
+      { prop: "address",      label: "Home Stage",  type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

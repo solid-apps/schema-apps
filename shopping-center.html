@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ShoppingCenter — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ShoppingCenter",
+  "name": "Palladium Prague — The Largest Shopping Centre in the Czech Republic",
+  "image": "https://picsum.photos/seed/shopping-palladium/600/400",
+  "description": "Palladium Prague is the largest shopping centre in the Czech Republic by retail area, occupying a full city block between Náměstí Republiky and Revoluční třída in Prague 1 — directly above the Náměstí Republiky metro station (line B). The centre opened in 2007 inside the reconstructed shell of the historic Joseph Barracks (Josefská kasárna), a monumental 18th-century military building whose Neo-Classical stone façade was preserved and integrated into the modern glass-and-steel structure. Palladium houses over 200 shops on four retail floors, including major international brands (Zara, H&M, Sephora, Apple Store) alongside Czech retailers (Baťa, Datart, Alza.cz pickup point), a 16-screen Cinestar multiplex cinema, a food court with 20 outlets and a rooftop fitness centre. The complex also includes a large underground car park with 900 spaces connected directly to the Blanka tunnel complex. Footfall averages 14 million visits per year, making it the busiest shopping destination in the country. The building's courtyard, encased in a glass atrium, hosts seasonal markets, fashion shows and a popular Christmas village each December.",
+  "address": "náměstí Republiky 1, Prague 1",
+  "telephone": "+420 225 777 777",
+  "openingHours": "Mo–Sa 09:00–21:00, Su 10:00–20:00",
+  "priceRange": "Mid-range to premium",
+  "url": "https://www.palladiumpraha.cz/en"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "ShoppingCenter",
+    titleProp: "name",
+    icon: "🛍️",
+    accent: "#db2777",
+    fields: [
+      { prop: "name",         label: "Centre",      type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "address",      label: "Address",     type: "text" },
+      { prop: "telephone",    label: "Phone",       type: "text" },
+      { prop: "openingHours", label: "Hours",       type: "text" },
+      { prop: "priceRange",   label: "Price",       type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
