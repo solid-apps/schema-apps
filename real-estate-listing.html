@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RealEstateListing — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateListing",
+  "name": "Renovated 2-Bedroom Flat with Terrace, Karlín — Prague 8",
+  "image": "https://picsum.photos/seed/realestate-karlin-flat/600/400",
+  "description": "A bright, fully renovated 68 m² two-bedroom flat on the fourth floor of a refurbished 1930s Functionalist building in the heart of Karlín. Open-plan living room with a south-facing 12 m² terrace overlooking a quiet courtyard garden. Designer kitchen with Miele appliances, oak hardwood floors throughout, built-in storage in both bedrooms. One bathroom with a walk-in rain shower and underfloor heating. Building has a lift, bike room and 24-hour security. Asking price: CZK 8,950,000 (approx. EUR 358,000). Available immediately, no chain. Viewing by appointment through Svoboda & Novák Reality.",
+  "datePosted": "2025-11-15",
+  "url": "https://reality.example.cz/karlin-2bed-terrace-praha8",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Sokolovská 201",
+    "addressLocality": "Praha 8 — Karlín",
+    "postalCode": "186 00",
+    "addressCountry": "CZ"
+  }
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "RealEstateListing",
+    titleProp: "name",
+    icon: "🔑",
+    accent: "#b45309",
+    fields: [
+      { prop: "name",        label: "Title",        type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "datePosted",  label: "Date Posted",  type: "text" },
+      { prop: "address",     label: "Address",      type: "text", display: "o.streetAddress + ', ' + o.addressLocality" },
+      { prop: "url",         label: "Listing URL",  type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
