@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TechArticle — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "name": "Building a Solid Pod Data Browser with React and LDflex",
+  "image": "https://picsum.photos/seed/techarticle-solid-react/600/400",
+  "description": "A step-by-step developer tutorial that walks through building a lightweight data browser for Solid Pods using React, LDflex-for-Solid and the Solid authentication library. Covers connecting to a pod, querying RDF resources with LDflex expressions, rendering linked-data graphs as navigable component trees, and implementing real-time updates via the WebSockets subscription API. Includes a complete working example that reads a user's profile, lists container contents and displays JSON-LD documents with inline type badges. Aimed at front-end developers who want to build Solid-aware apps without wrestling with low-level SPARQL.",
+  "articleBody": "Full tutorial text available at the source URL below.",
+  "author": {
+    "@type": "Person",
+    "name": "Ondřej Zára"
+  },
+  "datePublished": "2025-09-12",
+  "dependencies": "React 18+, Node.js 20+, @inrupt/solid-client-authn-browser, ldflex-for-solid",
+  "proficiencyLevel": "Intermediate"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "TechArticle",
+    titleProp: "name",
+    icon: "🛠️",
+    accent: "#334155",
+    fields: [
+      { prop: "name",             label: "Title",           type: "text" },
+      { prop: "image",            label: "Image",           type: "image" },
+      { prop: "description",      label: "Abstract",        type: "textarea" },
+      { prop: "articleBody",      label: "Body",            type: "text" },
+      { prop: "author",           label: "Author",          type: "text", display: "o.name" },
+      { prop: "datePublished",    label: "Published",       type: "text" },
+      { prop: "dependencies",     label: "Dependencies",    type: "text" },
+      { prop: "proficiencyLevel", label: "Level",           type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
