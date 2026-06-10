@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CityHall — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "CityHall",
+  "name": "New Town Hall — Prague City Assembly Seat",
+  "image": "https://picsum.photos/seed/new-town-hall-prague-city-assembly-s/800/450",
+  "description": "The seat of Prague's city assembly on Mariánské náměstí, where the council meets, the mayor's office receives delegations, and citizens attend public hearings. The building connects to the Clementinum quarter and houses the city archive reading room. Assembly sessions are streamed and the chamber gallery is open to the public on session days with ID.",
+  "address": "Mariánské náměstí 2, 110 00 Praha 1, Czech Republic",
+  "openingHours": "Mo-Fr 08:00-18:00; assembly sessions per calendar",
+  "url": "https://example.org/new-town-hall-prague-city-assembly-s"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "CityHall",
+    titleProp: "name",
+    icon: "🏛️",
+    accent: "#475569",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "openingHours", label: "Open", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
