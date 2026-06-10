@@ -87,7 +87,11 @@
 
   // Format price/currency
   function formatPrice(val, prop) {
-    if (typeof val === "number") return { amount: val, currency: null };
+    // Bare numbers are only prices when the prop says so (numTracks,
+    // episodeNumber etc. must NOT render as "47.00")
+    if (typeof val === "number") {
+      return PRICE_PROPS.includes(prop) ? { amount: val, currency: null } : null;
+    }
     if (typeof val !== "string") return null;
     // Try to detect currency prefix/suffix: $100, €50, 100 USD, 100.00
     const m = val.match(/^([\$\u20ac\u00a3\u00a5\u20a9])\s*([\d,]+\.?\d*)$/);
