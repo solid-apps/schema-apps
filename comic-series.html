@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ComicSeries — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ComicSeries",
+  "name": "Čtyřlistek — The Beloved Czech Comic Strip (1970–1988)",
+  "image": "https://picsum.photos/seed/comicseries-ctyrlistek/600/400",
+  "description": "Čtyřlistek (Four-Leaf Clover) is a classic Czechoslovak comic series created by writer Jaroslav Němeček and illustrator Kája Saudek. Published as a standalone magazine by ČSFR publishing house from 1970 to 1988, it followed the adventures of four animal friends — the cat Fifinka, the dog Bobík, the pig Myšpulín and the hare Pinda — in gentle, humorous stories set in an idealised Czech countryside. Written for children but laced with sly adult humour, Čtyřlistek became a cultural phenomenon: at its peak it sold over 200,000 copies per issue across Czechoslovakia. Saudek's distinctive, luxuriantly detailed illustration style — influenced by American underground comix but filtered through Czech whimsy — made every panel a visual feast. The series spawned spin-offs, annuals, animated shorts and a devoted collector community that remains active today.",
+  "author": {
+    "@type": "Person",
+    "name": "Jaroslav Němeček (writer), Kája Saudek (illustrator)"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Československý spisovatel, Prague"
+  },
+  "startDate": "1970",
+  "numberOfItems": "218"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "ComicSeries",
+    titleProp: "name",
+    icon: "💥",
+    accent: "#e11d48",
+    fields: [
+      { prop: "name",          label: "Series",      type: "text" },
+      { prop: "image",         label: "Image",       type: "image" },
+      { prop: "description",   label: "Description", type: "textarea" },
+      { prop: "author",        label: "Creators",    type: "text", display: "o.name" },
+      { prop: "publisher",     label: "Publisher",   type: "text", display: "o.name" },
+      { prop: "startDate",     label: "Started",     type: "text" },
+      { prop: "numberOfItems", label: "Issues",      type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

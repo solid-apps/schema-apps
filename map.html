@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Map — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Map",
+  "name": "Pražská integrovaná doprava — Oficiální síťová mapa (PID Network Map 2025)",
+  "image": "https://picsum.photos/seed/map-pid-prague-2025/600/400",
+  "description": "The official schematic network map of Pražská integrovaná doprava (Prague Integrated Transport, PID), edition 2025. This fold-out map depicts all three Prague Metro lines (A — green, B — yellow, C — red), the entire tram network, suburban rail lines (Esko Praha) and key bus corridors across the Central Bohemian Region. Designed by the PID cartography department in the tradition of Harry Beck's schematic style, the map uses 45-degree angles and evenly spaced station markers for maximum legibility. The reverse side includes a night-tram map, a regional rail diagram and a fare-zone map. Distributed free at all Metro stations and PID information centres, and also available as a PDF download. Updated twice yearly to reflect line changes, new stations and service revisions.",
+  "mapType": "Transit map",
+  "dateModified": "2025-06-01",
+  "url": "https://pid.cz/mapy"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "Map",
+    titleProp: "name",
+    icon: "🗺️",
+    accent: "#0369a1",
+    fields: [
+      { prop: "name",         label: "Map",         type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "mapType",      label: "Type",        type: "text" },
+      { prop: "dateModified", label: "Updated",     type: "text" },
+      { prop: "url",          label: "Online",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UserReview — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "UserReview",
+  "name": "Best trdelník in Old Town — Five Stars for Perník Trdelník",
+  "image": "https://picsum.photos/seed/userreview-trdelnik/600/400",
+  "description": "A glowing five-star user review of Perník Trdelník, a traditional chimney-cake stand on Nerudova Street in Prague's Malá Strana. The reviewer, a Czech local, praises the crispy caramelised exterior, the generous cinnamon-sugar coating and the fact that the dough is rolled fresh on wooden spits in full view of customers — not reheated from frozen as at many tourist traps. The review highlights the quick service, the charming location near the John Lennon Wall and the reasonable price of CZK 70. Minor deduction for limited seating, but overall the reviewer calls it the best trdelník they have had in Prague and recommends it over the larger chains on the Old Town Square.",
+  "reviewBody": "Absolutely the best trdelník in Prague. We live in Vinohrady and make a special trip here whenever we have visitors. The dough is rolled fresh right in front of you on traditional wooden spits, not pulled from a freezer like the big stands on Old Town Square. Perfectly crispy outside, soft and warm inside, with just the right amount of cinnamon sugar. At CZK 70 it is cheaper than the tourist places too. Only downside is no seating — you eat it standing on the cobblestones, which honestly adds to the charm. Five stars, no hesitation.",
+  "author": {
+    "@type": "Person",
+    "name": "Tereza H."
+  },
+  "datePublished": "2025-09-12",
+  "itemReviewed": "Perník Trdelník, Nerudova Street, Prague Malá Strana"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "UserReview",
+    titleProp: "name",
+    icon: "⭐",
+    accent: "#d97706",
+    fields: [
+      { prop: "name",          label: "Review",      type: "text" },
+      { prop: "image",         label: "Image",       type: "image" },
+      { prop: "description",   label: "Summary",     type: "textarea" },
+      { prop: "reviewBody",    label: "Full Review", type: "textarea" },
+      { prop: "author",        label: "Author",      type: "text", display: "o.name" },
+      { prop: "datePublished", label: "Published",   type: "text" },
+      { prop: "itemReviewed",  label: "Subject",     type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CriticReview — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "CriticReview",
+  "name": "Lidové noviny Culture — Review: Karel Roden in The Tempest at Národní divadlo",
+  "image": "https://picsum.photos/seed/criticreview-tempest-nd/600/400",
+  "description": "A professional theatre review by Lidové noviny chief culture critic Pavel Tresnak of the 2025 Národní divadlo production of Shakespeare's The Tempest, directed by Michal Dočekal and starring Karel Roden as Prospero. The review praises Roden's magnetic stage presence and the production's inventive use of water effects on the revolving stage of the historic Národní divadlo auditorium. Published in the Friday culture supplement of Lidové noviny on 14 March 2025, the piece runs approximately 1,200 words and rates the production four out of five stars.",
+  "reviewBody": "Karel Roden's Prospero is a masterclass in restrained power. Where lesser actors would rage, Roden whispers — and the Národní divadlo shakes. Dočekal's staging floods the revolving stage with three centimetres of actual water for the shipwreck prologue, a coup de théâtre that drew audible gasps on opening night. The island scenes are lit by hundreds of suspended candles (LED, but convincing), creating an amber haze that makes the historic auditorium feel like the inside of a reliquary. If the second half sags slightly under the weight of too many conceptual threads — colonialism, ecological collapse, Czech historical allegory — the final reconciliation scene between Roden and Vladimír Javorský's Caliban redeems everything. A haunting evening. ****",
+  "author": {
+    "@type": "Person",
+    "name": "Pavel Tresnak"
+  },
+  "datePublished": "2025-03-14",
+  "itemReviewed": "The Tempest (Bouře), Národní divadlo Prague, directed by Michal Dočekal",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lidové noviny"
+  }
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "CriticReview",
+    titleProp: "name",
+    icon: "🎩",
+    accent: "#7c3aed",
+    fields: [
+      { prop: "name",          label: "Review",      type: "text" },
+      { prop: "image",         label: "Image",       type: "image" },
+      { prop: "description",   label: "Summary",     type: "textarea" },
+      { prop: "reviewBody",    label: "Full Review", type: "textarea" },
+      { prop: "author",        label: "Critic",      type: "text", display: "o.name" },
+      { prop: "datePublished", label: "Published",   type: "text" },
+      { prop: "itemReviewed",  label: "Subject",     type: "text" },
+      { prop: "publisher",     label: "Publication", type: "text", display: "o.name" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
