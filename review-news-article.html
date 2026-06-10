@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ReviewNewsArticle — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ReviewNewsArticle",
+  "name": "Review: 'The Last Server' at the National Theatre Is a Surveillance-Age Macbeth",
+  "image": "https://picsum.photos/seed/review-the-last-server-at-the-national-t/800/450",
+  "description": "A culture-desk review of the National Theatre's new production that recasts Macbeth as a data-centre magnate. The staging's server-rack forest and a chorus of push notifications earn four stars; the second half drags only when the metaphors multiply. Karel Roden's descent — lit by a single status LED — is called the stage image of the season.",
+  "author": "Pavel Třešňák",
+  "datePublished": "2026-06-09",
+  "url": "https://example.org/review-the-last-server-at-the-national-t",
+  "itemReviewed": "The Last Server (Národní divadlo, 2026)"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "ReviewNewsArticle",
+    titleProp: "name",
+    icon: "⭐",
+    accent: "#d97706",
+    fields: [
+      { prop: "name", label: "Headline", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "Summary", type: "textarea" },
+      { prop: "author", label: "Author", type: "text" },
+      { prop: "datePublished", label: "Published", type: "text" },
+      { prop: "url", label: "Read", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
