@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>IceCreamShop — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "IceCreamShop",
+  "name": "Créme de la Créme",
+  "image": "https://picsum.photos/seed/creme-gelato/600/400",
+  "description": "A tiny artisan gelateria on a quiet Vinohrady side street, turning out over 30 flavours of handmade gelato daily. Pistachio from Bronte, dark chocolate with single-origin Ecuadorian cacao, and a rotating seasonal fruit sorbet are the standouts. Waffle cones are baked in-house every morning; the smell carries half a block.",
+  "address": "Balbínova 18, 120 00 Prague 2, Czech Republic",
+  "telephone": "+420 222 555 777",
+  "openingHours": "Apr-Oct daily 10:00-21:00, Nov-Mar Th-Su 12:00-19:00",
+  "priceRange": "50–130 CZK",
+  "url": "https://example.org/creme-de-la-creme"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "IceCreamShop",
+    titleProp: "name",
+    icon: "🍦",
+    accent: "#ec4899",
+    fields: [
+      { prop: "name",        label: "Name",         type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "address",     label: "Address",      type: "text" },
+      { prop: "telephone",   label: "Telephone",    type: "tel" },
+      { prop: "openingHours",label: "Opening hours", type: "text" },
+      { prop: "priceRange",  label: "Price range",  type: "text" },
+      { prop: "url",         label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
