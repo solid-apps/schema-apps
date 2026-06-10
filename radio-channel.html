@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RadioChannel — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "RadioChannel",
+  "name": "Radio 1 Praha — 91.9 FM",
+  "image": "https://picsum.photos/seed/radio1-praha/800/450",
+  "description": "Prague's legendary independent station, broadcasting alternative music since 1991 — the first private station in post-revolution Czechoslovakia. Radio 1 keeps a freeform format: DJs curate their own shows spanning electronica, indie, jazz and world music, with no playlist software in sight. The evening specials have launched three decades of Czech musical subcultures.",
+  "broadcastChannelId": "91.9 FM Praha",
+  "providesBroadcastService": "Radio 1 s.r.o.",
+  "inLanguage": "cs",
+  "url": "https://example.org/radio1"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "RadioChannel",
+    titleProp: "name",
+    icon: "📻",
+    accent: "#b45309",
+    fields: [
+      { prop: "name", label: "Station", type: "text" },
+      { prop: "image", label: "Logo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "broadcastChannelId", label: "Frequency", type: "text" },
+      { prop: "providesBroadcastService", label: "Operator", type: "text" },
+      { prop: "inLanguage", label: "Language", type: "text" },
+      { prop: "url", label: "Listen", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
