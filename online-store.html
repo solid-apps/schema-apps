@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OnlineStore — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "OnlineStore",
+  "name": "Alza.cz — The Czech Republic's Largest Online Electronics Retailer",
+  "image": "https://picsum.photos/seed/onlinestore-alza/600/400",
+  "description": "Alza.cz is the dominant e-commerce platform in the Czech Republic for consumer electronics, IT hardware, toys and home appliances, commanding roughly 40% of the Czech online electronics market. Founded in 1994 by Aleš Zbořil as a small shop selling floppy disks and computer cables in the Prague district of Holešovice, Alza has grown into a publicly traded company (Prague Stock Exchange: ALZ) with annual revenues exceeding CZK 22 billion and over 4,000 employees. The platform stocks more than 150,000 products across 40 categories — from laptops and smartphones to gaming gear, smart-home devices, garden furniture and LEGO sets. Alza pioneered same-day delivery in the Czech market and now operates a network of over 400 AlzaBox pickup points, a fleet of electric delivery vans in Prague and Brno, and warehouses in Prague, Jihlava and Bratislava serving both Czech and Slovak customers. The signature green AlzaBox terminals, found in shopping centre car parks and metro station entrances, have become a ubiquitous urban fixture. The company is known for its aggressive pricing, frequent flash sales and a mascot — a green alien called Alzaman — who appears in quirky television commercials. Alza's technology stack is largely built in-house, including its warehouse robotics, fraud detection and a recommendation engine that processes over 2 million customer reviews.",
+  "url": "https://www.alza.cz/en",
+  "foundingDate": "1994",
+  "email": "info@alza.cz"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "OnlineStore",
+    titleProp: "name",
+    icon: "🛒",
+    accent: "#16a34a",
+    fields: [
+      { prop: "name",         label: "Store",       type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "url",          label: "Website",     type: "url" },
+      { prop: "foundingDate", label: "Founded",     type: "text" },
+      { prop: "email",        label: "Email",       type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
