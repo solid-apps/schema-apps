@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GatedResidenceCommunity — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "GatedResidenceCommunity",
+  "name": "Rezidence Sakura — Gated Community, Praha 5",
+  "image": "https://picsum.photos/seed/rezidence-sakura/800/450",
+  "description": "A gated residential community of nine low-rise buildings around a landscaped Japanese garden in Košíře, completed in 2019. The 214 apartments share 24-hour reception and CCTV, underground parking with EV chargers, a residents' gym and sauna, a playground shaded by the cherry trees that give the project its name, and a community room bookable for gatherings. Entry by chip, with guest access managed through the concierge app.",
+  "address": "Naskové 3, 150 00 Praha 5 - Košíře, Czech Republic",
+  "url": "https://example.org/rezidence-sakura"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "GatedResidenceCommunity",
+    titleProp: "name",
+    icon: "🏘️",
+    accent: "#64748b",
+    fields: [
+      { prop: "name", label: "Community", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

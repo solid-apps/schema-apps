@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HotelRoom — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "HotelRoom",
+  "name": "Deluxe King Room with Castle View — Hotel Paris Prague",
+  "image": "https://picsum.photos/seed/deluxe-king-room/800/450",
+  "description": "A 32 m² Art Nouveau room on the fifth floor with a king bed, marble bathroom with heated floors and rain shower, and tall windows framing Prague Castle across the rooftops. The room keeps its original 1904 stucco ceiling and parquet, updated with silent air-conditioning, a Nespresso machine, smart TV with casting, and blackout drapes. Quiet courtyard-facing option available on request.",
+  "occupancy": "2 adults + 1 child",
+  "bed": "1 King (180×200) or twin configuration",
+  "amenityFeature": "Castle view, marble bath, Nespresso, smart TV, A/C, safe",
+  "url": "https://example.org/hotel-paris-deluxe-king"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "HotelRoom",
+    titleProp: "name",
+    icon: "🛏️",
+    accent: "#0369a1",
+    fields: [
+      { prop: "name", label: "Room", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "Details", type: "textarea" },
+      { prop: "occupancy", label: "Sleeps", type: "text" },
+      { prop: "bed", label: "Bed", type: "text" },
+      { prop: "amenityFeature", label: "Amenities", type: "text" },
+      { prop: "url", label: "Book", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

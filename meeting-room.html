@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MeetingRoom — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "MeetingRoom",
+  "name": "Boardroom Bohemia — Karlín Coworking Hub",
+  "image": "https://picsum.photos/seed/boardroom-bohemia/800/450",
+  "description": "A daylight boardroom for twelve on the top floor of a converted Karlín warehouse, with a 4K display, wireless presenting, dual cameras for hybrid calls and acoustic panelling that keeps conversations crisp. Whiteboard walls run the length of the room; catering can be ordered from the ground-floor café until 16:00. Bookable by the hour through the hub's app, with member and non-member rates.",
+  "occupancy": "12 seated",
+  "amenityFeature": "4K display, hybrid video, whiteboard walls, catering, climate control",
+  "url": "https://example.org/boardroom-bohemia"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "MeetingRoom",
+    titleProp: "name",
+    icon: "🪑",
+    accent: "#475569",
+    fields: [
+      { prop: "name", label: "Room", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "Details", type: "textarea" },
+      { prop: "occupancy", label: "Capacity", type: "text" },
+      { prop: "amenityFeature", label: "Equipment", type: "text" },
+      { prop: "url", label: "Book", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

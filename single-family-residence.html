@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SingleFamilyResidence — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "SingleFamilyResidence",
+  "name": "First-Republic Villa with Garden — Praha 6, Ořechovka",
+  "image": "https://picsum.photos/seed/orechovka-villa/800/450",
+  "description": "A 1928 functionalist villa in the leafy Ořechovka quarter, sensitively renovated in 2021: five rooms plus study across three floors, original steel windows refurbished with insulated glazing, oak parquet, and a south-facing terrace stepping down to a 612 m² garden with mature fruit trees. Heat pump with underfloor heating on the ground floor, garage plus two off-street spaces, and a cellar workshop. Five minutes' walk to Ořechovka tram and the English Grammar School.",
+  "numberOfRooms": "6",
+  "floorSize": "248 m²",
+  "address": "Na Ořechovce, 162 00 Praha 6, Czech Republic",
+  "url": "https://example.org/orechovka-villa"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "SingleFamilyResidence",
+    titleProp: "name",
+    icon: "🏡",
+    accent: "#15803d",
+    fields: [
+      { prop: "name", label: "Property", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "Details", type: "textarea" },
+      { prop: "numberOfRooms", label: "Rooms", type: "text" },
+      { prop: "floorSize", label: "Floor area", type: "text" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "url", label: "Listing", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
