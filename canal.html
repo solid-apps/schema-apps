@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Canal — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Canal",
+  "name": "Schwarzenberský plavební kanál — The Schwarzenberg Logging Canal, Šumava",
+  "image": "https://picsum.photos/seed/canal-schwarzenberg/600/400",
+  "description": "The Schwarzenberský plavební kanál (Schwarzenberg Canal) is a historic logging waterway in the Šumava mountains of southern Bohemia, built between 1789 and 1822 by order of Prince Joseph II of Schwarzenberg to transport timber from the dense forests of the Šumava to the Danube and onward to Vienna. Stretching 44.5 kilometres from its source near the Bavarian border to the mouth at the Zwettelbach stream in Austria, the canal was an engineering marvel of its era — carved into granite bedrock, crossing watersheds via a stone aqueduct at Jelení vrchy and maintaining a precise gradient of just 1.5‰ to keep the timber floating without stalling. At its peak in the late 19th century, over 100,000 cubic metres of logs passed through the canal annually, floated by teams of Plavečtí (raftsmen) who lived in remote mountain huts along the route. Logging ceased in 1962 and the canal fell into disrepair, but a major restoration programme between 1998 and 2010 reopened 23 km of the channel as a heritage trail. Today visitors can walk or cycle along the towpath through pristine Šumava forest, crossing the restored aqueduct and peering into the original stone sluice gates that still bear the carved initials of the 18th-century builders.",
+  "address": "Šumava Protected Landscape Area, South Bohemia / Vysočina, Czech Republic",
+  "url": "https://www.navstivtesumavu.cz/en/schwarzenberg-canal"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "Canal",
+    titleProp: "name",
+    icon: "🚤",
+    accent: "#475569",
+    fields: [
+      { prop: "name",        label: "Canal",       type: "text" },
+      { prop: "image",       label: "Image",       type: "image" },
+      { prop: "description", label: "Description", type: "textarea" },
+      { prop: "address",     label: "Location",    type: "text" },
+      { prop: "url",         label: "Info",        type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
