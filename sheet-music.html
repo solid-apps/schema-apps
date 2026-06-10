@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SheetMusic — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "SheetMusic",
+  "name": "Antonín Dvořák — Symfonie č. 9 Z nového světa (From the New World, Full Score, Bärenreiter Edition)",
+  "image": "https://picsum.photos/seed/sheetmusic-dvorak-9/600/400",
+  "description": "The full orchestral score of Dvořák's Symphony No. 9 in E minor, Op. 95, From the New World, published by Bärenreiter-Verlag in their Dvořák Complete Edition series. This scholarly critical edition, prepared by editor Jarmil Burghauser, is based on the autograph manuscript held at the National Museum in Prague and incorporates corrections Dvořák made during rehearsals for the 1893 New York premiere. The score includes a detailed preface in German, English and Czech discussing sources, editorial decisions and performance-practice notes. Composed in 1893 while Dvořák directed the National Conservatory of Music in New York, the New World Symphony is one of the most-performed orchestral works in the international repertoire and a cornerstone of Czech musical identity. This edition is the standard reference for professional orchestras worldwide.",
+  "author": {
+    "@type": "Person",
+    "name": "Antonín Dvořák"
+  },
+  "datePublished": "1955 (Bärenreiter critical edition, reprinted 2003)",
+  "inLanguage": "German / English / Czech (preface); instrumental score",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Bärenreiter-Verlag, Kassel"
+  }
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "SheetMusic",
+    titleProp: "name",
+    icon: "🎵",
+    accent: "#0d9488",
+    fields: [
+      { prop: "name",          label: "Score",        type: "text" },
+      { prop: "image",         label: "Image",        type: "image" },
+      { prop: "description",   label: "Description",  type: "textarea" },
+      { prop: "author",        label: "Composer",     type: "text", display: "o.name" },
+      { prop: "datePublished", label: "Published",    type: "text" },
+      { prop: "inLanguage",    label: "Language",     type: "text" },
+      { prop: "publisher",     label: "Publisher",    type: "text", display: "o.name" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

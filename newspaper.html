@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Newspaper — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Newspaper",
+  "name": "Lidové noviny — The Czech Republic's Oldest Daily Newspaper",
+  "image": "https://picsum.photos/seed/newspaper-lidove-noviny/600/400",
+  "description": "Lidové noviny (The People's Newspaper) is the oldest continuously published Czech daily newspaper, founded in Brno in 1893 by the Czech intellectual elite as a platform for national cultural and political discourse. Forced underground during the Nazi occupation and again under Communist censorship, it was re-established as a samizdat publication in 1987 by a group of dissidents including Václav Havel before resuming legal publication after the Velvet Revolution in November 1989. Today Lidové noviny is published in Prague by Rheinisch-Bergische Verlagsgesellschaft (RBVG) and is known for its in-depth political reporting, cultural criticism and a robust opinion section. Its alumni include some of the most respected names in Czech journalism — Ferdinand Peroutka, Karel Čapek and in the modern era, former foreign editor Jan Bureš. The paper maintains both a weekday print edition and a popular online presence at lidovky.cz.",
+  "issn": "0862-6881",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Mafra a.s., Prague (RBVG group)"
+  },
+  "inLanguage": "Czech",
+  "foundingDate": "1893-01-01"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "Newspaper",
+    titleProp: "name",
+    icon: "🗞️",
+    accent: "#334155",
+    fields: [
+      { prop: "name",         label: "Newspaper",   type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "issn",         label: "ISSN",        type: "text" },
+      { prop: "publisher",    label: "Publisher",   type: "text", display: "o.name" },
+      { prop: "inLanguage",   label: "Language",    type: "text" },
+      { prop: "foundingDate", label: "Founded",     type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
