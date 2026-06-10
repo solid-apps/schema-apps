@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Offer — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Offer",
+  "name": "Samsung Galaxy S25 — Weekend Flash Deal",
+  "image": "https://picsum.photos/seed/galaxy-s25-deal/600/400",
+  "description": "Brand-new Samsung Galaxy S25 128 GB in Midnight Blue, unlocked, EU warranty. Datart Flora is running a forty-eight-hour flash sale — three thousand crowns off the retail price, plus a free silicone case and a pair of Galaxy Buds FE worth two thousand crowns. In-store pickup at Flora Palace or home delivery within two business days. Stock limited to the first fifty units.",
+  "price": "16990",
+  "priceCurrency": "CZK",
+  "availability": "https://schema.org/LimitedAvailability",
+  "seller": "Datart Flora, Prague",
+  "validThrough": "2026-06-14T23:59:59+02:00",
+  "url": "https://example.org/datart-galaxy-s25-flash"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Offer",
+    titleProp: "name",
+    icon: "🏷️",
+    accent: "#16a34a",
+    fields: [
+      { prop: "name",         label: "Offer Title",    type: "text" },
+      { prop: "image",        label: "Image",          type: "image" },
+      { prop: "description",  label: "Description",    type: "textarea" },
+      { prop: "price",        label: "Price",          type: "text" },
+      { prop: "priceCurrency",label: "Currency",       type: "text" },
+      { prop: "availability", label: "Availability",   type: "text" },
+      { prop: "seller",       label: "Seller",         type: "text" },
+      { prop: "validThrough", label: "Valid Until",    type: "text" },
+      { prop: "url",          label: "Deal URL",       type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
