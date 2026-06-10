@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>House — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "House",
+  "name": "Art Nouveau Villa, Vyšehrad — Prague 2",
+  "image": "https://picsum.photos/seed/house-vysehrad-villa/600/400",
+  "description": "A lovingly restored 1912 Art Nouveau villa on a tree-lined street five minutes from Vyšehrad Castle and its panoramic park. Original decorative stucco, stained-glass transoms and parquet floors have been preserved throughout, while the kitchen and three bathrooms were fully modernised in 2023. The walled garden includes a century-old linden tree, a heated stone terrace and off-street parking for two cars. Walking distance to Charles Square, the Vltava embankment and the Vyšehrad metro station.",
+  "numberOfRooms": "8",
+  "floorSize": "285 m²",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Vratislavova 38",
+    "addressLocality": "Praha 2",
+    "postalCode": "128 00",
+    "addressCountry": "CZ"
+  },
+  "url": "https://reality.example.cz/villa-vysehrad-praha2"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "House",
+    titleProp: "name",
+    icon: "🏡",
+    accent: "#15803d",
+    fields: [
+      { prop: "name",         label: "Title",        type: "text" },
+      { prop: "image",        label: "Image",        type: "image" },
+      { prop: "description",  label: "Description",  type: "textarea" },
+      { prop: "numberOfRooms",label: "Rooms",        type: "text" },
+      { prop: "floorSize",    label: "Floor Size",   type: "text" },
+      { prop: "address",      label: "Address",      type: "text", display: "o.streetAddress + ', ' + o.addressLocality" },
+      { prop: "url",          label: "Listing URL",  type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
