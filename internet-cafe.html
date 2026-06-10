@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>InternetCafe — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "InternetCafe",
+  "name": "Cyber Café Podolí",
+  "image": "https://picsum.photos/seed/internetcafe-podoli/600/400",
+  "description": "Cyber Café Podolí is one of the last surviving internet cafés in Prague — a species that was ubiquitous in the early 2000s when dial-up was expensive and flat-rate broadband was still a promise, but that has all but vanished in the age of affordable home fibre and 5G. Owner Ibrahim Diallo, a Senegalese-Czech entrepreneur who came to Prague in 2003 to study computer science at ČVUT and never left, opened the café in 2008 in a ground-floor unit of a prefabricated panelák on Podolská street, overlooking the Vltava and the Emmaus Monastery across the river. The shop has 24 workstation PCs — a mix of Dell OptiPlex minis for web browsing and document printing, and custom-built gaming rigs with RTX 4060 GPUs and 240 Hz monitors that host a loyal after-school crowd playing Counter-Strike 2, Valorant and League of Legends. Ibrahim charges by the hour with a prepaid card system: CZK 30 for basic browsing and printing, CZK 60 for gaming rigs, and a flat CZK 250 for an all-day gaming pass that is popular with university students during exam season when they need a break from the library. The café side serves Lavazza espresso, Senegalese attaya tea brewed in the traditional three-round method with gunpowder green tea, fresh mint and copious sugar, and sandwiches from a Vietnamese bakery two doors down — a culinary combination that only makes sense in Prague's Žižkov-Podolí-Karlín corridor. Cyber Café Podolí remains essential for three communities: older residents of the panelák complex who never got a home computer and come in to check email and print forms; expats and travellers who need a reliable PC for visa applications, flight check-in and document scanning; and the competitive gaming group that books the back room on Friday evenings for mini-tournaments with a modest CZK 500 prize pool funded by entry fees. The shop also offers a lifeline service: passport-style visa photos printed on the correct 35x45 mm format accepted by Czech immigration, complete with a white background screen and a mirror for last-minute grooming, all for CZK 80.",
+  "address": "Podolská 1083/6, Podolí, Prague 4",
+  "telephone": "+420 776 883 214",
+  "openingHours": "Mo–Fr 08:00–22:00, Sa–Su 10:00–22:00",
+  "priceRange": "CZK 30 (1 hour browsing) – CZK 250 (all-day gaming pass)",
+  "url": "https://www.cybercafe-podoli.cz"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "InternetCafe",
+    titleProp: "name",
+    icon: "🖱️",
+    accent: "#7c3aed",
+    fields: [
+      { prop: "name",         label: "Café",        type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "address",      label: "Address",     type: "text" },
+      { prop: "telephone",    label: "Phone",       type: "text" },
+      { prop: "openingHours", label: "Hours",       type: "text" },
+      { prop: "priceRange",   label: "Price",       type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
