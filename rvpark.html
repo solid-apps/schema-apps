@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RVPark — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "RVPark",
+  "name": "Caravan Camping Praha — Císařská louka",
+  "image": "https://picsum.photos/seed/rv-park-praha/800/450",
+  "description": "A riverside caravan and RV park on Císařská louka island in the Vltava, fifteen minutes from Prague's centre by tram and ferry. Eighty serviced pitches offer electricity, water and waste hook-ups, with a sanitary block, laundry, and a small shop stocking Czech essentials. The grassy island setting gives campers swans at breakfast and the Vyšehrad fortress lit up at night; a passenger ferry crosses to Smíchov every twenty minutes in season.",
+  "address": "Císařská louka 599, 150 00 Praha 5, Czech Republic",
+  "telephone": "+420 257 318 681",
+  "openingHours": "Reception daily 08:00-20:00 (Apr-Oct)",
+  "priceRange": "450-900 CZK per night",
+  "url": "https://example.org/caravan-camping-praha"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "RVPark",
+    titleProp: "name",
+    icon: "🚐",
+    accent: "#15803d",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "telephone", label: "Phone", type: "tel" },
+      { prop: "openingHours", label: "Reception", type: "text" },
+      { prop: "priceRange", label: "Price", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
