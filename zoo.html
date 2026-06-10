@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Zoo — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Zoo",
+  "name": "Prague Zoological Garden",
+  "image": "https://picsum.photos/seed/prague-zoo/600/400",
+  "description": "One of the world's top-rated zoos, home to over 4 700 animals across 681 species. Spread across a wooded hillside above the Vltava River, with immersive habitats including a gorilla pavilion, Indonesian jungle and a sprawling elephant valley. Renowned for its Przewalski's horse breeding programme and conservation work.",
+  "address": "U Trojského zámku 3/120, Prague 7, Czech Republic",
+  "openingHours": "Jan-Mar 09:00-17:00, Apr-Oct 09:00-18:00, Nov-Dec 09:00-16:00",
+  "url": "https://example.org/prague-zoo"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Zoo",
+    titleProp: "name",
+    icon: "🦁",
+    accent: "#ca8a04",
+    fields: [
+      { prop: "name",        label: "Name",         type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "address",     label: "Address",      type: "text" },
+      { prop: "openingHours",label: "Opening hours", type: "text" },
+      { prop: "url",         label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
