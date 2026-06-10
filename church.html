@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Church — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Church",
+  "name": "St. Vitus Cathedral",
+  "image": "https://picsum.photos/seed/st-vitus/600/400",
+  "description": "A soaring Gothic cathedral and the spiritual heart of the Czech nation, situated within Prague Castle. Founded in 1344, its twin neo-Gothic towers dominate the city skyline. Houses the tombs of Bohemian kings and Holy Roman Emperors, the ornate St. Wenceslas Chapel and the Crown Jewels of Bohemia.",
+  "address": "Pražský hrad, 119 08 Prague 1, Czech Republic",
+  "openingHours": "Mo-Sa 09:00-17:00, Su 12:00-17:00",
+  "url": "https://example.org/st-vitus-cathedral"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Church",
+    titleProp: "name",
+    icon: "⛪",
+    accent: "#6b7280",
+    fields: [
+      { prop: "name",        label: "Name",         type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "address",     label: "Address",      type: "text" },
+      { prop: "openingHours",label: "Opening hours", type: "text" },
+      { prop: "url",         label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
