@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TrainStation — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "TrainStation",
+  "name": "Praha hl.n. (Prague Main Station)",
+  "image": "https://picsum.photos/seed/prague-hl-n/600/400",
+  "description": "The largest and busiest railway station in the Czech Republic, handling over 130 000 passengers daily. A stunning art-nouveau main hall built in 1909 sits alongside the modernised underground concourse. Serves as the hub for domestic rail services and international routes to Berlin, Vienna, Budapest and Warsaw.",
+  "address": "Wilsonova 300/8, 120 00 Prague 2, Czech Republic",
+  "url": "https://example.org/prague-main-station"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "TrainStation",
+    titleProp: "name",
+    icon: "🚉",
+    accent: "#4b5563",
+    fields: [
+      { prop: "name",        label: "Name",        type: "text" },
+      { prop: "image",       label: "Image",       type: "image" },
+      { prop: "description", label: "Description", type: "textarea" },
+      { prop: "address",     label: "Address",     type: "text" },
+      { prop: "url",         label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
