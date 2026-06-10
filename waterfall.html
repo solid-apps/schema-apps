@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Waterfall — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Waterfall",
+  "name": "Plitvice Falls",
+  "image": "https://picsum.photos/seed/plitvice-falls/600/400",
+  "description": "A chain of sixteen terraced lakes linked by countless waterfalls in the heart of Plitvice Lakes National Park, a UNESCO World Heritage Site. Crystalline turquoise water cascades over travertine barriers into pools surrounded by dense beech and fir forest. Wooden boardwalks wind right along the water's edge through the mist.",
+  "address": "Plitvička Jezera, 53231, Croatia",
+  "url": "https://example.org/plitvice-falls"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Waterfall",
+    titleProp: "name",
+    icon: "💧",
+    accent: "#06b6d4",
+    fields: [
+      { prop: "name",        label: "Name",        type: "text" },
+      { prop: "image",       label: "Image",       type: "image" },
+      { prop: "description", label: "Description", type: "textarea" },
+      { prop: "address",     label: "Address",     type: "text" },
+      { prop: "url",         label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
