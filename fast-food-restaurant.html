@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FastFoodRestaurant — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "FastFoodRestaurant",
+  "name": "Bejby Burger",
+  "image": "https://picsum.photos/seed/bejby-burger/600/400",
+  "description": "A beloved Prague smash-burger joint turning out patties pressed thin on a ripping-hot griddle, crowned with melted cheddar, pickles and a tangy house sauce on toasted brioche buns. The menu is short and focused: double cheeseburger, loaded fries and a lemonade that cuts through the richness. Order at the counter, grab a stool, eat fast, leave happy.",
+  "servesCuisine": "American",
+  "address": "Koubkova 11, 120 00 Prague 2, Czech Republic",
+  "telephone": "+420 601 234 567",
+  "openingHours": "Mo-Su 11:00-22:00",
+  "priceRange": "150–300 CZK",
+  "url": "https://example.org/bejby-burger"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "FastFoodRestaurant",
+    titleProp: "name",
+    icon: "🍔",
+    accent: "#ef4444",
+    fields: [
+      { prop: "name",         label: "Name",          type: "text" },
+      { prop: "image",        label: "Image",         type: "image" },
+      { prop: "description",  label: "Description",   type: "textarea" },
+      { prop: "servesCuisine",label: "Cuisine",       type: "text" },
+      { prop: "address",      label: "Address",       type: "text" },
+      { prop: "telephone",    label: "Telephone",     type: "tel" },
+      { prop: "openingHours", label: "Opening hours",  type: "text" },
+      { prop: "priceRange",   label: "Price range",   type: "text" },
+      { prop: "url",          label: "Website",       type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
