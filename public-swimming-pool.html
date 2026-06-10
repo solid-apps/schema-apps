@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PublicSwimmingPool — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "PublicSwimmingPool",
+  "name": "Aquacentrum Letňany — Prague's Modern Family Water Centre",
+  "image": "https://picsum.photos/seed/pool-letnany/600/400",
+  "description": "Aquacentrum Letňany is a modern municipal swimming and wellness complex in the Letňany district of Prague 9, opened in 2010 as part of a major urban regeneration project adjacent to the Letňany metro station (line C). The centrepiece is a 50-metre Olympic-standard pool with 8 lanes, movable floor allowing depth adjustment from 0.3 m to 2.0 m, and a state-of-the-art water purification system using UV and ozone instead of heavy chlorine — a rare feature in Czech public pools that makes it popular with families and sensitive swimmers. The complex also includes a 25 m teaching pool, a children's splash pool with a mini water slide, a 72-metre thrill slide, a wild river channel, three saunas (Finnish, steam and infrared) and an outdoor sun terrace. The pool hall is flooded with natural light through a glass roof and floor-to-ceiling south-facing windows. Capacity: 800 visitors. The facility is operated by the Prague 9 municipal sports department and offers discounted rates for children, seniors and holders of the Prague Visitor Pass. Swim lessons for children from age 4 run year-round.",
+  "address": "Tupolevova 725, Letňany, Prague 9",
+  "telephone": "+420 283 090 555",
+  "openingHours": "Mo 06:30–08:00 (adult lane swim), 09:00–21:00 (public); Tu–Fr 06:30–08:00 (adult lane swim), 10:00–21:00 (public); Sa–Su 10:00–20:00",
+  "priceRange": "Adults CZK 130 / 90 min; Children (6–15) CZK 70; Under 6 free",
+  "url": "https://www.aquacentrumletnany.cz"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "PublicSwimmingPool",
+    titleProp: "name",
+    icon: "🏊",
+    accent: "#0ea5e9",
+    fields: [
+      { prop: "name",         label: "Pool",        type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "address",      label: "Address",     type: "text" },
+      { prop: "telephone",    label: "Phone",       type: "text" },
+      { prop: "openingHours", label: "Hours",       type: "text" },
+      { prop: "priceRange",   label: "Price",       type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

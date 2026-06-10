@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HealthClub — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "HealthClub",
+  "name": "World Class Prague — Anděl City Wellness & Fitness",
+  "image": "https://picsum.photos/seed/healthclub-andel/600/400",
+  "description": "World Class Prague at Anděl City is a premium fitness and wellness club occupying two floors of the Anděl City complex in Prague 5, directly above the Anděl metro junction (lines B and trams 6, 9, 10, 16, 19). The 2,200 m² facility is the flagship Czech location of the Scandinavian World Class chain and features a Technogym-equipped cardio zone with 40 stations overlooking the Vltava through floor-to-ceiling windows, a free-weights area with Olympic lifting platforms, a functional training zone with TRX and kettlebells, two group exercise studios (Les Mills classes, yoga, pilates, spinning) and a dedicated stretching and recovery area with foam rollers and massage guns. The wellness floor includes a Finnish sauna, bio sauna, steam room, cold plunge pool, relaxation lounge with herbal teas and a private treatment room for sports massage. The club employs 12 certified personal trainers offering 1-on-1 and small-group programmes. Memberships include unlimited access to all group classes, towel service and locker room with rainfall showers. Open 363 days a year (closed 24–25 Dec). Popular with the Smíchov office crowd for pre-work and lunchtime sessions.",
+  "address": "2nd Floor, Anděl City, Radlická 3185, Smíchov, Prague 5",
+  "telephone": "+420 251 510 620",
+  "openingHours": "Mo–Fr 06:00–22:00, Sa 08:00–20:00, Su 09:00–18:00",
+  "priceRange": "From CZK 2,490/month (12-month commitment); day pass CZK 450",
+  "url": "https://www.worldclass.cz/en/clubs/andel"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "HealthClub",
+    titleProp: "name",
+    icon: "🧘",
+    accent: "#0d9488",
+    fields: [
+      { prop: "name",         label: "Club",        type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "address",      label: "Address",     type: "text" },
+      { prop: "telephone",    label: "Phone",       type: "text" },
+      { prop: "openingHours", label: "Hours",       type: "text" },
+      { prop: "priceRange",   label: "Price",       type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
