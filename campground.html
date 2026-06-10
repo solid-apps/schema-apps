@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Campground — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Campground",
+  "name": "Autokemp Slápka",
+  "image": "https://picsum.photos/seed/kemp-slápka/600/400",
+  "description": "A family-run campsite on the wooded southern shore of Slapy reservoir, forty kilometres south of Prague. Pitch your tent among tall pines with a view of the water, or book one of the fully equipped wooden chalets with private bathrooms and kitchenettes. The site offers a pebble beach, a boat-rental dock, volleyball court and a small restaurant grilling fresh trout. On summer weekends the campfire circle fills with guitar music and the smell of marshmallows. Dark skies make it a favourite spot for stargazing after the generator quiets down at eleven.",
+  "address": "Slapy nad Sázavou 68, 262 03 Slapy, Czech Republic",
+  "telephone": "+420 318 599 123",
+  "priceRange": "€€",
+  "checkinTime": "14:00",
+  "checkoutTime": "10:00",
+  "url": "https://example.org/autokemp-slapka"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Campground",
+    titleProp: "name",
+    icon: "🏕️",
+    accent: "#15803d",
+    fields: [
+      { prop: "name",        label: "Name",          type: "text" },
+      { prop: "image",       label: "Image",         type: "image" },
+      { prop: "description", label: "Description",   type: "textarea" },
+      { prop: "address",     label: "Address",       type: "text" },
+      { prop: "telephone",   label: "Phone",         type: "text" },
+      { prop: "priceRange",  label: "Price Range",   type: "text" },
+      { prop: "checkinTime", label: "Check-in",      type: "text" },
+      { prop: "checkoutTime",label: "Check-out",     type: "text" },
+      { prop: "url",         label: "Website",       type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
