@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PetStore — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "PetStore",
+  "name": "Zoopraha",
+  "image": "https://picsum.photos/seed/zoopraha-pets/600/400",
+  "description": "A well-stocked neighbourhood pet shop in Smíchov with a focus on natural and grain-free nutrition. Carries premium dog and cat food brands, handmade leather collars, interactive toys and a wall of aquarium supplies. The resident shop cats supervise from the top shelves. Friendly advice on nutrition, behaviour and local vet recommendations always free.",
+  "address": "Štefánikova 25, 150 00 Prague 5, Czech Republic",
+  "telephone": "+420 257 312 456",
+  "openingHours": "Mo-Fr 09:00-19:00, Sa 09:00-15:00",
+  "priceRange": "50–2 500 CZK",
+  "url": "https://example.org/zoopraha"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "PetStore",
+    titleProp: "name",
+    icon: "🐾",
+    accent: "#65a30d",
+    fields: [
+      { prop: "name",        label: "Name",         type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "address",     label: "Address",      type: "text" },
+      { prop: "telephone",   label: "Telephone",    type: "tel" },
+      { prop: "openingHours",label: "Opening hours", type: "text" },
+      { prop: "priceRange",  label: "Price range",  type: "text" },
+      { prop: "url",         label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
