@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VisualArtsEvent — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "VisualArtsEvent",
+  "name": "Open Studio Weekend: Meet the Artists",
+  "image": "https://picsum.photos/seed/visual-arts/600/400",
+  "description": "Over 40 local artists open their studios to the public for a weekend of painting, sculpture, printmaking and mixed-media demonstrations. Browse original works, chat with the creators and purchase art directly from the studio.",
+  "startDate": "2026-09-12T10:00:00+02:00",
+  "endDate": "2026-09-13T18:00:00+02:00",
+  "location": "Karlín Arts Quarter, Prague",
+  "organizer": "Prague Open Studios",
+  "url": "https://example.org/open-studio"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "VisualArtsEvent",
+    titleProp: "name",
+    icon: "🎨",
+    accent: "#6366f1",
+    fields: [
+      { prop: "name",        label: "Event name",  type: "text" },
+      { prop: "image",       label: "Image",       type: "image" },
+      { prop: "description", label: "Description", type: "textarea" },
+      { prop: "startDate",   label: "Start date",  type: "text" },
+      { prop: "endDate",     label: "End date",    type: "text" },
+      { prop: "location",    label: "Location",    type: "text" },
+      { prop: "organizer",   label: "Organizer",   type: "text" },
+      { prop: "url",         label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
