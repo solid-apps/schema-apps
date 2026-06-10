@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Game — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Game",
+  "name": "Through the Ages: A New Story of Civilization",
+  "image": "https://picsum.photos/seed/game-through-the-ages/600/400",
+  "description": "A deeply strategic civilisation-building board game redesigned by its original Czech creator. Players guide their nation from antiquity to the modern age, developing technologies, constructing wonders, recruiting leaders, and growing military might. Unlike most civilisation games there is no map — the action unfolds entirely through card drafting, resource management and a clever strength-track system that makes military tension ever-present without requiring combat every turn. Winner of the 2015 Kennerspiel des Jahres recommendation list and consistently ranked in the BoardGameGeek top ten. A single game typically lasts two to three hours and rewards repeated play.",
+  "numberOfPlayers": "2–4",
+  "author": {
+    "@type": "Person",
+    "name": "Vlaada Chvátil"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "CGE — Czech Games Edition"
+  }
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Game",
+    titleProp: "name",
+    icon: "🎲",
+    accent: "#ca8a04",
+    fields: [
+      { prop: "name",           label: "Title",          type: "text" },
+      { prop: "image",          label: "Image",          type: "image" },
+      { prop: "description",    label: "Description",    type: "textarea" },
+      { prop: "numberOfPlayers",label: "Players",        type: "text" },
+      { prop: "author",         label: "Designer",       type: "text", display: "o.name" },
+      { prop: "publisher",      label: "Publisher",      type: "text", display: "o.name" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
