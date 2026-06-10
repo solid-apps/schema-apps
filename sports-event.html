@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SportsEvent — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsEvent",
+  "name": "2026 FIFA World Cup Final",
+  "image": "https://picsum.photos/seed/fifa-world-cup-final-2026/800/450",
+  "description": "The culmination of the expanded 48-team FIFA World Cup, hosted across the United States, Canada, and Mexico. After a month of knockout drama, two nations meet under the lights of MetLife Stadium in New Jersey for the most-watched single sporting event on Earth. Over one billion viewers expected worldwide.",
+  "startDate": "2026-07-19T15:00-04:00",
+  "endDate": "2026-07-19T18:00-04:00",
+  "location": "MetLife Stadium, East Rutherford, New Jersey",
+  "organizer": "FIFA",
+  "url": "https://www.fifa.com/fifaplus/en/tournaments/mens/worldcup/2026"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "SportsEvent",
+    titleProp: "name",
+    icon: "⚽",
+    accent: "#16a34a",
+    fields: [
+      { prop: "name",        label: "Event",       type: "text" },
+      { prop: "image",       label: "Banner",      type: "image" },
+      { prop: "description", label: "About",       type: "textarea" },
+      { prop: "startDate",   label: "Start",       type: "text" },
+      { prop: "endDate",     label: "End",         type: "text" },
+      { prop: "location",    label: "Venue",       type: "text" },
+      { prop: "organizer",   label: "Organizer",   type: "text" },
+      { prop: "url",         label: "Tickets",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
