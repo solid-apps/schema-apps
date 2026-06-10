@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AudioObject — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "AudioObject",
+  "name": "Smetana — Vltava (Moldau), live from the 2025 Prague Spring Festival",
+  "image": "https://picsum.photos/seed/audioobject-prague-spring/600/400",
+  "description": "A live concert recording of Bedřich Smetana's symphonic poem Vltava, performed by the Czech Philharmonic under the baton of chief conductor Petr Popelka at the Smetana Hall of the Municipal House, Prague, on 12 May 2025 — the opening night of the Prague Spring International Music Festival. The recording captures the sold-out hall's warm acoustics and the audience's sustained ovation after the final bars. Mastered from the Czech Radio stereo mix at 96 kHz / 24-bit, then encoded to FLAC for archival distribution. The piece traces the river Vltava from its two small springs through the Bohemian countryside, past a village wedding, the dance of water nymphs, the St John's Rapids and into Prague, where it majestically vanishes in the distance.",
+  "contentUrl": "https://audio.example.com/smetana-vltava-2025-prague-spring.flac",
+  "duration": "PT12M47S",
+  "encodingFormat": "audio/flac",
+  "creator": {
+    "@type": "Organization",
+    "name": "Czech Philharmonic"
+  }
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "AudioObject",
+    titleProp: "name",
+    icon: "🔊",
+    accent: "#9333ea",
+    fields: [
+      { prop: "name",           label: "Title",           type: "text" },
+      { prop: "image",          label: "Image",           type: "image" },
+      { prop: "description",    label: "Description",     type: "textarea" },
+      { prop: "contentUrl",     label: "Audio URL",       type: "url" },
+      { prop: "duration",       label: "Duration",        type: "text" },
+      { prop: "encodingFormat", label: "Format",          type: "text" },
+      { prop: "creator",        label: "Creator",         type: "text", display: "o.name" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
