@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Resort — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Resort",
+  "name": "AquaPalace Praha",
+  "image": "https://picsum.photos/seed/aquapalace/600/400",
+  "description": "The largest spa and wellness resort in Central Europe, set among the rolling hills of Čestlice just south of Prague. Three interconnected hotels — Palace, Wellness and Aqua — surround a vast thermal water world with eleven pools, a salt cave, Finnish saunas, a tropical palm court and a 250-metre outdoor lazy river. The resort's medical spa offers balneology treatments using local mineral water, while the golf simulator, bowling alley and five restaurants keep non-spa guests entertained. Weekend packages with unlimited aqua-park access are a favourite getaway for Czech families year-round.",
+  "address": "Pražská 137, 251 01 Čestlice, Czech Republic",
+  "telephone": "+420 272 119 111",
+  "priceRange": "€€€",
+  "checkinTime": "15:00",
+  "checkoutTime": "11:00",
+  "url": "https://example.org/aquapalace-praha"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Resort",
+    titleProp: "name",
+    icon: "🌴",
+    accent: "#0ea5e9",
+    fields: [
+      { prop: "name",        label: "Name",          type: "text" },
+      { prop: "image",       label: "Image",         type: "image" },
+      { prop: "description", label: "Description",   type: "textarea" },
+      { prop: "address",     label: "Address",       type: "text" },
+      { prop: "telephone",   label: "Phone",         type: "text" },
+      { prop: "priceRange",  label: "Price Range",   type: "text" },
+      { prop: "checkinTime", label: "Check-in",      type: "text" },
+      { prop: "checkoutTime",label: "Check-out",     type: "text" },
+      { prop: "url",         label: "Website",       type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
