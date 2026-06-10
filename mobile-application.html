@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MobileApplication — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "PodPal — Your Solid Pod on Mobile",
+  "image": "https://picsum.photos/seed/podpal-solid-mobile/800/450",
+  "description": "A native mobile client for managing your Solid Pod from your phone. Browse files, grant and revoke app permissions, edit your profile, and share resources — all with biometric authentication and end-to-end encryption for local caching. Built on the Solid HTTP/LDP specification with full Web Access Control support.",
+  "applicationCategory": "Productivity",
+  "operatingSystem": "iOS 17+, Android 14+",
+  "author": "PodPal GmbH",
+  "version": "3.2.1",
+  "fileSize": "24 MB",
+  "url": "https://podpal.app"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "MobileApplication",
+    titleProp: "name",
+    icon: "📱",
+    accent: "#06b6d4",
+    fields: [
+      { prop: "name",               label: "App Name",     type: "text" },
+      { prop: "image",              label: "Icon",         type: "image" },
+      { prop: "description",        label: "About",        type: "textarea" },
+      { prop: "applicationCategory",label: "Category",     type: "text" },
+      { prop: "operatingSystem",    label: "OS",           type: "text" },
+      { prop: "author",             label: "Developer",    type: "text" },
+      { prop: "version",            label: "Version",      type: "text" },
+      { prop: "fileSize",           label: "Size",         type: "text" },
+      { prop: "url",                label: "Download",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
