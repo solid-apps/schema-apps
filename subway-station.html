@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SubwayStation — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "SubwayStation",
+  "name": "Staroměstská — Prague Metro Line A, Old Town Station",
+  "image": "https://picsum.photos/seed/subway-staromestska/600/400",
+  "description": "Staroměstská is a station on Line A (green) of the Prague Metro, located beneath Kaprova Street in the heart of Prague's Old Town (Staré Město). Opened on 12 August 1978 as part of the inaugural segment of Line A between Dejvická and Flora, the station was designed by architect Anna Hübschmannová and features distinctive ochre-and-cream aluminium wall panels with geometric relief patterns characteristic of 1970s Czech brutalist metro design. The station sits 30 metres below street level and is accessed by a long escalator tunnel lined with ceramic tiles. Exits lead directly to the Old Town Square (Staroměstské náměstí), the Jewish Quarter (Josefov) and the Vltava embankment at the Mánes Bridge. With over 40,000 passengers per day, Staroměstská is one of the busiest stations on Line A and a primary entry point for tourists visiting the Astronomical Clock and the Charles Bridge.",
+  "address": "Kaprova 1, Staré Město, Prague 1",
+  "openingHours": "Open during Metro operating hours (approx. 05:00–00:00 daily)",
+  "url": "https://www.dpp.cz/en/prague-metro"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "SubwayStation",
+    titleProp: "name",
+    icon: "🚇",
+    accent: "#4b5563",
+    fields: [
+      { prop: "name",         label: "Station",     type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "address",      label: "Address",     type: "text" },
+      { prop: "openingHours", label: "Hours",       type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

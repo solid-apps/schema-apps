@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Recommendation — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Recommendation",
+  "name": "Must-Visit: The National Technical Museum, Prague — A Hidden Gem for Engineers and Families",
+  "image": "https://picsum.photos/seed/recommendation-ntm-prague/600/400",
+  "description": "A personal recommendation of the National Technical Museum (Národní technické muzeum) in Prague from a Czech technology enthusiast. Located in a striking Functionalist building on Letná hill overlooking the Vltava, the museum houses one of Central Europe's finest collections of historic automobiles, aircraft, railway locomotives, astronomical instruments and industrial machinery. The reviewer highlights the beautifully restored 1930s railway hall, the interactive astronomy exhibit with original Copernican-era instruments, and the underground mining exhibit where visitors walk through a reconstructed mine shaft. Particularly recommended for families with children aged 6–14 and for anyone interested in the history of Czech engineering, from Škoda automobiles to Czech-made semi-conductors.",
+  "reviewBody": "If you only visit one museum in Prague beyond the obvious art galleries, make it the National Technical Museum on Letná. The building itself is a masterpiece of 1930s Functionalist architecture, with a soaring railway hall that houses full-size steam locomotives under a vaulted glass ceiling. The transport collection alone — vintage Tatras, Škodas, motorcycles and a complete Czech Airlines Savoia-Marchetti biplane — is worth the trip. But the real surprise is the basement: a full-scale reconstructed mine shaft with authentic mining equipment that you can walk through. My nine-year-old was absolutely captivated. Allow at least three hours. The museum cafe on the ground floor does excellent coffee and smažený sýr. Admission CZK 220 adults, CZK 120 children. Closed Mondays.",
+  "author": {
+    "@type": "Person",
+    "name": "Ondřej Král"
+  },
+  "itemReviewed": "Národní technické muzeum, Letná, Prague 6",
+  "category": "Museum"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "Recommendation",
+    titleProp: "name",
+    icon: "👍",
+    accent: "#16a34a",
+    fields: [
+      { prop: "name",         label: "Recommendation", type: "text" },
+      { prop: "image",        label: "Image",          type: "image" },
+      { prop: "description",  label: "Summary",        type: "textarea" },
+      { prop: "reviewBody",   label: "Full Write-Up",  type: "textarea" },
+      { prop: "author",       label: "By",             type: "text", display: "o.name" },
+      { prop: "itemReviewed", label: "Subject",        type: "text" },
+      { prop: "category",     label: "Category",       type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
