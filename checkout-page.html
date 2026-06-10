@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CheckoutPage — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "CheckoutPage",
+  "name": "Checkout — Knihkupectví Kosmas",
+  "image": "https://picsum.photos/seed/checkout-knihkupectv-kosmas/800/450",
+  "description": "The checkout page of the Kosmas online bookshop: order summary with three titles, delivery selector (Zásilkovna pickup points, courier, or store collection in two hours), payment via card, bank button or vouchers, and a gift-wrap option with a handwritten-note field. Shows VAT breakdown, loyalty points to be earned, and the 30-day return policy link before the pay button.",
+  "url": "https://example.org/checkout-knihkupectv-kosmas",
+  "dateModified": "2026-06-08"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "CheckoutPage",
+    titleProp: "name",
+    icon: "🛒",
+    accent: "#16a34a",
+    fields: [
+      { prop: "name", label: "Title", type: "text" },
+      { prop: "image", label: "Preview", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "url", label: "URL", type: "url" },
+      { prop: "dateModified", label: "Updated", type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
