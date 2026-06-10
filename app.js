@@ -123,6 +123,12 @@
     const prop = f.prop;
     const ftype = f.type;
 
+    // Nested objects (e.g. author: {"@type":"Person","name":…}) render by
+    // their name — never "[object Object]"
+    if (val && typeof val === "object" && !Array.isArray(val)) {
+      val = val.name || val["@id"] || JSON.stringify(val);
+    }
+
     // Image fields
     if (ftype === "image" || IMAGE_PROPS.includes(prop) || isImageUrl(val)) {
       const img = document.createElement("img");
@@ -158,7 +164,8 @@
       if (items.length > 1) {
         const ul = document.createElement("ul"); ul.className = "rich-list";
         items.forEach((item) => {
-          const li = document.createElement("li"); li.textContent = item.trim();
+          if (item && typeof item === "object") item = item.name || item["@id"] || JSON.stringify(item);
+          const li = document.createElement("li"); li.textContent = String(item).trim();
           ul.appendChild(li);
         });
         v.appendChild(ul);
