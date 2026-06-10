@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bridge — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Bridge",
+  "name": "Charles Bridge",
+  "image": "https://picsum.photos/seed/charles-bridge/600/400",
+  "description": "A Gothic stone arch bridge crossing the Vltava river, commissioned in 1357 by Emperor Charles IV and completed in the early 15th century. Lined with 30 baroque statues of saints and flanked by towers at both ends, it is Prague's most iconic landmark and a pedestrian-only promenade thronged from dawn to dusk.",
+  "address": "Charles Bridge, 110 00 Prague 1, Czech Republic",
+  "url": "https://example.org/charles-bridge"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Bridge",
+    titleProp: "name",
+    icon: "🌉",
+    accent: "#b45309",
+    fields: [
+      { prop: "name",        label: "Name",        type: "text" },
+      { prop: "image",       label: "Image",       type: "image" },
+      { prop: "description", label: "Description", type: "textarea" },
+      { prop: "address",     label: "Address",     type: "text" },
+      { prop: "url",         label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
