@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DiscussionForumPosting — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "DiscussionForumPosting",
+  "name": "Best quiet cafés in Prague for remote work?",
+  "image": "https://picsum.photos/seed/forum-prague-cafes/600/400",
+  "description": "A popular thread on a Prague expats forum asking for recommendations on quiet cafés with reliable Wi-Fi, power outlets and good coffee — ideal for remote workers and digital nomads. The discussion drew dozens of replies from locals and expats sharing their favourite hidden-gem spots across Vinohrady, Karlín, Žižkov and Smíchov.",
+  "articleBody": "Hey everyone, I've been working from home for three years and I need a change of scenery. Looking for cafés in Prague where I can actually focus — good Wi-Fi is a must, power outlets near the table, and ideally not deafeningly loud. I'm based in Vinohrady but happy to travel anywhere central. Bonus points for oat milk and no minimum-stay policy. What are your go-to spots?",
+  "author": {
+    "@type": "Person",
+    "name": "MarkétaH"
+  },
+  "datePublished": "2025-11-03T09:22:00+01:00",
+  "commentCount": "47",
+  "url": "https://forum.pragueexpats.cz/t/best-quiet-cafes-prague-remote-work/12849"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "DiscussionForumPosting",
+    titleProp: "name",
+    icon: "🗨️",
+    accent: "#f97316",
+    fields: [
+      { prop: "name",          label: "Title",          type: "text" },
+      { prop: "image",         label: "Image",          type: "image" },
+      { prop: "description",   label: "Description",    type: "textarea" },
+      { prop: "articleBody",   label: "Post Body",      type: "textarea" },
+      { prop: "author",        label: "Author",         type: "text", display: "o.name" },
+      { prop: "datePublished", label: "Published",      type: "text" },
+      { prop: "commentCount",  label: "Comments",       type: "text" },
+      { prop: "url",           label: "Thread URL",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
