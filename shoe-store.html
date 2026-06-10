@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ShoeStore — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ShoeStore",
+  "name": "Baťa — Flagship Store, Wenceslas Square",
+  "image": "https://picsum.photos/seed/shoestore-bata/600/400",
+  "description": "Baťa is the world's largest family-owned shoe retailer, founded in 1894 by Tomáš Baťa in the Moravian town of Zlín, and this flagship store on the lower end of Václavské náměstí (Wenceslas Square) has been a Prague landmark since it opened its doors in 1929. The elegant Functionalist building at number 6 was designed by Baťa's in-house architect Vladimír Karfík and features the company's signature ribbon windows, a glass staircase and three full floors of retail space selling over 5,000 styles at any given time. Tomáš Baťa revolutionised the global footwear industry by introducing vertical integration — his Zlín factories turned rubber plantations into finished shoes in a single supply chain — and by pioneering the concept of affordable, well-designed shoes for ordinary working people. After Baťa's death in a plane crash in 1932, the company was run by his half-brother Jan Antonín Baťa and later by his son Thomas J. Bata, who built the brand into a global empire with operations in over 70 countries. Today the Prague flagship carries the full range: classic Czech-made leather shoes alongside international brands, athletic footwear, children's school shoes, handbags and accessories. The ground floor features a dedicated comfort-fit section with professional foot-measurement service, and the basement houses a repair workshop where cobblers resole shoes using the same Goodyear welt technique the company introduced to Central Europe in the 1930s.",
+  "address": "Václavské náměstí 6, Nové Město, Prague 1",
+  "telephone": "+420 221 112 006",
+  "openingHours": "Mo–Sa 09:00–20:00, Su 10:00–18:00",
+  "priceRange": "CZK 899 (canvas sneakers) – CZK 6,500 (Goodyear-welted leather)",
+  "url": "https://www.bata.cz"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "ShoeStore",
+    titleProp: "name",
+    icon: "👟",
+    accent: "#dc2626",
+    fields: [
+      { prop: "name",         label: "Store",       type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "address",      label: "Address",     type: "text" },
+      { prop: "telephone",    label: "Phone",       type: "text" },
+      { prop: "openingHours", label: "Hours",       type: "text" },
+      { prop: "priceRange",   label: "Price",       type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
