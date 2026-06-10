@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RadioStation — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "RadioStation",
+  "name": "Radiožurnál",
+  "image": "https://picsum.photos/seed/radiozurnal/600/400",
+  "description": "The flagship news and current-affairs station of Czech Radio, broadcasting on FM 96.6 MHz in Prague and nationwide since 1923 — making it one of the oldest continuously operating radio stations in Europe. Mixes rolling news bulletins, live political debates, traffic updates and cultural magazines with curated music programming. During major events — elections, floods, the pandemic — Radiožurnál became the most-trusted real-time information source in the country, regularly reaching over two million daily listeners.",
+  "foundingDate": "1923",
+  "address": "Vinohradská 12, 120 99 Prague 2, Czech Republic",
+  "url": "https://example.org/radiozurnal"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "RadioStation",
+    titleProp: "name",
+    icon: "📻",
+    accent: "#b45309",
+    fields: [
+      { prop: "name",        label: "Name",         type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "foundingDate",label: "Founded",      type: "text" },
+      { prop: "address",     label: "Address",      type: "text" },
+      { prop: "url",         label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
