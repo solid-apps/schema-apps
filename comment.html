@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Comment — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Comment",
+  "name": "Reply: Best quiet cafés in Prague for remote work?",
+  "image": "https://picsum.photos/seed/comment-cafe-reply/600/400",
+  "description": "A highly upvoted reply to a Prague expats forum thread about quiet cafés for remote working. The commenter recommends EMA Espresso Bar near Jiřího z Poděbrad and Café Tvaroh in Karlín, with notes on outlet availability and noise levels during weekday mornings.",
+  "text": "Two spots that tick every box: EMA Espresso Bar on Vinohradská just off Jiřího z Poděbrad — fast Wi-Fi, outlets at every table, oat milk on tap, and it's basically silent before 11 on weekdays. Second: Café Tvaroh on Křižíkova in Karlín — bigger tables, same quiet vibe, and their cheesecake is dangerous. Both close around 19:00 so it's daytime-only, but for focus hours they're unbeatable. Avoid anything near Náměstí Míru after 10:00, the tourist crowd kills the WiFi.",
+  "author": {
+    "@type": "Person",
+    "name": "Pavel D."
+  },
+  "dateCreated": "2025-11-03T10:47:00+01:00",
+  "upvoteCount": "83"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Comment",
+    titleProp: "name",
+    icon: "💭",
+    accent: "#6b7280",
+    fields: [
+      { prop: "name",        label: "Title",          type: "text" },
+      { prop: "image",       label: "Image",          type: "image" },
+      { prop: "description", label: "Description",    type: "textarea" },
+      { prop: "text",        label: "Comment Text",   type: "textarea" },
+      { prop: "author",      label: "Author",         type: "text", display: "o.name" },
+      { prop: "dateCreated", label: "Date",           type: "text" },
+      { prop: "upvoteCount", label: "Upvotes",        type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
