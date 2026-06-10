@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MobilePhoneStore — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "MobilePhoneStore",
+  "name": "Mobilní dům — Pařížská",
+  "image": "https://picsum.photos/seed/mobile-parizska/600/400",
+  "description": "Mobilní dům occupies a prime corner spot on Pařížská street in the heart of Prague's Jewish Quarter, a location that has made it the city's most visible independent mobile phone shop since it opened in 2001 — back when Nokia ruled the world and the Motorola StarTAC was still a status symbol. Founded by former Czech Telecom engineer Pavel Dvořák, the shop started as a tiny counter selling prepaid SIM cards and car kits in a neighbourhood better known for art galleries and kosher bakeries, but Dvořák saw that Pařížská's tourist foot traffic and affluent Old Town residents would sustain a premium phone boutique. Two decades on, Mobilní dům is an authorised reseller for Apple, Samsung, Google Pixel and Xiaomi, and it carries the full range of Czech-market handsets from Nokia (HMD), Motorola, Sony Xperia and the Czech-friendly Chinese brands Realme and Poco. The shop is known in Prague's tech community for three things: its repair workshop in the basement, staffed by Apple-certified and Samsung-certified technicians who can replace a cracked iPhone display or a swollen Galaxy battery in under 45 minutes while you browse; its handset recycling programme, which buys back used phones, refurbishes them, and sells them with a six-month warranty at prices that undercut the second-hand market on Aukro; and its SIM-free pricing policy — every phone is available unlocked at list price with no contract捆绑, a rarity in a market where the three major Czech operators (O2, T-Mobile, Vodafone) push subsidised contracts hard. The shop also stocks a curated wall of accessories: Apple and Samsung official cases, Spigen and UAG rugged shells, Anker power banks, wireless charging pads, Bluetooth earbuds from Jabra and Sony, and Czech-made PZO screen protectors manufactured in a factory outside Plzeň. Mobilní dům is the kind of shop where the staff will honestly tell you not to buy the most expensive phone if a mid-range model does everything you need — a refreshing contrast to the commission-driven operators' stores on Wenceslas Square.",
+  "address": "Pařížská 130/25, Josefov, Prague 1",
+  "telephone": "+420 224 818 009",
+  "openingHours": "Mo–Sa 10:00–20:00, Su 11:00–18:00",
+  "priceRange": "CZK 2,990 (entry-level smartphone) – CZK 42,990 (iPhone 16 Pro Max, SIM-free)",
+  "url": "https://www.mobilnidum.cz/en"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "MobilePhoneStore",
+    titleProp: "name",
+    icon: "📱",
+    accent: "#0284c7",
+    fields: [
+      { prop: "name",         label: "Store",       type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "address",      label: "Address",     type: "text" },
+      { prop: "telephone",    label: "Phone",       type: "text" },
+      { prop: "openingHours", label: "Hours",       type: "text" },
+      { prop: "priceRange",   label: "Price",       type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
