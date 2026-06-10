@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LiquorStore — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "LiquorStore",
+  "name": "Nápoje Kmuník — Fine Spirits & Czech Liqueurs since 1921",
+  "image": "https://picsum.photos/seed/liquor-kmunik/600/400",
+  "description": "Nápoje Kmuník is a family-owned speciality liquor shop on the ground floor of an Art Nouveau residential building on Vinohradská třída, a short walk from Náměstí Míru in Prague 2. Founded in 1921 by Antonín Kmuník as a small shop selling homemade fruit brandies and herbal liqueurs, the store has passed through four generations and today stocks over 2,000 bottles from 30 countries — but its heart remains firmly Czech. The shelves groan with Becherovka (the Karlovy Vary herbal bitter), Fernet Stock (the bitter Czech digestif), Slivovice from Moravian family distilleries, Hruškovice (pear brandy) and the fearsome local absinthe. Imported whiskies, cognacs and rums line the back wall, but the front window is reserved for the seasonal speciality: each December, Kmuník sells hundreds of bottles of Vánoční kapr (Christmas carp) — not a fish, but a chocolate liqueur shaped like one, a beloved Czech holiday tradition. The current owner, Marek Kmuník, hosts monthly tastings in the back room where locals sample Moravian slivovice flights paired with smoked cheese and pickled herrings. Knowledgeable staff speak Czech, English and enough German to discuss Bavarian schnapps.",
+  "address": "Vinohradská 37, Vinohrady, Prague 2",
+  "telephone": "+420 222 521 448",
+  "openingHours": "Mo–Fr 09:00–19:00, Sa 09:00–15:00, Su closed",
+  "priceRange": "CZK 150 (Becherovka 0.5L) – CZK 8,500 (Macallan 18Y)",
+  "url": "https://www.napojekmunik.cz"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "LiquorStore",
+    titleProp: "name",
+    icon: "🥃",
+    accent: "#92400e",
+    fields: [
+      { prop: "name",         label: "Store",       type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "address",      label: "Address",     type: "text" },
+      { prop: "telephone",    label: "Phone",       type: "text" },
+      { prop: "openingHours", label: "Hours",       type: "text" },
+      { prop: "priceRange",   label: "Price",       type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
