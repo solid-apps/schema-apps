@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Distillery — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Distillery",
+  "name": "Stock Plzeň — Božkov Distillery",
+  "image": "https://picsum.photos/seed/distillery-bozkov/600/400",
+  "description": "Stock Plzeň, known to every Czech as Božkov, is the largest spirit producer in the Czech Republic, distilling approximately 30 million litres of spirit per year at its facility on the eastern outskirts of Plzeň (Pilsen). The company traces its origins to 1920 when Lionello Stock, an Italian-Jewish distiller from Trieste who had already founded Stock Spirits in 1884, established a Czechoslovak branch in Plzeň to produce herb and fruit liqueurs for the Central European market. The Božkov brand itself was registered in 1947 and over the following decades became synonymous with affordable, reliable spirits — particularly Božkov Speciál (a blended grain brandy), Božkov Tradiční (traditional Czech rum) and Božkov Griotte (sour cherry liqueur). After privatisation in the 1990s the company passed through several owners and is today part of Stock Spirits Group PLC, listed on the London Stock Exchange. The Plzeň distillery operates a modern continuous column still alongside four traditional copper pot stills used for small-batch premium products. Visitors can tour the production hall, watch the bottling line fill 20,000 bottles per hour, and sample the full range in the tasting room — including Fernet Stock, the bitter herbal digestif that Czechs drink as a shots-and-tonic aperitif and which accounts for roughly a quarter of all spirit sales in the country. The distillery shop sells exclusive single-cask editions available nowhere else.",
+  "address": "U Bělého Lva 10, Plzeň 3, 301 00",
+  "telephone": "+420 377 177 111",
+  "openingHours": "Production: Mo–Fr 06:00–22:00; Visitor tours: Sa 10:00, 13:00, 15:00 (Apr–Oct); Distillery shop: Mo–Fr 09:00–17:00",
+  "priceRange": "Tour CZK 250 (includes tasting); Bottles CZK 120–1,800",
+  "url": "https://www.stockplzen.cz/en"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "Distillery",
+    titleProp: "name",
+    icon: "⚗️",
+    accent: "#b45309",
+    fields: [
+      { prop: "name",         label: "Distillery",  type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "address",      label: "Address",     type: "text" },
+      { prop: "telephone",    label: "Phone",       type: "text" },
+      { prop: "openingHours", label: "Hours",       type: "text" },
+      { prop: "priceRange",   label: "Price",       type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
