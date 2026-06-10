@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TouristInformationCenter — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristInformationCenter",
+  "name": "Prague Visitor Centre — Old Town Hall",
+  "image": "https://picsum.photos/seed/prague-visitor-centre-old-town-hall/800/450",
+  "description": "The main tourist information centre of Prague City Tourism, on the ground floor of the Old Town Hall beneath the astronomical clock. Staff in eight languages handle route planning, public-transport tickets, Prague Visitor Pass sales and last-minute concert tickets; the centre also books the Old Town Hall tower ascent and the council-hall tours.",
+  "address": "Staroměstské náměstí 1, 110 00 Praha 1, Czech Republic",
+  "openingHours": "Daily 09:00-19:00",
+  "url": "https://example.org/prague-visitor-centre-old-town-hall"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "TouristInformationCenter",
+    titleProp: "name",
+    icon: "ℹ️",
+    accent: "#0d9488",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "openingHours", label: "Open", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
