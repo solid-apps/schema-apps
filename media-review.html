@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MediaReview — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "MediaReview",
+  "name": "Demagog.cz Fact-Check: Viral Video of Prague Tram Derailment (June 2025)",
+  "image": "https://picsum.photos/seed/mediareview-tram-derail/600/400",
+  "description": "A media authenticity review by the Czech fact-checking organisation Demagog.cz analysing a viral video that circulated on Facebook and Telegram in June 2025, purportedly showing a tram derailing and crashing into a building near Wenceslas Square in Prague. The 28-second clip, viewed over 2.3 million times, caused brief public panic and prompted Prague City Hall to issue a denial. Demagog.cz traced the original footage to a 2019 safety test conducted by Dopravní podnik hl. m. Prahy (Prague Public Transit) at their maintenance depot in Motol, not a public street. The building visible in the background is a decommissioned depot wall. The review rated the clip as manipulated content — the footage was genuine but deliberately recontextualised with a false caption and a recent timestamp overlay.",
+  "mediaAuthenticityCategory": "ManipulatedContent",
+  "reviewBody": "The video is authentic footage from a controlled derailment test conducted by Dopravní podnik hl. m. Prahy at the Motol depot on 14 March 2019. The test was documented by DP staff and parts of the footage were used in an internal safety presentation. The viral clip has been re-encoded with a fake date watermark (05/06/2025) and the original audio (safety officers giving instructions in Czech) has been replaced with a scream sound effect. No tram derailed on public streets in Prague in 2025. Verdict: Manipulated content — genuine footage presented with false context.",
+  "author": {
+    "@type": "Organization",
+    "name": "Demagog.cz"
+  },
+  "datePublished": "2025-06-08"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "MediaReview",
+    titleProp: "name",
+    icon: "🧐",
+    accent: "#15803d",
+    fields: [
+      { prop: "name",                      label: "Review",        type: "text" },
+      { prop: "image",                     label: "Image",         type: "image" },
+      { prop: "description",               label: "Summary",       type: "textarea" },
+      { prop: "mediaAuthenticityCategory", label: "Verdict",       type: "text" },
+      { prop: "reviewBody",                label: "Full Analysis", type: "textarea" },
+      { prop: "author",                    label: "Reviewer",      type: "text", display: "o.name" },
+      { prop: "datePublished",             label: "Published",     type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

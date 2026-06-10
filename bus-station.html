@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BusStation — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "BusStation",
+  "name": "Ústřední autobusové nádraží Florenc — Prague Main Bus Terminal",
+  "image": "https://picsum.photos/seed/busstation-florenc/600/400",
+  "description": "ÚAN Florenc (Ústřední autobusové nádraží Florenc) is the main intercity and international bus terminal of Prague, located in the Karlín district immediately adjacent to the Florenc metro station (lines B and C). Opened in 1969 and extensively renovated between 2019 and 2023, the station handles over 60,000 departures per year serving destinations across the Czech Republic (Brno, Ostrava, Plzeň, Hradec Králové) and direct international routes to Vienna, Berlin, Munich, Bratislava, Warsaw and Zurich. The modernised terminal features 32 covered boarding bays, a heated indoor waiting hall, luggage storage, food court, pharmacy and a RegioJet/FlixBus ticket office. The station is a major hub for Czech operators RegioJet and Student Agency as well as international carriers FlixBus and Eurolines. Direct pedestrian access to the Florenc metro interchange makes it the primary long-distance bus gateway to Prague.",
+  "address": "Křižíkova 148/6, Karlín, Prague 8",
+  "openingHours": "Open 24 hours (ticket offices 05:00–23:00)",
+  "url": "https://www.florenc.cz"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "BusStation",
+    titleProp: "name",
+    icon: "🚌",
+    accent: "#ca8a04",
+    fields: [
+      { prop: "name",         label: "Station",     type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "address",      label: "Address",     type: "text" },
+      { prop: "openingHours", label: "Hours",       type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

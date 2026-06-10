@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Airline — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Airline",
+  "name": "České aerolinie (Czech Airlines) — OK",
+  "image": "https://picsum.photos/seed/airline-csa-ok/600/400",
+  "description": "České aerolinie a.s. (Czech Airlines, IATA code OK) is the flag carrier of the Czech Republic and one of the world's oldest airlines still operating under its original name, having been founded on 6 October 1923 by the Czechoslovak government. Initially operating a single Slavia-branded Aero A.14 biplane on the Prague–Bratislava route, the airline grew to serve destinations across Europe, the Middle East and Asia during the Cold War era, at one point operating a fleet of Ilyushin Il-62 long-range jets to New York, Montreal and Havana. After the Velvet Revolution, Czech Airlines modernised its fleet with Airbus A310s and A320s and in 2001 became a member of the SkyTeam alliance. In 2024 the airline underwent a major restructuring, transitioning to a hybrid model under the umbrella of Smartwings Group while retaining its iconic OK code and trident-and-star livery on select routes from Václav Havel Airport Prague. The airline's technical division, ČSA Technics, maintains a reputation as one of Central Europe's leading MRO (maintenance, repair and overhaul) providers.",
+  "iataCode": "OK",
+  "url": "https://www.csa.cz",
+  "foundingDate": "1923-10-06"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "Airline",
+    titleProp: "name",
+    icon: "🛩️",
+    accent: "#0284c7",
+    fields: [
+      { prop: "name",         label: "Airline",     type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "iataCode",     label: "IATA Code",   type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+      { prop: "foundingDate", label: "Founded",     type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
