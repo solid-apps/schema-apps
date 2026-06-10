@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Chapter — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Chapter",
+  "name": "Chapter 7 — 'The Pod as Commons' from Rewiring the Web",
+  "image": "https://picsum.photos/seed/rewiring-web-ch7/800/450",
+  "description": "The pivotal chapter of Rewiring the Web, examining personal data stores through the economics of commons: who maintains shared infrastructure when storage is personal, how federation costs are shared, and what Ostrom's principles predict about pod-provider governance. Includes the case study of a municipal pod cooperative and the chapter's much-cited 'plumbing test' for decentralisation claims.",
+  "author": "Dana Říhová",
+  "isPartOf": "Rewiring the Web (Karolinum Press, 2026)",
+  "pagination": "167-198",
+  "datePublished": "2026-03-01",
+  "url": "https://example.org/rewiring-ch7"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "Chapter",
+    titleProp: "name",
+    icon: "🔖",
+    accent: "#7c2d12",
+    fields: [
+      { prop: "name", label: "Chapter", type: "text" },
+      { prop: "image", label: "Page", type: "image" },
+      { prop: "description", label: "Summary", type: "textarea" },
+      { prop: "author", label: "Author", type: "text" },
+      { prop: "isPartOf", label: "Book", type: "text" },
+      { prop: "pagination", label: "Pages", type: "text" },
+      { prop: "datePublished", label: "Published", type: "text" },
+      { prop: "url", label: "Excerpt", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Episode — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Episode",
+  "name": "Episode 12 — 'The Letter' (Tajemství rodu Házrů)",
+  "image": "https://picsum.photos/seed/hazru-ep12/800/450",
+  "description": "The season-one finale of the radio drama: Martin finally opens the iron box from the cellar and reads the 1943 letter aloud at the village church — a scene recorded live with the Moravian church acoustics that made the episode famous. The cliffhanger reveal of the second signature drew the series' largest listener response and set up season two's central question.",
+  "episodeNumber": "12",
+  "partOfSeries": "Tajemství rodu Házrů",
+  "datePublished": "2003-12-19",
+  "duration": "PT54M",
+  "url": "https://example.org/hazru-12"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "Episode",
+    titleProp: "name",
+    icon: "🎬",
+    accent: "#8b5cf6",
+    fields: [
+      { prop: "name", label: "Episode", type: "text" },
+      { prop: "image", label: "Art", type: "image" },
+      { prop: "description", label: "Synopsis", type: "textarea" },
+      { prop: "episodeNumber", label: "Episode", type: "text" },
+      { prop: "partOfSeries", label: "Series", type: "text" },
+      { prop: "datePublished", label: "Aired", type: "text" },
+      { prop: "duration", label: "Length", type: "text" },
+      { prop: "url", label: "Listen", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

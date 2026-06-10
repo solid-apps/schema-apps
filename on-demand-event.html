@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OnDemandEvent — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "OnDemandEvent",
+  "name": "Premiere On Demand — 'The Gardener's Year' Documentary",
+  "image": "https://picsum.photos/seed/gardeners-year-premiere/800/450",
+  "description": "The on-demand premiere of a feature documentary tracing a year in Prague's community gardens through the lens of Čapek's classic essays. Available from Friday 18:00 on the public broadcaster's iVysílání platform, with a 48-hour free window before joining the subscription library. Includes director's commentary track and Czech, English and German subtitles.",
+  "startDate": "2026-06-12T18:00:00",
+  "workPerformed": "The Gardener's Year (Zahradníkův rok), dir. A. Beranová",
+  "url": "https://example.org/gardeners-year"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "OnDemandEvent",
+    titleProp: "name",
+    icon: "▶️",
+    accent: "#ef4444",
+    fields: [
+      { prop: "name", label: "Premiere", type: "text" },
+      { prop: "image", label: "Poster", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "startDate", label: "Available from", type: "text" },
+      { prop: "workPerformed", label: "Work", type: "text" },
+      { prop: "url", label: "Stream", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PublicationIssue — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "PublicationIssue",
+  "name": "Vesmír 2026/6 — June Issue",
+  "image": "https://picsum.photos/seed/vesmir-june-2026/800/450",
+  "description": "The June issue of Vesmír: a cover feature on the Czech tardigrade genome project, field notes from the return of wolves to the Brdy hills, an essay on the mathematics of birdsong, and the regular night-sky column for July. Includes the summer reading supplement with twelve science books reviewed by working researchers.",
+  "issueNumber": "2026/6",
+  "datePublished": "2026-06-05",
+  "isPartOf": "Vesmír — Czech popular-science journal",
+  "url": "https://example.org/vesmir-2026-6"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "PublicationIssue",
+    titleProp: "name",
+    icon: "📖",
+    accent: "#475569",
+    fields: [
+      { prop: "name", label: "Issue", type: "text" },
+      { prop: "image", label: "Cover", type: "image" },
+      { prop: "description", label: "Contents", type: "textarea" },
+      { prop: "issueNumber", label: "Issue", type: "text" },
+      { prop: "datePublished", label: "Published", type: "text" },
+      { prop: "isPartOf", label: "Journal", type: "text" },
+      { prop: "url", label: "Read", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
