@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Menu — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Menu",
+  "name": "La Degustation Bohême Bourgeoise — Tasting Menu",
+  "image": "https://picsum.photos/seed/menu-la-degustation/600/400",
+  "description": "The signature seven-course tasting menu at La Degustation Bohême Bourgeoise, Old Town Prague. Chef Oldřich Sahajdák reimagines forgotten Austro-Hungarian and Bohemian recipes through a modern fine-dining lens, sourcing almost exclusively from small Czech farms and wild foragers. The menu changes with the seasons — autumn brings game, root vegetables and forest mushrooms; spring pivots to wild herbs, young garlic and river fish. Each course is paired with a selected Czech or Central European wine. A Michelin-starred experience rooted deeply in the soils and traditions of Bohemia.",
+  "hasMenuSection": "Amuse-bouche, Cold Starter, Warm Starter, Fish Course, Meat Course, Cheese Course, Dessert",
+  "provider": {
+    "@type": "Restaurant",
+    "name": "La Degustation Bohême Bourgeoise"
+  },
+  "url": "https://www.ladegustation.cz/en/menu"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Menu",
+    titleProp: "name",
+    icon: "🍽️",
+    accent: "#b45309",
+    fields: [
+      { prop: "name",           label: "Title",       type: "text" },
+      { prop: "image",          label: "Image",       type: "image" },
+      { prop: "description",    label: "Description", type: "textarea" },
+      { prop: "hasMenuSection", label: "Sections",    type: "textarea" },
+      { prop: "provider",       label: "Restaurant",  type: "text", display: "o.name" },
+      { prop: "url",            label: "Menu URL",    type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
