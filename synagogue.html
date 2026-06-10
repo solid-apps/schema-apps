@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Synagogue — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Synagogue",
+  "name": "Spanish Synagogue",
+  "image": "https://picsum.photos/seed/spanish-synagogue/600/400",
+  "description": "A stunning Moorish Revival synagogue completed in 1868 on the site of Prague's oldest Jewish prayer house. Its interior is a breathtaking panorama of gilded stucco arabesques, stained glass and polychrome geometric patterns. Today part of the Jewish Museum in Prague, hosting concerts and exhibitions on Czech Jewish history.",
+  "address": "Vězeňská 1, 110 00 Prague 1, Czech Republic",
+  "openingHours": "Nov-Mar Su-Fr 09:00-16:30, Apr-Oct Su-Fr 09:00-18:00",
+  "url": "https://example.org/spanish-synagogue"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Synagogue",
+    titleProp: "name",
+    icon: "🕍",
+    accent: "#1e40af",
+    fields: [
+      { prop: "name",        label: "Name",         type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "address",     label: "Address",      type: "text" },
+      { prop: "openingHours",label: "Opening hours", type: "text" },
+      { prop: "url",         label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
