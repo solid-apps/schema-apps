@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ConvenienceStore — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ConvenienceStore",
+  "name": "Žabka — 24/7 Neighbourhood Convenience, Vinohrady",
+  "image": "https://picsum.photos/seed/convenience-zabka/600/400",
+  "description": "Žabka (Little Frog) is the Czech Republic's most ubiquitous convenience store chain, with over 850 locations nationwide — at least one on practically every block in central Prague. This particular branch sits on the ground floor of a Vinohrady residential building on Slezská street, open 24 hours a day, 365 days a year. Žabka pioneered the modern Czech convenience format in 1993 and has since refined it to a science: a compact 60–120 m² floor plan stocking around 3,500 SKUs curated for walk-in neighbourhood traffic — fresh baked goods (rohlíky delivered daily from a local bakery), dairy, cold cuts, beer (Pilsner Urquell, Staropramen and craft cans in the chiller), wine, snacks, ready meals, toiletries, SIM cards, tobacco behind the counter and a growing range of own-brand Žabka products. Many locations now include a parcel pickup point (Zásilkovna) and a self-service coffee machine. The chain is fully owned by the German Schwarz Group (also parent of Kaufland and Lidl) and is rolling out a loyalty app and cashless checkout. This Vinohrady branch is a classic late-night lifeline for locals returning from the pub, parents needing nappies at 2 AM, and tourists who have just discovered they have no toilet paper.",
+  "address": "Slezská 1203/56, Vinohrady, Prague 2",
+  "telephone": "+420 800 100 221",
+  "openingHours": "Open 24 hours, 7 days a week",
+  "priceRange": "Convenience premium (+10–20% vs supermarket)",
+  "url": "https://www.zabka.cz"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "ConvenienceStore",
+    titleProp: "name",
+    icon: "🏪",
+    accent: "#f97316",
+    fields: [
+      { prop: "name",         label: "Store",       type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "address",      label: "Address",     type: "text" },
+      { prop: "telephone",    label: "Phone",       type: "text" },
+      { prop: "openingHours", label: "Hours",       type: "text" },
+      { prop: "priceRange",   label: "Price",       type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
