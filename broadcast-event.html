@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BroadcastEvent — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "BroadcastEvent",
+  "name": "Live Broadcast — Ice Hockey World Championship Final 2026",
+  "image": "https://picsum.photos/seed/hockey-final-broadcast/800/450",
+  "description": "The live broadcast of the 2026 IIHF World Championship final from Zürich, carried on ČT Sport with studio analysis from 19:30, multi-camera coverage including the tactical aerial view, and synchronized stream with choice of commentary or stadium sound. Peak viewership projections exceed two million — Czech hockey finals routinely become the year's most-watched broadcasts.",
+  "startDate": "2026-05-24T20:15:00",
+  "endDate": "2026-05-24T23:00:00",
+  "isLiveBroadcast": "true",
+  "workPerformed": "IIHF World Championship Final",
+  "url": "https://example.org/hockey-final"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "BroadcastEvent",
+    titleProp: "name",
+    icon: "🎥",
+    accent: "#dc2626",
+    fields: [
+      { prop: "name", label: "Broadcast", type: "text" },
+      { prop: "image", label: "Still", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "startDate", label: "Starts", type: "text" },
+      { prop: "endDate", label: "Ends", type: "text" },
+      { prop: "isLiveBroadcast", label: "Live", type: "text" },
+      { prop: "workPerformed", label: "Event", type: "text" },
+      { prop: "url", label: "Watch", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
