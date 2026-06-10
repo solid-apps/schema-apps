@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GasStation — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "GasStation",
+  "name": "EuroOil Smíchov",
+  "image": "https://picsum.photos/seed/eurooil-smichov/600/400",
+  "description": "A 24-hour fuel station just off the Barrandov bridge approach with six multi-fuel pumps (Natural 95, 98, diesel and LPG). Small convenience store stocked with Czech snacks, drinks, SIM cards and motor oil. One of the few central Prague stations with an automated car wash and a vacuum bay. Payment by card, Apple Pay or contactless at every pump.",
+  "address": "Strakonická 41, 150 00 Prague 5, Czech Republic",
+  "telephone": "+420 257 215 680",
+  "openingHours": "Mo-Su 00:00-24:00",
+  "priceRange": "32–38 CZK/l",
+  "url": "https://example.org/eurooil-smichov"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "GasStation",
+    titleProp: "name",
+    icon: "⛽",
+    accent: "#ea580c",
+    fields: [
+      { prop: "name",        label: "Name",         type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "address",     label: "Address",      type: "text" },
+      { prop: "telephone",   label: "Telephone",    type: "tel" },
+      { prop: "openingHours",label: "Opening hours", type: "text" },
+      { prop: "priceRange",  label: "Price range",  type: "text" },
+      { prop: "url",         label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
