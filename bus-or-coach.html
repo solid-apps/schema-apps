@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BusOrCoach — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "BusOrCoach",
+  "name": "Setra S 516 HD Touring Coach — RegioJet fleet",
+  "image": "https://picsum.photos/seed/setra-coach/800/450",
+  "description": "A flagship long-distance coach of the RegioJet yellow fleet, the Setra S 516 HD seats 57 passengers in leather recliners with seat-back entertainment, free Wi-Fi, 230 V sockets and a hot-drinks galley staffed by a steward. The 12.8-metre coach runs Prague-Vienna and Prague-Budapest rotations, averaging 180 000 km a year, with Euro 6 emissions and full accessibility lift at door two.",
+  "brand": "Setra",
+  "model": "S 516 HD",
+  "seatingCapacity": "57",
+  "url": "https://example.org/regiojet-setra"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "BusOrCoach",
+    titleProp: "name",
+    icon: "🚌",
+    accent: "#ca8a04",
+    fields: [
+      { prop: "name", label: "Vehicle", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "Details", type: "textarea" },
+      { prop: "brand", label: "Brand", type: "text" },
+      { prop: "model", label: "Model", type: "text" },
+      { prop: "seatingCapacity", label: "Seats", type: "text" },
+      { prop: "url", label: "Operator", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
