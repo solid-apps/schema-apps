@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Motorcycle — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Motorcycle",
+  "name": "Jawa 350 OHV Retro — 2023",
+  "image": "https://picsum.photos/seed/jawa-350/800/450",
+  "description": "The reborn Czech classic: a modern Jawa 350 OHV in cherry red with chrome mudguards, wire wheels and the unmistakable teardrop tank. The air-cooled single makes a relaxed 22 hp — enough for boulevards and B-roads — with fuel injection, disc brakes and ABS hiding beneath the 1950s silhouette. This example has 3 200 km, a documented first service, and the optional pillion rack.",
+  "brand": "Jawa",
+  "model": "350 OHV Retro",
+  "vehicleModelDate": "2023",
+  "fuelType": "Petrol",
+  "url": "https://example.org/jawa-350-retro"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "Motorcycle",
+    titleProp: "name",
+    icon: "🏍️",
+    accent: "#dc2626",
+    fields: [
+      { prop: "name", label: "Listing", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "Details", type: "textarea" },
+      { prop: "brand", label: "Brand", type: "text" },
+      { prop: "model", label: "Model", type: "text" },
+      { prop: "vehicleModelDate", label: "Year", type: "text" },
+      { prop: "fuelType", label: "Fuel", type: "text" },
+      { prop: "url", label: "Advert", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
