@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AmusementPark — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "AmusementPark",
+  "name": "Europa-Park",
+  "image": "https://picsum.photos/seed/europa-park/600/400",
+  "description": "Germany's largest theme park, set across 15 themed areas each representing a European country. Over 100 rides and shows including the legendary Silver Star megacoaster, a wooden wilderness railway and the new Volatron flying theatre. On-site hotels, a water park and seasonal events draw over six million visitors a year.",
+  "address": "Europa-Park-Straße 2, 77977 Rust, Germany",
+  "openingHours": "Apr-Nov 09:00-18:00, Dec Winter Wonderland 11:00-20:00",
+  "url": "https://example.org/europa-park"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "AmusementPark",
+    titleProp: "name",
+    icon: "🎢",
+    accent: "#e11d48",
+    fields: [
+      { prop: "name",        label: "Name",         type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "address",     label: "Address",      type: "text" },
+      { prop: "openingHours",label: "Opening hours", type: "text" },
+      { prop: "url",         label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
