@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Festival — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Festival",
+  "name": "Burning Man 2026",
+  "image": "https://picsum.photos/seed/burning-man-2026/800/450",
+  "description": "An annual gathering in the Black Rock Desert of Nevada. Tens of thousands of participants converge on a temporary metropolis — Black Rock City — dedicated to community, art, self-expression, and self-reliance. For one week, the playa becomes a canvas for massive interactive installations, mutant vehicles, theme camps, and radical participation. No spectators. No commerce. No leaving a trace. The 2026 theme: 'The Invisible Thread', exploring the unseen connections that bind us across distance, time, and digital space. It burns on Sunday.",
+  "startDate": "2026-08-30",
+  "endDate": "2026-09-07",
+  "location": "Black Rock Desert, Nevada, USA",
+  "organizer": "Burning Man Project",
+  "url": "https://burningman.org/event/"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Festival",
+    titleProp: "name",
+    icon: "🎪",
+    accent: "#eab308",
+    fields: [
+      { prop: "name",        label: "Festival",    type: "text" },
+      { prop: "image",       label: "Poster",      type: "image" },
+      { prop: "description", label: "About",       type: "textarea" },
+      { prop: "startDate",   label: "Start",       type: "text" },
+      { prop: "endDate",     label: "End",         type: "text" },
+      { prop: "location",    label: "Location",    type: "text" },
+      { prop: "organizer",   label: "Organizer",   type: "text" },
+      { prop: "url",         label: "Info",        type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
