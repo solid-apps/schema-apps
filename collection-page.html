@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CollectionPage — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Krkonoše Hiking Guides — Complete Collection",
+  "image": "https://picsum.photos/seed/krkono-e-hiking-guides-complete-collecti/800/450",
+  "description": "A collection page gathering all twenty-three hiking guides for the Krkonoše (Giant Mountains): ridge walks to Sněžka, family routes around Špindlerův Mlýn, winter snowshoe trails and hut-to-hut traverses. Each card shows distance, elevation gain, season and difficulty, filterable by region and length, with GPX downloads for every route.",
+  "url": "https://example.org/krkono-e-hiking-guides-complete-collecti",
+  "dateModified": "2026-06-08"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "CollectionPage",
+    titleProp: "name",
+    icon: "🗂️",
+    accent: "#475569",
+    fields: [
+      { prop: "name", label: "Title", type: "text" },
+      { prop: "image", label: "Preview", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "url", label: "URL", type: "url" },
+      { prop: "dateModified", label: "Updated", type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
