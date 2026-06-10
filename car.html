@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Car — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Car",
+  "name": "Škoda Octavia Combi 2.0 TDI — 2022, 48 000 km",
+  "image": "https://picsum.photos/seed/octavia-combi/800/450",
+  "description": "A one-owner Octavia Combi in Race Blue with the 2.0 TDI engine and DSG automatic, full Škoda service history and new winter tyres included. The Style trim brings the 10-inch Columbus navigation, adaptive cruise control, heated seats and a powered tailgate. Timing belt and DSG oil service completed at 45 000 km; non-smoking car, garaged, first registered June 2022, second key and Cebia certificate available.",
+  "brand": "Škoda",
+  "model": "Octavia Combi Style 2.0 TDI DSG",
+  "vehicleModelDate": "2022",
+  "fuelType": "Diesel",
+  "color": "Race Blue Metallic",
+  "url": "https://example.org/octavia-combi-2022"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "Car",
+    titleProp: "name",
+    icon: "🚗",
+    accent: "#1e40af",
+    fields: [
+      { prop: "name", label: "Listing", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "Details", type: "textarea" },
+      { prop: "brand", label: "Brand", type: "text" },
+      { prop: "model", label: "Model", type: "text" },
+      { prop: "vehicleModelDate", label: "Year", type: "text" },
+      { prop: "fuelType", label: "Fuel", type: "text" },
+      { prop: "color", label: "Colour", type: "text" },
+      { prop: "url", label: "Advert", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
