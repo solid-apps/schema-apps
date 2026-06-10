@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BuddhistTemple — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "BuddhistTemple",
+  "name": "Wat Pho (Wat Phra Chetuphon)",
+  "image": "https://picsum.photos/seed/wat-pho/800/450",
+  "description": "One of Bangkok's oldest and largest temple complexes, famed for its 46-metre gold-leafed Reclining Buddha and its collection of over a thousand Buddha images. Wat Pho is regarded as Thailand's first public university and the birthplace of traditional Thai massage, which is still taught and practised on site. The temple's 91 chedis, decorated with porcelain flowers, form one of the most photographed skylines in the old city of Rattanakosin.",
+  "address": "2 Sanam Chai Road, Phra Borom Maha Ratchawang, Bangkok 10200, Thailand",
+  "openingHours": "Daily 08:00-18:30",
+  "url": "https://example.org/wat-pho"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "BuddhistTemple",
+    titleProp: "name",
+    icon: "🛕",
+    accent: "#b45309",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "openingHours", label: "Open", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
