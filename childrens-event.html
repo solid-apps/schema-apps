@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ChildrensEvent — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ChildrensEvent",
+  "name": "Science Explorers: Build Your Own Rocket",
+  "image": "https://picsum.photos/seed/kids-science/600/400",
+  "description": "A hands-on workshop for children aged 6–12. Build and launch model rockets, learn about aerodynamics and space travel through fun experiments. All materials provided; parental accompaniment welcome.",
+  "startDate": "2026-07-20T10:00:00+02:00",
+  "endDate": "2026-07-20T13:00:00+02:00",
+  "location": "Technical Museum, Prague",
+  "organizer": "Science Explorers Club",
+  "url": "https://example.org/science-explorers"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "ChildrensEvent",
+    titleProp: "name",
+    icon: "🎈",
+    accent: "#f472b6",
+    fields: [
+      { prop: "name",        label: "Event name",  type: "text" },
+      { prop: "image",       label: "Image",       type: "image" },
+      { prop: "description", label: "Description", type: "textarea" },
+      { prop: "startDate",   label: "Start date",  type: "text" },
+      { prop: "endDate",     label: "End date",    type: "text" },
+      { prop: "location",    label: "Location",    type: "text" },
+      { prop: "organizer",   label: "Organizer",   type: "text" },
+      { prop: "url",         label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
