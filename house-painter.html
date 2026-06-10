@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HousePainter — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "HousePainter",
+  "name": "Malíři Dvořák — Painters & Decorators",
+  "image": "https://picsum.photos/seed/mal-i-dvo-k-painters-decorators/800/450",
+  "description": "A painting crew known for dust-free renovation of occupied apartments: furniture wrapped, floors boarded, and walls back to silk in two days. Specialists in the lime plasters of historic buildings and the deep colours of Czech functionalism; they publish a fixed per-room price list and photograph every finished job for the public gallery.",
+  "address": "Vršovická 38, 101 00 Praha 10",
+  "telephone": "+420 606 778 899",
+  "openingHours": "Mo-Fr 07:00-18:00, Sa by arrangement",
+  "priceRange": "3 500-6 000 CZK/room",
+  "url": "https://example.org/mal-i-dvo-k-painters-decorators"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "HousePainter",
+    titleProp: "name",
+    icon: "🖌️",
+    accent: "#e11d48",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "telephone", label: "Phone", type: "tel" },
+      { prop: "openingHours", label: "Open", type: "text" },
+      { prop: "priceRange", label: "Price", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
