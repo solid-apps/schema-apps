@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>QAPage — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "QAPage",
+  "name": "How do I set up a Solid Pod on my own server?",
+  "image": "https://picsum.photos/seed/qapage-solid-pod-setup/600/400",
+  "description": "A community Q&A page on the Solid forum where developers discuss self-hosting a Solid Pod. The original question asks for a step-by-step guide to running a Community Solid Server (CSS) or JSS pod behind a reverse proxy with TLS, including DNS configuration, persistent storage and backup strategies. Twelve answers cover Docker deployments, Nginx and Caddy proxy configs, Let's Encrypt certificate renewal, migrating data between pod implementations, and hardening the server with WAC permissions. Accepted answer by a core CSS contributor includes a ready-to-use docker-compose file and notes on resource locking for concurrent access.",
+  "mainEntity": {
+    "@type": "Question",
+    "name": "How do I set up a Solid Pod on my own server?"
+  },
+  "url": "https://forum.solidproject.org/t/solid-pod-self-hosting-guide/4827"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "QAPage",
+    titleProp: "name",
+    icon: "❓",
+    accent: "#0891b2",
+    fields: [
+      { prop: "name",        label: "Title",       type: "text" },
+      { prop: "image",       label: "Image",       type: "image" },
+      { prop: "description", label: "Description", type: "textarea" },
+      { prop: "mainEntity",  label: "Question",    type: "text", display: "o.name" },
+      { prop: "url",         label: "Page URL",    type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
