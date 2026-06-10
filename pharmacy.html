@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pharmacy — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Pharmacy",
+  "name": "Lékárna U Černého orla — I. P. Pavlova",
+  "image": "https://picsum.photos/seed/pharmacy-cerny-orl-prague/600/400",
+  "description": "Pharmacy U Černého orla sits on the ground floor of a corner building at the bustling I. P. Pavlova junction, directly opposite the metro exit. Open late every night and through the weekend, it is one of central Prague's longest-running all-hours pharmacies — a lifeline for neighbourhood residents and tourists alike. The interior preserves its original 1920s mahogany counter and stained-glass signage, now complemented by a digital prescription terminal and a self-service blood-pressure kiosk. Staff dispense both prescription and over-the-counter medicines, homoeopathic remedies, dermocosmetics and travel-health kits. Compounding of bespoke preparations is available on request with a two-day turnaround.",
+  "address": "Legerova 2180/62, 120 00 Prague 2 - Nové Město, Czech Republic",
+  "telephone": "+420 224 946 442",
+  "openingHours": "Mo-Fr 07:00-22:00; Sa 08:00-22:00; Su 09:00-22:00",
+  "priceRange": "CZK 50–800; public-insurance co-pays accepted",
+  "url": "https://www.lekarna-cerny-orl.cz"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Pharmacy",
+    titleProp: "name",
+    icon: "💊",
+    accent: "#16a34a",
+    fields: [
+      { prop: "name",        label: "Name",           type: "text" },
+      { prop: "image",       label: "Image",          type: "image" },
+      { prop: "description", label: "Description",    type: "textarea" },
+      { prop: "address",     label: "Address",        type: "text" },
+      { prop: "telephone",   label: "Phone",          type: "text" },
+      { prop: "openingHours",label: "Hours",          type: "text" },
+      { prop: "priceRange",  label: "Price Range",    type: "text" },
+      { prop: "url",         label: "Website",        type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
