@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MusicEvent — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicEvent",
+  "name": "Radiohead — OK Computer 30th Anniversary Tour",
+  "image": "https://picsum.photos/seed/radiohead-ok-computer-30/800/450",
+  "description": "To mark three decades since the album that redefined rock, Radiohead reunite for a limited run of immersive concerts performing OK Computer in its entirety — start to finish — with a visual accompaniment by Stanley Donwood. Every track, every b-side, every hidden detail rendered in light and sound. No phones. No recording. Just the music and 80,000 people who remember where they were in 1997.",
+  "startDate": "2027-06-12T19:30+01:00",
+  "endDate": "2027-06-12T23:00+01:00",
+  "location": "Glastonbury Festival, Pyramid Stage, Somerset, UK",
+  "organizer": "SJM Concerts",
+  "url": "https://www.radiohead.com/tour"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "MusicEvent",
+    titleProp: "name",
+    icon: "🎤",
+    accent: "#e11d48",
+    fields: [
+      { prop: "name",        label: "Event",       type: "text" },
+      { prop: "image",       label: "Poster",      type: "image" },
+      { prop: "description", label: "About",       type: "textarea" },
+      { prop: "startDate",   label: "Doors",       type: "text" },
+      { prop: "endDate",     label: "Curfew",      type: "text" },
+      { prop: "location",    label: "Venue",       type: "text" },
+      { prop: "organizer",   label: "Promoter",    type: "text" },
+      { prop: "url",         label: "Tickets",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
