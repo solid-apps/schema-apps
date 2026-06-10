@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ElementarySchool — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ElementarySchool",
+  "name": "Základní škola Komenského, Praha 7",
+  "image": "https://picsum.photos/seed/zs-komenskeho/800/450",
+  "description": "A public elementary school in Holešovice educating 540 pupils across grades 1–9. The school runs an extended mathematics programme from grade 6, bilingual Czech-English classes from grade 3, and a celebrated school orchestra. Its 1906 building features a modern science wing added in 2021 with chemistry and robotics labs. After-school clubs range from chess and ceramics to floorball; the dining hall offers two menu choices daily. Catchment area covers most of lower Holešovice.",
+  "foundingDate": "1906-09-01",
+  "address": "Komenského nám. 4, 170 00 Praha 7, Czech Republic",
+  "url": "https://example.org/zs-komenskeho"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "ElementarySchool",
+    titleProp: "name",
+    icon: "🎒",
+    accent: "#2563eb",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "foundingDate", label: "Founded", type: "text" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
