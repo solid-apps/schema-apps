@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MovieSeries — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "MovieSeries",
+  "name": "The Czech Fairy Tale Films — Film Series Overview",
+  "image": "https://picsum.photos/seed/movieseries-czech-fairy/600/400",
+  "description": "A celebrated tradition of live-action fairy-tale and fantasy films produced by Czechoslovak and later Czech television and film studios, spanning from the 1950s to the present day. Broadcast every Christmas and Easter on Česká televize, these films are a cultural touchstone for Czechs of all generations. Iconic entries include Tři oříšky pro Popelku (Three Wishes for Cinderella, 1973) starring Libuše Šafránková, the darkly atmospheric Císařův pekař a pekařův císař (The Emperor's Baker and the Baker's Emperor, 1951) with Jan Werich, and the beloved comedy-cooking spectacle Jak se vaří dějepis (History in the Making, 1979). Filmed at Barrandov Studios and on location in Czech castles and forests, the series defined a uniquely Czech approach to fairy-tale cinema — wry, musical and visually sumptuous.",
+  "director": {
+    "@type": "Person",
+    "name": "Various — Václav Vorlíček, Karel Zeman, Oldřich Lipský, Zdeněk Troška"
+  },
+  "productionCompany": {
+    "@type": "Organization",
+    "name": "Barrandov Studios / Česká televize"
+  },
+  "startDate": "1951"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "MovieSeries",
+    titleProp: "name",
+    icon: "🎬",
+    accent: "#f59e0b",
+    fields: [
+      { prop: "name",             label: "Series",      type: "text" },
+      { prop: "image",            label: "Image",       type: "image" },
+      { prop: "description",      label: "Description", type: "textarea" },
+      { prop: "director",         label: "Directors",   type: "text", display: "o.name" },
+      { prop: "productionCompany",label: "Studio",      type: "text", display: "o.name" },
+      { prop: "startDate",        label: "Since",       type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

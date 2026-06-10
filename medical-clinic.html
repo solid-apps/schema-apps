@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MedicalClinic — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalClinic",
+  "name": "Canadian Medical Care — Prague 4, Chodov",
+  "image": "https://picsum.photos/seed/medicalclinic-cmc-chodov/600/400",
+  "description": "Canadian Medical Care (CMC) is one of Prague's longest-established private medical clinics, serving the expatriate and Czech communities since 1994. The Chodov branch, located in the DBK Centre near the Chodov metro station (Line C), offers a full range of general-practitioner services, paediatrics, gynaecology, dermatology, orthopaedics, physiotherapy and travel medicine. The clinic employs both Czech and English-speaking physicians, many with international qualifications. CMC is popular with corporate health-insurance plans and direct-billing agreements with most major Czech and international insurers. Walk-in appointments are accepted, though booking online or by phone is recommended to avoid waiting.",
+  "medicalSpecialty": "General practice, Paediatrics, Gynaecology, Dermatology, Orthopaedics, Physiotherapy, Travel medicine",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Ledvinova 11",
+    "addressLocality": "Prague 4",
+    "postalCode": "140 00",
+    "addressCountry": "CZ"
+  },
+  "telephone": "+420 234 705 211",
+  "openingHours": "Mo-Fr 08:00-20:00, Sa 09:00-14:00",
+  "priceRange": "CZK 800–2500 per consultation (insurance direct-billing available)",
+  "url": "https://www.cmcpraha.cz/en"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "MedicalClinic",
+    titleProp: "name",
+    icon: "🏥",
+    accent: "#06b6d4",
+    fields: [
+      { prop: "name",             label: "Clinic",       type: "text" },
+      { prop: "image",            label: "Image",        type: "image" },
+      { prop: "description",      label: "Description",  type: "textarea" },
+      { prop: "medicalSpecialty", label: "Specialties",  type: "text" },
+      { prop: "address",          label: "Address",      type: "text", display: "o.streetAddress + ', ' + o.addressLocality" },
+      { prop: "telephone",        label: "Phone",        type: "text" },
+      { prop: "openingHours",     label: "Hours",        type: "text" },
+      { prop: "priceRange",       label: "Price Range",  type: "text" },
+      { prop: "url",              label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

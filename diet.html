@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Diet — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Diet",
+  "name": "Mediterranean Diet — Evidence-Based Nutritional Overview",
+  "image": "https://picsum.photos/seed/diet-mediterranean/600/400",
+  "description": "The Mediterranean diet is a dietary pattern inspired by the traditional eating habits of countries bordering the Mediterranean Sea — particularly Greece, southern Italy and Spain. It emphasises abundant plant-based foods (vegetables, fruits, whole grains, legumes, nuts and seeds), olive oil as the primary fat source, moderate consumption of fish and poultry, low intake of red meat and processed foods, and meals enjoyed in a social setting. Extensively studied since the Seven Countries Study in the 1950s, it has been associated with reduced cardiovascular mortality, improved glycaemic control and lower incidence of certain cancers. In 2010 UNESCO inscribed the Mediterranean diet on the Intangible Cultural Heritage list. This overview is for informational purposes — consult a registered dietitian before making significant dietary changes.",
+  "dietFeatures": "High in monounsaturated fats (olive oil), rich in fibre from whole grains and legumes, abundant antioxidants from fruits and vegetables, moderate wine consumption with meals, low in saturated fat, added sugars and ultra-processed foods",
+  "risks": "Potential inadequate calcium intake if dairy is minimised; possible iron-deficiency risk for women of reproductive age if red meat is severely restricted; calorie surplus if olive oil and nut portions are not moderated; social impracticality in regions with limited access to fresh Mediterranean produce",
+  "expertConsiderations": "The European Society of Cardiology and the American Heart Association both cite the Mediterranean diet as a heart-healthy eating pattern. Czech dietary guidelines increasingly align with its principles. Individualised portion guidance from a dietitian is recommended, especially for patients with diabetes, renal disease or food allergies."
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "Diet",
+    titleProp: "name",
+    icon: "🥗",
+    accent: "#65a30d",
+    fields: [
+      { prop: "name",               label: "Diet",         type: "text" },
+      { prop: "image",              label: "Image",        type: "image" },
+      { prop: "description",        label: "Description",  type: "textarea" },
+      { prop: "dietFeatures",       label: "Features",     type: "textarea" },
+      { prop: "risks",              label: "Risks",        type: "textarea" },
+      { prop: "expertConsiderations",label: "Expert Notes", type: "textarea" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
