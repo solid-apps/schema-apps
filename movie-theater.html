@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MovieTheater — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "MovieTheater",
+  "name": "Kino Světozor",
+  "image": "https://picsum.photos/seed/kino-svetozor/600/400",
+  "description": "A beloved Prague art-house cinema in the heart of the city, screening indie films, world cinema and restored classics across three intimate screens. The vaulted-baroque lobby doubles as a cocktail bar — grab a drink and discuss the film afterward. Home of the annual Febiofest preview screenings.",
+  "address": "Vodičkova 41, 110 00 Prague 1, Czech Republic",
+  "telephone": "+420 224 946 821",
+  "openingHours": "Daily 12:00-23:30",
+  "priceRange": "180–280 CZK",
+  "url": "https://example.org/kino-svetozor"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "MovieTheater",
+    titleProp: "name",
+    icon: "🍿",
+    accent: "#b91c1c",
+    fields: [
+      { prop: "name",        label: "Name",         type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "address",     label: "Address",      type: "text" },
+      { prop: "telephone",   label: "Telephone",    type: "tel" },
+      { prop: "openingHours",label: "Opening hours", type: "text" },
+      { prop: "priceRange",  label: "Price range",  type: "text" },
+      { prop: "url",         label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
