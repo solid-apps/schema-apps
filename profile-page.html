@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ProfilePage — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "name": "Tereza Malá — Writer & Decentralised Web Advocate",
+  "image": "https://picsum.photos/seed/profilepage-tereza-mala/600/400",
+  "description": "Author profile page for Tereza Malá, Prague-based technology writer, open-data researcher and co-founder of the Prague Bytes editorial collective. Her work spans semantic web standards, Solid pod architecture, Czech civic-tech case studies and long-form cultural essays on the relationship between cities and their digital infrastructures. She has contributed to W3C community groups, spoken at decentralised-web conferences across Europe and maintains a popular bilingual newsletter on data sovereignty. This profile page aggregates her published articles, speaking engagements and open-source contributions in one linked-data-ready place.",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Tereza Malá"
+  },
+  "dateCreated": "2023-03-15",
+  "url": "https://praguebytes.cz/authors/tereza-mala"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "ProfilePage",
+    titleProp: "name",
+    icon: "👤",
+    accent: "#2d6cdf",
+    fields: [
+      { prop: "name",        label: "Title",        type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "mainEntity",  label: "Person",       type: "text", display: "o.name" },
+      { prop: "dateCreated", label: "Created",      type: "text" },
+      { prop: "url",         label: "Profile URL",  type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
