@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FlightReservation — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "FlightReservation",
+  "name": "OK 534 Prague → Paris CDG — Czech Airlines",
+  "image": "https://picsum.photos/seed/flight-reservation-ok534/600/400",
+  "description": "Economy-class confirmed reservation on Czech Airlines flight OK 534 from Prague Václav Havel Airport (PRG) to Paris Charles de Gaulle (CDG). Departure 07:40, arrival 09:35 local time. Window seat 14A, Boeing 737-800. Checked baggage: one suitcase up to twenty-three kilograms. Online check-in opens thirty-six hours before departure. Terminal 2, Prague.",
+  "reservationId": "XK7MR2",
+  "reservationStatus": "https://schema.org/ReservationConfirmed",
+  "underName": "Melvin Carvalho",
+  "reservationFor": "OK 534 PRG → CDG, 12 Jul 2026 07:40",
+  "boardingGroup": "3"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "FlightReservation",
+    titleProp: "name",
+    icon: "🛫",
+    accent: "#0284c7",
+    fields: [
+      { prop: "name",            label: "Flight",           type: "text" },
+      { prop: "image",           label: "Image",            type: "image" },
+      { prop: "description",     label: "Description",      type: "textarea" },
+      { prop: "reservationId",   label: "Booking Ref",      type: "text" },
+      { prop: "reservationStatus",label: "Status",          type: "text" },
+      { prop: "underName",       label: "Passenger",        type: "text" },
+      { prop: "reservationFor",  label: "Flight Details",   type: "text" },
+      { prop: "boardingGroup",   label: "Boarding Group",   type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
