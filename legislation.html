@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Legislation — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Legislation",
+  "name": "Act No. 12/2020 Coll., on the Right to Digital Services",
+  "image": "https://picsum.photos/seed/digital-services-act-cz/800/450",
+  "description": "The Czech Act on the Right to Digital Services, which obliges public authorities to offer every service digitally and gives citizens the legal right to interact with the state online. The act established the catalogue of services, digital-first deadlines for agencies, and the foundation for the citizen digital identity used by bank ID logins today.",
+  "legislationIdentifier": "12/2020 Sb.",
+  "legislationDate": "2020-01-17",
+  "legislationType": "Act of Parliament",
+  "jurisdiction": "Czech Republic",
+  "url": "https://example.org/zakon-12-2020"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "Legislation",
+    titleProp: "name",
+    icon: "📜",
+    accent: "#334155",
+    fields: [
+      { prop: "name", label: "Law", type: "text" },
+      { prop: "image", label: "Image", type: "image" },
+      { prop: "description", label: "Summary", type: "textarea" },
+      { prop: "legislationIdentifier", label: "Number", type: "text" },
+      { prop: "legislationDate", label: "Enacted", type: "text" },
+      { prop: "legislationType", label: "Type", type: "text" },
+      { prop: "jurisdiction", label: "Jurisdiction", type: "text" },
+      { prop: "url", label: "Full text", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
