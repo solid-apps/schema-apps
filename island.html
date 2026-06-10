@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Island — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Island",
+  "name": "Kampa Island — Prague's Hidden Gem Between the Vltava and the Čertovka",
+  "image": "https://picsum.photos/seed/island-kampa/600/400",
+  "description": "Kampa is a small, picturesque island in the Vltava River in the heart of Prague, separated from the Malá Strana (Lesser Town) bank by a narrow artificial waterway called the Čertovka (Devil's Stream). Only about 600 metres long and 150 metres wide, Kampa is one of the most charming corners of Prague — a quiet enclave of cobblestone lanes, Baroque townhouses, antique gas lamps and chestnut trees just steps from the tourist throngs of Charles Bridge. The island takes its name from the Spanish word campo (field), reflecting its origins as a flat meadow where soldiers camped during the Battle of White Mountain in 1620. Today Kampa is home to the Kampa Museum of Modern Art (housed in the former Sova Mills), the famous David Černý penguin sculptures, the John Lennon Wall on its eastern edge and several excellent restaurants with riverside terraces. The Čertovka itself is spanned by the Charles Bridge on its northern end and features a picturesque water wheel at the former Grand Priory Mill. The island floods periodically when the Vltava rises — the great flood of 2002 submerged Kampa under several metres of water, but the community rebuilt and the island reopened within a year.",
+  "address": "Kampa, Malá Strana, Prague 1, Czech Republic",
+  "url": "https://www.praha.eu/jnp/en/visiting_prague/sights/kampa/index.html"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "Island",
+    titleProp: "name",
+    icon: "🏝️",
+    accent: "#0d9488",
+    fields: [
+      { prop: "name",        label: "Island",      type: "text" },
+      { prop: "image",       label: "Image",       type: "image" },
+      { prop: "description", label: "Description", type: "textarea" },
+      { prop: "address",     label: "Address",     type: "text" },
+      { prop: "url",         label: "Info",        type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

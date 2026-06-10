@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BoatTrip — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "BoatTrip",
+  "name": "Praha — Praha Vltava Evening Cruise: Charles Bridge to Vyšehrad and Back",
+  "image": "https://picsum.photos/seed/boattrip-vltava-evening/600/400",
+  "description": "A scenic two-hour evening cruise on the Vltava River operated by Praha Vltava Cruises, departing from Pier 5 at Čech Bridge (Čechův most) near the InterContinental Hotel. The boat sails south past the Parliament building, the Legií Bridge, the National Theatre and the Emmaus Monastery before turning at Vyšehrad Castle — the mythical seat of Princess Libuše who, according to legend, foresaw the glory of Prague from its cliffs. The return leg passes through the lock at Šítkovská vodárenská věž (the Renaissance water tower) and offers floodlit panoramic views of Prague Castle, St Vitus Cathedral and the Charles Bridge as the boat drifts back north. An on-board bar serves Pilsner Urquell, mulled wine in winter and warm goulash soup. Live commentary in Czech, English and German. The evening departure (20:00 in summer) is timed to catch the golden-hour light on the castle and the illumination of the Charles Bridge statues at dusk.",
+  "departureBoatTerminal": "Pier 5, Čech Bridge (Čechův most), Prague 1",
+  "arrivalBoatTerminal": "Pier 5, Čech Bridge (Čechův most), Prague 1",
+  "departureTime": "20:00",
+  "arrivalTime": "22:00",
+  "provider": {
+    "@type": "Organization",
+    "name": "Praha Vltava Cruises"
+  }
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "BoatTrip",
+    titleProp: "name",
+    icon: "⛴️",
+    accent: "#0ea5e9",
+    fields: [
+      { prop: "name",                 label: "Cruise",      type: "text" },
+      { prop: "image",                label: "Image",       type: "image" },
+      { prop: "description",          label: "Description", type: "textarea" },
+      { prop: "departureBoatTerminal",label: "Departure",   type: "text" },
+      { prop: "arrivalBoatTerminal",  label: "Arrival",     type: "text" },
+      { prop: "departureTime",        label: "Departs",     type: "text" },
+      { prop: "arrivalTime",          label: "Arrives",     type: "text" },
+      { prop: "provider",             label: "Operator",    type: "text", display: "o.name" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
