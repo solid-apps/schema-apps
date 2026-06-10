@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MusicComposition — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicComposition",
+  "name": "Vltava (The Moldau) — Bedřich Smetana, Má vlast Cycle",
+  "image": "https://picsum.photos/seed/musiccomp-vltava/600/400",
+  "description": "Vltava (known in German as Die Moldau) is the second and most famous of the six symphonic poems forming Bedřich Smetana's cycle Má vlast (My Homeland), composed between 20 November 1874 and 8 December 1874. The piece traces the course of the Vltava river from its two small springs — one warm, one cold — through the Bohemian forest, past a hunters' wedding, through the St John's Rapids, past the city of Prague and the majesty of Vyšehrad castle, before broadening as it merges with the Elbe. Smetana, by this time completely deaf, created one of the most vividly programmatic works in the orchestral repertoire. The famous main theme (in E minor) is based on a Swedish folk melody but has become inseparably associated with the Czech national identity. Vltava is performed annually as the centrepiece of the Prague Spring International Music Festival opening concert.",
+  "composer": {
+    "@type": "Person",
+    "name": "Bedřich Smetana"
+  },
+  "dateCreated": "1874-12-08",
+  "musicalKey": "E minor",
+  "inLanguage": "Instrumental (no text)"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "MusicComposition",
+    titleProp: "name",
+    icon: "🎼",
+    accent: "#10b981",
+    fields: [
+      { prop: "name",        label: "Work",        type: "text" },
+      { prop: "image",       label: "Image",       type: "image" },
+      { prop: "description", label: "Description", type: "textarea" },
+      { prop: "composer",    label: "Composer",    type: "text", display: "o.name" },
+      { prop: "dateCreated", label: "Composed",    type: "text" },
+      { prop: "musicalKey",  label: "Key",         type: "text" },
+      { prop: "inLanguage",  label: "Language",    type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

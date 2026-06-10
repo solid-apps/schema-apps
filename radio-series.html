@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RadioSeries — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "RadioSeries",
+  "name": "Tajemství rodu Házrů — Czech Radio Drama Series",
+  "image": "https://picsum.photos/seed/radioseries-hazrove/600/400",
+  "description": "Tajemství rodu Házrů (The Secret of the Házr Clan) is a popular Czech Radio (Český rozhlas) drama series first broadcast on Radiožurnál in 2003. Set in a fictional Moravian village, the series follows three generations of the Házr family as they uncover dark secrets surrounding a 19th-century land dispute, a missing gold cache and a series of mysterious deaths linked to the village church. Blending rural gothic with detective fiction, the show became a cult hit thanks to its atmospheric sound design, Moravian dialect performances and cliffhanger episode endings. Written by dramatist Zdeněk Zapletal and directed by Czech Radio veteran Markéta Jahodová, the series ran for 52 episodes across two seasons. It won the Czech Radio Prize for Best Drama in 2004 and was rebroadcast in full in 2018.",
+  "actor": {
+    "@type": "Person",
+    "name": "Jaromír Meduna, Dana Syslová, Ondřej Vetchý, Klára Issová"
+  },
+  "numberOfEpisodes": "52",
+  "startDate": "2003-01-06"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "RadioSeries",
+    titleProp: "name",
+    icon: "📻",
+    accent: "#b45309",
+    fields: [
+      { prop: "name",             label: "Series",      type: "text" },
+      { prop: "image",            label: "Image",       type: "image" },
+      { prop: "description",      label: "Description", type: "textarea" },
+      { prop: "actor",            label: "Cast",        type: "text", display: "o.name" },
+      { prop: "numberOfEpisodes", label: "Episodes",    type: "text" },
+      { prop: "startDate",        label: "First Aired", type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

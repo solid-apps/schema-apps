@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CreativeWorkSeason — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWorkSeason",
+  "name": "Arabela — Season 1 (Československá televize, 1979–1981)",
+  "image": "https://picsum.photos/seed/cws-arabela-s1/600/400",
+  "description": "The original season of Arabela, a beloved Czechoslovak fairy-tale television series directed by Václav Vorlíček. Blending the modern world of Prague with a fairy-tale realm accessed through a magic ring, the series follows the adventures of schoolteacher Petr Majer and the fairy princess Arabela as they outwit the scheming sorcerer Rumburak. Filmed on location in Prague and at Barrandov Studios, the show featured groundbreaking special effects for Czechoslovak television and a memorable soundtrack by Karel Svoboda. Broadcast in 13 episodes on Československá televize between 1979 and 1981, it became an instant classic and remains a perennial Christmas re-run favourite on Česká televize. The series starred Jana Nagyová as Arabela and Vladimír Menšík as the bumbling fairy-tale realm keeper Honza.",
+  "seasonNumber": "1",
+  "numberOfEpisodes": "13",
+  "partOfSeries": {
+    "@type": "TVSeries",
+    "name": "Arabela"
+  },
+  "startDate": "1979-12-25",
+  "endDate": "1981-05-01"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "CreativeWorkSeason",
+    titleProp: "name",
+    icon: "📅",
+    accent: "#8b5cf6",
+    fields: [
+      { prop: "name",             label: "Season",       type: "text" },
+      { prop: "image",            label: "Image",        type: "image" },
+      { prop: "description",      label: "Description",  type: "textarea" },
+      { prop: "seasonNumber",     label: "Season #",     type: "text" },
+      { prop: "numberOfEpisodes", label: "Episodes",     type: "text" },
+      { prop: "partOfSeries",     label: "Series",       type: "text", display: "o.name" },
+      { prop: "startDate",        label: "Start",        type: "text" },
+      { prop: "endDate",          label: "End",          type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
