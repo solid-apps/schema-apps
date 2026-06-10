@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BroadcastService — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "BroadcastService",
+  "name": "Český rozhlas — National Public Radio Service",
+  "image": "https://picsum.photos/seed/cesky-rozhlas/800/450",
+  "description": "The Czech national public radio broadcaster, operating four nationwide stations, regional studios in every county and a digital portfolio including the audio archive and children's network. Founded in 1923, it is the second-oldest continuously broadcasting public radio in Europe. The service runs the renowned Radioservis publishing arm and the Prague Radio Symphony Orchestra.",
+  "broadcaster": "Český rozhlas",
+  "areaServed": "Czech Republic",
+  "inLanguage": "cs",
+  "url": "https://example.org/cro"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "BroadcastService",
+    titleProp: "name",
+    icon: "📡",
+    accent: "#0284c7",
+    fields: [
+      { prop: "name", label: "Service", type: "text" },
+      { prop: "image", label: "Logo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "broadcaster", label: "Broadcaster", type: "text" },
+      { prop: "areaServed", label: "Coverage", type: "text" },
+      { prop: "inLanguage", label: "Language", type: "text" },
+      { prop: "url", label: "Site", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
