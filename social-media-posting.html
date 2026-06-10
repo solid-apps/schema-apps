@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SocialMediaPosting — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "SocialMediaPosting",
+  "name": "The view from Letná Park this evening",
+  "image": "https://picsum.photos/seed/social-letna-prague-sunset/600/400",
+  "description": "A photo post capturing a golden-hour panorama of Prague's bridges and rooftops from the Letná Park overlook, with a reflective caption about living in a city where every sunset feels like a painting.",
+  "articleBody": "Took the tram up to Letná after work and the city did that thing again — turned every roof tile into copper and laid a mirror of bridges across the Vltava. Six years in Prague and I still stop in my tracks. This city doesn't let you take it for granted. #Prague #Letná #GoldenHour",
+  "author": {
+    "@type": "Person",
+    "name": "Tereza Malá"
+  },
+  "datePublished": "2025-09-18T18:47:00+02:00",
+  "url": "https://example.social/@tereza.mala/113456789012345678"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "SocialMediaPosting",
+    titleProp: "name",
+    icon: "💬",
+    accent: "#0ea5e9",
+    fields: [
+      { prop: "name",          label: "Title",          type: "text" },
+      { prop: "image",         label: "Image",          type: "image" },
+      { prop: "description",   label: "Description",    type: "textarea" },
+      { prop: "articleBody",   label: "Post Body",      type: "textarea" },
+      { prop: "author",        label: "Author",         type: "text", display: "o.name" },
+      { prop: "datePublished", label: "Published",      type: "text" },
+      { prop: "url",           label: "Post URL",       type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
