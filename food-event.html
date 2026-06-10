@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FoodEvent — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "FoodEvent",
+  "name": "Taste of Prague — 12th Annual Food & Wine Festival",
+  "image": "https://picsum.photos/seed/taste-of-prague-2026/800/450",
+  "description": "Prague's premier culinary event returns to the gardens of Pražský hrad. Over three summer evenings, forty of the city's top restaurants and twenty Czech and Moravian winemakers come together under the castle walls. Each chef prepares a signature tasting plate — from trdelník reimagined as savoury to svíčková with wagyu — paired with small-batch vintages from the Mikulov and Velké Pavlovice regions. Live jazz, sunset views over the Vltava, and the kind ofconviviality that only happens when great food meets great wine in a fairytale setting.",
+  "startDate": "2026-06-26T17:00+02:00",
+  "endDate": "2026-06-28T23:00+02:00",
+  "location": "Royal Gardens, Prague Castle, Prague, Czech Republic",
+  "organizer": "Taste of Prague Collective",
+  "url": "https://www.tasteofprague.cz/en"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "FoodEvent",
+    titleProp: "name",
+    icon: "🍷",
+    accent: "#ea580c",
+    fields: [
+      { prop: "name",        label: "Event",       type: "text" },
+      { prop: "image",       label: "Poster",      type: "image" },
+      { prop: "description", label: "About",       type: "textarea" },
+      { prop: "startDate",   label: "Start",       type: "text" },
+      { prop: "endDate",     label: "End",         type: "text" },
+      { prop: "location",    label: "Venue",       type: "text" },
+      { prop: "organizer",   label: "Organizer",   type: "text" },
+      { prop: "url",         label: "Tickets",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
