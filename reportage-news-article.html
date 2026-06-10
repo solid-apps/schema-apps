@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ReportageNewsArticle — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ReportageNewsArticle",
+  "name": "Inside the Server Room Where Prague Keeps Its Digital Twin",
+  "image": "https://picsum.photos/seed/inside-the-server-room-where-prague-keep/800/450",
+  "description": "Reportage from the ICT operations centre beneath the New Town Hall, where the city's digital twin ingests tram positions, air-quality sensors and parking occupancy every few seconds. The piece follows the night shift through a sensor outage during a thunderstorm, and examines who gets access to the firehose — and on what terms — as the city debates opening the data as pods.",
+  "author": "Tomáš Marek",
+  "datePublished": "2026-06-09",
+  "url": "https://example.org/inside-the-server-room-where-prague-keep",
+  "dateline": "PRAGUE, June 9"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "ReportageNewsArticle",
+    titleProp: "name",
+    icon: "📰",
+    accent: "#334155",
+    fields: [
+      { prop: "name", label: "Headline", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "Summary", type: "textarea" },
+      { prop: "author", label: "Author", type: "text" },
+      { prop: "datePublished", label: "Published", type: "text" },
+      { prop: "url", label: "Read", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
