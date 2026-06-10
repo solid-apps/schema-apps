@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Airport — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Airport",
+  "name": "Václav Havel Airport Prague",
+  "image": "https://picsum.photos/seed/prg-airport/600/400",
+  "description": "The Czech Republic's busiest airport, handling over 17 million passengers a year across four terminals. Located 12 km west of Prague city centre with direct bus and future metro links. Serves as a hub for Czech Airlines and Smartwings, with routes to over 150 destinations worldwide.",
+  "iataCode": "PRG",
+  "address": "Aviatická 1017, 161 00 Prague 6, Czech Republic",
+  "url": "https://example.org/prg-airport"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Airport",
+    titleProp: "name",
+    icon: "✈️",
+    accent: "#0369a1",
+    fields: [
+      { prop: "name",        label: "Name",        type: "text" },
+      { prop: "image",       label: "Image",       type: "image" },
+      { prop: "description", label: "Description", type: "textarea" },
+      { prop: "iataCode",    label: "IATA code",   type: "text" },
+      { prop: "address",     label: "Address",     type: "text" },
+      { prop: "url",         label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
