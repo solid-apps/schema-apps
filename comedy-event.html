@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ComedyEvent — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ComedyEvent",
+  "name": "Live at the Apollo — Christmas Special 2026",
+  "image": "https://picsum.photos/seed/live-at-apollo-xmas-2026/800/450",
+  "description": "The BBC's flagship stand-up show returns for its annual festive extravaganza. Host James Acaster welcomes Sara Pascoe, Phil Wang, and a surprise guest for two hours of brand-new material recorded live at the Hammersmith Apollo. Expect surreal tangents, observational gold, and at least one joke about Brussels sprouts that goes on far too long. Dress code: Christmas jumpers encouraged.",
+  "startDate": "2026-12-18T19:30+00:00",
+  "endDate": "2026-12-18T22:00+00:00",
+  "location": "Eventim Apollo, Hammersmith, London, UK",
+  "organizer": "BBC Studios",
+  "url": "https://www.bbc.co.uk/programmes/live-at-the-apollo"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "ComedyEvent",
+    titleProp: "name",
+    icon: "😂",
+    accent: "#f97316",
+    fields: [
+      { prop: "name",        label: "Show",        type: "text" },
+      { prop: "image",       label: "Poster",      type: "image" },
+      { prop: "description", label: "About",       type: "textarea" },
+      { prop: "startDate",   label: "Doors",       type: "text" },
+      { prop: "endDate",     label: "End",         type: "text" },
+      { prop: "location",    label: "Venue",       type: "text" },
+      { prop: "organizer",   label: "Organizer",   type: "text" },
+      { prop: "url",         label: "Tickets",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
