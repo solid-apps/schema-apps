@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Report — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Report",
+  "name": "The State of Decentralised Identity 2026",
+  "image": "https://picsum.photos/seed/decentralised-identity-report/800/450",
+  "description": "An annual survey of decentralised identity infrastructure, adoption metrics, and regulatory developments across 42 countries. This year's edition focuses on the convergence of Solid Pods, did:nostr identifiers, and enterprise credential wallets.",
+  "author": "Web Foundation Research Group",
+  "datePublished": "2026-01-22",
+  "publisher": "World Wide Web Foundation",
+  "url": "https://webfoundation.org/research/decentralised-identity-2026"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Report",
+    titleProp: "name",
+    icon: "📊",
+    accent: "#0f766e",
+    fields: [
+      { prop: "name",           label: "Title",        type: "text" },
+      { prop: "image",          label: "Cover",        type: "image" },
+      { prop: "description",    label: "Summary",      type: "textarea" },
+      { prop: "author",         label: "Author",       type: "text" },
+      { prop: "datePublished",  label: "Published",    type: "text" },
+      { prop: "publisher",      label: "Publisher",    type: "text" },
+      { prop: "url",            label: "Link",         type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
