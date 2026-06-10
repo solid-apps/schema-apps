@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ticket — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Ticket",
+  "name": "Prague Spring International Music Festival — Czech Philharmonic",
+  "image": "https://picsum.photos/seed/prague-spring-ticket/600/400",
+  "description": "Admit one — stalls, row F, seat 14. The Czech Philharmonic conducted by Semyon Bychkov performs Dvořák's Symphony No. 9 'From the New World' and Rachmaninoff's Piano Concerto No. 3 with soloist Beatrice Rana. Part of the 81st Prague Spring International Music Festival at the Smetana Hall of the Municipal House, Prague. Doors open nineteen-thirty, concert begins at twenty hundred. No re-entry after the interval.",
+  "ticketNumber": "PSM-2026-G-0414",
+  "underName": "Melvin Carvalho",
+  "totalPrice": "890",
+  "priceCurrency": "CZK",
+  "dateIssued": "2026-04-15T09:30:00+02:00"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Ticket",
+    titleProp: "name",
+    icon: "🎟️",
+    accent: "#7c3aed",
+    fields: [
+      { prop: "name",          label: "Event",          type: "text" },
+      { prop: "image",         label: "Image",          type: "image" },
+      { prop: "description",   label: "Description",    type: "textarea" },
+      { prop: "ticketNumber",  label: "Ticket #",       type: "text" },
+      { prop: "underName",     label: "Attendee",       type: "text" },
+      { prop: "totalPrice",    label: "Price",          type: "text" },
+      { prop: "priceCurrency", label: "Currency",       type: "text" },
+      { prop: "dateIssued",    label: "Issued",         type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
