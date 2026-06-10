@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>WebSite — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Solid Project",
+  "image": "https://picsum.photos/seed/solid-project-website/800/450",
+  "description": "The official home of the Solid ecosystem. Solid is a set of open specifications that let people store their data in personal online data stores (Pods), control who can access it, and choose the apps that work with it. Built on web standards — HTTP, RDF, WebID, and Web Access Control — Solid restores user agency over personal data without sacrificing interoperability.",
+  "url": "https://solidproject.org",
+  "inLanguage": "English, French, Japanese, Korean, Portuguese",
+  "publisher": "Inrupt, MIT CSAIL, Open Community"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "WebSite",
+    titleProp: "name",
+    icon: "🌐",
+    accent: "#2563eb",
+    fields: [
+      { prop: "name",        label: "Site Name",    type: "text" },
+      { prop: "image",       label: "Screenshot",   type: "image" },
+      { prop: "description", label: "About",        type: "textarea" },
+      { prop: "url",         label: "URL",          type: "url" },
+      { prop: "inLanguage",  label: "Languages",    type: "text" },
+      { prop: "publisher",   label: "Publisher",    type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
