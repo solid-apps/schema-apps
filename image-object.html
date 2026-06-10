@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ImageObject — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageObject",
+  "name": "Fog Over Charles Bridge at Dawn",
+  "image": "https://picsum.photos/seed/imageobject-charles-bridge-fog/800/600",
+  "description": "A fine-art black-and-white photograph of Charles Bridge shrouded in morning fog, shot from the Old Town bank of the Vltava. The silhouettes of the Baroque saint statues recede into white mist while the twin spires of the Old Town Bridge Tower anchor the foreground. The long exposure — four seconds at f/11 on medium-format Ilford HP5 Plus film — renders the river as a smooth, mirror-like plane. The image was exhibited at the Prague House of Photography in 2024 and is held in a private collection.",
+  "caption": "Charles Bridge, Prague — early morning fog dissolving the Baroque statues into silhouette",
+  "creator": {
+    "@type": "Person",
+    "name": "Jan Kašpar"
+  },
+  "dateCreated": "2023-10-15",
+  "contentLocation": {
+    "@type": "Place",
+    "name": "Charles Bridge, Prague 1, Czech Republic"
+  }
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "ImageObject",
+    titleProp: "name",
+    icon: "🖼️",
+    accent: "#64748b",
+    fields: [
+      { prop: "name",            label: "Title",          type: "text" },
+      { prop: "image",           label: "Image",          type: "image" },
+      { prop: "description",     label: "Description",    type: "textarea" },
+      { prop: "caption",         label: "Caption",        type: "text" },
+      { prop: "creator",         label: "Creator",        type: "text", display: "o.name" },
+      { prop: "dateCreated",     label: "Date Created",   type: "text" },
+      { prop: "contentLocation", label: "Location",       type: "text", display: "o.name" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
