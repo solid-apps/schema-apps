@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MusicPlaylist — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicPlaylist",
+  "name": "Late Night Coding — Deep Focus Mix",
+  "image": "https://picsum.photos/seed/late-night-coding-playlist/800/450",
+  "description": "The perfect companion for midnight hacking sessions. Four hours of ambient electronica, lo-fi beats, and cinematic soundscapes hand-picked for sustained deep focus. Starts gentle with Tycho and Bonobo, builds through Ólafur Arnalds and Nils Frahm, peaks with Jon Hopkins and Bicep, then winds down into Brian Eno and Aphex Twin's quieter works. Curated over three years of late-night Solid development.",
+  "numTracks": 47,
+  "author": "Melvin Carvalho",
+  "url": "https://open.spotify.com/playlist/37i9dQZF1DX8Uebhn9wzrS"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "MusicPlaylist",
+    titleProp: "name",
+    icon: "🎶",
+    accent: "#22c55e",
+    fields: [
+      { prop: "name",        label: "Playlist",    type: "text" },
+      { prop: "image",       label: "Cover",       type: "image" },
+      { prop: "description", label: "About",       type: "textarea" },
+      { prop: "numTracks",   label: "Tracks",      type: "text" },
+      { prop: "author",      label: "Curated By",  type: "text" },
+      { prop: "url",         label: "Listen",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
