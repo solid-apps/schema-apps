@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Thesis — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Thesis",
+  "name": "Decentralised Trust: Solid Pods and the Future of Personal Data Sovereignty",
+  "image": "https://picsum.photos/seed/thesis-solid-pods/800/450",
+  "description": "This doctoral thesis examines the technical, social, and legal dimensions of user-controlled data storage through Solid Pods. Drawing on three years of ethnographic fieldwork with early adopters across eleven countries, it argues that data sovereignty requires not only cryptographic guarantees but also usable permission interfaces, community governance norms, and regulatory frameworks that recognise personal data stores as a distinct legal category.",
+  "author": "Dr. Anika Patel",
+  "datePublished": "2025-06-12",
+  "publisher": "University of Oxford, Oxford Internet Institute",
+  "inSupportOf": "Doctor of Philosophy (DPhil) in Information, Communication and the Social Sciences"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Thesis",
+    titleProp: "name",
+    icon: "📜",
+    accent: "#7c2d12",
+    fields: [
+      { prop: "name",           label: "Title",        type: "text" },
+      { prop: "image",          label: "Cover",        type: "image" },
+      { prop: "description",    label: "Abstract",     type: "textarea" },
+      { prop: "author",         label: "Author",       type: "text" },
+      { prop: "datePublished",  label: "Defended",     type: "text" },
+      { prop: "publisher",      label: "Institution",  type: "text" },
+      { prop: "inSupportOf",    label: "Degree",       type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
