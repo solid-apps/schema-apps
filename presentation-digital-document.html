@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PresentationDigitalDocument — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "PresentationDigitalDocument",
+  "name": "Your Data, Your Pod — Conference Keynote Deck",
+  "image": "https://picsum.photos/seed/your-data-your-pod-conference-keynote-de/800/450",
+  "description": "The 48-slide keynote deck for Solid World Prague 2026: the story of data concentration, live demo flow of moving a photo library between pod providers, the app-ecosystem slide with one app per schema.org type, and the closing roadmap. Speaker notes include timing marks for the 35-minute slot and fallback paths if the live demo network fails.",
+  "url": "https://example.org/your-data-your-pod-conference-keynote-de",
+  "dateModified": "2026-06-08",
+  "author": "Melvin Carvalho"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "PresentationDigitalDocument",
+    titleProp: "name",
+    icon: "📽️",
+    accent: "#ea580c",
+    fields: [
+      { prop: "name", label: "Deck", type: "text" },
+      { prop: "image", label: "Preview", type: "image" },
+      { prop: "description", label: "Contents", type: "textarea" },
+      { prop: "author", label: "Presenter", type: "text" },
+      { prop: "url", label: "Open", type: "url" },
+      { prop: "dateModified", label: "Updated", type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
