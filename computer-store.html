@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ComputerStore — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ComputerStore",
+  "name": "Pcx — Computers & Components, Vinohrady",
+  "image": "https://picsum.photos/seed/computer-pcx/600/400",
+  "description": "Pcx is a specialist computer and components shop on Vinohradská třída that has been the go-to destination for Prague's PC builders, sysadmins and Linux enthusiasts since 1997, when founder Tomáš Procházka opened a single room above a print shop selling imported motherboards and SCSI cables at a time when Czech computer shops still stocked mainly pre-built office machines. The shop has since expanded into the full ground floor and basement of a Functionalist corner building, and its shelves now hold over 8,000 SKUs — everything from enthusiast-grade ASUS ROG and MSI motherboards to enterprise NAS drives, fibre-channel HBAs and obscure mini-ITX cases that no other shop in Prague carries. Pcx built its reputation on three things that remain rare in Czech retail: a no-questions-asked 30-day return policy, a component-testing bench at the back of the shop where customers can bring in a faulty board and have it diagnosed on the spot with oscilloscope and POST-card, and a prices-to-specs knowledge that the staff — most of them former or active sysadmins — deploy without the upsell pressure typical of big-box electronics chains. The basement is the builder's paradise: a wall of PC cases from Fractal Design, be quiet! and Lian Li; liquid-cooling components from EKWB (the Slovenian company whose founder started as a Czech-forum watercooling hobbyist); Corsair, Seasonic and be quiet! power supplies sorted by wattage; and a dedicated RAM and storage section with DDR5 modules from G.Skill and Kingston and NVMe drives from Samsung, Crucial and WD Black. Pcx is also the only Prague shop that stocks a meaningful selection of server-grade hardware: Supermicro barebones, ECC RAM, HBA cards and rackmount chassis for the small but dedicated community of Czech homelabbers and self-hosters. The shop runs a popular Saturday workshop series covering topics like NAS build clinics, pfSense router setup, and GPU thermal-paste repasting, and its in-house repair service handles everything from laptop screen replacements to data recovery from failed RAID arrays.",
+  "address": "Vinohradská 1840/14, Vinohrady, Prague 2",
+  "telephone": "+420 222 521 314",
+  "openingHours": "Mo–Fr 09:30–19:00, Sa 10:00–15:00, Su closed",
+  "priceRange": "CZK 49 (SATA cable) – CZK 145,000 (custom watercooled workstation build)",
+  "url": "https://www.pcx.cz/en"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "ComputerStore",
+    titleProp: "name",
+    icon: "🖥️",
+    accent: "#334155",
+    fields: [
+      { prop: "name",         label: "Store",       type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "address",      label: "Address",     type: "text" },
+      { prop: "telephone",    label: "Phone",       type: "text" },
+      { prop: "openingHours", label: "Hours",       type: "text" },
+      { prop: "priceRange",   label: "Price",       type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
