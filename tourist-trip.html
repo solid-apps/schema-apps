@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TouristTrip — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  "name": "Prague in Three Days — Castles, Beer & Art Nouveau",
+  "image": "https://picsum.photos/seed/prague-tourist-trip/600/400",
+  "description": "A curated long-weekend itinerary through the Golden City. Day one: Prague Castle, St. Vitus Cathedral and the Golden Lane, then cross Charles Bridge at sunset. Day two: Old Town Square's astronomical clock, the Art Nouveau Municipal House, and a traditional lunch at Lokál. Day three: Vyšehrad fortress for panoramic views, the cubist House of the Black Madonna, and a farewell Pilsner at the rooftop T-Anker overlooking the Vltava. Includes restaurant bookings, skip-the-line castle tickets and a vintage tram ride.",
+  "touristType": "Cultural tourism",
+  "url": "https://example.org/prague-three-days"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "TouristTrip",
+    titleProp: "name",
+    icon: "🧳",
+    accent: "#0d9488",
+    fields: [
+      { prop: "name",        label: "Trip Name",    type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "touristType", label: "Tourist Type", type: "text" },
+      { prop: "url",         label: "Booking URL",  type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
