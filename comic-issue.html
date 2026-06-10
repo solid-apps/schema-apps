@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ComicIssue — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ComicIssue",
+  "name": "Čtyřlístek #1 — 'Visit from Space' (1969)",
+  "image": "https://picsum.photos/seed/ctyrlistek-issue-1/800/450",
+  "description": "The debut issue of Čtyřlístek, in which Jaroslav Němeček's four friends — Fifinka, Bobík, Myšpulín and Pinďa — first appear in their cottage at Třeskoprsky. The 16-page 'Visit from Space' established the gentle sci-fi-tinged humour that would run for over 700 issues. Original 1969 copies in good condition now fetch tens of thousands of crowns at Czech auctions.",
+  "issueNumber": "1",
+  "author": "Jaroslav Němeček",
+  "datePublished": "1969-05-01",
+  "url": "https://example.org/ctyrlistek-1"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "ComicIssue",
+    titleProp: "name",
+    icon: "💥",
+    accent: "#e11d48",
+    fields: [
+      { prop: "name", label: "Issue", type: "text" },
+      { prop: "image", label: "Cover", type: "image" },
+      { prop: "description", label: "Story", type: "textarea" },
+      { prop: "issueNumber", label: "Issue #", type: "text" },
+      { prop: "author", label: "Creator", type: "text" },
+      { prop: "datePublished", label: "Published", type: "text" },
+      { prop: "url", label: "Details", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
