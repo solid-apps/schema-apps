@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CoverArt — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "CoverArt",
+  "name": "Cover Art — 'Má vlast' Supraphon 1990 Remaster",
+  "image": "https://picsum.photos/seed/ma-vlast-cover/800/450",
+  "description": "The cover artwork for the 1990 Supraphon digital remaster of Kubelík's Má vlast: a watercolour of the Vltava at dawn by illustrator Adolf Born, commissioned to mark the conductor's return from exile. Born's loose blues and golds became so associated with the recording that Supraphon retained the artwork across every reissue since.",
+  "artist": "Adolf Born",
+  "dateCreated": "1990-03-01",
+  "isPartOf": "Má vlast — Czech Philharmonic, Rafael Kubelík (Supraphon)",
+  "url": "https://example.org/ma-vlast-cover"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "CoverArt",
+    titleProp: "name",
+    icon: "🎨",
+    accent: "#a855f7",
+    fields: [
+      { prop: "name", label: "Artwork", type: "text" },
+      { prop: "image", label: "Cover", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "artist", label: "Artist", type: "text" },
+      { prop: "dateCreated", label: "Created", type: "text" },
+      { prop: "isPartOf", label: "For release", type: "text" },
+      { prop: "url", label: "Details", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
