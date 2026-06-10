@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ContactPage — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Us — Prague City Library",
+  "image": "https://picsum.photos/seed/contact-us-prague-city-library/800/450",
+  "description": "The contact page for the Prague Municipal Library network: central switchboard, reader registration desk, interlibrary loans and press contacts, with a branch finder map covering all 41 locations. Includes opening-hours table, barrier-free access notes per branch, and a web form routed to the right department with a promised two-working-day response.",
+  "url": "https://example.org/contact-us-prague-city-library",
+  "dateModified": "2026-06-08"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "ContactPage",
+    titleProp: "name",
+    icon: "📇",
+    accent: "#0284c7",
+    fields: [
+      { prop: "name", label: "Title", type: "text" },
+      { prop: "image", label: "Preview", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "url", label: "URL", type: "url" },
+      { prop: "dateModified", label: "Updated", type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
