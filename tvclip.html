@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TVClip — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "TVClip",
+  "name": "'Major Zeman opens the door' — Czech TV Archive Clip",
+  "image": "https://picsum.photos/seed/tv-archive-clip/800/450",
+  "description": "A 90-second archive clip that became a national meme: the over-dramatic door entrance from the normalisation-era series, now used by Czech television itself as a self-aware sting before archive programming. The clip's restoration from the original 16mm negative shows the surprising craft behind the propaganda-era production.",
+  "duration": "PT1M30S",
+  "datePublished": "1976-11-05",
+  "url": "https://example.org/zeman-door"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "TVClip",
+    titleProp: "name",
+    icon: "📹",
+    accent: "#ef4444",
+    fields: [
+      { prop: "name", label: "Clip", type: "text" },
+      { prop: "image", label: "Still", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "duration", label: "Length", type: "text" },
+      { prop: "datePublished", label: "First aired", type: "text" },
+      { prop: "url", label: "Watch", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
