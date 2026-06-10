@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Service — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Praha Bike Tour — Three Hours Across the Centuries",
+  "image": "https://picsum.photos/seed/praha-bike-tour/600/400",
+  "description": "A guided bicycle tour covering thirty kilometres and a thousand years of Prague history. Small groups of no more than twelve roll from the Old Town Square across Charles Bridge, up to Prague Castle, through the terraced vineyards of Malá Strana and back along the Vltava embankment. Guides are licensed historians who switch effortlessly between Czech, English and German — and know exactly where to stop for a mid-ride pint of Kozel. E-bikes available on request for riders who prefer to save their legs for the cobbles.",
+  "serviceType": "Guided Bicycle Tour",
+  "provider": "Praha Bike Tours s.r.o.",
+  "areaServed": "Prague, Czech Republic",
+  "url": "https://example.org/praha-bike-tour"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Service",
+    titleProp: "name",
+    icon: "🛎️",
+    accent: "#0d9488",
+    fields: [
+      { prop: "name",        label: "Service Name",   type: "text" },
+      { prop: "image",       label: "Image",          type: "image" },
+      { prop: "description", label: "Description",    type: "textarea" },
+      { prop: "serviceType", label: "Service Type",   type: "text" },
+      { prop: "provider",    label: "Provider",        type: "text" },
+      { prop: "areaServed",  label: "Area Served",    type: "text" },
+      { prop: "url",         label: "Website",        type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
