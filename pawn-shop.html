@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PawnShop — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "PawnShop",
+  "name": "Zlatnictví Karpatská — Lundější & syn",
+  "image": "https://picsum.photos/seed/pawn-karpatska/600/400",
+  "description": "Zlatnictví Karpatská is a pawnbroker and gold dealer on the corner of Karpatská and Kubelíkova in Žižkov, a neighbourhood that has been Prague's working-class heart since the 19th century and whose residents have long relied on pawn shops as a source of short-term credit. The business was founded in 1947 by goldsmith František Lundější, who survived Terezín and returned to Prague with nothing but his bench skills and an abiding belief that honest weights build honest reputations. Three generations later, his grandson Marek runs the shop from the same art-nouveau storefront with its original brass grating and hand-painted sign reading ZÁSTAVNA — PAWN OFFICE in Czech blackletter. The ground floor is divided into two halves: the pawn counter, where customers can pledge jewellery, watches, coins and small valuables against interest-bearing loans with a standard four-month redemption period; and the retail display, where unredeemed items — Victorian brooches, 1960s Omega Seamasters, Soviet-era gold medallions, Czechoslovak first-republic engagement rings set with Bohemian garnets from Turnov — are sold at prices that have made the shop a destination for vintage jewellery hunters, propmasters from Barrandov Studios, and couples seeking original Art Deco wedding bands that no high-street jeweller stocks. Lundější employs two certified gemologists trained at the Turnov gemological school, and every item is appraised with a karat checker, digital scale and loupe on the counter in full view of the customer — a transparency policy that has earned the shop a steady reputation in a trade often associated with opacity. The shop also buys scrap gold at daily spot-price rates posted on a chalkboard beside the door, and runs a small but knowledgeable numismatic counter dealing in Austro-Hungarian gold ducats, Czechoslovak first-republic coins, and occasional Roman denarii unearthed in Moravian fields. Marek Lundější speaks Czech, English, Russian and Romani, reflecting the communities that pass through his door, and the shop offers discreet, no-questions-asked valuations by appointment for estate clearances and inheritance settlements.",
+  "address": "Karpatská 458/12, Žižkov, Prague 3",
+  "telephone": "+420 222 781 056",
+  "openingHours": "Mo–Fr 09:00–17:30, Sa 09:00–12:00, Su closed",
+  "priceRange": "CZK 200 (small pledge loan) – CZK 85,000 (unredeemed 18k gold necklace with Bohemian garnets)",
+  "url": "https://www.zastavna-karpatska.cz"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "PawnShop",
+    titleProp: "name",
+    icon: "💎",
+    accent: "#ca8a04",
+    fields: [
+      { prop: "name",         label: "Shop",        type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "address",      label: "Address",     type: "text" },
+      { prop: "telephone",    label: "Phone",       type: "text" },
+      { prop: "openingHours", label: "Hours",       type: "text" },
+      { prop: "priceRange",   label: "Price",       type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
