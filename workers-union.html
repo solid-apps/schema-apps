@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>WorkersUnion — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "WorkersUnion",
+  "name": "OS KOVO — Czech Metalworkers' Federation",
+  "image": "https://picsum.photos/seed/os-kovo-czech-metalworkers-federatio/800/450",
+  "description": "The largest trade union in the Czech Republic, representing around 100,000 workers in metalworking, automotive and electrotechnical industries. OS KOVO negotiates collective agreements at major employers including the car plants, runs legal aid for members, and sits on the tripartite council. Founded in its modern form in 1990, it traces roots to the 19th-century metalworkers' associations.",
+  "foundingDate": "1990-03-17",
+  "address": "nám. W. Churchilla 2, 130 00 Praha 3, Czech Republic",
+  "url": "https://example.org/os-kovo-czech-metalworkers-federatio"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "WorkersUnion",
+    titleProp: "name",
+    icon: "✊",
+    accent: "#b91c1c",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "foundingDate", label: "Founded", type: "text" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
