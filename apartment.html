@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Apartment — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Apartment",
+  "name": "Sunlit 2-Bedroom with Terrace in Karlín",
+  "image": "https://picsum.photos/seed/karlin-apartment/600/400",
+  "description": "A bright, recently renovated two-bedroom apartment on the fourth floor of a repurposed industrial building in Prague's trendy Karlín district. Floor-to-ceiling windows flood the open-plan living area with afternoon light, while the private south-facing terrace overlooks a quiet courtyard garden — perfect for morning coffee or an evening glass of Moravian wine. The kitchen comes fully equipped with Bosch appliances, a quartz island and a wine fridge. Both bedrooms have built-in wardrobes; the master has an en-suite with a rain shower. Karlín's cafés, farmers' market and Křižíkova metro station are all within a three-minute walk.",
+  "numberOfRooms": 3,
+  "floorSize": "85 m²",
+  "address": "Křižíkova 148/34, 186 00 Prague 8 - Karlín, Czech Republic",
+  "url": "https://example.org/karlin-apartment-listing"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Apartment",
+    titleProp: "name",
+    icon: "🏬",
+    accent: "#475569",
+    fields: [
+      { prop: "name",          label: "Listing Title", type: "text" },
+      { prop: "image",         label: "Image",         type: "image" },
+      { prop: "description",   label: "Description",   type: "textarea" },
+      { prop: "numberOfRooms", label: "Rooms",         type: "text" },
+      { prop: "floorSize",     label: "Floor Size",    type: "text" },
+      { prop: "address",       label: "Address",       type: "text" },
+      { prop: "url",           label: "Listing URL",   type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
