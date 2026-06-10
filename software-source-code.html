@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SoftwareSourceCode — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "@inrupt/solid-client — Solid JavaScript Client Library",
+  "image": "https://picsum.photos/seed/solid-client-js-lib/800/450",
+  "description": "The official JavaScript/TypeScript library for reading and writing data in Solid Pods. Provides a high-level API for creating, fetching, and modifying RDF resources, managing containers, setting Web Access Control permissions, and handling authentication flows. Used by hundreds of Solid applications worldwide, from personal data dashboards to enterprise identity platforms.",
+  "programmingLanguage": "TypeScript / JavaScript (ES2022)",
+  "codeRepository": "https://github.com/inrupt/solid-client-js",
+  "runtimePlatform": "Node.js 18+, modern browsers (ESM)",
+  "author": "Inrupt, Inc.",
+  "license": "https://opensource.org/licenses/MIT"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "SoftwareSourceCode",
+    titleProp: "name",
+    icon: "👨‍💻",
+    accent: "#334155",
+    fields: [
+      { prop: "name",               label: "Name",          type: "text" },
+      { prop: "image",              label: "Badge",         type: "image" },
+      { prop: "description",        label: "About",         type: "textarea" },
+      { prop: "programmingLanguage",label: "Language",      type: "text" },
+      { prop: "codeRepository",     label: "Repository",    type: "url" },
+      { prop: "runtimePlatform",    label: "Runtime",       type: "text" },
+      { prop: "author",             label: "Author",        type: "text" },
+      { prop: "license",            label: "License",       type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
