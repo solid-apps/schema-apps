@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GroceryStore — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "GroceryStore",
+  "name": "Farmářská tržnice Náplavka",
+  "image": "https://picsum.photos/seed/naplavka-market/600/400",
+  "description": "A vibrant riverside farmers' market held every Saturday along the Rašínovo nábřeží embankment. Dozens of small Czech farmers sell seasonal fruit and vegetables, farmhouse cheeses, cold-pressed rapeseed oil, free-range eggs, honey, fresh-baked bread and smoked meats. Arrive early for the best pick — the local chefs do.",
+  "address": "Rašínovo nábřeží, 120 00 Prague 2, Czech Republic",
+  "telephone": "+420 777 888 999",
+  "openingHours": "Sa 08:00-14:00 (year-round)",
+  "priceRange": "50–500 CZK",
+  "url": "https://example.org/naplavka-market"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "GroceryStore",
+    titleProp: "name",
+    icon: "🛒",
+    accent: "#16a34a",
+    fields: [
+      { prop: "name",        label: "Name",         type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "address",     label: "Address",      type: "text" },
+      { prop: "telephone",   label: "Telephone",    type: "tel" },
+      { prop: "openingHours",label: "Opening hours", type: "text" },
+      { prop: "priceRange",  label: "Price range",  type: "text" },
+      { prop: "url",         label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
