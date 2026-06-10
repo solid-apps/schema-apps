@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Place — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "Wenceslas Square",
+  "image": "https://picsum.photos/seed/wenceslas-square/600/400",
+  "description": "Prague's iconic boulevard stretching seven hundred and fifty metres from the National Museum at the top to Na Příkopě street at the bottom. Part horse-market, part promenade, part political stage — the square has witnessed Czech history from the 1918 declaration of independence through the 1989 Velvet Revolution to modern-day celebrations and protests. Flanked by Art Nouveau façades, flagship stores, kebab stands and the occasional horsechestnut tree, it remains the city's beating heart: a place where tourists snap photos, office workers grab lunchtime kofola, and the statue of Saint Wenceslas on horseback watches over it all from beneath the museum's neo-Renaissance dome.",
+  "address": "Václavské náměstí, 110 00 Prague 1 - Nové Město, Czech Republic",
+  "url": "https://example.org/wenceslas-square"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Place",
+    titleProp: "name",
+    icon: "📍",
+    accent: "#475569",
+    fields: [
+      { prop: "name",        label: "Name",          type: "text" },
+      { prop: "image",       label: "Image",         type: "image" },
+      { prop: "description", label: "Description",   type: "textarea" },
+      { prop: "address",     label: "Address",       type: "text" },
+      { prop: "url",         label: "Website",       type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
