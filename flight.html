@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Flight — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Flight",
+  "name": "OK 534 Prague → Paris CDG",
+  "image": "https://picsum.photos/seed/flight-ok534/600/400",
+  "description": "Daily morning service operated by CSA Czech Airlines from Václav Havel Airport Prague to Paris Charles de Gaulle. The A320neo departs Terminal 2 at 07:15 and arrives Terminal 2E at 09:20, covering 1 034 km in under two hours. Popular with business commuters connecting to Air France's long-haul network and weekend travellers heading for the City of Light.",
+  "flightNumber": "OK 534",
+  "provider": "CSA Czech Airlines",
+  "departureAirport": "Václav Havel Airport Prague (PRG)",
+  "arrivalAirport": "Paris Charles de Gaulle (CDG)",
+  "departureTime": "07:15",
+  "arrivalTime": "09:20"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Flight",
+    titleProp: "name",
+    icon: "✈️",
+    accent: "#0284c7",
+    fields: [
+      { prop: "name",             label: "Flight",           type: "text" },
+      { prop: "image",            label: "Image",            type: "image" },
+      { prop: "description",      label: "Description",      type: "textarea" },
+      { prop: "flightNumber",     label: "Flight Number",    type: "text" },
+      { prop: "provider",         label: "Airline",          type: "text" },
+      { prop: "departureAirport", label: "Departure",        type: "text" },
+      { prop: "arrivalAirport",   label: "Arrival",          type: "text" },
+      { prop: "departureTime",    label: "Departure Time",   type: "text" },
+      { prop: "arrivalTime",      label: "Arrival Time",     type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
