@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LakeBodyOfWater — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "LakeBodyOfWater",
+  "name": "Máchovo jezero (Mácha's Lake) — A Romantic Reservoir in North Bohemia",
+  "image": "https://picsum.photos/seed/lake-machovo/600/400",
+  "description": "Máchovo jezero (Mácha's Lake) is a 2.84 km² reservoir in the Liberec region of North Bohemia, surrounded by dense pine forests and sandstone rock formations that give the landscape an almost fairy-tale quality. Originally created in 1367 by order of Emperor Charles IV as a system of fish ponds, the lake was renamed in 1945 after the Romantic poet Karel Hynek Mácha, who set his famous narrative poem May (Máj, 1836) on its wooded shores. Today the lake is one of the most popular inland recreational areas in the Czech Republic, drawing over 200,000 visitors per summer for swimming, sailing, windsurfing, canoeing and hiking the 7 km circular trail around the water's edge. The south-eastern shore features a broad sandy beach, a marina with boat rentals and a cluster of wooden chalets dating from the First Republic era. The water quality is monitored by the Czech Hydrometeorological Institute and consistently rated excellent for swimming. On still summer mornings, mist rises from the lake surface into the surrounding rock pinnacles — a scene unchanged since Mácha described it nearly two centuries ago.",
+  "address": "Staré Splavy, Doksy, Liberec Region, Czech Republic",
+  "url": "https://www.czechtourism.com/c/machovo-jezero/"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "LakeBodyOfWater",
+    titleProp: "name",
+    icon: "🛶",
+    accent: "#06b6d4",
+    fields: [
+      { prop: "name",        label: "Lake",        type: "text" },
+      { prop: "image",       label: "Image",       type: "image" },
+      { prop: "description", label: "Description", type: "textarea" },
+      { prop: "address",     label: "Location",    type: "text" },
+      { prop: "url",         label: "Info",        type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BowlingAlley — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "BowlingAlley",
+  "name": "Bowling Star Smíchov — 24-Lane Entertainment Centre, Prague 5",
+  "image": "https://picsum.photos/seed/bowling-star-smichov/600/400",
+  "description": "Bowling Star Smíchov is Prague's largest bowling centre, located on the third floor of the Nový Smíchov shopping mall directly above the Anděl metro station (line B). The venue features 24 Brunswick bowling lanes with automatic scoring, cosmic bowling (UV lighting and music on Friday and Saturday nights), a full-service sports bar with Pilsner Urquell on tap, and a kitchen serving pizzas, burgers and chicken wings until midnight. The centre opened in 2002 and was fully renovated in 2021 with new lane surfaces, upgraded scoring screens and a VIP area with four private lanes available for corporate events and birthday parties. Bowling Star hosts the Prague Corporate Bowling League (October–April) and weekly amateur tournaments on Wednesday evenings. Shoe rental included in the lane price; bumpers available for children. Popular with after-work crowds from the nearby offices in Smíchov and with student groups from nearby universities.",
+  "address": "3rd Floor, Nový Smíchov, Plzeňská 234/8, Smíchov, Prague 5",
+  "telephone": "+420 257 311 888",
+  "openingHours": "Mo–Th 10:00–23:00, Fr 10:00–01:00, Sa 09:00–01:00, Su 09:00–22:00",
+  "priceRange": "CZK 120–180 per person per game; shoe rental included",
+  "url": "https://www.bowlingstar.cz"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "BowlingAlley",
+    titleProp: "name",
+    icon: "🎳",
+    accent: "#dc2626",
+    fields: [
+      { prop: "name",         label: "Venue",       type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "address",      label: "Address",     type: "text" },
+      { prop: "telephone",    label: "Phone",       type: "text" },
+      { prop: "openingHours", label: "Hours",       type: "text" },
+      { prop: "priceRange",   label: "Price",       type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

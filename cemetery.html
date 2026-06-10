@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cemetery — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Cemetery",
+  "name": "Olšanské hřbitovy — Olšany Cemetery Complex, Prague 3",
+  "image": "https://picsum.photos/seed/cemetery-olsany/600/400",
+  "description": "The Olšanské hřbitovy (Olšany Cemeteries) are the largest cemetery complex in Prague, occupying over 50 hectares of gently rolling ground in the Žižkov district. Established in 1680 as a plague cemetery outside the city walls, Olšany grew into a vast necropolis of twelve adjacent cemetery sections spanning four centuries of Prague history. Among the ornate Neo-Gothic, Art Nouveau and Constructivist monuments lie some of the most significant figures in Czech culture: writers Jan Neruda and Jaroslav Seifert, composers Bedřich Smetana and Antonín Dvořák (Dvořák's monument features a bronze Muse of Music by sculptor Ladislav Šaloun), painter Josef Mánes and dozens of Czech National Revival leaders. The cemetery is also the final resting place of thousands of Czech and Russian soldiers from both World Wars, with a large Soviet military memorial on the eastern edge. The older sections are overgrown with century-old linden and chestnut trees, their roots weaving through crumbling wrought-iron crosses and mossy stone angels, creating an atmosphere of poignant decay that has made Olšany a favourite subject for Prague photographers. The New Jewish Cemetery (Nový židovský hřbitov), where Franz Kafka is buried, sits immediately adjacent on the north side.",
+  "address": "Vinohradská 1535, Žižkov, Prague 3",
+  "openingHours": "Daily 08:00–18:00 (November–March until 17:00)",
+  "url": "https://www.praha3.cz/olsanske-hrbitovy"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "Cemetery",
+    titleProp: "name",
+    icon: "🪦",
+    accent: "#6b7280",
+    fields: [
+      { prop: "name",         label: "Cemetery",    type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "address",      label: "Address",     type: "text" },
+      { prop: "openingHours", label: "Hours",       type: "text" },
+      { prop: "url",          label: "Info",        type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
