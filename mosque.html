@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mosque — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Mosque",
+  "name": "Sultan Ahmed Mosque (Blue Mosque)",
+  "image": "https://picsum.photos/seed/blue-mosque/600/400",
+  "description": "Istanbul's most iconic mosque, completed in 1617 under Sultan Ahmed I. Renowned for the cascade of over 20 000 blue İznik tiles lining its interior, six slender minarets and a vast central dome 43 metres high. Still an active place of worship welcoming millions of visitors each year.",
+  "address": "Sultan Ahmet Mahallesi, Atmeydanı Cd. No:7, 34122 Fatih/İstanbul, Turkey",
+  "openingHours": "Outside prayer times, daily 08:30-11:30, 13:00-14:30, 15:30-16:45",
+  "url": "https://example.org/blue-mosque"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Mosque",
+    titleProp: "name",
+    icon: "🕌",
+    accent: "#047857",
+    fields: [
+      { prop: "name",        label: "Name",         type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "address",     label: "Address",      type: "text" },
+      { prop: "openingHours",label: "Opening hours", type: "text" },
+      { prop: "url",         label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
