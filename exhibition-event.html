@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ExhibitionEvent — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ExhibitionEvent",
+  "name": "Digital Frontiers: Art and Technology",
+  "image": "https://picsum.photos/seed/gallery-exhibit/600/400",
+  "description": "A contemporary gallery exhibition exploring the intersection of generative art, AI-driven installations and interactive digital media. Featuring works by 12 international artists.",
+  "startDate": "2026-10-01T10:00:00+02:00",
+  "endDate": "2026-11-30T20:00:00+01:00",
+  "location": "National Gallery, Prague",
+  "organizer": "Prague Digital Arts Foundation",
+  "url": "https://example.org/digital-frontiers"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "ExhibitionEvent",
+    titleProp: "name",
+    icon: "🏛️",
+    accent: "#8b5cf6",
+    fields: [
+      { prop: "name",        label: "Event name",  type: "text" },
+      { prop: "image",       label: "Image",       type: "image" },
+      { prop: "description", label: "Description", type: "textarea" },
+      { prop: "startDate",   label: "Start date",  type: "text" },
+      { prop: "endDate",     label: "End date",    type: "text" },
+      { prop: "location",    label: "Location",    type: "text" },
+      { prop: "organizer",   label: "Organizer",   type: "text" },
+      { prop: "url",         label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
