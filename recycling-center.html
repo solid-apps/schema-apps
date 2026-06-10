@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RecyclingCenter — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "RecyclingCenter",
+  "name": "Sběrný dvůr Praha 7 — Recycling Centre",
+  "image": "https://picsum.photos/seed/sb-rn-dv-r-praha-7-recycling-centre/800/450",
+  "description": "The Prague 7 municipal recycling centre, accepting bulky waste, electronics, construction debris, garden waste and hazardous materials free for residents with proof of address. The re-use corner rescues working furniture and bikes for charity partners, and the centre's spring repair-café weekends have become a neighbourhood institution.",
+  "address": "Voctářova ulice, 170 00 Praha 7",
+  "openingHours": "Tu-Sa 08:30-17:00 (summer to 18:00)",
+  "url": "https://example.org/sb-rn-dv-r-praha-7-recycling-centre"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "RecyclingCenter",
+    titleProp: "name",
+    icon: "♻️",
+    accent: "#15803d",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "openingHours", label: "Open", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
