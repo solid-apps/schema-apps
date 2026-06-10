@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PodcastEpisode — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "PodcastEpisode",
+  "name": "The Web We Lost — and How to Rebuild It",
+  "image": "https://picsum.photos/seed/podcast-web-we-lost/800/450",
+  "description": "Tim Berners-Lee sits down with Lex Fridman to trace the arc from his original vision of a read-write web to the platform-dominated internet of today, and explains how Solid Pods can restore user sovereignty without breaking what works. They discuss the early days at CERN, the decision to keep the web royalty-free, the rise of walled gardens, and why he believes the next decade belongs to personal data stores. Recorded live at the Web Conference 2026 in Seoul.",
+  "partOfSeries": "Lex Fridman Podcast",
+  "episodeNumber": 472,
+  "datePublished": "2026-03-14",
+  "duration": "PT2H48M",
+  "url": "https://lexfridman.com/tim-berners-lee-3/"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "PodcastEpisode",
+    titleProp: "name",
+    icon: "🎙️",
+    accent: "#a855f7",
+    fields: [
+      { prop: "name",          label: "Episode",      type: "text" },
+      { prop: "image",         label: "Artwork",      type: "image" },
+      { prop: "description",   label: "Show Notes",   type: "textarea" },
+      { prop: "partOfSeries",  label: "Podcast",      type: "text" },
+      { prop: "episodeNumber", label: "Episode #",    type: "text" },
+      { prop: "datePublished", label: "Published",    type: "text" },
+      { prop: "duration",      label: "Duration",     type: "text" },
+      { prop: "url",           label: "Listen",       type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
