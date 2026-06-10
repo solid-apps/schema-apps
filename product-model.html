@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ProductModel — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ProductModel",
+  "name": "Škoda Enyaq 85 — SportLine Plus",
+  "image": "https://picsum.photos/seed/productmodel-enyaq85/600/400",
+  "description": "The Škoda Enyaq 85 SportLine Plus is the long-range rear-motor variant of Škoda's MEB-platform electric SUV, assembled at the main plant in Mladá Boleslav, Czech Republic. With a 82 kWh net battery (77 kWh usable), it delivers up to 565 km of WLTP range and accelerates from 0–100 km/h in 6.7 seconds. The SportLine Plus trim adds sports suspension with DCC adaptive dampers, 20-inch Triton alloy wheels, a black styling package, Matrix LED headlights and a suede/leather interior with carbon-look trim. Produced from model year 2024 onwards as the successor to the earlier Enyaq 80 specification.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Škoda"
+  },
+  "model": "5EJ85SLP",
+  "releaseDate": "2024-03-01",
+  "predecessorOf": {
+    "@type": "ProductModel",
+    "name": "Škoda Enyaq 80 SportLine"
+  },
+  "url": "https://www.skoda-auto.com/models/enyaq"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "ProductModel",
+    titleProp: "name",
+    icon: "📐",
+    accent: "#475569",
+    fields: [
+      { prop: "name",         label: "Model",        type: "text" },
+      { prop: "image",        label: "Image",        type: "image" },
+      { prop: "description",  label: "Description",  type: "textarea" },
+      { prop: "brand",        label: "Brand",        type: "text", display: "o.name" },
+      { prop: "model",        label: "Model Code",   type: "text" },
+      { prop: "releaseDate",  label: "Release Date", type: "text" },
+      { prop: "predecessorOf",label: "Predecessor",  type: "text", display: "o.name" },
+      { prop: "url",          label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

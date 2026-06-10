@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AggregateOffer — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "AggregateOffer",
+  "name": "Prague to Barcelona Flights — June 2026 Price Range",
+  "image": "https://picsum.photos/seed/aggregateoffer-prg-bcn/600/400",
+  "description": "Aggregate pricing for all direct and one-stop flights from Václav Havel Airport Prague (PRG) to Barcelona–El Prat (BCN) during June 2026. Prices are pulled from seven booking engines and updated hourly. The wide spread reflects the difference between low-cost carriers with hand-luggage-only fares and full-service airlines including checked bags and meal service. Prices tend to spike around the Sonar festival (mid-June) and drop in the last week of the month.",
+  "lowPrice": "CZK 1840",
+  "highPrice": "CZK 12890",
+  "priceCurrency": "CZK",
+  "offerCount": "47",
+  "seller": {
+    "@type": "Organization",
+    "name": "Skypicker aggregated results"
+  }
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "AggregateOffer",
+    titleProp: "name",
+    icon: "💰",
+    accent: "#16a34a",
+    fields: [
+      { prop: "name",          label: "Title",      type: "text" },
+      { prop: "image",         label: "Image",      type: "image" },
+      { prop: "description",   label: "Description", type: "textarea" },
+      { prop: "lowPrice",      label: "Low Price",  type: "text" },
+      { prop: "highPrice",     label: "High Price", type: "text" },
+      { prop: "priceCurrency", label: "Currency",   type: "text" },
+      { prop: "offerCount",    label: "Offers",     type: "text" },
+      { prop: "seller",        label: "Seller",     type: "text", display: "o.name" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
