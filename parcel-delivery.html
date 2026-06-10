@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ParcelDelivery — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ParcelDelivery",
+  "name": "PPL Shipment #772010482931",
+  "image": "https://picsum.photos/seed/parcel-delivery-box/600/400",
+  "description": "A parcel containing a Lenovo ThinkPad X1 Carbon Gen 12 in Cosmic Blue, shipped from the Alza.cz logistics centre in Jirny near Prague. Currently in transit — last scanned at the PPL sorting hub in Plzeň at 08:42 this morning. Out for delivery to the recipient's home address in Prague 2 by end of day. Signature required.",
+  "trackingNumber": "772010482931",
+  "provider": "PPL (DHL Group)",
+  "expectedArrivalUntil": "2026-06-10T18:00:00+02:00",
+  "itemShipped": "Lenovo ThinkPad X1 Carbon Gen 12",
+  "deliveryAddress": "Legerova 72, 120 00 Prague 2 - Nové Město, Czech Republic"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "ParcelDelivery",
+    titleProp: "name",
+    icon: "🚚",
+    accent: "#ea580c",
+    fields: [
+      { prop: "name",                 label: "Shipment Name",  type: "text" },
+      { prop: "image",                label: "Image",          type: "image" },
+      { prop: "description",          label: "Description",    type: "textarea" },
+      { prop: "trackingNumber",       label: "Tracking #",     type: "text" },
+      { prop: "provider",             label: "Carrier",        type: "text" },
+      { prop: "expectedArrivalUntil", label: "Expected By",    type: "text" },
+      { prop: "itemShipped",          label: "Item",           type: "text" },
+      { prop: "deliveryAddress",      label: "Delivery To",    type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
