@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BackgroundNewsArticle — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "BackgroundNewsArticle",
+  "name": "Explainer: What Is a Solid Pod, and Why Does Your Data Live in Apps Today?",
+  "image": "https://picsum.photos/seed/explainer-what-is-a-solid-pod-and-why-do/800/450",
+  "description": "A backgrounder for general readers on how personal data ended up trapped inside applications, and what changes when storage becomes user-controlled: the history from mainframes to SaaS, what a pod actually is, what WebID does, and honest trade-offs around backups, abuse handling, and who calls support when things break. Includes a glossary and further reading.",
+  "author": "Redakce Technika",
+  "datePublished": "2026-06-09",
+  "url": "https://example.org/explainer-what-is-a-solid-pod-and-why-do"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "BackgroundNewsArticle",
+    titleProp: "name",
+    icon: "🗂️",
+    accent: "#6b7280",
+    fields: [
+      { prop: "name", label: "Headline", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "Summary", type: "textarea" },
+      { prop: "author", label: "Author", type: "text" },
+      { prop: "datePublished", label: "Published", type: "text" },
+      { prop: "url", label: "Read", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
