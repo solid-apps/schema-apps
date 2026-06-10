@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BedAndBreakfast — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "BedAndBreakfast",
+  "name": "Pension U Zlatého Hroznu",
+  "image": "https://picsum.photos/seed/zlaty-hrozen/600/400",
+  "description": "A lovingly restored 17th-century townhouse tucked on a cobbled lane steps from the Charles Bridge. Three en-suite rooms with exposed beam ceilings, antique furniture and views of the Vltava. Each morning the owner serves homemade pastries, local honey and filter coffee at a long communal table in the vaulted breakfast room. In the evening guests gather in the courtyard garden under a canopy of wisteria. The pension has been recommended by Lonely Planet and featured in Condé Nast Traveller's hidden-gem list for Prague.",
+  "address": "Újezd 19, 118 00 Prague 1 - Malá Strana, Czech Republic",
+  "telephone": "+420 257 531 042",
+  "priceRange": "€€€",
+  "checkinTime": "15:00",
+  "checkoutTime": "11:00",
+  "url": "https://example.org/zlaty-hrozen"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "BedAndBreakfast",
+    titleProp: "name",
+    icon: "🛏️",
+    accent: "#b45309",
+    fields: [
+      { prop: "name",        label: "Name",          type: "text" },
+      { prop: "image",       label: "Image",         type: "image" },
+      { prop: "description", label: "Description",   type: "textarea" },
+      { prop: "address",     label: "Address",       type: "text" },
+      { prop: "telephone",   label: "Phone",         type: "text" },
+      { prop: "priceRange",  label: "Price Range",   type: "text" },
+      { prop: "checkinTime", label: "Check-in",      type: "text" },
+      { prop: "checkoutTime",label: "Check-out",     type: "text" },
+      { prop: "url",         label: "Website",       type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
