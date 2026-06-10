@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DryCleaningOrLaundry — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "DryCleaningOrLaundry",
+  "name": "Prádelna U Labutě — Laundry & Dry Cleaning",
+  "image": "https://picsum.photos/seed/pr-delna-u-labut-laundry-dry-cleanin/800/450",
+  "description": "A neighbourhood laundry handling everything from duvets to wedding dresses: wet cleaning for delicates the big chains refuse, same-day shirts before noon, and the suede-and-leather service that keeps vintage shops in business. Lockers outside allow around-the-clock drop-off and collection by code.",
+  "address": "Vinohradská 130, 130 00 Praha 3",
+  "telephone": "+420 271 733 050",
+  "openingHours": "Mo-Fr 07:00-19:00, Sa 09:00-13:00; lockers 24/7",
+  "priceRange": "Shirt 89 CZK, duvet from 390 CZK",
+  "url": "https://example.org/pr-delna-u-labut-laundry-dry-cleanin"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "DryCleaningOrLaundry",
+    titleProp: "name",
+    icon: "🧺",
+    accent: "#06b6d4",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "telephone", label: "Phone", type: "tel" },
+      { prop: "openingHours", label: "Open", type: "text" },
+      { prop: "priceRange", label: "Price", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
