@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HinduTemple — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "HinduTemple",
+  "name": "Meenakshi Amman Temple",
+  "image": "https://picsum.photos/seed/meenakshi-temple/800/450",
+  "description": "A historic Hindu temple complex in the heart of Madurai, Tamil Nadu, dedicated to the goddess Meenakshi and her consort Sundareswarar (Shiva). Its fourteen gopurams — gateway towers encrusted with thousands of painted stucco figures — rise up to 52 metres, and the Hall of a Thousand Pillars houses a celebrated museum of bronzes. The temple anchors the city's plan like the hub of a wheel and draws over 15,000 visitors a day, swelling to a million during the annual Meenakshi Tirukalyanam festival.",
+  "address": "Madurai Main, Madurai, Tamil Nadu 625001, India",
+  "openingHours": "Daily 05:00-12:30, 16:00-21:30",
+  "url": "https://example.org/meenakshi-temple"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "HinduTemple",
+    titleProp: "name",
+    icon: "🕉️",
+    accent: "#ea580c",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "openingHours", label: "Open", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

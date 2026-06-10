@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MiddleSchool — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "MiddleSchool",
+  "name": "Lincoln Middle School, Portland",
+  "image": "https://picsum.photos/seed/lincoln-middle/800/450",
+  "description": "A public middle school serving 700 students in grades 6–8 in southeast Portland, Oregon. Lincoln is known for its project-based STEM magnet programme, a nationally ranked MathCounts team, and a student-run makerspace with 3D printers and a wood shop. The school fields teams in soccer, track and cross-country, and its jazz band performs annually at the district festival. A dual-language Spanish strand continues from the feeder elementary schools.",
+  "foundingDate": "1958-09-02",
+  "address": "4200 SE Woodward St, Portland, OR 97206, USA",
+  "url": "https://example.org/lincoln-middle"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "MiddleSchool",
+    titleProp: "name",
+    icon: "📐",
+    accent: "#0284c7",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "foundingDate", label: "Founded", type: "text" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

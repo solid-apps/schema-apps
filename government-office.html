@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GovernmentOffice — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "GovernmentOffice",
+  "name": "Úřad městské části Praha 7 — Czech Point Office",
+  "image": "https://picsum.photos/seed/praha7-office/800/450",
+  "description": "The district government office for Prague 7, handling identity cards, passports, trade licences, vehicle registration and certified document services through its Czech POINT counters. The modernised ground floor offers a ticketing system with online queue booking, and most agendas can be started electronically with a citizen identity. Wednesday evening hours make it one of the few Prague offices open past six.",
+  "address": "U Průhonu 1338/38, 170 00 Praha 7, Czech Republic",
+  "openingHours": "Mo,We 08:00-18:00; Tu,Th 08:00-15:00; Fr 08:00-12:00",
+  "url": "https://example.org/praha7-office"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "GovernmentOffice",
+    titleProp: "name",
+    icon: "🏛️",
+    accent: "#334155",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "openingHours", label: "Open", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HighSchool — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "HighSchool",
+  "name": "Gymnázium Nad Štolou",
+  "image": "https://picsum.photos/seed/gym-nad-stolou/800/450",
+  "description": "A selective public gymnázium in Prague 7 preparing 600 students for university through four- and six-year programmes. The school offers specialised tracks in natural sciences and humanities, exchange partnerships with schools in Lyon and Hamburg, and consistently places among the top Prague schools in maturita results. Alumni include leading Czech scientists, judges and Olympic rowers. Its assembly hall hosts a popular public lecture series each winter.",
+  "foundingDate": "1959-09-01",
+  "address": "Nad Štolou 1, 170 00 Praha 7, Czech Republic",
+  "url": "https://example.org/gymnasium-nad-stolou"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "HighSchool",
+    titleProp: "name",
+    icon: "🎓",
+    accent: "#1e40af",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "foundingDate", label: "Founded", type: "text" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
