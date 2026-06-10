@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SportsClub — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsClub",
+  "name": "AC Sparta Praha — Atletický oddíl (Athletics Section)",
+  "image": "https://picsum.photos/seed/sportsclub-sparta/600/400",
+  "description": "The athletics section of AC Sparta Praha is one of the oldest and most decorated track-and-field clubs in the Czech Republic, tracing its origins to the founding of AC Sparta Praha in 1893 by the three Midl brothers in the Smíchov district of Prague. Originally a gymnastics and fencing club, Sparta rapidly expanded into athletics, football, rowing and tennis, becoming the dominant force in Czechoslovak sport during the interwar First Republic era. Today the athletics section is based at the Julius Fucik Stadium in Strašnice, a 6,500-seat facility with a certified Mondo synthetic track, throwing fields and a covered warm-up area. The club has produced Olympic medallists in the javelin (Jan Železný trained here in the 1990s), the decathlon and the 400 m hurdles, and currently coaches over 200 athletes from youth development through to the elite senior squad. Membership is open to all ages; the club runs beginner athletics courses for children aged 6–10 every Tuesday and Thursday afternoon. The annual Sparta Athletics Meeting in June attracts international competitors and is a fixture on the European Athletics Outdoor Permit meetings circuit.",
+  "address": "Julius Fucik Stadium, Za Elektrárnou 215, Strašnice, Prague 10",
+  "telephone": "+420 272 731 640",
+  "openingHours": "Training sessions Tu–Fr 16:00–20:00, Sa 09:00–13:00; Stadium open during events",
+  "priceRange": "Youth membership CZK 2,400/year; Adult membership CZK 3,600/year",
+  "url": "https://www.acsparta.cz/atletika"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "SportsClub",
+    titleProp: "name",
+    icon: "🤸",
+    accent: "#16a34a",
+    fields: [
+      { prop: "name",         label: "Club",        type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "address",      label: "Address",     type: "text" },
+      { prop: "telephone",    label: "Phone",       type: "text" },
+      { prop: "openingHours", label: "Hours",       type: "text" },
+      { prop: "priceRange",   label: "Price",       type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

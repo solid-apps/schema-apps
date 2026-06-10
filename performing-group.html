@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PerformingGroup — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "PerformingGroup",
+  "name": "Český filharmonický sbor Brno (Czech Philharmonic Choir Brno)",
+  "image": "https://picsum.photos/seed/performinggroup-cfcb/600/400",
+  "description": "The Czech Philharmonic Choir Brno (CFB) is one of Central Europe's foremost professional chamber choirs, founded in 1990 by conductor Petr Fiala from the merger of two earlier Brno vocal ensembles. Based in the Moravian capital of Brno, the 28-voice choir specialises in a cappella repertoire spanning the Renaissance to contemporary commissions, with a particular reputation for championing Czech and Moravian sacred music — works by Janáček, Martinů, Eben and Lukáš feature prominently in their programmes. The ensemble has premiered over 60 new works by Czech composers and has won first prizes at the Arezzo, Gorizia, Tolosa and Marktoberdorf international choral competitions. Internationally, CFB has performed at the Salzburg Festival, the Edinburgh International Festival, the Prague Spring Festival and in concert halls across Japan, South Korea, Israel, Canada and the United States. The choir records regularly for Supraphon and Chandos; their 2018 recording of Martinů's choral works was nominated for the International Classical Music Awards. In Brno they perform a seasonal concert series in the Besední dům and the Cathedral of St Peter and Paul.",
+  "foundingDate": "1990",
+  "address": "Besední dům, Komenského náměstí 8, Brno, Czech Republic",
+  "url": "https://www.cfb.cz/en"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "PerformingGroup",
+    titleProp: "name",
+    icon: "🎪",
+    accent: "#a21caf",
+    fields: [
+      { prop: "name",         label: "Ensemble",    type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "foundingDate", label: "Founded",     type: "text" },
+      { prop: "address",      label: "Home Base",   type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

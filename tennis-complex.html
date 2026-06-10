@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TennisComplex — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "TennisComplex",
+  "name": "TK Sparta Praha — Tennis Club Sparta Prague",
+  "image": "https://picsum.photos/seed/tennis-sparta-praha/600/400",
+  "description": "TK Sparta Praha is one of the most prestigious tennis clubs in the Czech Republic, situated on the leafy southern slope of Štvanice Island in the Vltava River between Prague's Holešovice and Karlín districts. Founded in 1922, the club operates 15 outdoor clay courts (available May–October) and 6 indoor hard courts in two heated halls, plus a state-of-the-art centre court with seating for 800 spectators that hosts the annual Sparta Prague Open WTA 125K tournament. The complex shares Štvanice Island with the Štvanice hockey stadium and is surrounded by mature plane trees, giving the outdoor courts a park-like atmosphere rare for a city-centre venue. Notable Czech players who trained at Sparta include former Wimbledon champion Jan Kodeš and former world No. 8 Tomáš Berdych. The club offers coaching programmes for all ages, a fully equipped fitness room, a sauna and a garden restaurant overlooking the Vltava. Non-members can book courts online; peak-time outdoor clay costs CZK 420 per hour.",
+  "address": "Štvanice 1110, Holešovice, Prague 7",
+  "telephone": "+420 222 313 444",
+  "openingHours": "Outdoor (May–Oct): Mo–Su 07:00–21:00; Indoor (year-round): Mo–Fr 07:00–22:00, Sa–Su 08:00–20:00",
+  "priceRange": "CZK 280–520 per hour per court",
+  "url": "https://www.tk-sparta.cz"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "TennisComplex",
+    titleProp: "name",
+    icon: "🎾",
+    accent: "#65a30d",
+    fields: [
+      { prop: "name",         label: "Complex",     type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "address",      label: "Address",     type: "text" },
+      { prop: "telephone",    label: "Phone",       type: "text" },
+      { prop: "openingHours", label: "Hours",       type: "text" },
+      { prop: "priceRange",   label: "Price",       type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
