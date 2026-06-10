@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NightClub — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "NightClub",
+  "name": "Cross Club",
+  "image": "https://picsum.photos/seed/cross-club/600/400",
+  "description": "Prague's legendary underground club in Holešovice, famous for its surreal steampunk interior — a labyrinth of welded metal sculptures, kinetic art and pulsing neon. Four rooms host techno, drum and bass, dub reggae and experimental electronic acts. The courtyard fires up grilled food and chill-out zones when the weather allows.",
+  "address": "Za Viaduktem 1161/12, 170 00 Prague 7, Czech Republic",
+  "telephone": "+420 775 666 999",
+  "openingHours": "We-Sa 21:00-05:00",
+  "priceRange": "100–250 CZK (entry)",
+  "url": "https://example.org/cross-club"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "NightClub",
+    titleProp: "name",
+    icon: "🪩",
+    accent: "#a21caf",
+    fields: [
+      { prop: "name",        label: "Name",         type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "address",     label: "Address",      type: "text" },
+      { prop: "telephone",   label: "Telephone",    type: "tel" },
+      { prop: "openingHours",label: "Opening hours", type: "text" },
+      { prop: "priceRange",  label: "Price range",  type: "text" },
+      { prop: "url",         label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
