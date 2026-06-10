@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Attorney — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Attorney",
+  "name": "Kocián Šolc Balastík — Advokátní kancelář",
+  "image": "https://picsum.photos/seed/attorney-ksb-prague/600/400",
+  "description": "Kocián Šolc Balastík (KSB) is one of the leading independent law firms in the Czech Republic, founded in 1990 shortly after the Velvet Revolution. Headquartered in a Functionalist building on Praha 1's Rašínovo nábřeží with views of the Vltava and Vyšehrad, the firm advises domestic and international clients on mergers and acquisitions, capital markets, real estate, dispute resolution, competition law and regulatory compliance. With over sixty lawyers — many dual-qualified in New York or England & Wales — KSB regularly tops local league tables for mid-market M&A deal volume. The Prague office also coordinates cross-border work with partner firms in Bratislava, Budapest and Warsaw. Pro bono commitments include asylum-seeker representation and NGO governance advice.",
+  "address": "Rašínovo nábřeží 390/42, 128 00 Prague 2 - Nové Město, Czech Republic",
+  "telephone": "+420 224 103 111",
+  "openingHours": "Mo-Fr 09:00-18:00; by appointment outside hours",
+  "priceRange": "CZK 3 000–8 000/hour (associate); CZK 6 000–15 000/hour (partner)",
+  "url": "https://www.ksb.cz"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Attorney",
+    titleProp: "name",
+    icon: "⚖️",
+    accent: "#334155",
+    fields: [
+      { prop: "name",        label: "Name",           type: "text" },
+      { prop: "image",       label: "Image",          type: "image" },
+      { prop: "description", label: "Description",    type: "textarea" },
+      { prop: "address",     label: "Address",        type: "text" },
+      { prop: "telephone",   label: "Phone",          type: "text" },
+      { prop: "openingHours",label: "Hours",          type: "text" },
+      { prop: "priceRange",  label: "Price Range",    type: "text" },
+      { prop: "url",         label: "Website",        type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
