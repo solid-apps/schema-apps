@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Beach — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Beach",
+  "name": "Navagio Beach",
+  "image": "https://picsum.photos/seed/navagio-beach/600/400",
+  "description": "A world-famous crescent of white pebble sand framed by towering limestone cliffs and crystal-clear turquoise waters, accessible only by boat. Also known as Shipwreck Beach after the rusted freighter still stranded on its shore. Snorkelling, cliff-jumping and photographers' golden-hour pilgrimage.",
+  "address": "Zakynthos, Ionian Islands, Greece",
+  "url": "https://example.org/navagio-beach"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Beach",
+    titleProp: "name",
+    icon: "🏖️",
+    accent: "#0ea5e9",
+    fields: [
+      { prop: "name",        label: "Name",        type: "text" },
+      { prop: "image",       label: "Image",       type: "image" },
+      { prop: "description", label: "Description", type: "textarea" },
+      { prop: "address",     label: "Address",     type: "text" },
+      { prop: "url",         label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
