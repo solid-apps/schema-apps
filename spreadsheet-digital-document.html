@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SpreadsheetDigitalDocument — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "SpreadsheetDigitalDocument",
+  "name": "Solid World Prague 2026 — Budget Workbook",
+  "image": "https://picsum.photos/seed/solid-world-prague-2026-budget-workbook/800/450",
+  "description": "The master budget workbook for Solid World Prague 2026: sheets for venue and AV, catering per head, travel grants, sponsorship tiers against actuals, and a live dashboard with burn-down to the event date. Cell comments record every assumption; the summary sheet feeds the monthly report to the steering group.",
+  "url": "https://example.org/solid-world-prague-2026-budget-workbook",
+  "dateModified": "2026-06-08",
+  "author": "Martin Dvořák"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "SpreadsheetDigitalDocument",
+    titleProp: "name",
+    icon: "📊",
+    accent: "#15803d",
+    fields: [
+      { prop: "name", label: "Workbook", type: "text" },
+      { prop: "image", label: "Preview", type: "image" },
+      { prop: "description", label: "Contents", type: "textarea" },
+      { prop: "author", label: "Owner", type: "text" },
+      { prop: "url", label: "Open", type: "url" },
+      { prop: "dateModified", label: "Updated", type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

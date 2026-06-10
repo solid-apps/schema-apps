@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AboutPage — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About Solid Project — Who We Are",
+  "image": "https://picsum.photos/seed/about-solid-project-who-we-are/800/450",
+  "description": "The about page of the Solid Project site, telling the story from Tim Berners-Lee's 2016 decentralisation manifesto to today's community of implementers. It introduces the core team, the W3C Solid Community Group, governance and the project's principles: personal data stored in pods, applications as interchangeable views, and standards over lock-in. Includes a timeline of milestones and how to get involved.",
+  "url": "https://example.org/about-solid-project-who-we-are",
+  "dateModified": "2026-06-08"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "AboutPage",
+    titleProp: "name",
+    icon: "ℹ️",
+    accent: "#0d9488",
+    fields: [
+      { prop: "name", label: "Title", type: "text" },
+      { prop: "image", label: "Preview", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "url", label: "URL", type: "url" },
+      { prop: "dateModified", label: "Updated", type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

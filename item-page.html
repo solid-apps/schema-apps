@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ItemPage — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemPage",
+  "name": "Vitra Eames Lounge Chair — Product Page",
+  "image": "https://picsum.photos/seed/vitra-eames-lounge-chair-product-page/800/450",
+  "description": "A single-product page for the Eames Lounge Chair & Ottoman in santos palisander with premium black leather. Covers the 1956 design history, construction details of the plywood shells and aluminium base, care instructions, authenticity markers, and current lead times. Includes 360° viewer, dimension drawings and the configurator for wood, leather and base finishes.",
+  "url": "https://example.org/vitra-eames-lounge-chair-product-page",
+  "dateModified": "2026-06-08"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "ItemPage",
+    titleProp: "name",
+    icon: "📄",
+    accent: "#64748b",
+    fields: [
+      { prop: "name", label: "Title", type: "text" },
+      { prop: "image", label: "Preview", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "url", label: "URL", type: "url" },
+      { prop: "dateModified", label: "Updated", type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TextDigitalDocument — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "TextDigitalDocument",
+  "name": "Solid Pod Hosting Agreement — v3 Draft",
+  "image": "https://picsum.photos/seed/solid-pod-hosting-agreement-v3-draft/800/450",
+  "description": "The third draft of a plain-language hosting agreement for community Solid pod providers: service levels, data portability guarantees, the no-inspection clause, lawful-request handling, and termination with full export. Tracked changes show the working group's responses to round-two comments; clause 7 on backup retention remains open for Thursday's call.",
+  "url": "https://example.org/solid-pod-hosting-agreement-v3-draft",
+  "dateModified": "2026-06-08",
+  "author": "Solid Community Legal WG"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "TextDigitalDocument",
+    titleProp: "name",
+    icon: "📝",
+    accent: "#475569",
+    fields: [
+      { prop: "name", label: "Document", type: "text" },
+      { prop: "image", label: "Preview", type: "image" },
+      { prop: "description", label: "Contents", type: "textarea" },
+      { prop: "author", label: "Author", type: "text" },
+      { prop: "url", label: "Open", type: "url" },
+      { prop: "dateModified", label: "Updated", type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

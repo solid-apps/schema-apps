@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SearchResultsPage — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "SearchResultsPage",
+  "name": "Search Results — 'solid pod' on DevDocs Search",
+  "image": "https://picsum.photos/seed/search-results-solid-pod-on-devdocs-sear/800/450",
+  "description": "A search results page showing 142 results for the query 'solid pod' across documentation sources: specification sections, tutorials, API references and community Q&A, with facets for source, recency and content type. Results show highlighted snippets, breadcrumbs and estimated reading time; the query suggests related searches for WebID, LDP containers and access control.",
+  "url": "https://example.org/search-results-solid-pod-on-devdocs-sear",
+  "dateModified": "2026-06-08"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "SearchResultsPage",
+    titleProp: "name",
+    icon: "🔍",
+    accent: "#334155",
+    fields: [
+      { prop: "name", label: "Title", type: "text" },
+      { prop: "image", label: "Preview", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "url", label: "URL", type: "url" },
+      { prop: "dateModified", label: "Updated", type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

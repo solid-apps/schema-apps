@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MedicalWebPage — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalWebPage",
+  "name": "Hay Fever — Symptoms and Treatments (Patient Info)",
+  "image": "https://picsum.photos/seed/hay-fever-symptoms-and-treatments-patien/800/450",
+  "description": "A reviewed patient-information page about seasonal allergic rhinitis: recognising symptoms, the pollen calendar for Central Europe, evidence-based treatment ladder from antihistamines to immunotherapy, and red flags that warrant seeing a doctor. Carries the medical reviewer's name and review date, references, and a clear disclaimer that the page does not replace personal medical advice.",
+  "url": "https://example.org/hay-fever-symptoms-and-treatments-patien",
+  "dateModified": "2026-06-08",
+  "about": "Seasonal allergic rhinitis",
+  "lastReviewed": "2026-03-15"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "MedicalWebPage",
+    titleProp: "name",
+    icon: "⚕️",
+    accent: "#dc2626",
+    fields: [
+      { prop: "name", label: "Title", type: "text" },
+      { prop: "image", label: "Preview", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "about", label: "Topic", type: "text" },
+      { prop: "lastReviewed", label: "Reviewed", type: "text" },
+      { prop: "url", label: "URL", type: "url" },
+      { prop: "dateModified", label: "Updated", type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
