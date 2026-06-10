@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RiverBodyOfWater — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "RiverBodyOfWater",
+  "name": "Vltava (Moldau) — The National River of the Czech Republic",
+  "image": "https://picsum.photos/seed/river-vltava/600/400",
+  "description": "The Vltava is the longest river in the Czech Republic, flowing 430 kilometres from its source on the eastern slopes of Černá hora (Black Mountain) in the Šumava mountains near the German border, through the cities of Český Krumlov, České Budějovice and Prague, before joining the Elbe (Labe) at Mělník north of the capital. The river drains a basin of 28,090 km² — roughly a third of the entire country — and has shaped Czech history, culture and identity for over a millennium. In Prague the Vltava is spanned by 18 bridges, the most famous being Charles Bridge (Karlův most, 1357), and its banks define the city's two great halves: the Castle and Malá Strana on the left, the Old and New Towns on the right. Bedřich Smetana immortalised the river in his symphonic poem Vltava (Má vlast, 1874), following the river from two tiny springs through forest hunts, peasant weddings, a stylised Prague skyline and a majestic finale as it merges with the Elbe. The Vltava is navigable for 80 km upstream from Mělník; a system of weirs, locks and hydroelectric dams (most notably the Slapy and Orlík reservoirs, built 1954–1966) regulates its flow and provides recreation for millions of Czechs every summer.",
+  "address": "Flows through Šumava, Český Krumlov, České Budějovice, Prague, Mělník — Czech Republic",
+  "url": "https://en.wikipedia.org/wiki/Vltava"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "RiverBodyOfWater",
+    titleProp: "name",
+    icon: "🏞️",
+    accent: "#0369a1",
+    fields: [
+      { prop: "name",        label: "River",       type: "text" },
+      { prop: "image",       label: "Image",       type: "image" },
+      { prop: "description", label: "Description", type: "textarea" },
+      { prop: "address",     label: "Course",      type: "text" },
+      { prop: "url",         label: "Info",        type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TaxiService — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "TaxiService",
+  "name": "AAA Taxi — Prague's Largest Radio Taxi Service",
+  "image": "https://picsum.photos/seed/taxiservice-aaa/600/400",
+  "description": "AAA Taxi is the largest and most recognised radio taxi service in Prague, operating a fleet of over 1,100 vehicles across the city since 1994. Distinguished by their bright yellow sedans and the distinctive AAA roundel on the doors, the company dispatches from a central call centre on Vinohradská that processes over 8,000 rides per day. All AAA taxis are equipped with calibrated taximeters, GPS tracking and card-payment terminals; fares are regulated by Prague City Hall and currently start at CZK 40 flag fall plus CZK 28 per kilometre (tariff 1, daytime). AAA was the first Prague taxi service to introduce a mobile app with real-time tracking, ETAs and cashless payment, launched in 2015. The company also operates a premium black-car fleet (AAA Black) for corporate clients and airport transfers to Václav Havel Airport Prague. Licensed by the Prague Public Transit Authority (DPP).",
+  "provider": {
+    "@type": "Organization",
+    "name": "AAA Radiotaxi s.r.o."
+  },
+  "areaServed": "Prague and Central Bohemian Region",
+  "url": "https://www.aaataxi.cz"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "TaxiService",
+    titleProp: "name",
+    icon: "🚕",
+    accent: "#eab308",
+    fields: [
+      { prop: "name",        label: "Service",     type: "text" },
+      { prop: "image",       label: "Image",       type: "image" },
+      { prop: "description", label: "Description", type: "textarea" },
+      { prop: "provider",    label: "Provider",    type: "text", display: "o.name" },
+      { prop: "areaServed",  label: "Area",        type: "text" },
+      { prop: "url",         label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
