@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VisualArtwork — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "VisualArtwork",
+  "name": "The Slav Epic — cycle of twenty monumental canvases",
+  "image": "https://picsum.photos/seed/visualartwork-slav-epic/600/400",
+  "description": "A cycle of twenty enormous canvases painted between 1910 and 1928 by Alfons Mucha, the Art Nouveau master, depicting the history and mythology of the Slavic peoples. The largest canvas, 'The Apotheosis of the Slavs', measures over eight by six metres and spans a thousand years of Slavic struggle and triumph — from ancestral oppression through the Hussite wars to the creation of an independent Czechoslovakia in 1918. Mucha conceived the work as a gift to the Czech nation and donated it to the City of Prague in 1928. After decades in storage and controversy over its display location, the cycle is now housed in the Veletržní palác (Trade Fair Palace) branch of the National Gallery in Prague, where the vast canvases fill an entire exhibition hall with their luminous, symbolist palette.",
+  "artist": {
+    "@type": "Person",
+    "name": "Alfons Mucha"
+  },
+  "artMedium": "Oil on canvas",
+  "artform": "Painting",
+  "dateCreated": "1910–1928"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "VisualArtwork",
+    titleProp: "name",
+    icon: "🎨",
+    accent: "#f59e0b",
+    fields: [
+      { prop: "name",         label: "Title",        type: "text" },
+      { prop: "image",        label: "Image",        type: "image" },
+      { prop: "description",  label: "Description",  type: "textarea" },
+      { prop: "artist",       label: "Artist",       type: "text", display: "o.name" },
+      { prop: "artMedium",    label: "Medium",       type: "text" },
+      { prop: "artform",      label: "Art Form",     type: "text" },
+      { prop: "dateCreated",  label: "Date Created", type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
