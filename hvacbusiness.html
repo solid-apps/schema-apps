@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HVACBusiness — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "HVACBusiness",
+  "name": "KlimaTech Praha — Heating & Cooling",
+  "image": "https://picsum.photos/seed/klimatech-praha-heating-cooling/800/450",
+  "description": "Installers of heat pumps, air-conditioning and recuperation systems for Prague homes and offices, certified for the major Japanese and European brands. The firm handles subsidy paperwork for the New Green Savings programme, monitors installed systems remotely, and guarantees a 48-hour response under its service contracts.",
+  "address": "Počernická 96, 108 00 Praha 10",
+  "telephone": "+420 274 818 555",
+  "openingHours": "Mo-Fr 08:00-17:00",
+  "priceRange": "Heat pumps from 189 000 CZK",
+  "url": "https://example.org/klimatech-praha-heating-cooling"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "HVACBusiness",
+    titleProp: "name",
+    icon: "❄️",
+    accent: "#0891b2",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "telephone", label: "Phone", type: "tel" },
+      { prop: "openingHours", label: "Open", type: "text" },
+      { prop: "priceRange", label: "Price", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
