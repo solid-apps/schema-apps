@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ItemList — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Top 10 Hidden Gems in Prague — Locals' Picks",
+  "image": "https://picsum.photos/seed/itemlist-prague-gems/600/400",
+  "description": "A curated top-ten list of Prague's best-kept secrets, compiled from recommendations by long-time residents. Beyond the Charles Bridge and Old Town Square lies a city of secluded gardens, underground chapels, riverside beer gardens and forgotten cubist masterpieces. Each entry includes the spot's name, neighbourhood and a one-line reason to visit. Whether you have a free afternoon or a full week, these are the places that make Praguers fall in love with their city all over again.",
+  "itemListElement": "Vyšehrad Citadel, Vrtba Garden, Letná Beer Garden, Speculum Alchemiae museum, Cubist House of the Black Madonna, Stromovka Park, Kampa Island, Petřín Mirror Maze, Bunkr Parukářka, Cross Club",
+  "numberOfItems": "10",
+  "itemListOrder": "https://schema.org/ItemListOrderDescending"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "ItemList",
+    titleProp: "name",
+    icon: "🔢",
+    accent: "#7c3aed",
+    fields: [
+      { prop: "name",             label: "Title",        type: "text" },
+      { prop: "image",            label: "Image",        type: "image" },
+      { prop: "description",      label: "Description",  type: "textarea" },
+      { prop: "itemListElement",  label: "Items",        type: "textarea" },
+      { prop: "numberOfItems",    label: "Count",        type: "text" },
+      { prop: "itemListOrder",    label: "Order",        type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
