@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>WebApplication — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Penny — Solid Pod File Manager",
+  "image": "https://picsum.photos/seed/penny-solid-filemanager/800/450",
+  "description": "A browser-based file manager for Solid Pods. Upload, organise, and share files and folders with drag-and-drop ease. View resources as a file tree or gallery, set granular Web Access Control permissions per folder, preview images and documents inline, and generate shareable links with expiry dates. Penny runs entirely in the browser — no server-side processing, no tracking, no vendor lock-in. Your Pod, your rules.",
+  "applicationCategory": "Productivity",
+  "browserRequirements": "Requires a modern browser with ES2022 support (Chrome 94+, Firefox 93+, Safari 15.4+, Edge 94+)",
+  "author": "Community Solid Project",
+  "url": "https://penny Solid.github.io"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "WebApplication",
+    titleProp: "name",
+    icon: "💻",
+    accent: "#4f46e5",
+    fields: [
+      { prop: "name",               label: "App Name",       type: "text" },
+      { prop: "image",              label: "Screenshot",     type: "image" },
+      { prop: "description",        label: "About",          type: "textarea" },
+      { prop: "applicationCategory",label: "Category",       type: "text" },
+      { prop: "browserRequirements",label: "Requirements",   type: "text" },
+      { prop: "author",             label: "Developer",      type: "text" },
+      { prop: "url",                label: "Launch",         type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
