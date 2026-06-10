@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ArchiveOrganization — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ArchiveOrganization",
+  "name": "National Archives of the Czech Republic",
+  "image": "https://picsum.photos/seed/national-archives-of-the-czech-repub/800/450",
+  "description": "The central state archive, preserving documents of Czech statehood from medieval charters to born-digital government records — over 110 running kilometres of holdings. The Chodovec complex provides climate-controlled storage, conservation labs and public reading rooms; the digitisation programme has put the parish registers and land tables online, the genealogists' favourites.",
+  "foundingDate": "1954-01-01",
+  "address": "Archivní 4/2257, 149 00 Praha 4 - Chodovec, Czech Republic",
+  "url": "https://example.org/national-archives-of-the-czech-repub"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "ArchiveOrganization",
+    titleProp: "name",
+    icon: "🗃️",
+    accent: "#78716c",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "foundingDate", label: "Founded", type: "text" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

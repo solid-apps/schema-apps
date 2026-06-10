@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Embassy — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Embassy",
+  "name": "Embassy of the Czech Republic in Tokyo",
+  "image": "https://picsum.photos/seed/embassy-of-the-czech-republic-in-tok/800/450",
+  "description": "The Czech embassy in Tokyo's Shibuya ward, handling diplomatic relations, consular services for Czech citizens in Japan, and visa processing. The embassy's cultural section runs the Czech Centre programme of film, music and design events, and the commercial section supports Czech exporters. Consular appointments are booked online; emergencies have a 24-hour line.",
+  "address": "2-16-14 Hiroo, Shibuya-ku, Tokyo 150-0012, Japan",
+  "openingHours": "Consular: Mo,We,Fr 09:00-12:00 by appointment",
+  "url": "https://example.org/embassy-of-the-czech-republic-in-tok"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "Embassy",
+    titleProp: "name",
+    icon: "🏳️",
+    accent: "#1e40af",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "openingHours", label: "Open", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

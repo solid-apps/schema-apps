@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Courthouse — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Courthouse",
+  "name": "Municipal Court in Prague — Spálená Courthouse",
+  "image": "https://picsum.photos/seed/municipal-court-in-prague-sp-len-cou/800/450",
+  "description": "The main civil courthouse of the Municipal Court in Prague, hearing commercial disputes, insolvency and appeals from the district courts. The Spálená building's grand 1930s courtrooms host the city's highest-profile civil cases; hearings are public except where the panel rules otherwise, and the information centre helps visitors locate proceedings by case number.",
+  "address": "Spálená 6/2, 120 00 Praha 2, Czech Republic",
+  "openingHours": "Mo-Th 07:30-16:00, Fr 07:30-14:30",
+  "url": "https://example.org/municipal-court-in-prague-sp-len-cou"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "Courthouse",
+    titleProp: "name",
+    icon: "⚖️",
+    accent: "#334155",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "openingHours", label: "Open", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
