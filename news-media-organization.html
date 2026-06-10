@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NewsMediaOrganization — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsMediaOrganization",
+  "name": "Mladá fronta DNES",
+  "image": "https://picsum.photos/seed/mf-dnes/600/400",
+  "description": "One of the Czech Republic's most widely read daily newspapers, tracing its roots to the youth-front press of 1945 and relaunching as an independent broadsheet after 1989. Headquartered in Prague's Palmovka district, MF DNES covers national politics, investigative reporting, business, sport and lifestyle. Its weekend magazine and regional supplements reach hundreds of thousands of print subscribers, while its website ranks among the top five Czech news portals. The paper broke several major corruption stories in the 2000s that led to ministerial resignations and criminal prosecutions.",
+  "foundingDate": "1945",
+  "address": "Pod Sovinci 1542/16, 190 00 Prague 9, Czech Republic",
+  "url": "https://example.org/mf-dnes"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "NewsMediaOrganization",
+    titleProp: "name",
+    icon: "🗞️",
+    accent: "#475569",
+    fields: [
+      { prop: "name",        label: "Name",         type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "foundingDate",label: "Founded",      type: "text" },
+      { prop: "address",     label: "Address",      type: "text" },
+      { prop: "url",         label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
