@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BookSeries — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "BookSeries",
+  "name": "The Witcher (Saga o Zakonnom y Pokoye) — Andrzej Sapkowski",
+  "image": "https://picsum.photos/seed/bookseries-witcher/600/400",
+  "description": "The Witcher is a series of fantasy novels and short-story collections by Polish author Andrzej Sapkowski, first published in Polish beginning in 1986. The saga follows Geralt of Rivia, a magically mutated monster hunter (witcher) navigating a morally ambiguous medieval-inspired world where humans, elves, dwarves and monsters coexist uneasily. Blending Slavic mythology, dark humour and political intrigue, the series began with two short-story collections (The Last Wish, Sword of Destiny) before expanding into a five-novel main saga and a standalone prequel (Season of Storms). The books have been translated into over 40 languages, inspired a blockbuster CD Projekt RED video-game trilogy and a Netflix television series, making Sapkowski's creation one of Poland's most successful cultural exports.",
+  "author": {
+    "@type": "Person",
+    "name": "Andrzej Sapkowski"
+  },
+  "startDate": "1986",
+  "endDate": "2013",
+  "numberOfItems": "8"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "BookSeries",
+    titleProp: "name",
+    icon: "📚",
+    accent: "#9333ea",
+    fields: [
+      { prop: "name",          label: "Series",       type: "text" },
+      { prop: "image",         label: "Image",        type: "image" },
+      { prop: "description",   label: "Description",  type: "textarea" },
+      { prop: "author",        label: "Author",       type: "text", display: "o.name" },
+      { prop: "startDate",     label: "Started",      type: "text" },
+      { prop: "endDate",       label: "Ended",        type: "text" },
+      { prop: "numberOfItems", label: "Books",        type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Drug — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Drug",
+  "name": "Ibalgin 400 — Patient Information (Czech Republic)",
+  "image": "https://picsum.photos/seed/drug-ibalgin-400/600/400",
+  "description": "Ibalgin 400 is a widely available over-the-counter ibuprofen formulation sold in pharmacies and drugstores across the Czech Republic. Each film-coated tablet contains 400 mg of ibuprofen, a non-steroidal anti-inflammatory drug (NSAID) used for the short-term relief of mild to moderate pain including headache, dental pain, menstrual cramps, muscular pain and fever associated with colds and flu. Produced by Zentiva in Prague, it is one of the most recognisable painkiller brands on the Czech market. This entry is for informational purposes only — always read the patient information leaflet and consult a pharmacist or physician if unsure.",
+  "activeIngredient": "Ibuprofen 400 mg per tablet",
+  "dosageForm": "Film-coated tablet",
+  "prescriptionStatus": "Over-the-counter (OTC) — available without prescription in Czech pharmacies and licensed drugstores",
+  "drugClass": "Non-steroidal anti-inflammatory drug (NSAID), propionic acid derivative"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "Drug",
+    titleProp: "name",
+    icon: "💊",
+    accent: "#0891b2",
+    fields: [
+      { prop: "name",               label: "Drug",         type: "text" },
+      { prop: "image",              label: "Image",        type: "image" },
+      { prop: "description",        label: "Description",  type: "textarea" },
+      { prop: "activeIngredient",   label: "Active",       type: "text" },
+      { prop: "dosageForm",         label: "Form",         type: "text" },
+      { prop: "prescriptionStatus", label: "Status",       type: "text" },
+      { prop: "drugClass",          label: "Class",        type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
