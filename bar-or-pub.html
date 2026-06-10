@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BarOrPub — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "BarOrPub",
+  "name": "Lokál Dlouhááá",
+  "image": "https://picsum.photos/seed/lokal-dlouha/600/400",
+  "description": "A sprawling Czech beer hall in Old Town where Pilsner Urquell flows fresh from the tank. Long wooden communal tables, vintage posters and the unmistakable clink of thick glass mugs. The menu is unapologetically traditional — roast pork knuckle, svíčková and fried cheese — all designed to pair with half-litres of lager.",
+  "address": "Dlouhá 33, 110 00 Prague 1, Czech Republic",
+  "telephone": "+420 222 211 944",
+  "openingHours": "Mo-Su 11:00-24:00",
+  "priceRange": "80–350 CZK",
+  "url": "https://example.org/lokal-dlouha"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "BarOrPub",
+    titleProp: "name",
+    icon: "🍺",
+    accent: "#b45309",
+    fields: [
+      { prop: "name",        label: "Name",         type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "address",     label: "Address",      type: "text" },
+      { prop: "telephone",   label: "Telephone",    type: "tel" },
+      { prop: "openingHours",label: "Opening hours", type: "text" },
+      { prop: "priceRange",  label: "Price range",  type: "text" },
+      { prop: "url",         label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
