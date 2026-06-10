@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AskPublicNewsArticle — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "AskPublicNewsArticle",
+  "name": "We're Investigating Rental Algorithms in Prague — Share Your Story",
+  "image": "https://picsum.photos/seed/we-re-investigating-rental-algorithms-in/800/450",
+  "description": "A callout from the investigations desk asking tenants whether algorithmic pricing tools set their rent: the team is collecting listings, lease renewals, and screenshots of pricing explanations across Prague districts. The article explains what evidence helps, how submissions are verified and anonymised, and the secure deposit options including a pod-based dropbox.",
+  "author": "Investigativní tým",
+  "datePublished": "2026-06-09",
+  "url": "https://example.org/we-re-investigating-rental-algorithms-in"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "AskPublicNewsArticle",
+    titleProp: "name",
+    icon: "🙋",
+    accent: "#16a34a",
+    fields: [
+      { prop: "name", label: "Headline", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "Summary", type: "textarea" },
+      { prop: "author", label: "Author", type: "text" },
+      { prop: "datePublished", label: "Published", type: "text" },
+      { prop: "url", label: "Read", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

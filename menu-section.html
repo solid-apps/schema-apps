@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MenuSection — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "MenuSection",
+  "name": "Dezerty — Dessert Menu, La Degustation",
+  "image": "https://picsum.photos/seed/dessert-menu-degustation/800/450",
+  "description": "The dessert section of the tasting menu: five plates that close the Bohemian arc of the evening. From the warm honey cake with smoked crème fraîche to the rosehip sorbet with poppy-seed tuile, each dessert reinterprets a 19th-century recipe from Rettigová's cookbook with modern technique. The section pairs with Moravian straw wine or the house elderflower cordial.",
+  "hasMenuItem": "Honey cake with smoked crème fraîche, Plum dumpling with brown-butter crumb, Rosehip sorbet with poppy-seed tuile, Tvaroh cheesecake with sea-buckthorn, Chocolate-rye tart with sour cherry",
+  "url": "https://example.org/degustation-desserts"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "MenuSection",
+    titleProp: "name",
+    icon: "🍱",
+    accent: "#ea580c",
+    fields: [
+      { prop: "name", label: "Section", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "hasMenuItem", label: "Dishes", type: "list" },
+      { prop: "url", label: "Menu", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

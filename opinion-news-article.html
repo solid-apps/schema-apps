@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OpinionNewsArticle — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "OpinionNewsArticle",
+  "name": "Opinion: Europe's Next Single Market Should Be Personal Data Portability",
+  "image": "https://picsum.photos/seed/opinion-europe-s-next-single-market-shou/800/450",
+  "description": "An opinion column arguing that the EU's next integration project should make personal-data portability as frictionless as roaming: pods and verified identities as infrastructure, with switching guarantees modelled on bank-account portability rules. The author contends Digital Markets Act enforcement shows demand, and that Czech e-government's citizen identity is quietly ahead of larger member states.",
+  "author": "Klára Veselá",
+  "datePublished": "2026-06-09",
+  "url": "https://example.org/opinion-europe-s-next-single-market-shou"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "OpinionNewsArticle",
+    titleProp: "name",
+    icon: "🗣️",
+    accent: "#475569",
+    fields: [
+      { prop: "name", label: "Headline", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "Summary", type: "textarea" },
+      { prop: "author", label: "Author", type: "text" },
+      { prop: "datePublished", label: "Published", type: "text" },
+      { prop: "url", label: "Read", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>WebPage — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "solidproject.org — Home Page",
+  "image": "https://picsum.photos/seed/solidproject-home/800/450",
+  "description": "The home page of the Solid Project: an introduction to pods and WebID for newcomers, quick-start paths for developers and pod providers, news from the community group, and a showcase of applications. The page is itself served from a pod and described in JSON-LD — the same pattern as every app in this gallery.",
+  "url": "https://solidproject.org",
+  "inLanguage": "en",
+  "dateModified": "2026-06-01"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "WebPage",
+    titleProp: "name",
+    icon: "🌐",
+    accent: "#2563eb",
+    fields: [
+      { prop: "name", label: "Page", type: "text" },
+      { prop: "image", label: "Preview", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "url", label: "URL", type: "url" },
+      { prop: "inLanguage", label: "Language", type: "text" },
+      { prop: "dateModified", label: "Updated", type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

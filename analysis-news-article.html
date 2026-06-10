@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AnalysisNewsArticle — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "AnalysisNewsArticle",
+  "name": "Analysis: What 100 Million Pods Would Mean for Europe's Cloud Market",
+  "image": "https://picsum.photos/seed/analysis-what-100-million-pods-would-mea/800/450",
+  "description": "A data-driven analysis of how mass pod adoption would reshape cloud economics: who hosts, who pays, and where the margins move when storage decouples from applications. Modelling three adoption scenarios against current hyperscaler revenue mixes, the piece finds the bigger disruption is in advertising-adjacent analytics, not storage itself, and maps which European providers are positioned to benefit.",
+  "author": "Jana Křížová",
+  "datePublished": "2026-06-09",
+  "url": "https://example.org/analysis-what-100-million-pods-would-mea"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "AnalysisNewsArticle",
+    titleProp: "name",
+    icon: "🔬",
+    accent: "#0891b2",
+    fields: [
+      { prop: "name", label: "Headline", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "Summary", type: "textarea" },
+      { prop: "author", label: "Author", type: "text" },
+      { prop: "datePublished", label: "Published", type: "text" },
+      { prop: "url", label: "Read", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
