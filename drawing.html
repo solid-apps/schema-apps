@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Drawing — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Drawing",
+  "name": "Study of Prague Rooftops from Petřín Hill — Graphite on Paper",
+  "image": "https://picsum.photos/seed/drawing-prague-rooftops/600/400",
+  "description": "A delicate graphite drawing capturing the iconic tiled rooftops, Baroque church spires and onion domes of Prague's Malá Strana as seen from the slopes of Petřín Hill. Executed en plein air in soft pencil on cream laid paper, the study demonstrates confident hatching and atmospheric perspective — the foreground rooftops rendered in crisp detail while the distant Prague Castle complex dissolves into a silvery mist. The artist signed the sheet lower right and dated it June 2025. Light foxing on the reverse suggests the paper dates from the mid-20th century. A charming example of the long tradition of Prague vedute (city views) that stretches back to the Habsburg era.",
+  "artist": {
+    "@type": "Person",
+    "name": "Jakub Dvořák"
+  },
+  "artMedium": "Graphite pencil on cream laid paper",
+  "dateCreated": "2025-06-14"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "Drawing",
+    titleProp: "name",
+    icon: "✏️",
+    accent: "#64748b",
+    fields: [
+      { prop: "name",        label: "Drawing",     type: "text" },
+      { prop: "image",       label: "Image",       type: "image" },
+      { prop: "description", label: "Description", type: "textarea" },
+      { prop: "artist",      label: "Artist",      type: "text", display: "o.name" },
+      { prop: "artMedium",   label: "Medium",      type: "text" },
+      { prop: "dateCreated", label: "Created",     type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
