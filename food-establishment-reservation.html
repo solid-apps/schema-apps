@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FoodEstablishmentReservation — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "FoodEstablishmentReservation",
+  "name": "La Degustation Bohême Bourgeoise — Table for Two",
+  "image": "https://picsum.photos/seed/food-reservation-ladegustation/600/400",
+  "description": "Confirmed dinner reservation at La Degustation Bohême Bourgeoise, Oldřich Sahajdák's Michelin-starred restaurant in Prague's Malá Strana. The tasting menu draws on forgotten Czech recipes from the 19th-century cookbook Domácí kuchařka by Magdalena Dobromila Rettigová, reimagined with modern technique and seasonal ingredients. Wine pairing selected by the sommelier from small Central European producers. Allow three hours. Smart casual dress code. A credit card is held for no-shows.",
+  "reservationId": "LDBB-20260712-04",
+  "underName": "Melvin Carvalho",
+  "reservationFor": "La Degustation Bohême Bourgeoise, Prague",
+  "startTime": "2026-07-12T19:30:00+02:00",
+  "partySize": "2"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "FoodEstablishmentReservation",
+    titleProp: "name",
+    icon: "🍽️",
+    accent: "#dc2626",
+    fields: [
+      { prop: "name",          label: "Reservation",      type: "text" },
+      { prop: "image",         label: "Image",            type: "image" },
+      { prop: "description",   label: "Description",      type: "textarea" },
+      { prop: "reservationId", label: "Booking Ref",      type: "text" },
+      { prop: "underName",     label: "Guest",            type: "text" },
+      { prop: "reservationFor",label: "Restaurant",       type: "text" },
+      { prop: "startTime",     label: "Date & Time",      type: "text" },
+      { prop: "partySize",     label: "Party Size",       type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
