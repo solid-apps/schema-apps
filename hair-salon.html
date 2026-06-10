@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HairSalon — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "HairSalon",
+  "name": "Střih a Styl",
+  "image": "https://picsum.photos/seed/strih-styl-salon/600/400",
+  "description": "A modern hair salon in Letná with a relaxed, plant-filled interior and a small team of stylists who specialise in lived-in colour, textured bobs and men's fades. Uses mostly Davines products — cruelty-free and carbon-neutral. Online booking, espresso on arrival, and no hard sells. Walk-ins welcome but appointments recommended on Saturdays.",
+  "address": "Milady Horákové 88, 170 00 Prague 7, Czech Republic",
+  "telephone": "+420 222 333 770",
+  "openingHours": "Tu-Fr 09:00-19:00, Sa 09:00-16:00",
+  "priceRange": "400–2 500 CZK",
+  "url": "https://example.org/strih-styl"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "HairSalon",
+    titleProp: "name",
+    icon: "💇",
+    accent: "#d946ef",
+    fields: [
+      { prop: "name",        label: "Name",         type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "address",     label: "Address",      type: "text" },
+      { prop: "telephone",   label: "Telephone",    type: "tel" },
+      { prop: "openingHours",label: "Opening hours", type: "text" },
+      { prop: "priceRange",  label: "Price range",  type: "text" },
+      { prop: "url",         label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
