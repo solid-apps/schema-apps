@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ElectronicsStore — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ElectronicsStore",
+  "name": "Datart Flora",
+  "image": "https://picsum.photos/seed/datart-electronics/600/400",
+  "description": "A major consumer-electronics retailer inside the Flora Palace shopping centre. Three floors of laptops, smartphones, smart-home gear, gaming setups and large-screen TVs. A dedicated audio room lets you compare headphones and speakers side by side. On-site repair desk for quick fixes and a trade-in programme for old devices.",
+  "address": "Vinohradská 149, 130 00 Prague 3, Czech Republic",
+  "telephone": "+420 225 001 225",
+  "openingHours": "Mo-Sa 09:00-21:00, Su 10:00-19:00",
+  "priceRange": "200–80 000 CZK",
+  "url": "https://example.org/datart-flora"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "ElectronicsStore",
+    titleProp: "name",
+    icon: "🔌",
+    accent: "#0284c7",
+    fields: [
+      { prop: "name",        label: "Name",         type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "address",     label: "Address",      type: "text" },
+      { prop: "telephone",   label: "Telephone",    type: "tel" },
+      { prop: "openingHours",label: "Opening hours", type: "text" },
+      { prop: "priceRange",  label: "Price range",  type: "text" },
+      { prop: "url",         label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
