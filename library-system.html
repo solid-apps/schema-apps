@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LibrarySystem — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "LibrarySystem",
+  "name": "Prague Municipal Library Network",
+  "image": "https://picsum.photos/seed/prague-municipal-library-network/800/450",
+  "description": "The municipal library system of Prague: the central library on Mariánské náměstí plus forty branches and two bibliobuses, sharing a single catalogue, reader card and reservation system. The network lends 4.5 million items a year, runs the beloved annual book harvest sale, and its central hall hosts the spiralling 'Idiom' book tower beloved of photographers.",
+  "foundingDate": "1891-07-01",
+  "address": "Mariánské náměstí 98/1, 110 00 Praha 1, Czech Republic",
+  "url": "https://example.org/prague-municipal-library-network"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "LibrarySystem",
+    titleProp: "name",
+    icon: "📚",
+    accent: "#1d4ed8",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "foundingDate", label: "Founded", type: "text" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
