@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FireStation — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "FireStation",
+  "name": "Hasičská stanice 1 — Central Prague Fire Station",
+  "image": "https://picsum.photos/seed/hasi-sk-stanice-1-central-prague-fir/800/450",
+  "description": "The central fire station of the Prague Fire Rescue Brigade, housing four engine companies, the high-rise unit and the river rescue detachment. Station 1 answers around 4,000 calls a year across the historic centre, where ladder access and medieval street widths make it one of Europe's trickier firegrounds. The 1928 functionalist building includes the brigade museum, open to school groups by booking.",
+  "address": "Sokolská 62, 120 00 Praha 2, Czech Republic",
+  "openingHours": "Station staffed 24/7; museum Tu-Th 09:00-15:00",
+  "url": "https://example.org/hasi-sk-stanice-1-central-prague-fir"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "FireStation",
+    titleProp: "name",
+    icon: "🚒",
+    accent: "#dc2626",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "openingHours", label: "Open", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
