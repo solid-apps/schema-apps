@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BusTrip — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "BusTrip",
+  "name": "RegioJet 171011 Prague → Brno",
+  "image": "https://picsum.photos/seed/regiojet-bus/600/400",
+  "description": "The popular yellow RegioJet express linking the Czech capital with the country's second city. Double-decker Neoplan Skyliners depart from Prague's ÚAN Florenc coach station and cruise down the D1 motorway, arriving at Brno's Grand Hotel bus terminus in two hours and forty minutes. Onboard wi-fi, power outlets at every seat and complimentary hot drinks make it the favourite alternative to the busy rail corridor. The service runs sixteen times daily and is regularly booked out on Friday afternoons.",
+  "departureBusStop": "ÚAN Florenc, Prague",
+  "arrivalBusStop": "Brno, Grand Hotel bus station",
+  "departureTime": "09:30",
+  "arrivalTime": "12:10",
+  "provider": "RegioJet"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "BusTrip",
+    titleProp: "name",
+    icon: "🚌",
+    accent: "#ca8a04",
+    fields: [
+      { prop: "name",             label: "Trip",             type: "text" },
+      { prop: "image",            label: "Image",            type: "image" },
+      { prop: "description",      label: "Description",      type: "textarea" },
+      { prop: "departureBusStop", label: "Departure",        type: "text" },
+      { prop: "arrivalBusStop",   label: "Arrival",          type: "text" },
+      { prop: "departureTime",    label: "Departure Time",   type: "text" },
+      { prop: "arrivalTime",      label: "Arrival Time",     type: "text" },
+      { prop: "provider",         label: "Operator",         type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
