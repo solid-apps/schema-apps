@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VideoGallery — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGallery",
+  "name": "Solid World 2026 — Talk Recordings Gallery",
+  "image": "https://picsum.photos/seed/solid-world-videos/800/450",
+  "description": "The complete video gallery from Solid World Prague 2026: twenty-eight talks across two tracks, from the opening keynote to lightning talks, each with chaptered timelines, subtitles in Czech and English, and slide-synced viewing. Playlists group recordings by track, and every video carries a JSON-LD description so the gallery itself is just a pod container rendered as a page.",
+  "author": "Solid Community AV Team",
+  "dateCreated": "2026-05-30",
+  "url": "https://example.org/solid-world-videos"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "VideoGallery",
+    titleProp: "name",
+    icon: "📼",
+    accent: "#ef4444",
+    fields: [
+      { prop: "name", label: "Gallery", type: "text" },
+      { prop: "image", label: "Cover", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "author", label: "Curator", type: "text" },
+      { prop: "dateCreated", label: "Created", type: "text" },
+      { prop: "url", label: "Watch", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
