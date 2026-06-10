@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VeterinaryCare — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "VeterinaryCare",
+  "name": "Veterinární klinika Dejvice — MVDr. Pavel Dvořák",
+  "image": "https://picsum.photos/seed/vet-klinik-dejvice/600/400",
+  "description": "Veterinary clinic Dejvice has served the neighbourhood's cats, dogs and small mammals since 1998. Run by MVDr. Pavel Dvořák and a team of three additional veterinarians, the practice offers wellness exams, vaccinations, dental scaling, soft-tissue surgery and digital radiography. A dedicated isolation ward prevents cross-infection, and the on-site laboratory returns blood-work results within the hour. The clinic partners with a nearby 24-hour emergency hospital for after-hours cases and maintains a pet-travel certificate service for owners heading abroad with their animals. The waiting room is separated into dog and cat zones to keep stress levels down, and treats are always at the front desk.",
+  "address": "Tychonova 2166/10, 160 00 Prague 6 - Dejvice, Czech Republic",
+  "telephone": "+420 233 920 115",
+  "openingHours": "Mo-Fr 08:00-18:00; Sa 09:00-13:00; Su closed",
+  "priceRange": "CZK 400–8 000 (procedure-dependent); pet-insurance accepted",
+  "url": "https://www.vet-dejvice.cz"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "VeterinaryCare",
+    titleProp: "name",
+    icon: "🐕",
+    accent: "#65a30d",
+    fields: [
+      { prop: "name",        label: "Name",           type: "text" },
+      { prop: "image",       label: "Image",          type: "image" },
+      { prop: "description", label: "Description",    type: "textarea" },
+      { prop: "address",     label: "Address",        type: "text" },
+      { prop: "telephone",   label: "Phone",          type: "text" },
+      { prop: "openingHours",label: "Hours",          type: "text" },
+      { prop: "priceRange",  label: "Price Range",    type: "text" },
+      { prop: "url",         label: "Website",        type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
