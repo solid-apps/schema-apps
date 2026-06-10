@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PoliceStation — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "PoliceStation",
+  "name": "Městská policie Praha — Obvodní ředitelství Praha I",
+  "image": "https://picsum.photos/seed/police-praha1/600/400",
+  "description": "Obvodní ředitelství Praha I is the headquarters of Prague's First District municipal police, occupying a heavy Art Deco building on Konviktská street in the heart of the Old Town — a stone's throw from Charles Bridge and the National Theatre. The station is responsible for policing Prague 1, the city's smallest but most densely touristed district, which packs Old Town Square, Wenceslas Square, the Jewish Quarter, Malá Strana, Prague Castle and the Charles Bridge into roughly 15 square kilometres that see an estimated 8 million visitors per year. The 340 officers assigned to Praha I handle a workload unlike any other Prague district: pickpocket rings operating on tram lines 22 and 23, counterfeit ticket scams outside astronomical clock tour bookings, public intoxication in the riverside beer gardens, and the occasional diplomatic incident involving motorcades on Pařížská. The station runs a dedicated tourist police unit (turistická policie) with officers fluent in English, German and Russian, identifiable by their bright green armbands, who patrol the top ten visitor hotspots on foot and e-bike from April through October. The building itself has a layered history: constructed in 1928 as a district court, it served as a Gestapo interrogation centre during the Protectorate, then as a Communist-era StB station, before being transferred to the municipal police in 1991 after the Velvet Revolution. The basement still holds original detention cells with heavy wooden doors and iron grating — now used only for short-term holding before transfer to the central processing facility. Praha I also houses the city's only 24-hour lost-and-found office for the historic centre, where officers reunite tourists with dropped wallets, misplaced passports (around 3,200 per year), and the occasional lost child wandering the Old Town alleys. The station's most unusual responsibility: coordinating security for the annual Prague Spring International Music Festival opening ceremony at the Municipal House, the Velvet Revolution commemoration on 17 November, and the massive New Year's Eve fireworks crowd on the banks of the Vltava.",
+  "address": "Konviktská 276/5, Staré Město, Prague 1",
+  "openingHours": "24 hours, 7 days a week",
+  "url": "https://www.mppraha.cz/en/directory/praha-i"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "PoliceStation",
+    titleProp: "name",
+    icon: "🚓",
+    accent: "#1e3a8a",
+    fields: [
+      { prop: "name",         label: "Station",     type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "address",      label: "Address",     type: "text" },
+      { prop: "openingHours", label: "Hours",       type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
