@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MedicalCondition — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalCondition",
+  "name": "Seasonal Allergic Rhinitis (Hay Fever) — Patient Information Overview",
+  "image": "https://picsum.photos/seed/medicalcondition-hayfever/600/400",
+  "description": "An informational patient-facing overview of seasonal allergic rhinitis, commonly known as hay fever. The condition affects an estimated 20–25 % of the Czech population, with peak incidence during the grass and birch pollen seasons (April through July in Central Europe). Symptoms include sneezing, nasal congestion, itchy and watery eyes, and fatigue. While not life-threatening, untreated hay fever can significantly impair quality of life, work productivity and exam performance. Diagnosis is typically confirmed by skin-prick testing or specific IgE blood tests at an allergology clinic. This overview is for informational purposes only and does not constitute medical advice — consult a physician for personalised treatment.",
+  "associatedAnatomy": "Upper respiratory tract — nasal mucosa, conjunctivae, paranasal sinuses",
+  "possibleTreatment": "Second-generation oral antihistamines (cetirizine, loratadine), intranasal corticosteroid sprays (fluticasone, budesonide), allergen-specific immunotherapy (sublingual or subcutaneous) for moderate-to-severe cases",
+  "riskFactor": "Family history of atopy, early childhood antibiotic use, urban living, high ambient pollen counts, comorbid asthma",
+  "signOrSymptom": "Paroxysmal sneezing, nasal congestion, clear rhinorrhoea, bilateral conjunctival injection and pruritus, palatal itching, fatigue"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "MedicalCondition",
+    titleProp: "name",
+    icon: "🩹",
+    accent: "#dc2626",
+    fields: [
+      { prop: "name",              label: "Condition",   type: "text" },
+      { prop: "image",             label: "Image",       type: "image" },
+      { prop: "description",       label: "Description", type: "textarea" },
+      { prop: "associatedAnatomy", label: "Anatomy",     type: "text" },
+      { prop: "possibleTreatment", label: "Treatment",   type: "text" },
+      { prop: "riskFactor",        label: "Risk Factors",type: "text" },
+      { prop: "signOrSymptom",     label: "Symptoms",    type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CourseInstance — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "CourseInstance",
+  "name": "Introduction to Linked Data and Solid — Spring 2026 Semester, ČVUT FIT",
+  "image": "https://picsum.photos/seed/courseinstance-ld-solid/600/400",
+  "description": "A 14-week undergraduate elective at the Faculty of Information Technology, Czech Technical University in Prague. Students learn the foundations of RDF, SPARQL, JSON-LD and the Solid specification through lectures and hands-on labs. The course covers designing ontologies, building Solid-aware web applications with React and LDflex, implementing Web Access Control policies, and deploying a Community Solid Server instance. Assessment includes a mid-term exam, three lab assignments and a final group project where teams build a fully functional Solid app. Open to Erasmus students; lectures are in English.",
+  "courseMode": "Blended — on-campus lectures + online labs",
+  "startDate": "2026-02-17",
+  "endDate": "2026-05-29",
+  "location": {
+    "@type": "Place",
+    "name": "ČVUT FIT, Dejvice campus, Building A, room A-1127"
+  },
+  "instructor": {
+    "@type": "Person",
+    "name": "Doc. Ing. Petr Škoda, Ph.D."
+  }
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "CourseInstance",
+    titleProp: "name",
+    icon: "🏫",
+    accent: "#0284c7",
+    fields: [
+      { prop: "name",       label: "Course",      type: "text" },
+      { prop: "image",      label: "Image",       type: "image" },
+      { prop: "description",label: "Description", type: "textarea" },
+      { prop: "courseMode", label: "Mode",        type: "text" },
+      { prop: "startDate",  label: "Start",       type: "text" },
+      { prop: "endDate",    label: "End",         type: "text" },
+      { prop: "location",   label: "Location",    type: "text", display: "o.name" },
+      { prop: "instructor", label: "Instructor",  type: "text", display: "o.name" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

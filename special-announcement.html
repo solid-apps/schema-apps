@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SpecialAnnouncement — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "SpecialAnnouncement",
+  "name": "Vltava Flood Alert — Prague 2026 Emergency Notice",
+  "image": "https://picsum.photos/seed/specialannouncement-vltava-flood/600/400",
+  "description": "An official public service announcement from the Magistrát hlavního města Prahy (Prague City Hall) regarding rising Vltava River water levels following heavy rainfall in Šumava and South Bohemia. The notice warns of anticipated flooding in low-lying areas of Prague 1, 5 and 7, announces the closure of embankment roads and riverside parks, provides shelter locations for affected residents, and lists emergency contact numbers. Citizens are advised to avoid the river banks, move vehicles from underground garages in flood zones, and monitor the city's official channels for hourly water-level updates from the ČHMÚ gauging station at Charles Bridge.",
+  "category": "https://www.wikidata.org/wiki/Q8065",
+  "datePosted": "2026-06-10T08:00:00+02:00",
+  "expires": "2026-06-17T23:59:00+02:00",
+  "announcementLocation": {
+    "@type": "City",
+    "name": "Prague, Czech Republic"
+  },
+  "url": "https://www.praha.cz/en/flood-alert-june-2026"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "SpecialAnnouncement",
+    titleProp: "name",
+    icon: "📢",
+    accent: "#dc2626",
+    fields: [
+      { prop: "name",               label: "Title",       type: "text" },
+      { prop: "image",              label: "Image",       type: "image" },
+      { prop: "description",        label: "Description", type: "textarea" },
+      { prop: "category",           label: "Category",    type: "text" },
+      { prop: "datePosted",         label: "Posted",      type: "text" },
+      { prop: "expires",            label: "Expires",     type: "text" },
+      { prop: "announcementLocation",label: "Location",   type: "text", display: "o.name" },
+      { prop: "url",                label: "Source URL",  type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
