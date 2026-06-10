@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CatholicChurch — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "CatholicChurch",
+  "name": "Church of Our Lady before Týn (Kostel Matky Boží před Týnem)",
+  "image": "https://picsum.photos/seed/tyn-church/800/450",
+  "description": "The Gothic church whose twin 80-metre spires dominate Prague's Old Town Square. Built between the 14th and 16th centuries, the Týn Church houses the city's oldest pipe organ (1673), the tomb of astronomer Tycho Brahe, and a rooftop forest of pinnacles that earned it a place on every Prague postcard. Mass is celebrated daily in Czech with a Sunday Latin mass at 21:00; the church remains an active Catholic parish within the Archdiocese of Prague.",
+  "address": "Staroměstské náměstí, 110 00 Praha 1, Czech Republic",
+  "openingHours": "Tu-Sa 10:00-13:00, 15:00-17:00; Su 10:30-12:00",
+  "url": "https://example.org/tyn-church"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "CatholicChurch",
+    titleProp: "name",
+    icon: "⛪",
+    accent: "#6b7280",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "openingHours", label: "Open", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
