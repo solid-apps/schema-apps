@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Manuscript — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Manuscript",
+  "name": "Codex Vyssegradensis — Coronation Gospels of the First Czech King (11th Century)",
+  "image": "https://picsum.photos/seed/manuscript-codex-vyssegrad/600/400",
+  "description": "The Codex Vyssegradensis (Vyšehrad Codex) is a lavishly illuminated Latin gospel book created circa 1085, most likely at the scriptorium of the Benedictine monastery in Sázava or at the court of Vratislav II, the first King of Bohemia. The manuscript contains the four Gospels preceded by full-page canon tables and evangelist portraits rendered in vibrant tempera and gold leaf on parchment. Its style blends Ottonian, Byzantine and emerging Romanesque elements, reflecting Bohemia's position at the cultural crossroads of medieval Europe. Named after Vyšehrad Castle where it was housed for centuries, the codex is now preserved in the Czech National Library (Národní knihovna ČR) under shelf mark XIV A 13. It is considered one of the most important surviving Romanesque manuscripts in Central Europe and a foundational monument of Czech visual culture.",
+  "author": {
+    "@type": "Person",
+    "name": "Unknown — Benedictine scriptorium, Sázava or Prague court (circa 1085)"
+  },
+  "dateCreated": "circa 1085",
+  "inLanguage": "Latin",
+  "contentLocation": {
+    "@type": "Place",
+    "name": "Národní knihovna ČR, Klementinum, Prague (shelf mark XIV A 13)"
+  }
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "Manuscript",
+    titleProp: "name",
+    icon: "📜",
+    accent: "#7c2d12",
+    fields: [
+      { prop: "name",            label: "Manuscript",  type: "text" },
+      { prop: "image",           label: "Image",       type: "image" },
+      { prop: "description",     label: "Description", type: "textarea" },
+      { prop: "author",          label: "Scribe",      type: "text", display: "o.name" },
+      { prop: "dateCreated",     label: "Created",     type: "text" },
+      { prop: "inLanguage",      label: "Language",    type: "text" },
+      { prop: "contentLocation", label: "Held At",     type: "text", display: "o.name" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MusicVideoObject — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicVideoObject",
+  "name": "Karel Gott — Kávu si osladím (Official Music Video, 1996)",
+  "image": "https://picsum.photos/seed/musicvideo-kavu-oslidim/600/400",
+  "description": "The official music video for Kávu si osladím (I'll Sweeten My Coffee), one of the last great hits by Karel Gott — the legendary Czech singer known as the Golden Nightingale of Prague. Released in 1996 on the album Posel dobrých zpráv, the video was shot on 35 mm film on location in Prague's Malá Strana and at the Café Imperial on Poříčí. Directed by veteran Czech music-video director Milan Růžička, it features Gott performing in a candlelit café intercut with atmospheric black-and-white footage of Prague at dawn — Charles Bridge, the Vltava embankment and the spires of St Vitus Cathedral. The video became a staple on Česká televize's music programming and remains one of the most-played Czech music videos of the 1990s. Gott's warm baritone and the song's nostalgic orchestral arrangement by Pavel Vacula made it an instant evergreen.",
+  "contentUrl": "https://www.youtube.com/watch?v=example-kavu-oslidim",
+  "duration": "PT4M22S",
+  "datePublished": "1996-09-15",
+  "director": {
+    "@type": "Person",
+    "name": "Milan Růžička"
+  }
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "MusicVideoObject",
+    titleProp: "name",
+    icon: "📹",
+    accent: "#ef4444",
+    fields: [
+      { prop: "name",          label: "Video",       type: "text" },
+      { prop: "image",         label: "Image",       type: "image" },
+      { prop: "description",   label: "Description", type: "textarea" },
+      { prop: "contentUrl",    label: "Watch",       type: "url" },
+      { prop: "duration",      label: "Duration",    type: "text" },
+      { prop: "datePublished", label: "Released",    type: "text" },
+      { prop: "director",      label: "Director",    type: "text", display: "o.name" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Periodical — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Periodical",
+  "name": "Vesmír — Czech Scientific Journal (Founded 1871)",
+  "image": "https://picsum.photos/seed/periodical-vesmir/600/400",
+  "description": "Vesmír (The Universe) is the oldest and most prestigious Czech popular-science journal, published continuously since 1871. Founded by entomologist Antonín Frič, it covers astronomy, biology, chemistry, geology, physics and the history of science with articles written in accessible Czech by active researchers and science communicators. Published monthly by the Vesmír publishing house in Prague, each issue features peer-reviewed feature articles, news from Czech and international laboratories, book reviews and a beloved back-page column on the night sky over Bohemia. The journal has nurtured generations of Czech scientists — Gregor Mendel's work on heredity was first discussed in its pages in the 19th century. Today Vesmír maintains both a print edition and a freely accessible online archive spanning over 150 years of Czech scientific thought.",
+  "issn": "0042-4544",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Vesmír, spol. s r.o., Prague"
+  },
+  "inLanguage": "Czech",
+  "startDate": "1871"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "Periodical",
+    titleProp: "name",
+    icon: "📖",
+    accent: "#475569",
+    fields: [
+      { prop: "name",       label: "Journal",     type: "text" },
+      { prop: "image",      label: "Image",       type: "image" },
+      { prop: "description",label: "Description", type: "textarea" },
+      { prop: "issn",       label: "ISSN",        type: "text" },
+      { prop: "publisher",  label: "Publisher",   type: "text", display: "o.name" },
+      { prop: "inLanguage", label: "Language",    type: "text" },
+      { prop: "startDate",  label: "Founded",     type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
