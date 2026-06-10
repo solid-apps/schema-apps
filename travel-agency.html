@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TravelAgency — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  "name": "Cedok Travel — Pařížská Street",
+  "image": "https://picsum.photos/seed/travel-cedok-parizska/600/400",
+  "description": "Cedok is the Czech Republic's oldest and best-known travel agency, founded in 1920 as Čedok — Česká cestovní kancelář. Its flagship branch on Pařížská street, in the heart of Prague's Jewish Quarter, occupies a restored Art Deco corner space with brass fixtures and vintage travel posters lining the walls. The agency arranges guided tours, tailor-made itineraries and package holidays across Europe, North Africa and Southeast Asia, as well as domestic spa retreats in Karlovy Vary and the Bohemian Forest. In-house visa specialists handle Schengen and exotic-destination paperwork, and a dedicated corporate-desk manages incentive trips and conference logistics for local businesses. The branch also sells rail passes, travel insurance and airport transfers, making it a one-stop shop for departure-day essentials.",
+  "address": "Pařížská 117/23, 110 00 Prague 1 - Josefov, Czech Republic",
+  "telephone": "+420 221 404 111",
+  "openingHours": "Mo-Fr 09:00-18:00; Sa 09:00-14:00; Su closed",
+  "priceRange": "CZK 3 000 (weekend domestic) – CZK 120 000 (tailor-made exotic)",
+  "url": "https://www.cedok.cz"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "TravelAgency",
+    titleProp: "name",
+    icon: "🌍",
+    accent: "#0d9488",
+    fields: [
+      { prop: "name",        label: "Name",           type: "text" },
+      { prop: "image",       label: "Image",          type: "image" },
+      { prop: "description", label: "Description",    type: "textarea" },
+      { prop: "address",     label: "Address",        type: "text" },
+      { prop: "telephone",   label: "Phone",          type: "text" },
+      { prop: "openingHours",label: "Hours",          type: "text" },
+      { prop: "priceRange",  label: "Price Range",    type: "text" },
+      { prop: "url",         label: "Website",        type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
