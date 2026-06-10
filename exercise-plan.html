@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ExercisePlan — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ExercisePlan",
+  "name": "12-Week Beginner Strength Programme",
+  "image": "https://picsum.photos/seed/exerciseplan-strength/600/400",
+  "description": "A structured three-phase strength training programme designed for beginners transitioning from bodyweight to barbell movements. Phase 1 (weeks 1–4) covers fundamental movement patterns — squat, hinge, push, pull, carry — with light loads and an emphasis on form. Phase 2 (weeks 5–8) introduces progressive overload and accessory work. Phase 3 (weeks 9–12) consolidates the big five lifts (back squat, deadlift, bench press, overhead press, barbell row) with planned intensity increases. Each session takes 45–60 minutes. Includes warm-up protocol, mobility drills and deload guidance. Written by CrossBox Karlín head coach Petr Novotný.",
+  "exerciseType": "Strength training",
+  "activityFrequency": "3 sessions per week, non-consecutive days",
+  "url": "https://crossboxkarlin.cz/programmes/12-week-beginner-strength"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "ExercisePlan",
+    titleProp: "name",
+    icon: "💪",
+    accent: "#dc2626",
+    fields: [
+      { prop: "name",              label: "Title",            type: "text" },
+      { prop: "image",             label: "Image",            type: "image" },
+      { prop: "description",       label: "Description",      type: "textarea" },
+      { prop: "exerciseType",      label: "Exercise Type",    type: "text" },
+      { prop: "activityFrequency", label: "Frequency",        type: "text" },
+      { prop: "url",               label: "Programme URL",    type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
