@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MovieClip — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "MovieClip",
+  "name": "'I'm a free man' — Closing Scene, Kolya (1996)",
+  "image": "https://picsum.photos/seed/kolya-clip/800/450",
+  "description": "The closing scene of Jan Svěrák's Oscar-winning Kolya: Louka watches the Soviet convoys leave Prague in 1989 with five-year-old Kolya on his shoulders, the cello score swelling over Letná plain. The two-minute clip is widely used in film schools as a study in wordless resolution — every relationship in the film resolves without a line of dialogue.",
+  "duration": "PT2M14S",
+  "datePublished": "1996-05-15",
+  "url": "https://example.org/kolya-closing-scene"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "MovieClip",
+    titleProp: "name",
+    icon: "🎞️",
+    accent: "#f59e0b",
+    fields: [
+      { prop: "name", label: "Clip", type: "text" },
+      { prop: "image", label: "Still", type: "image" },
+      { prop: "description", label: "Scene", type: "textarea" },
+      { prop: "duration", label: "Length", type: "text" },
+      { prop: "datePublished", label: "Film released", type: "text" },
+      { prop: "url", label: "Watch", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

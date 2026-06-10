@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MediaGallery — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "MediaGallery",
+  "name": "Velvet Revolution 1989 — Mixed-Media Archive Gallery",
+  "image": "https://picsum.photos/seed/velvet-revolution-gallery/800/450",
+  "description": "A mixed-media gallery from the November 1989 archive: photographs from Národní třída and Letná, samizdat leaflet scans, audio of the general-strike announcements and digitised Super-8 footage from Wenceslas Square. Items carry contributor credits and rights notes; the collection grows as families digitise home archives through the open call.",
+  "author": "Institute for Contemporary History",
+  "dateCreated": "2019-11-17",
+  "url": "https://example.org/velvet-gallery"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "MediaGallery",
+    titleProp: "name",
+    icon: "🖼️",
+    accent: "#64748b",
+    fields: [
+      { prop: "name", label: "Gallery", type: "text" },
+      { prop: "image", label: "Cover", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "author", label: "Curator", type: "text" },
+      { prop: "dateCreated", label: "Established", type: "text" },
+      { prop: "url", label: "Browse", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

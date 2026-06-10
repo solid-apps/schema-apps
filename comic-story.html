@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ComicStory — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ComicStory",
+  "name": "'The Mole and the Rocket' — Comic Adaptation",
+  "image": "https://picsum.photos/seed/mole-rocket-comic/800/450",
+  "description": "A comic-strip adaptation of Zdeněk Miler's beloved Krtek short, in which the Mole builds a rocket from a tin can and visits the Moon before deciding the forest is better. The wordless eight-page story preserves the animation's visual storytelling — ideal for pre-readers — with Miler's saturated colours reproduced from the original cels.",
+  "author": "Zdeněk Miler (adaptation)",
+  "artist": "Studio Bratři v triku",
+  "datePublished": "1973-04-01",
+  "url": "https://example.org/mole-rocket"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "ComicStory",
+    titleProp: "name",
+    icon: "🖍️",
+    accent: "#f97316",
+    fields: [
+      { prop: "name", label: "Story", type: "text" },
+      { prop: "image", label: "Panel", type: "image" },
+      { prop: "description", label: "Plot", type: "textarea" },
+      { prop: "author", label: "Writer", type: "text" },
+      { prop: "artist", label: "Artist", type: "text" },
+      { prop: "datePublished", label: "Published", type: "text" },
+      { prop: "url", label: "Read", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

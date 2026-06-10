@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ImageGallery — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "name": "Prague in Fog — Photo Gallery by Josef Sudek Society",
+  "image": "https://picsum.photos/seed/prague-fog-gallery/800/450",
+  "description": "Forty large-format photographs of Prague in fog, curated by the Josef Sudek Society from contemporary photographers working in the master's tradition: Charles Bridge dissolving at dawn, the Castle as a silhouette above the mist line, tram lights blooming on Letná. Each image includes camera notes and a map pin of the vantage point.",
+  "author": "Josef Sudek Society",
+  "dateCreated": "2026-01-10",
+  "url": "https://example.org/prague-fog"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "ImageGallery",
+    titleProp: "name",
+    icon: "📸",
+    accent: "#0ea5e9",
+    fields: [
+      { prop: "name", label: "Gallery", type: "text" },
+      { prop: "image", label: "Cover", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "author", label: "Curator", type: "text" },
+      { prop: "dateCreated", label: "Published", type: "text" },
+      { prop: "url", label: "View", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

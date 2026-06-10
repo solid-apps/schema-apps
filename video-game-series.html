@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VideoGameSeries — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGameSeries",
+  "name": "Mafia — The Czech-Made Crime Saga",
+  "image": "https://picsum.photos/seed/mafia-series/800/450",
+  "description": "The Mafia series, created by Illusion Softworks in Brno (later Hangar 13), spans four main titles from the 2002 original — still considered one of the best crime stories in games — through the Definitive Edition remakes. Set across Lost Heaven, Empire Bay and New Bordeaux, the series is famous for its period soundtracks, restrained open worlds and Czech development roots.",
+  "numberOfItems": "4",
+  "publisher": "2K Games",
+  "startDate": "2002-08-28",
+  "url": "https://example.org/mafia-series"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "VideoGameSeries",
+    titleProp: "name",
+    icon: "🎮",
+    accent: "#dc2626",
+    fields: [
+      { prop: "name", label: "Series", type: "text" },
+      { prop: "image", label: "Art", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "numberOfItems", label: "Games", type: "text" },
+      { prop: "publisher", label: "Publisher", type: "text" },
+      { prop: "startDate", label: "First release", type: "text" },
+      { prop: "url", label: "Info", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
