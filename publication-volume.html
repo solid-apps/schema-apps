@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PublicationVolume — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "PublicationVolume",
+  "name": "Vesmír Volume 105 (2026)",
+  "image": "https://picsum.photos/seed/vesmir-vol-105/800/450",
+  "description": "The complete 105th annual volume of Vesmír, collecting all twelve 2026 issues with the cumulative index of authors and subjects. Volume 105 spans 1,152 pages and includes the centenary retrospective of the journal's photography archive. Bound volumes join the series held complete since 1871 in the National Library's reading room.",
+  "volumeNumber": "105",
+  "datePublished": "2026-12-20",
+  "isPartOf": "Vesmír — Czech popular-science journal",
+  "url": "https://example.org/vesmir-vol-105"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "PublicationVolume",
+    titleProp: "name",
+    icon: "📚",
+    accent: "#334155",
+    fields: [
+      { prop: "name", label: "Volume", type: "text" },
+      { prop: "image", label: "Spine", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "volumeNumber", label: "Volume", type: "text" },
+      { prop: "datePublished", label: "Completed", type: "text" },
+      { prop: "isPartOf", label: "Journal", type: "text" },
+      { prop: "url", label: "Index", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
