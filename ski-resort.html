@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SkiResort — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "SkiResort",
+  "name": "Špindlerův Mlýn — Ski Areál Svatý Petr",
+  "image": "https://picsum.photos/seed-skiresort-spindleruv-mlyn/600/400",
+  "description": "The largest and most popular ski resort in the Czech Republic, nestled in the Krkonoše (Giant Mountains) at the foot of Sněžka, the country's highest peak. The Svatý Petr area offers 25 kilometres of groomed pistes ranging from gentle beginner slopes to demanding FIS-homologated black runs, served by a modern fleet of chairlifts and surface lifts with a combined uphill capacity of over 14,000 skiers per hour. A top-to-bottom floodlit run allows night skiing three evenings a week. The resort's snowmaking system covers 80 percent of the terrain, guaranteeing reliable conditions from mid-December through late March. A lively après-ski scene, ski school, rental shops, and the charming alpine-style village of Špindlerův Mlýn itself — with its timbered hotels, cafés and thermal spa — make it a full weekend destination just two hours' drive from Prague.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Svatý Petr 145",
+    "addressLocality": "Špindlerův Mlýn",
+    "postalCode": "543 51",
+    "addressRegion": "Krkonoše",
+    "addressCountry": "CZ"
+  },
+  "openingHours": "Mo–Su 08:30–16:30 (night skiing We,Fr,Sa 18:00–21:00)",
+  "priceRange": "CZK 850–1,450 / adult day pass",
+  "url": "https://www.skiareal.cz"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "SkiResort",
+    titleProp: "name",
+    icon: "🎿",
+    accent: "#0ea5e9",
+    fields: [
+      { prop: "name",        label: "Title",        type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "address",     label: "Address",      type: "text", display: "o.streetAddress + ', ' + o.addressLocality" },
+      { prop: "openingHours",label: "Opening Hours", type: "text" },
+      { prop: "priceRange",  label: "Price Range",  type: "text" },
+      { prop: "url",         label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
