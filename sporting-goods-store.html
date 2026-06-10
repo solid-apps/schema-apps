@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SportingGoodsStore — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "SportingGoodsStore",
+  "name": "Sportisimo — Chodov Shopping Centre",
+  "image": "https://picsum.photos/seed/sporting-sportisimo/600/400",
+  "description": "Sportisimo is the Czech Republic's largest sporting goods chain, operating over 70 stores nationwide, and this branch in the Westfield Chodov shopping centre on the Prague metro C line is one of its flagship locations — a 1,800 m² retail floor dedicated to every sport from ice hockey to trail running. The store is organised into clearly signed zones: a ski and snowboard department stocking Atomic, Salomon and Rossignol alongside Czech-made Hučák snowboards; a cycling corner with Trek, Scott and Cube bikes and a full workshop for seasonal servicing; a football section wall-to-wall with Nike, Adidas and Puma boots and official Sparta and Slavia Prague kits; and a dedicated hockey area where Czech-made Bauer and CCM sticks sit alongside sherpa-tape grip rolls and Czech Hockey-branded protective gear. The footwear wall runs the entire back wall — over 300 models of running, hiking, tennis and indoor training shoes on a size-organised grid. Sportisimo was founded in 1993 by a group of former professional athletes who saw that post-1989 Czechs needed a modern sports retail concept to replace the state-owned Sportpropad chain. The company runs a popular loyalty programme, sponsors the Czech national ice hockey team and publishes an annual gear guide with in-depth reviews tested by its staff of certified coaches and former professional athletes. This Chodov branch also offers ski and snowboard tuning, bike fitting and a running-shoe gait-analysis service by appointment.",
+  "address": "Roztylská 2321/19, Chodov, Prague 4",
+  "telephone": "+420 261 222 370",
+  "openingHours": "Mo–Sa 09:00–21:00, Su 10:00–18:00",
+  "priceRange": "CZK 299 (grip tape) – CZK 89,900 (Trek Domane SLR)",
+  "url": "https://www.sportisimo.cz"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "SportingGoodsStore",
+    titleProp: "name",
+    icon: "🏅",
+    accent: "#16a34a",
+    fields: [
+      { prop: "name",         label: "Store",       type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "address",      label: "Address",     type: "text" },
+      { prop: "telephone",    label: "Phone",       type: "text" },
+      { prop: "openingHours", label: "Hours",       type: "text" },
+      { prop: "priceRange",   label: "Price",       type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
