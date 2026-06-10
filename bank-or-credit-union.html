@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BankOrCreditUnion — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "BankOrCreditUnion",
+  "name": "Česká spořitelna — Main Branch, Rytířská",
+  "image": "https://picsum.photos/seed/bank-sporitelna-rytirska/600/400",
+  "description": "Česká spořitelna is the largest Czech bank by number of clients, tracing its roots to 1825 when the first Böhmische Sparkasse opened its doors. The main branch on Rytířská street sits in a grand Secessionist palace completed in 1894 — its vaulted banking hall, adorned with gilded stucco and stained-glass lunettes, is among the finest interiors in Prague. The branch provides the full spectrum of retail and SME banking: current and savings accounts, mortgages, consumer loans, credit cards, investment products and safe-deposit boxes. Eighteen teller windows and a dedicated private-banking lounge on the mezzanine serve over a thousand customers daily. Multilingual staff, including English and German speakers, are stationed at the front desk for foreign clients. ATMs in the lobby dispense CZK and EUR around the clock.",
+  "address": "Rytířská 557/29, 110 00 Prague 1 - Staré Město, Czech Republic",
+  "telephone": "+420 224 117 222",
+  "openingHours": "Mo-Fr 09:00-18:00; Sa 09:00-12:00; ATM 24/7",
+  "priceRange": "CZK 0 (basic account) – CZK 249/month (premium banking package)",
+  "url": "https://www.csas.cz"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "BankOrCreditUnion",
+    titleProp: "name",
+    icon: "🏦",
+    accent: "#1e3a8a",
+    fields: [
+      { prop: "name",        label: "Name",           type: "text" },
+      { prop: "image",       label: "Image",          type: "image" },
+      { prop: "description", label: "Description",    type: "textarea" },
+      { prop: "address",     label: "Address",        type: "text" },
+      { prop: "telephone",   label: "Phone",          type: "text" },
+      { prop: "openingHours",label: "Hours",          type: "text" },
+      { prop: "priceRange",  label: "Price Range",    type: "text" },
+      { prop: "url",         label: "Website",        type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
