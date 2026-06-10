@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VideoGame — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Outer Wilds",
+  "image": "https://picsum.photos/seed/outer-wilds-game/800/450",
+  "description": "You are the newest recruit of Outer Wilds Ventures, a fledgling space programme searching for answers in a strange, constantly evolving solar system trapped in an endless time loop. Every 22 minutes the sun goes supernova and the cycle resets — but your knowledge persists. Piece together clues scattered across crumbling Nomai ruins, quantum moons, and anglerfish-infested dark brambles to unravel a mystery that has waited millions of years. There are no upgrades, no skill trees, no combat — only curiosity and the gradual dawning of understanding. Winner of the BAFTA Games Award for Best Game 2020.",
+  "genre": "Exploration, Puzzle, Adventure",
+  "gamePlatform": "PC, PlayStation 4, Xbox One, Nintendo Switch",
+  "publisher": "Annapurna Interactive",
+  "datePublished": "2019-05-28",
+  "url": "https://www.mobiusdigitalgames.com/outer-wilds"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "VideoGame",
+    titleProp: "name",
+    icon: "🎮",
+    accent: "#dc2626",
+    fields: [
+      { prop: "name",          label: "Title",        type: "text" },
+      { prop: "image",         label: "Artwork",      type: "image" },
+      { prop: "description",   label: "About",        type: "textarea" },
+      { prop: "genre",         label: "Genre",        type: "text" },
+      { prop: "gamePlatform",  label: "Platforms",    type: "text" },
+      { prop: "publisher",     label: "Publisher",    type: "text" },
+      { prop: "datePublished", label: "Released",     type: "text" },
+      { prop: "url",           label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
