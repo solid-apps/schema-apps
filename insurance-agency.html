@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>InsuranceAgency — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "InsuranceAgency",
+  "name": "ČSOB Pojišťovna — Branch Národní třída",
+  "image": "https://picsum.photos/seed/insurance-csob-narodni/600/400",
+  "description": "ČSOB Pojišťovna is the insurance arm of Československá obchodní banka, one of the largest financial groups in the Czech Republic. This flagship branch on Národní třída, housed in a neo-Renaissance building with stucco ceilings and marble counters, offers the full range of personal and commercial policies — from mandatory vehicle liability and property coverage to travel insurance, life policies and corporate liability packages. A team of eight licensed advisors walks clients through claims processing on-site, with typical motor-claim settlements completed within ten working days. The branch also hosts free monthly seminars on pension planning and flood-risk coverage, drawing neighbourhood residents and small-business owners alike. English-speaking advisors available by prior appointment.",
+  "address": "Národní 363/28, 110 00 Prague 1 - Nové Město, Czech Republic",
+  "telephone": "+420 224 116 555",
+  "openingHours": "Mo-Fr 09:00-17:00; Sa 09:00-12:00",
+  "priceRange": "CZK 1 200/year (basic travel) – CZK 45 000/year (comprehensive corporate)",
+  "url": "https://www.csobpoj.cz"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "InsuranceAgency",
+    titleProp: "name",
+    icon: "🛡️",
+    accent: "#1e40af",
+    fields: [
+      { prop: "name",        label: "Name",           type: "text" },
+      { prop: "image",       label: "Image",          type: "image" },
+      { prop: "description", label: "Description",    type: "textarea" },
+      { prop: "address",     label: "Address",        type: "text" },
+      { prop: "telephone",   label: "Phone",          type: "text" },
+      { prop: "openingHours",label: "Hours",          type: "text" },
+      { prop: "priceRange",  label: "Price Range",    type: "text" },
+      { prop: "url",         label: "Website",        type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
