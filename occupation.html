@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Occupation — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Occupation",
+  "name": "Front-End Web Developer — Czech Republic",
+  "image": "https://picsum.photos/seed/occupation-frontend-dev/600/400",
+  "description": "Career profile for front-end web developers in the Czech Republic, with a focus on the Prague tech market. Front-end developers build and maintain the user-facing layer of web applications using HTML, CSS and JavaScript frameworks. Prague's thriving startup scene and growing number of established tech companies (Avast, Kiwi.com, Productboard, Rohlik Group) drive strong demand. The role typically requires 2–5 years of experience with React or Vue, proficiency in TypeScript, familiarity with CI/CD pipelines and a good command of English alongside Czech. Remote and hybrid arrangements are increasingly common.",
+  "occupationalCategory": "15-1252.00 — Software Developers and Programmers",
+  "estimatedSalary": "CZK 600 000 – 1 200 000 per year (junior to senior)",
+  "qualifications": "Bachelor's degree in Computer Science or equivalent bootcamp certificate; strong portfolio of shipped projects",
+  "skills": "JavaScript, TypeScript, React or Vue.js, HTML5, CSS3/SASS, Git, REST APIs, responsive design, CI/CD, accessibility (WCAG)"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "Occupation",
+    titleProp: "name",
+    icon: "💼",
+    accent: "#52525b",
+    fields: [
+      { prop: "name",               label: "Title",        type: "text" },
+      { prop: "image",              label: "Image",        type: "image" },
+      { prop: "description",        label: "Description",  type: "textarea" },
+      { prop: "occupationalCategory",label: "O*NET Code",  type: "text" },
+      { prop: "estimatedSalary",    label: "Salary Range", type: "text" },
+      { prop: "qualifications",     label: "Qualifications",type: "text" },
+      { prop: "skills",             label: "Skills",       type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
