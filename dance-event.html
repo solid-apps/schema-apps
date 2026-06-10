@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DanceEvent — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "DanceEvent",
+  "name": "Swan Lake — The Royal Ballet",
+  "image": "https://picsum.photos/seed/royal-ballet-swan-lake-2026/800/450",
+  "description": "The Royal Ballet's signature production of Tchaikovsky's immortal masterpiece returns to the Royal Opera House main stage. Marianela Núñez and Vadim Muntagirov lead the cast in Anthony Dowell's revered staging, with its opulent Ivanov-era costumes and John Macfarlane's breathtaking Gothic sets. From the shimmering white acts of the swan corps de ballet to the explosive Black Pas de Deux, this is classical ballet at its most transcendent. Live orchestra.",
+  "startDate": "2026-10-08T19:30+01:00",
+  "endDate": "2026-11-22T22:00+00:00",
+  "location": "Royal Opera House, Covent Garden, London, UK",
+  "organizer": "The Royal Ballet",
+  "url": "https://www.roh.org.uk/swan-lake"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "DanceEvent",
+    titleProp: "name",
+    icon: "💃",
+    accent: "#db2777",
+    fields: [
+      { prop: "name",        label: "Production",  type: "text" },
+      { prop: "image",       label: "Poster",      type: "image" },
+      { prop: "description", label: "About",       type: "textarea" },
+      { prop: "startDate",   label: "Opening",     type: "text" },
+      { prop: "endDate",     label: "Closing",     type: "text" },
+      { prop: "location",    label: "Venue",       type: "text" },
+      { prop: "organizer",   label: "Company",     type: "text" },
+      { prop: "url",         label: "Book",        type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
