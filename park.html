@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Park — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Park",
+  "name": "Stromovka Royal Game Reserve",
+  "image": "https://picsum.photos/seed/park-stromovka/600/400",
+  "description": "Prague's largest park, originally a royal hunting ground dating back to the 13th century. Winding paths through mature oak and chestnut groves, a serene lake, open meadows and a popular planetarium. Favourite spot for joggers, cyclists and weekend picnickers.",
+  "address": "Bubeneč, Prague 7, Czech Republic",
+  "openingHours": "Open 24 hours",
+  "url": "https://example.org/stromovka"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Park",
+    titleProp: "name",
+    icon: "🌳",
+    accent: "#15803d",
+    fields: [
+      { prop: "name",        label: "Name",         type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "address",     label: "Address",      type: "text" },
+      { prop: "openingHours",label: "Opening hours", type: "text" },
+      { prop: "url",         label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
