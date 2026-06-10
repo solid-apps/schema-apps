@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DataFeed — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "DataFeed",
+  "name": "Prague Air Quality — Live Sensor Feed",
+  "image": "https://picsum.photos/seed/prague-air-feed/800/450",
+  "description": "A real-time data feed publishing PM2.5, PM10, NO₂ and ozone readings from forty-one sensors across Prague, updated every five minutes in JSON-LD. Each reading carries station coordinates, calibration metadata and a rolling 24-hour index. The feed powers the city's air-quality map and is mirrored as linked data for pod-based dashboards.",
+  "dataFeedElement": "PM2.5, PM10, NO2, O3, station metadata, 24h index",
+  "dateModified": "2026-06-10",
+  "url": "https://example.org/prague-air-feed"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "DataFeed",
+    titleProp: "name",
+    icon: "🔄",
+    accent: "#059669",
+    fields: [
+      { prop: "name", label: "Feed", type: "text" },
+      { prop: "image", label: "Preview", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "dataFeedElement", label: "Elements", type: "list" },
+      { prop: "dateModified", label: "Last update", type: "text" },
+      { prop: "url", label: "Endpoint", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
