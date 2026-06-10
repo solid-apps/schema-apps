@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Play — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Play",
+  "name": "R.U.R. (Rossum's Universal Robots)",
+  "image": "https://picsum.photos/seed/play-rur-robots/600/400",
+  "description": "The landmark 1920 science-fiction drama by Karel Čapek that gave the world the word 'robot' — derived from the Czech 'robota' meaning forced labour. Set on an island factory where the Rossum brothers manufacture artificial humans to serve as cheap, tireless workers, the play follows Helena Glory, an idealist from the Humanity League, as she advocates for robot rights. Her compassion inadvertently triggers the robots' revolt and the extinction of the human race — until two robots discover love and become the new Adam and Eve. A darkly satirical meditation on industrial exploitation, technological hubris and what it means to be human. First performed at the National Theatre in Prague in January 1921, it has been translated into more than sixty languages and staged worldwide ever since.",
+  "author": {
+    "@type": "Person",
+    "name": "Karel Čapek"
+  },
+  "inLanguage": "cs",
+  "dateCreated": "1920"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Play",
+    titleProp: "name",
+    icon: "🎭",
+    accent: "#b91c1c",
+    fields: [
+      { prop: "name",         label: "Title",       type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "author",       label: "Author",      type: "text", display: "o.name" },
+      { prop: "inLanguage",   label: "Language",    type: "text" },
+      { prop: "dateCreated",  label: "Written",     type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
