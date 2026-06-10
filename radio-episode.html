@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RadioEpisode — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "RadioEpisode",
+  "name": "Tajemství rodu Házrů — Episode 1: Návrat do Házrova",
+  "image": "https://picsum.photos/seed/radioepisode-hazr-ep1/600/400",
+  "description": "The pilot episode of the Czech Radio drama series Tajemství rodu Házrů. After twenty years in Prague, journalist Martin Házr returns to his native Moravian village following the death of his grandmother, the family matriarch. At the funeral he encounters estranged relatives, a hostile parish priest and a locked cellar that his grandmother explicitly forbade anyone from entering. Strange sounds from the church tower at midnight and a half-burned letter in his grandmother's handwriting set the mystery in motion. The episode introduces the main characters, establishes the village setting with rich ambient soundscapes of Moravian countryside, and ends with Martin discovering a hidden compartment in his grandmother's writing desk containing a rusted iron key and a map dated 1847.",
+  "episodeNumber": "1",
+  "partOfSeries": {
+    "@type": "RadioSeries",
+    "name": "Tajemství rodu Házrů"
+  },
+  "datePublished": "2003-01-06",
+  "duration": "PT28M"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "RadioEpisode",
+    titleProp: "name",
+    icon: "🎙️",
+    accent: "#d97706",
+    fields: [
+      { prop: "name",          label: "Episode",      type: "text" },
+      { prop: "image",         label: "Image",        type: "image" },
+      { prop: "description",   label: "Description",  type: "textarea" },
+      { prop: "episodeNumber", label: "Episode #",    type: "text" },
+      { prop: "partOfSeries",  label: "Series",       type: "text", display: "o.name" },
+      { prop: "datePublished", label: "Aired",        type: "text" },
+      { prop: "duration",      label: "Duration",     type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

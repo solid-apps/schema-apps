@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MusicRelease — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicRelease",
+  "name": "Má vlast — Czech Philharmonic, conductor Rafael Kubelík (Supraphon, 1990 digital remaster)",
+  "image": "https://picsum.photos/seed/musicrelease-mavlast-kubelik/600/400",
+  "description": "The landmark 1990 Supraphon digital remaster of Rafael Kubelík's celebrated 1952 recording of Smetana's Má vlast with the Czech Philharmonic. Kubelík's interpretation, recorded in the acoustically renowned Dvořák Hall of the Rudolfinum, is widely regarded as one of the most emotionally charged accounts of the cycle — made all the more poignant by the fact that Kubelík had been living in exile since 1948 and would not return to conduct in Prague until after the Velvet Revolution in 1990. This remastered edition, prepared from the original session tapes, restores remarkable detail and dynamic range. The liner notes include an essay by Czech musicologist Milan Kuna on the political symbolism of Má vlast under both the Nazi occupation and Communist regime. A definitive recording for any Czech-music collection.",
+  "catalogNumber": "SU 11 1731-2 631",
+  "creditedTo": {
+    "@type": "MusicGroup",
+    "name": "Czech Philharmonic / Rafael Kubelík"
+  },
+  "recordLabel": {
+    "@type": "Organization",
+    "name": "Supraphon"
+  },
+  "datePublished": "1990-10-15",
+  "duration": "PT1H16M"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "MusicRelease",
+    titleProp: "name",
+    icon: "💿",
+    accent: "#22c55e",
+    fields: [
+      { prop: "name",          label: "Release",     type: "text" },
+      { prop: "image",         label: "Image",       type: "image" },
+      { prop: "description",   label: "Description", type: "textarea" },
+      { prop: "catalogNumber", label: "Catalog #",   type: "text" },
+      { prop: "creditedTo",    label: "Artists",     type: "text", display: "o.name" },
+      { prop: "recordLabel",   label: "Label",       type: "text", display: "o.name" },
+      { prop: "datePublished", label: "Released",    type: "text" },
+      { prop: "duration",      label: "Duration",    type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
