@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MenuItem — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "MenuItem",
+  "name": "Svíčková na smetaně s houskovým knedlíkem",
+  "image": "https://picsum.photos/seed/menuitem-svickova/600/400",
+  "description": "The quintessential Czech Sunday lunch — tender marinated beef sirloin slow-roasted until fork-tender, served with a velvety root-vegetable cream sauce enriched with lingonberries, a twist of lemon and a dollop of whipped cream. Accompanied by freshly steamed bread dumplings (houskové knedlíky) sliced into thick rounds. Our version follows the traditional recipe from the 19th-century Czech cookbook Domácí kuchařka by Magdalena Dobromila Rettigová, using locally sourced beef from a Granát-certified farm in Vysočina.",
+  "offers": "CZK 389",
+  "suitableForDiet": "https://schema.org/GlutenFreeDiet",
+  "nutrition": "Approx. 720 kcal per serving. Contains gluten, dairy and egg. High in protein (42 g)."
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "MenuItem",
+    titleProp: "name",
+    icon: "🥘",
+    accent: "#ea580c",
+    fields: [
+      { prop: "name",            label: "Dish",          type: "text" },
+      { prop: "image",           label: "Image",         type: "image" },
+      { prop: "description",     label: "Description",   type: "textarea" },
+      { prop: "offers",          label: "Price",         type: "text" },
+      { prop: "suitableForDiet", label: "Diet",          type: "text" },
+      { prop: "nutrition",       label: "Nutrition",     type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

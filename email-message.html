@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>EmailMessage — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "EmailMessage",
+  "name": "Invitation: Solid World Prague 2026 — Speaker Confirmation",
+  "image": "https://picsum.photos/seed/emailmessage-solid-world/600/400",
+  "description": "A speaker-confirmation email from the organisers of Solid World Prague 2026, sent to Melvin Carvalho. The message confirms his keynote slot on day one, provides the AV setup details for the main auditorium at ČVUT Dejvice, lists the live-streaming arrangements and requests a short bio and headshot for the programme booklet. It also includes logistics information about hotel booking, airport transfer and the speakers' dinner the evening before the conference. Sent by the event coordinator on behalf of the Solid Community and Inrupt.",
+  "sender": {
+    "@type": "Person",
+    "name": "Eva Šimková"
+  },
+  "toRecipient": {
+    "@type": "Person",
+    "name": "Melvin Carvalho"
+  },
+  "dateSent": "2026-05-18T10:30:00+02:00",
+  "text": "Dear Melvin, We are delighted to confirm your keynote presentation at Solid World Prague 2026…"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "EmailMessage",
+    titleProp: "name",
+    icon: "✉️",
+    accent: "#0284c7",
+    fields: [
+      { prop: "name",        label: "Subject",    type: "text" },
+      { prop: "image",       label: "Image",      type: "image" },
+      { prop: "description", label: "Description", type: "textarea" },
+      { prop: "sender",      label: "From",       type: "text", display: "o.name" },
+      { prop: "toRecipient", label: "To",         type: "text", display: "o.name" },
+      { prop: "dateSent",    label: "Date Sent",  type: "text" },
+      { prop: "text",        label: "Excerpt",    type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>

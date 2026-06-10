@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Conversation — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Conversation",
+  "name": "Solid Pod Self-Hosting — Thread on Matrix #solid-users",
+  "image": "https://picsum.photos/seed/conversation-solid-matrix/600/400",
+  "description": "A threaded conversation on the Matrix #solid-users channel about self-hosting a Solid Pod behind a home DSL connection. Participants discuss dynamic DNS solutions, TLS certificate renewal with ACME clients, exposing LDP endpoints through CGNAT, and comparing Community Solid Server with JSS for low-memory VPS deployments. The thread runs for 47 messages over two days and includes code snippets for docker-compose, Nginx reverse-proxy configs and a simple health-check script. Useful reference for anyone setting up a personal pod on a budget.",
+  "author": {
+    "@type": "Person",
+    "name": "Melvin Carvalho"
+  },
+  "dateCreated": "2026-04-22T14:15:00+02:00",
+  "about": "Self-hosting a Solid Pod at home with dynamic DNS and TLS"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "Conversation",
+    titleProp: "name",
+    icon: "🗣️",
+    accent: "#a855f7",
+    fields: [
+      { prop: "name",        label: "Title",       type: "text" },
+      { prop: "image",       label: "Image",       type: "image" },
+      { prop: "description", label: "Description", type: "textarea" },
+      { prop: "author",      label: "Started By",  type: "text", display: "o.name" },
+      { prop: "dateCreated", label: "Created",     type: "text" },
+      { prop: "about",       label: "Topic",       type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
