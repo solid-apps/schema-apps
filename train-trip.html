@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TrainTrip — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "TrainTrip",
+  "name": "SC Pendolino 502 Prague → Vienna",
+  "image": "https://picsum.photos/seed/pendolino-502/600/400",
+  "description": "The flagship SuperCity Pendolino service linking the Czech and Austrian capitals in just four hours. Tilting ETR 610 trainsets reach 230 km/h on the Brno–Břeclav corridor, gliding past the rolling vineyards of South Moravia before crossing the Austrian border. A restaurant car serves Viennese coffee and Czech beer. The morning departure from Praha hl.n. at 06:21 arrives Wien Hauptbahnhof by 10:23 — fast enough for a same-day meeting and an evening schnitzel.",
+  "departureStation": "Praha hlavní nádraží",
+  "arrivalStation": "Wien Hauptbahnhof",
+  "departureTime": "06:21",
+  "arrivalTime": "10:23",
+  "provider": "České dráhy"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "TrainTrip",
+    titleProp: "name",
+    icon: "🚄",
+    accent: "#4b5563",
+    fields: [
+      { prop: "name",             label: "Trip",             type: "text" },
+      { prop: "image",            label: "Image",            type: "image" },
+      { prop: "description",      label: "Description",      type: "textarea" },
+      { prop: "departureStation", label: "Departure",        type: "text" },
+      { prop: "arrivalStation",   label: "Arrival",          type: "text" },
+      { prop: "departureTime",    label: "Departure Time",   type: "text" },
+      { prop: "arrivalTime",      label: "Arrival Time",     type: "text" },
+      { prop: "provider",         label: "Operator",         type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
