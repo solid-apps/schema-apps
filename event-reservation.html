@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>EventReservation — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "EventReservation",
+  "name": "Signal Festival 2026 — Light Installation Pass",
+  "image": "https://picsum.photos/seed/event-reservation-signal/600/400",
+  "description": "Confirmed reservation for the VIP Guided Tour at Signal Festival 2026, Prague's annual festival of light and digital art. The tour covers twelve large-scale installations across the city centre — from the floating projection on the Vltava to the interactive LED canopy in Stromovka park — led by curator Katarína Gatialová. Includes access to the off-programme exhibition at the National Gallery's Veletržní palác and a complimentary warm drink at the Signal Café pop-up in Kampa. Dress warmly — the tour runs rain or shine.",
+  "reservationId": "SIG-2026-VIP-0384",
+  "reservationStatus": "https://schema.org/ReservationConfirmed",
+  "underName": "Melvin Carvalho",
+  "reservationFor": "Signal Festival 2026, Prague"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "EventReservation",
+    titleProp: "name",
+    icon: "🎫",
+    accent: "#9333ea",
+    fields: [
+      { prop: "name",            label: "Reservation",    type: "text" },
+      { prop: "image",           label: "Image",          type: "image" },
+      { prop: "description",     label: "Description",    type: "textarea" },
+      { prop: "reservationId",   label: "Booking Ref",    type: "text" },
+      { prop: "reservationStatus",label: "Status",        type: "text" },
+      { prop: "underName",       label: "Attendee",       type: "text" },
+      { prop: "reservationFor",  label: "Event",          type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
