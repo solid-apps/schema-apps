@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TheaterEvent — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "TheaterEvent",
+  "name": "Hamlet — Royal Shakespeare Company",
+  "image": "https://picsum.photos/seed/rsc-hamlet-2026/800/450",
+  "description": "Paapa Essiedu returns to the RSC for a radical new staging of Shakespeare's greatest tragedy, transposed to a West African court. Directed by Simon Godwin with live djembe and kora accompaniment, this production strips the cobwebs off four centuries of tradition to reveal a prince as urgent and conflicted as this morning's headlines. Standing ovation at Stratford. Now transferring to the West End for a strictly limited 12-week run.",
+  "startDate": "2026-09-15T19:30+01:00",
+  "endDate": "2026-12-06T22:00+00:00",
+  "location": "The Harold Pinter Theatre, London, UK",
+  "organizer": "Royal Shakespeare Company",
+  "url": "https://www.rsc.org.uk/hamlet"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "TheaterEvent",
+    titleProp: "name",
+    icon: "🎭",
+    accent: "#b91c1c",
+    fields: [
+      { prop: "name",        label: "Production",  type: "text" },
+      { prop: "image",       label: "Poster",      type: "image" },
+      { prop: "description", label: "About",       type: "textarea" },
+      { prop: "startDate",   label: "Opening",     type: "text" },
+      { prop: "endDate",     label: "Closing",     type: "text" },
+      { prop: "location",    label: "Venue",       type: "text" },
+      { prop: "organizer",   label: "Company",     type: "text" },
+      { prop: "url",         label: "Book",        type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
