@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GardenStore — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "GardenStore",
+  "name": "Šámsa — Zahradnictví Dejvice",
+  "image": "https://picsum.photos/seed/gardenstore-samsa/600/400",
+  "description": "Šámsa is a family-run garden centre that has occupied the same sloping plot on the edge of Dejvice since 1923, when great-grandfather Karel Šámsa returned from the First World War and turned his passion for roses into a nursery on what was then the outskirts of Prague. Four generations later, the nursery has grown into a 2,500 m² garden centre with a lovingly curated plant selection that reflects the Czech gardening tradition — a tradition where nearly every family with a cottage outside the city maintains a vegetable patch, fruit trees and a flower border. The outdoor display area is organised by microclimate: a sun-baked terrace of Mediterranean herbs, lavenders and drought-tolerant perennials; a shaded grove of hostas, ferns and hydrangeas under mature birch trees; and a long alpine frame housing saxifrages, sedums and dwarf conifers suited to Czech rock gardens. The heated greenhouse stocks tropical houseplants — monsteras, philodendrons, calatheas — alongside citrus trees and a year-round display of orchids sourced from a Czech breeder in South Bohemia. Šámsa is particularly known for its bare-root fruit tree selection each November: over 80 varieties of apples, pears, plums and cherries grafted onto semi-dwarf rootstocks, many of them old Czech landraces like 'Boikovo', 'Jagodica' and 'Hájkova muškátová' that commercial orchards have abandoned but home gardeners prize for flavour and disease resistance. The shop building, a low wooden structure with a turf roof, sells organic soils, natural fertilisers, Czech-made garden tools from the Narex factory in Bystré, seed packets from the 150-year-old Sempra seed house, and terracotta pots from a family pottery in Moravia. Staff are all trained horticulturists who can advise on Prague's specific growing conditions — alkaline soil, cold winters with freeze-thaw cycles, and increasingly hot dry summers.",
+  "address": "Zemědělská 620/10, Dejvice, Prague 6",
+  "telephone": "+420 233 320 118",
+  "openingHours": "Mo–Fr 08:00–18:00, Sa 08:00–15:00, Su 09:00–13:00 (Apr–Sep)",
+  "priceRange": "CZK 29 (seed packet) – CZK 4,500 (mature fruit tree, 5-year specimen)",
+  "url": "https://www.zahradnictvi-samsa.cz"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "GardenStore",
+    titleProp: "name",
+    icon: "🌱",
+    accent: "#15803d",
+    fields: [
+      { prop: "name",         label: "Store",       type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "address",      label: "Address",     type: "text" },
+      { prop: "telephone",    label: "Phone",       type: "text" },
+      { prop: "openingHours", label: "Hours",       type: "text" },
+      { prop: "priceRange",   label: "Price",       type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
