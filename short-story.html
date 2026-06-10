@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ShortStory — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ShortStory",
+  "name": "The Automaton of Kampa Island",
+  "image": "https://picsum.photos/seed/shortstory-automaton-kampa/600/400",
+  "description": "A magical-realist short story set on Prague's Kampa Island in the winter of 1883. A young clockmaker's apprentice discovers a mechanical figure half-buried in the frozen mill stream — an automaton in the shape of a woman who can write letters in a hand no living person recognises. As he restores her, line by line, the letters reveal a love affair between his own grandfather and a mysterious stranger who vanished the night the Nazis burned the Old Town. The story weaves Prague's gothic atmosphere with questions about memory, craft and the things machines can say that people cannot. First published in Český rozhlas's literary supplement and later translated into twelve languages.",
+  "author": {
+    "@type": "Person",
+    "name": "Lenka Procházková"
+  },
+  "datePublished": "2019-11-03",
+  "inLanguage": "cs"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "ShortStory",
+    titleProp: "name",
+    icon: "📖",
+    accent: "#7c2d12",
+    fields: [
+      { prop: "name",          label: "Title",         type: "text" },
+      { prop: "image",         label: "Image",         type: "image" },
+      { prop: "description",   label: "Synopsis",      type: "textarea" },
+      { prop: "author",        label: "Author",        type: "text", display: "o.name" },
+      { prop: "datePublished", label: "Published",     type: "text" },
+      { prop: "inLanguage",    label: "Language",      type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
