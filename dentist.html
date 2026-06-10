@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dentist — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  "name": "MDDr. Tomáš Král — Stomatologické centrum Karlín",
+  "image": "https://picsum.photos/seed/dentist-kral-karlin/600/400",
+  "description": "Dr Tomáš Král runs a modern dental practice in Prague's Karlín district, just steps from the Křižíkova metro station. The clinic occupies a bright corner unit on the ground floor of a converted industrial loft, with floor-to-ceiling windows and an interior designed to put anxious patients at ease — warm wood accents, noise-cancelling headphones and a ceiling-mounted screen for watching films during longer procedures. Services range from routine check-ups and hygiene to cosmetic dentistry, implants and Invisalign orthodontics. Digital intra-oral scanning replaces traditional moulds, and same-day CEREC crowns are available. Dr Král and his team of four hygienists accept all major Czech health-insurance plans. Evening appointments on Tuesdays and Thursdays.",
+  "address": "Křižíkova 148/34, 186 00 Prague 8 - Karlín, Czech Republic",
+  "telephone": "+420 222 313 777",
+  "openingHours": "Mo 08:00-17:00; Tu 08:00-19:00; We 08:00-15:00; Th 08:00-19:00; Fr 08:00-13:00",
+  "priceRange": "CZK 500–12 000 (procedure-dependent); hygiene covered by public insurance",
+  "url": "https://www.zubar-karlin.cz"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Dentist",
+    titleProp: "name",
+    icon: "🦷",
+    accent: "#06b6d4",
+    fields: [
+      { prop: "name",        label: "Name",           type: "text" },
+      { prop: "image",       label: "Image",          type: "image" },
+      { prop: "description", label: "Description",    type: "textarea" },
+      { prop: "address",     label: "Address",        type: "text" },
+      { prop: "telephone",   label: "Phone",          type: "text" },
+      { prop: "openingHours",label: "Hours",          type: "text" },
+      { prop: "priceRange",  label: "Price Range",    type: "text" },
+      { prop: "url",         label: "Website",        type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
