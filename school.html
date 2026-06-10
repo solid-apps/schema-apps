@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>School — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "School",
+  "name": "Gymnázium Jana Keplera",
+  "image": "https://picsum.photos/seed/kepler-gymnazium/600/400",
+  "description": "A prestigious eight-year grammar school in Prague 6, named after the astronomer Johannes Kepler who taught in the building during the early seventeenth century. Offers a rigorous liberal-arts curriculum with strong programmes in mathematics, physics and Latin, alongside modern languages including English, German and Spanish. Students regularly qualify for national science olympiads and international competitions. Housed in a reconstructed Renaissance-era building on the grounds of the former Písek Gate.",
+  "foundingDate": "1930",
+  "address": "Parléřova 1180/8, 169 00 Prague 6, Czech Republic",
+  "url": "https://example.org/kepler-gymnazium"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "School",
+    titleProp: "name",
+    icon: "🎒",
+    accent: "#2563eb",
+    fields: [
+      { prop: "name",        label: "Name",         type: "text" },
+      { prop: "image",       label: "Image",        type: "image" },
+      { prop: "description", label: "Description",  type: "textarea" },
+      { prop: "foundingDate",label: "Founded",      type: "text" },
+      { prop: "address",     label: "Address",      type: "text" },
+      { prop: "url",         label: "Website",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
