@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MusicStore — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicStore",
+  "name": "Dvorák Music — Guitars, Synths & Vinyl since 1991",
+  "image": "https://picsum.photos/seed/musicstore-dvorak/600/400",
+  "description": "Dvorák Music is a three-floor musical instrument and audio shop squeezed into a narrow Art Nouveau building on Jungmannovo náměstí, halfway between Wenceslas Square and the Charles Bridge. Founded in 1991 by Pavel Dvorák — a session guitarist who played on dozens of Czech pop and rock records in the 1980s — the shop began life as a single room selling second-hand guitars and imported effects pedals at a time when Czechoslovak music shops still carried mainly East German and Soviet instruments. Today it stocks over 3,000 instruments and accessories across every category. The ground floor is guitar paradise: Fender, Gibson, Taylor and Martin line the walls alongside Czech-made Furch acoustic guitars (hand-built in the Moravian town of Opočno and exported to 60 countries). The staircase to the basement is wallpapered with autographed concert posters — Deep Purple, Iron Maiden, Suzanne Vega — and the basement itself is the keyboard and electronic zone: Nord, Roland, Korg and Moog synthesizers, Ableton Push controllers, and a glassed-off recording booth where customers can test studio monitors and headphones. The top floor is dedicated to vinyl records, hi-fi turntables and DJ equipment, with listening stations where you can audition rare Czech pressings of Beatles and Rolling Stones albums on original Supraphon labels. The repair workshop in the back corner services everything from cracked guitar tops to balky vintage Hammond organs, and twice a month the shop hosts free Saturday workshops — guitar setup basics, synth patch design, or vinyl care — that draw a loyal crowd of Prague musicians.",
+  "address": "Jungmannovo náměstí 15, Nové Město, Prague 1",
+  "telephone": "+420 224 948 211",
+  "openingHours": "Mo–Fr 10:00–19:00, Sa 10:00–17:00, Su closed",
+  "priceRange": "CZK 49 (guitar pick) – CZK 125,000 (Martin D-28 acoustic)",
+  "url": "https://www.dvorakmusic.cz/en"
+}
+</script>
+<main id="app"></main>
+<script>
+  window.APP = {
+    type: "MusicStore",
+    titleProp: "name",
+    icon: "🎸",
+    accent: "#7c3aed",
+    fields: [
+      { prop: "name",         label: "Store",       type: "text" },
+      { prop: "image",        label: "Image",       type: "image" },
+      { prop: "description",  label: "Description", type: "textarea" },
+      { prop: "address",      label: "Address",     type: "text" },
+      { prop: "telephone",    label: "Phone",       type: "text" },
+      { prop: "openingHours", label: "Hours",       type: "text" },
+      { prop: "priceRange",   label: "Price",       type: "text" },
+      { prop: "url",          label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
