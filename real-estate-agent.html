@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RealEstateAgent — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "name": "Svoboda & Novák Reality — Smíchov Office",
+  "image": "https://picsum.photos/seed/realestate-svoboda-novak/600/400",
+  "description": "Svoboda & Novák Reality is a boutique estate agency specialising in residential sales and lettings across Prague's Smíchov, Malá Strana and Košíře districts. Founded in 2012 by partners Kateřina Svobodová and Ondřej Novák, the agency manages a curated portfolio of around two hundred properties at any given time — from reconstructed Art Nouveau flats on Újezd to new-build penthouses overlooking the Bertramka gardens. Their in-house legal team handles purchase contracts, title transfers and mortgage brokerage with partner banks, typically closing a sale within six weeks. The Smíchov office, a short walk from the Anděl metro, doubles as a gallery for local photographers — the rotating exhibitions give prospective buyers a reason to linger. English-, German- and Russian-speaking agents are available by prior arrangement.",
+  "address": "Štefánikova 263/41, 150 00 Prague 5 - Smíchov, Czech Republic",
+  "telephone": "+420 257 328 990",
+  "openingHours": "Mo-Fr 09:00-18:00; Sa 10:00-14:00 by appointment",
+  "priceRange": "Commission 2–4 % (sale); 1 month rent + VAT (letting)",
+  "url": "https://www.svoboda-novak-reality.cz"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "RealEstateAgent",
+    titleProp: "name",
+    icon: "🏠",
+    accent: "#b45309",
+    fields: [
+      { prop: "name",        label: "Name",           type: "text" },
+      { prop: "image",       label: "Image",          type: "image" },
+      { prop: "description", label: "Description",    type: "textarea" },
+      { prop: "address",     label: "Address",        type: "text" },
+      { prop: "telephone",   label: "Phone",          type: "text" },
+      { prop: "openingHours",label: "Hours",          type: "text" },
+      { prop: "priceRange",  label: "Commission",     type: "text" },
+      { prop: "url",         label: "Website",        type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
