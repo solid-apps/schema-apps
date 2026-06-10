@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ClaimReview — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "ClaimReview",
+  "name": "Fact-check: Did Prague ban cars from Charles Bridge?",
+  "image": "https://picsum.photos/seed/claimreview-charles-bridge/600/400",
+  "description": "Verdict: Partly true. In January 2025 the Prague 1 municipality introduced a trial ban on private motor vehicles crossing Charles Bridge between 10:00 and 18:00 daily, with exceptions for emergency services, trams and authorised delivery vehicles. Motorcycles and bicycles remain permitted. The measure was made permanent after a six-month evaluation period. However, social-media posts claiming a complete, round-the-clock ban are inaccurate.",
+  "claimReviewed": "Prague has completely banned all cars from Charles Bridge — no vehicles allowed at any time.",
+  "author": {
+    "@type": "Organization",
+    "name": "Demagog.cz"
+  },
+  "datePublished": "2025-09-22T10:00:00+02:00",
+  "url": "https://demagog.cz/factcheck/prague-charles-bridge-car-ban-2025"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "ClaimReview",
+    titleProp: "name",
+    icon: "✅",
+    accent: "#15803d",
+    fields: [
+      { prop: "name",          label: "Title",          type: "text" },
+      { prop: "image",         label: "Image",          type: "image" },
+      { prop: "description",   label: "Verdict",        type: "textarea" },
+      { prop: "claimReviewed", label: "Claim Reviewed", type: "textarea" },
+      { prop: "author",        label: "Fact-checker",   type: "text", display: "o.name" },
+      { prop: "datePublished", label: "Published",      type: "text" },
+      { prop: "url",           label: "Source",         type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
