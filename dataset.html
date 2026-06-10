@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dataset — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "Global Solid Pod Adoption Metrics 2020–2026",
+  "image": "https://picsum.photos/seed/solid-pod-adoption-data/800/450",
+  "description": "A longitudinal dataset tracking Solid Pod deployments, active user accounts, and data volume across public, private, and community-hosted providers. Covers 38 countries with monthly granularity from January 2020 through March 2026. Includes pod-to-pod data migration events and application interoperability metrics.",
+  "creator": "Web Foundation Data Lab",
+  "datePublished": "2026-04-01",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "keywords": "solid, pods, open data, data sovereignty, decentralised web, linked data",
+  "url": "https://data.webfoundation.org/solid-pod-adoption-2020-2026"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Dataset",
+    titleProp: "name",
+    icon: "🗄️",
+    accent: "#059669",
+    fields: [
+      { prop: "name",          label: "Title",        type: "text" },
+      { prop: "image",         label: "Preview",      type: "image" },
+      { prop: "description",   label: "About",        type: "textarea" },
+      { prop: "creator",       label: "Creator",      type: "text" },
+      { prop: "datePublished", label: "Published",    type: "text" },
+      { prop: "license",       label: "License",      type: "url" },
+      { prop: "keywords",      label: "Keywords",     type: "text" },
+      { prop: "url",           label: "Download",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
