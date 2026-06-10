@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Audiobook — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Audiobook",
+  "name": "Project Hail Mary",
+  "image": "https://picsum.photos/seed/project-hail-mary-audiobook/800/450",
+  "description": "Ryland Grace is the sole survivor on a desperate, last-chance mission — and if he fails, humanity and the Earth itself are finished. Except that right now, he doesn't know that. He can't even remember his own name, let alone the nature of his assignment or how to complete it. All he knows is that he's been asleep for a very, very long time. And he's just been awakened to find himself millions of miles from home, with nothing but two corpses for company.",
+  "author": "Andy Weir",
+  "readBy": "Ray Porter",
+  "duration": "PT16H10M",
+  "datePublished": "2021-05-04",
+  "publisher": "Audible Studios"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Audiobook",
+    titleProp: "name",
+    icon: "🎧",
+    accent: "#9333ea",
+    fields: [
+      { prop: "name",          label: "Title",        type: "text" },
+      { prop: "image",         label: "Cover",        type: "image" },
+      { prop: "description",   label: "About",        type: "textarea" },
+      { prop: "author",        label: "Author",       type: "text" },
+      { prop: "readBy",        label: "Narrated By",  type: "text" },
+      { prop: "duration",      label: "Duration",     type: "text" },
+      { prop: "datePublished", label: "Published",    type: "text" },
+      { prop: "publisher",     label: "Publisher",    type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
