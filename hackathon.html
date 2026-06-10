@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hackathon — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Hackathon",
+  "name": "Solid Hack Prague 2026",
+  "image": "https://picsum.photos/seed/hackathon-solid-prague/600/400",
+  "description": "A 48-hour hackathon dedicated to building on the Solid specification — decentralised personal data pods, identity, and user-centric apps. Teams of up to four compete for prizes across three tracks: Best Solid App, Best Privacy Innovation, and Best Developer Experience Tool. Mentors from Inrupt, the W3C Solid WG and Czech tech community are on-site throughout. Meals, energy drinks and nap pods provided. Open to all skill levels; solo participants can join a team at the Friday evening mixer.",
+  "startDate": "2026-03-20",
+  "endDate": "2026-03-22",
+  "location": {
+    "@type": "Place",
+    "name": "Czech Technical University, Dejvice Campus — Building A",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Thákurova 7",
+      "addressLocality": "Praha 6",
+      "postalCode": "166 29",
+      "addressCountry": "CZ"
+    }
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "Solid Prague Meetup & ČVUT FIT"
+  },
+  "url": "https://solidhackprague.cz/2026"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Hackathon",
+    titleProp: "name",
+    icon: "👩‍💻",
+    accent: "#7c3aed",
+    fields: [
+      { prop: "name",        label: "Title",       type: "text" },
+      { prop: "image",       label: "Image",       type: "image" },
+      { prop: "description", label: "Description", type: "textarea" },
+      { prop: "startDate",   label: "Start Date",  type: "text" },
+      { prop: "endDate",     label: "End Date",    type: "text" },
+      { prop: "location",    label: "Location",    type: "text", display: "o.name" },
+      { prop: "organizer",   label: "Organizer",   type: "text", display: "o.name" },
+      { prop: "url",         label: "Website",     type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
