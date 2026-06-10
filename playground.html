@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Playground — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Playground",
+  "name": "Dětské hřiště Letná — Letná Park Playground",
+  "image": "https://picsum.photos/seed/letna-playground/800/450",
+  "description": "A large public playground on the eastern edge of Letná Park, beloved for its pirate-ship climbing frame, twin zip-lines and water-play channel that runs all summer. Rubberised surfaces and fenced toddler zones make it popular with families, while the adjacent beer garden's lemonade stand keeps everyone refreshed. Renovated by Prague 7 in 2022 with inclusive equipment, including a wheelchair-accessible carousel and sensory panels.",
+  "address": "Letenské sady, 170 00 Praha 7, Czech Republic",
+  "openingHours": "Daily 08:00-20:00 (Apr-Oct), 08:00-18:00 (Nov-Mar)",
+  "url": "https://example.org/letna-playground"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "Playground",
+    titleProp: "name",
+    icon: "🛝",
+    accent: "#f97316",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "openingHours", label: "Open", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
