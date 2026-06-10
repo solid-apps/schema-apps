@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Question — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Question",
+  "name": "How do I validate a JSON-LD document against a remote context?",
+  "image": "https://picsum.photos/seed/question-jsonld-validate/600/400",
+  "description": "A developer question on a Solid community forum about validating JSON-LD documents that reference a remote schema.org context — specifically how to ensure required properties are present and values conform to expected types without downloading the entire context every time.",
+  "text": "I'm building a Solid Pod app that writes schema.org-typed JSON-LD resources. I want to validate on write that required fields are present (e.g. name, description for a Schema:Person). The remote https://schema.org/docs/jsonldcontext.json context is huge. What's the recommended approach — cache the context locally, use the JSON-LD API expansion, or roll my own schema validator? Any examples would be great.",
+  "author": {
+    "@type": "Person",
+    "name": "Melvin C."
+  },
+  "dateCreated": "2025-08-14T16:30:00+02:00",
+  "answerCount": "5",
+  "acceptedAnswer": "Use the JSON-LD API's expand() method with a local cached copy of the context. Schema.org publishes a compact context at https://schema.org/docs/jsonldcontext.json — download it once, cache it in a Map, and pass it as the expandContext option. Then validate the expanded document against your required fields. This avoids network round-trips on every write and gives you the full type-checking you need."
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Question",
+    titleProp: "name",
+    icon: "❔",
+    accent: "#0891b2",
+    fields: [
+      { prop: "name",           label: "Title",           type: "text" },
+      { prop: "image",          label: "Image",           type: "image" },
+      { prop: "description",    label: "Description",     type: "textarea" },
+      { prop: "text",           label: "Question Text",   type: "textarea" },
+      { prop: "author",         label: "Author",          type: "text", display: "o.name" },
+      { prop: "dateCreated",    label: "Asked",           type: "text" },
+      { prop: "answerCount",    label: "Answers",         type: "text" },
+      { prop: "acceptedAnswer", label: "Accepted Answer", type: "textarea" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
