@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Brand — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Brand",
+  "name": "Baťa",
+  "image": "https://picsum.photos/seed/bata-brand/600/400",
+  "description": "A global footwear and accessories brand founded in 1894 by Tomáš Baťa in the Moravian town of Zlín. What began as a family shoe workshop grew into one of the world's largest shoe manufacturers, pioneering assembly-line production in Europe and building company towns on three continents. Today Baťa operates over five thousand stores in more than seventy countries, still run by the founding family. Known for democratic design — well-made shoes at fair prices — the brand's canvas Tomania wedges and Scribe leather loafers are cult favourites from Tokyo to Lagos. The red-and-white logo is one of the most recognised retail marks on the planet.",
+  "slogan": "Shoes for the world",
+  "url": "https://example.org/bata-brand"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Brand",
+    titleProp: "name",
+    icon: "™️",
+    accent: "#1e40af",
+    fields: [
+      { prop: "name",        label: "Brand Name",    type: "text" },
+      { prop: "image",       label: "Logo/Image",    type: "image" },
+      { prop: "description", label: "Description",   type: "textarea" },
+      { prop: "slogan",      label: "Slogan",        type: "text" },
+      { prop: "url",         label: "Website",       type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
