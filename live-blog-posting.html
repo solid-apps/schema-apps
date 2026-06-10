@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LiveBlogPosting — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "LiveBlogPosting",
+  "name": "Signal Festival 2026 — Live Blog from Prague's Old Town",
+  "image": "https://picsum.photos/seed/liveblogposting-signal-festival/600/400",
+  "description": "Real-time live blog covering the Signal Festival 2026, Prague's annual festival of light and digital art. Our team is reporting on the ground from the Old Town route, posting updates as installations light up across the city. Follow along for photos, artist interviews, crowd reactions and behind-the-scenes glimpses of the immersive projections, kinetic sculptures and interactive light works transforming Prague's historic facades after dark. This post is updated every few minutes throughout the evening.",
+  "articleBody": "Live updates are being posted continuously — see the full blog at the source URL.",
+  "author": {
+    "@type": "Person",
+    "name": "Jan Kučera"
+  },
+  "datePublished": "2026-10-15T18:00:00+02:00",
+  "coverageStartTime": "2026-10-15T18:00:00+02:00",
+  "coverageEndTime": "2026-10-15T23:59:00+02:00"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "LiveBlogPosting",
+    titleProp: "name",
+    icon: "🔴",
+    accent: "#dc2626",
+    fields: [
+      { prop: "name",              label: "Title",          type: "text" },
+      { prop: "image",             label: "Image",          type: "image" },
+      { prop: "description",       label: "Description",    type: "textarea" },
+      { prop: "articleBody",       label: "Body",           type: "text" },
+      { prop: "author",            label: "Author",         type: "text", display: "o.name" },
+      { prop: "datePublished",     label: "Published",      type: "text" },
+      { prop: "coverageStartTime", label: "Coverage Start", type: "text" },
+      { prop: "coverageEndTime",   label: "Coverage End",   type: "text" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
