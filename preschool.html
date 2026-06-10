@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Preschool — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Preschool",
+  "name": "Mateřská škola Sluníčko — Vinohrady",
+  "image": "https://picsum.photos/seed/preschool-slunicko/800/450",
+  "description": "A warm neighbourhood preschool in Prague's Vinohrady district serving children aged 3–6. Three mixed-age classes of twenty children follow a play-based curriculum with daily time in the school's walled garden, a forest-kindergarten morning each Wednesday in Riegrovy sady, and gentle English exposure through songs and games. Hot lunches are cooked on site; the kitchen accommodates allergies. Founded in 1992, the school is run by the Prague 2 municipality and is known for its long-serving teachers and its beloved autumn lantern procession.",
+  "foundingDate": "1992-09-01",
+  "address": "Slezská 22, 120 00 Praha 2 - Vinohrady, Czech Republic",
+  "url": "https://example.org/ms-slunicko"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "Preschool",
+    titleProp: "name",
+    icon: "🧸",
+    accent: "#f472b6",
+    fields: [
+      { prop: "name", label: "Name", type: "text" },
+      { prop: "image", label: "Photo", type: "image" },
+      { prop: "description", label: "About", type: "textarea" },
+      { prop: "foundingDate", label: "Founded", type: "text" },
+      { prop: "address", label: "Address", type: "text" },
+      { prop: "url", label: "Website", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
