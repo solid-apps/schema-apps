@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Order — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "Order",
+  "name": "Order #CZ-20260610-4827",
+  "image": "https://picsum.photos/seed/order-package/600/400",
+  "description": "Online order placed with Alza.cz for a Lenovo ThinkPad X1 Carbon Gen 12, 32 GB RAM, 512 GB SSD, in Cosmic Blue. Standard home delivery via PPL within two business days. Payment by card — transaction approved. Includes free sleeve and a two-year extended warranty.",
+  "orderNumber": "CZ-20260610-4827",
+  "orderStatus": "https://schema.org/OrderProcessing",
+  "orderDate": "2026-06-10T10:15:00+02:00",
+  "seller": "Alza.cz a.s.",
+  "url": "https://example.org/alza-order-CZ-20260610-4827"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "Order",
+    titleProp: "name",
+    icon: "📦",
+    accent: "#b45309",
+    fields: [
+      { prop: "name",        label: "Order Name",     type: "text" },
+      { prop: "image",       label: "Image",          type: "image" },
+      { prop: "description", label: "Description",    type: "textarea" },
+      { prop: "orderNumber", label: "Order #",        type: "text" },
+      { prop: "orderStatus", label: "Status",         type: "text" },
+      { prop: "orderDate",   label: "Order Date",     type: "text" },
+      { prop: "seller",      label: "Seller",         type: "text" },
+      { prop: "url",         label: "Order URL",      type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
