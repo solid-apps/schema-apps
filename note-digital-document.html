@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NoteDigitalDocument — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "NoteDigitalDocument",
+  "name": "Meeting Notes — Solid World Prague 2026 Planning Call #4",
+  "image": "https://picsum.photos/seed/meeting-notes/800/450",
+  "description": "Working notes from the fourth planning call for Solid World Prague 2026. Decisions: keynote slot confirmed for day one at 09:30; ČVUT Dejvice auditorium booked with overflow streaming to two seminar rooms; community dinner moved to the Strahov Monastery brewery. Open actions: AV vendor quote by Friday (Eva), speaker travel grid (Martin), sponsor prospectus v2 review (all). Next call same time next Tuesday.",
+  "author": "Eva Šimková",
+  "dateModified": "2026-06-09",
+  "url": "https://example.org/notes/solid-world-call-4"
+}
+</script>
+
+<main id="app"></main>
+
+<script>
+  window.APP = {
+    type: "NoteDigitalDocument",
+    titleProp: "name",
+    icon: "🗒️",
+    accent: "#eab308",
+    fields: [
+      { prop: "name", label: "Note", type: "text" },
+      { prop: "image", label: "Cover", type: "image" },
+      { prop: "description", label: "Contents", type: "textarea" },
+      { prop: "author", label: "Author", type: "text" },
+      { prop: "dateModified", label: "Updated", type: "text" },
+      { prop: "url", label: "Document", type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
