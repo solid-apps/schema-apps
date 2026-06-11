@@ -2426,6 +2426,86 @@
       handled.add("expectedArrivalUntil"); handled.add("itemShipped"); handled.add("deliveryAddress");
     }
 
+    // ── MENU (elegant restaurant menu typography) ──
+    if (cfg.type === "Menu") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("menu-card");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Remove generic hero if present
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount) heroMount.querySelector('.hero')?.remove();
+
+      // ── Centered restaurant name in serif ──
+      const provider = data["provider"];
+      const providerName = (typeof provider === "object" && provider !== null) ? (provider.name || "") : (provider || "");
+
+      if (providerName) {
+        const restName = document.createElement("div"); restName.className = "menu-rest-name";
+        restName.textContent = providerName;
+        view.appendChild(restName);
+      }
+
+      // Thin double rule
+      const rule = document.createElement("div"); rule.className = "menu-rule";
+      view.appendChild(rule);
+
+      // Menu title in elegant serif italic
+      const title = data[cfg.titleProp];
+      if (title) {
+        const menuTitle = document.createElement("div"); menuTitle.className = "menu-title";
+        menuTitle.textContent = title;
+        view.appendChild(menuTitle);
+      }
+
+      // Description as intro paragraph in italic
+      const desc = data["description"];
+      if (desc) {
+        const intro = document.createElement("div"); intro.className = "menu-intro";
+        intro.textContent = desc;
+        view.appendChild(intro);
+      }
+
+      // ── Menu sections as centered small-caps headings with dot-leader feel ──
+      const sections = data["hasMenuSection"];
+      if (sections) {
+        const items = typeof sections === "string" ? sections.split(/,\s*/) : (Array.isArray(sections) ? sections : [sections]);
+        const sectionsWrap = document.createElement("div"); sectionsWrap.className = "menu-sections";
+        items.forEach(s => {
+          s = (typeof s === "object" ? (s.name || "") : String(s)).trim();
+          if (!s) return;
+          const divider = document.createElement("div"); divider.className = "menu-section-divider";
+          const heading = document.createElement("div"); heading.className = "menu-section-heading";
+          heading.textContent = s;
+          // Decorative dots
+          const dots = document.createElement("div"); dots.className = "menu-section-dots";
+          divider.appendChild(heading);
+          divider.appendChild(dots);
+          sectionsWrap.appendChild(divider);
+        });
+        view.appendChild(sectionsWrap);
+      }
+
+      // Second rule
+      const rule2 = document.createElement("div"); rule2.className = "menu-rule";
+      view.appendChild(rule2);
+
+      // View Full Menu CTA
+      const url = data["url"];
+      if (url) {
+        const cta = document.createElement("a"); cta.className = "menu-cta";
+        cta.href = url; cta.target = "_blank"; cta.rel = "noopener";
+        cta.textContent = "View Full Menu →";
+        view.appendChild(cta);
+      }
+
+      handled.add("name"); handled.add("image"); handled.add("description");
+      handled.add("hasMenuSection"); handled.add("provider"); handled.add("url");
+    }
+
     // ── INVOICE (real invoice document) ──
     if (cfg.type === "Invoice") {
       const card = document.querySelector(".card");

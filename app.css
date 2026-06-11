@@ -4199,3 +4199,139 @@ footer a:hover { color: var(--accent-2); }
   .inv-amount-val { font-size: 1.9rem; }
   .inv-notes { padding: 1rem; }
 }
+
+/* ── MENU (elegant restaurant menu typography) ── */
+.card.menu-card {
+  background: var(--card);
+  border-radius: var(--radius);
+}
+.card.menu-card .hd.hidden { display: none; }
+
+.menu-rest-name {
+  text-align: center;
+  font-family: "Playfair Display", "Georgia", "Times New Roman", serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding: 1.8rem 1.5rem .5rem;
+}
+
+.menu-rule {
+  text-align: center;
+  padding: 0 2rem;
+  margin: .6rem 0;
+  position: relative;
+  height: 10px;
+}
+.menu-rule::before,
+.menu-rule::after {
+  content: "";
+  position: absolute;
+  left: 2rem;
+  right: 2rem;
+  height: 1px;
+  background: var(--ink);
+  opacity: .35;
+}
+.menu-rule::before { top: 2px; }
+.menu-rule::after { top: 7px; }
+
+.menu-title {
+  text-align: center;
+  font-family: "Playfair Display", "Georgia", "Times New Roman", serif;
+  font-size: 1.35rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink-2);
+  padding: .2rem 1.5rem .8rem;
+  line-height: 1.35;
+}
+
+.menu-intro {
+  text-align: center;
+  font-family: "Playfair Display", "Georgia", "Times New Roman", serif;
+  font-size: .85rem;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.65;
+  padding: 0 2rem .8rem;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.menu-sections {
+  padding: .4rem 1.5rem;
+}
+
+.menu-section-divider {
+  text-align: center;
+  padding: .9rem 0 .3rem;
+}
+
+.menu-section-heading {
+  font-family: "Playfair Display", "Georgia", "Times New Roman", serif;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: .2rem;
+}
+
+.menu-section-dots {
+  display: flex;
+  justify-content: center;
+  gap: .35rem;
+  padding: .25rem 0;
+}
+.menu-section-dots::before,
+.menu-section-dots::after,
+.menu-section-dots {
+  content: "";
+}
+/* Three decorative dots via pseudo-elements + the element itself */
+.menu-section-dots {
+  position: relative;
+  height: 6px;
+}
+.menu-section-dots::before {
+  content: "";
+  position: absolute;
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--muted-2);
+  top: 1px;
+  left: calc(50% - 12px);
+}
+.menu-section-dots::after {
+  content: "";
+  position: absolute;
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--muted-2);
+  top: 1px;
+  left: calc(50% + 8px);
+}
+
+.menu-cta {
+  display: block;
+  text-align: center;
+  padding: .8rem 0 1.2rem;
+  font-family: "Playfair Display", "Georgia", "Times New Roman", serif;
+  font-size: .85rem;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: .04em;
+}
+.menu-cta:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .menu-rest-name { padding: 1.2rem 1rem .4rem; font-size: 1rem; }
+  .menu-title { font-size: 1.15rem; padding: .2rem 1rem .6rem; }
+  .menu-intro { padding: 0 1rem .6rem; }
+  .menu-sections { padding: .4rem 1rem; }
+}
