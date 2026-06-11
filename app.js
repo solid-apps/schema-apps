@@ -2211,6 +2211,63 @@
       handled.add("articleBody"); handled.add("author"); handled.add("datePublished"); handled.add("url");
     }
 
+    // ── QUOTATION (typographic quote poster) ──
+    if (cfg.type === "Quotation") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("quote-poster");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Remove generic hero if present
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount) heroMount.querySelector(".hero")?.remove();
+
+      // Huge opening quotation mark
+      const mark = document.createElement("div"); mark.className = "quote-mark";
+      mark.textContent = "\u201C";
+      view.appendChild(mark);
+
+      // The quotation text — large serif italic
+      const text = data["text"];
+      if (text) {
+        const q = document.createElement("blockquote"); q.className = "quote-text";
+        q.textContent = text;
+        view.appendChild(q);
+      }
+
+      // Attribution line: em-dash + author in small-caps
+      const authorRaw = data["author"];
+      const authorName = (typeof authorRaw === "object" && authorRaw !== null) ? (authorRaw.name || "") : (authorRaw || "");
+      if (authorName) {
+        const attr = document.createElement("div"); attr.className = "quote-attribution";
+        attr.textContent = "\u2014 " + authorName;
+        view.appendChild(attr);
+      }
+
+      // Subtle date below attribution
+      const dateCreated = data["dateCreated"];
+      if (dateCreated) {
+        const d = new Date(dateCreated);
+        const year = isNaN(d.getTime()) ? dateCreated : d.getFullYear().toString();
+        const dateEl = document.createElement("div"); dateEl.className = "quote-date";
+        dateEl.textContent = year;
+        view.appendChild(dateEl);
+      }
+
+      // Description as a small footnote
+      const desc = data["description"];
+      if (desc) {
+        const fn = document.createElement("p"); fn.className = "quote-footnote";
+        fn.textContent = desc;
+        view.appendChild(fn);
+      }
+
+      handled.add("name"); handled.add("image"); handled.add("description");
+      handled.add("text"); handled.add("author"); handled.add("dateCreated");
+    }
+
     return handled;
   }
 
