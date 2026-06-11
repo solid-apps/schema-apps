@@ -3489,6 +3489,120 @@ footer a:hover { color: var(--accent-2); }
   .bp-desc { color: #666; }
 }
 
+
+/* ── Per-type bespoke: ParcelDelivery — tracking card ── */
+
+.card.tracking-card { background: #fff; border-color: rgba(0,0,0,.08); }
+.card.tracking-card .hd.hidden { display: none; }
+.card.tracking-card .bd { padding: 0; background: #fff; }
+.card.tracking-card .bd::before { display: none; }
+
+/* Tracking number header */
+.trk-head {
+  padding: 1.2rem 1.4rem;
+  background: #111;
+  color: #fff;
+  text-align: center;
+}
+.trk-label { font-size: .65rem; text-transform: uppercase; letter-spacing: .08em; color: #999; margin-bottom: .2rem; }
+.trk-number { font-family: "SF Mono", "Fira Code", "Courier New", monospace; font-size: 1.6rem; font-weight: 700; letter-spacing: .06em; }
+.trk-courier { font-size: .75rem; color: #aaa; margin-top: .25rem; }
+
+/* Expected delivery */
+.trk-expected {
+  text-align: center;
+  padding: 1rem 1.4rem .8rem;
+}
+.trk-exp-label { display: block; font-size: .65rem; text-transform: uppercase; letter-spacing: .06em; color: #999; margin-bottom: .2rem; }
+.trk-exp-date { display: block; font-size: 1.3rem; font-weight: 700; color: #111; }
+.trk-exp-time { display: block; font-size: .8rem; color: #888; margin-top: .1rem; }
+
+/* Timeline */
+.trk-timeline {
+  padding: .6rem 1.4rem 1rem;
+}
+.trk-step {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+}
+.trk-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  color: #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.trk-step.trk-done .trk-dot { background: #dcfce7; color: #15803d; font-size: .9rem; }
+.trk-step.trk-current .trk-dot { background: #ea580c; color: #fff; font-size: .9rem; box-shadow: 0 0 0 3px rgba(234,88,12,.2); }
+
+.trk-step-content {
+  flex: 1;
+  margin-left: .7rem;
+  padding-top: .3rem;
+}
+.trk-step-label { font-size: .85rem; font-weight: 600; color: #333; }
+.trk-step.trk-current .trk-step-label { color: #ea580c; }
+.trk-step:not(.trk-done):not(.trk-current) .trk-step-label { color: #bbb; }
+.trk-step-detail { font-size: .72rem; color: #999; margin-top: .1rem; }
+
+.trk-line {
+  position: absolute;
+  left: 15px;
+  top: 32px;
+  width: 2px;
+  height: calc(100% - 28px);
+  background: #e5e5e5;
+}
+.trk-line.trk-line-done { background: #15803d; }
+
+/* Info rows */
+.trk-info {
+  padding: .8rem 1.4rem 1.2rem;
+  border-top: 1px solid #eee;
+}
+.trk-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: .8rem;
+  color: #555;
+  padding: .25rem 0;
+}
+.trk-info-label { font-weight: 600; color: #888; font-size: .72rem; }
+.trk-info-row span:last-child { text-align: right; max-width: 65%; }
+
+/* Dark mode tracking */
+@media (prefers-color-scheme: dark) {
+  .card.tracking-card { background: #1c1c1e; border-color: rgba(255,255,255,.06); }
+  .card.tracking-card .bd { background: #1c1c1e; }
+  .trk-head { background: #f5f5f5; color: #111; }
+  .trk-label { color: #666; }
+  .trk-courier { color: #555; }
+  .trk-exp-date { color: #f5f5f5; }
+  .trk-exp-time { color: #666; }
+  .trk-dot { background: #333; color: #666; }
+  .trk-step.trk-done .trk-dot { background: #064e3b; color: #6ee7b7; }
+  .trk-step.trk-current .trk-dot { background: #ea580c; box-shadow: 0 0 0 3px rgba(234,88,12,.3); }
+  .trk-step-label { color: #ccc; }
+  .trk-step.trk-current .trk-step-label { color: #fb923c; }
+  .trk-step:not(.trk-done):not(.trk-current) .trk-step-label { color: #444; }
+  .trk-step-detail { color: #555; }
+  .trk-line { background: #333; }
+  .trk-line.trk-line-done { background: #064e3b; }
+  .trk-info { border-top-color: #333; }
+  .trk-info-row { color: #aaa; }
+  .trk-info-label { color: #666; }
+}
+
 /* ──────────────────────────────────────────────
    Responsive / Mobile — small-screen polish.
    Stacks label/value grid, scales header,

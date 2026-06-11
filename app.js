@@ -2350,6 +2350,82 @@
       handled.add("departureTime"); handled.add("arrivalTime");
     }
 
+    // ── PARCEL DELIVERY (tracking card) ──
+    if (cfg.type === "ParcelDelivery") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("tracking-card");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Remove generic hero if present
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount) heroMount.querySelector(".hero")?.remove();
+
+      // Tracking number header
+      const trackHead = document.createElement("div"); trackHead.className = "trk-head";
+      const trackNum = data["trackingNumber"] || "";
+      const courier = data["provider"] || "";
+      trackHead.innerHTML = "<div class=\"trk-label\">Tracking Number</div><div class=\"trk-number\">" + trackNum + "</div><div class=\"trk-courier\">" + courier + "</div>";
+      view.appendChild(trackHead);
+
+      // Expected arrival — big date
+      const expected = data["expectedArrivalUntil"];
+      if (expected) {
+        const d = new Date(expected);
+        const formatted = isNaN(d.getTime()) ? expected : d.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", year: "numeric" });
+        const timeStr = isNaN(d.getTime()) ? "" : d.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+        const expEl = document.createElement("div"); expEl.className = "trk-expected";
+        expEl.innerHTML = "<span class=\"trk-exp-label\">Estimated Delivery</span><span class=\"trk-exp-date\">" + formatted + "</span><span class=\"trk-exp-time\">by " + timeStr + "</span>";
+        view.appendChild(expEl);
+      }
+
+      // Vertical progress timeline
+      const timeline = document.createElement("div"); timeline.className = "trk-timeline";
+      const steps = [
+        { label: "Dispatched", icon: "\u{1F4E6}", detail: "Alza.cz, Jirny" },
+        { label: "In Transit", icon: "\u{1F69A}", detail: "Sorting hub, Plze\u0148" },
+        { label: "Out for Delivery", icon: "\u{1F4EC}", detail: "Prague 2" },
+        { label: "Delivered", icon: "\u2705", detail: "" }
+      ];
+      const currentStep = 2; // "Out for delivery"
+      steps.forEach((step, i) => {
+        const row = document.createElement("div"); row.className = "trk-step";
+        if (i <= currentStep) row.classList.add("trk-done");
+        if (i === currentStep) row.classList.add("trk-current");
+        // Dot / check
+        const dot = document.createElement("div"); dot.className = "trk-dot";
+        if (i < currentStep) dot.innerHTML = "\u2705";
+        else if (i === currentStep) dot.innerHTML = step.icon;
+        else dot.textContent = (i + 1);
+        // Content
+        const content = document.createElement("div"); content.className = "trk-step-content";
+        content.innerHTML = "<div class=\"trk-step-label\">" + step.label + "</div>" + (step.detail ? "<div class=\"trk-step-detail\">" + step.detail + "</div>" : "");
+        // Line connector (not on last)
+        row.append(dot, content);
+        if (i < steps.length - 1) {
+          const line = document.createElement("div"); line.className = "trk-line";
+          if (i < currentStep) line.classList.add("trk-line-done");
+          row.appendChild(line);
+        }
+        timeline.appendChild(row);
+      });
+      view.appendChild(timeline);
+
+      // Bottom info: item + destination
+      const info = document.createElement("div"); info.className = "trk-info";
+      const item = data["itemShipped"] || "";
+      const addr = data["deliveryAddress"] || "";
+      if (item) info.innerHTML += "<div class=\"trk-info-row\"><span class=\"trk-info-label\">Item</span><span>" + item + "</span></div>";
+      if (addr) info.innerHTML += "<div class=\"trk-info-row\"><span class=\"trk-info-label\">Deliver to</span><span>" + addr + "</span></div>";
+      view.appendChild(info);
+
+      handled.add("name"); handled.add("image"); handled.add("description");
+      handled.add("trackingNumber"); handled.add("provider");
+      handled.add("expectedArrivalUntil"); handled.add("itemShipped"); handled.add("deliveryAddress");
+    }
+
     return handled;
   }
 
