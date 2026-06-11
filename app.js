@@ -2506,6 +2506,72 @@
       handled.add("hasMenuSection"); handled.add("provider"); handled.add("url");
     }
 
+    // ── MEDICALCONDITION (trustworthy patient-info page) ──
+    if (cfg.type === "MedicalCondition") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("health-info");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Remove generic hero
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount) heroMount.querySelector('.hero')?.remove();
+
+      // ── Calm header with soft teal ──
+      const hiHeader = document.createElement("div"); hiHeader.className = "hi-header";
+      const hiIcon = document.createElement("div"); hiIcon.className = "hi-icon";
+      hiIcon.textContent = "\u2695";
+      hiHeader.appendChild(hiIcon);
+      const title = data[cfg.titleProp];
+      if (title) {
+        const nameEl = document.createElement("div"); nameEl.className = "hi-title";
+        nameEl.textContent = title;
+        hiHeader.appendChild(nameEl);
+      }
+      view.appendChild(hiHeader);
+
+      // ── Informational-only notice banner ──
+      const notice = document.createElement("div"); notice.className = "hi-notice";
+      notice.innerHTML = "<span class=\"hi-notice-icon\">\u2139\uFE0F</span> <span>This is informational only — not medical advice. Consult a physician.</span>";
+      view.appendChild(notice);
+
+      // ── Section helper ──
+      const addSection = (label, text) => {
+        if (!text) return;
+        const sec = document.createElement("div"); sec.className = "hi-section";
+        sec.innerHTML = "<div class=\"hi-section-label\">" + label + "</div><div class=\"hi-section-body\">" + text + "</div>";
+        view.appendChild(sec);
+      };
+
+      // Symptoms
+      addSection("Signs & Symptoms", data["signOrSymptom"]);
+      // Anatomy
+      addSection("Associated Anatomy", data["associatedAnatomy"]);
+      // Treatment
+      addSection("Possible Treatment", data["possibleTreatment"]);
+      // Risk factors
+      addSection("Risk Factors", data["riskFactor"]);
+
+      // ── Description as overview ──
+      const desc = data["description"];
+      if (desc) {
+        const overview = document.createElement("div"); overview.className = "hi-overview";
+        overview.textContent = desc;
+        view.appendChild(overview);
+      }
+
+      // ── Reviewed-date footer feel ──
+      const footer = document.createElement("div"); footer.className = "hi-footer";
+      footer.textContent = "For informational purposes only \u00b7 Not a substitute for professional medical advice";
+      view.appendChild(footer);
+
+      handled.add("name"); handled.add("image"); handled.add("description");
+      handled.add("associatedAnatomy"); handled.add("possibleTreatment");
+      handled.add("riskFactor"); handled.add("signOrSymptom");
+    }
+
     // ── EMAILMESSAGE (email client reading pane) ──
     if (cfg.type === "EmailMessage") {
       const card = document.querySelector(".card");

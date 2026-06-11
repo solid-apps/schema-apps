@@ -4758,3 +4758,101 @@ footer a:hover { color: var(--accent-2); }
   .em-body { padding: 0 1rem .6rem; }
   .em-excerpt { padding: .5rem 1rem; margin: 0 1rem; }
 }
+
+/* ── MEDICALCONDITION (trustworthy patient-info page) ── */
+.card.health-info {
+  background: var(--card);
+  border-radius: var(--radius);
+  --hi-teal: #0d9488;
+  --hi-teal-bg: rgba(13,148,136,.06);
+  --hi-teal-border: rgba(13,148,136,.18);
+}
+.card.health-info .hd.hidden { display: none; }
+
+.hi-header {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  padding: 1.5rem 1.5rem .8rem;
+}
+.hi-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--hi-teal-bg);
+  color: var(--hi-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+.hi-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.hi-notice {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  margin: 0 1.5rem .8rem;
+  padding: .5rem .8rem;
+  background: #fefce8;
+  border: 1px solid #fde68a;
+  border-radius: 8px;
+  font-size: .78rem;
+  color: #92400e;
+  line-height: 1.4;
+}
+.hi-notice-icon {
+  font-size: .9rem;
+  flex-shrink: 0;
+}
+
+.hi-section {
+  padding: .5rem 1.5rem;
+}
+.hi-section + .hi-section {
+  border-top: 1px solid var(--line-2);
+}
+.hi-section-label {
+  font-size: .7rem;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--hi-teal);
+  font-weight: 700;
+  margin-bottom: .25rem;
+}
+.hi-section-body {
+  font-size: .84rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.hi-overview {
+  font-size: .84rem;
+  line-height: 1.65;
+  color: var(--muted);
+  padding: .8rem 1.5rem;
+  border-top: 1px solid var(--line);
+  margin-top: .4rem;
+}
+
+.hi-footer {
+  text-align: center;
+  font-size: .7rem;
+  color: var(--muted-2);
+  padding: .8rem 1.5rem 1.2rem;
+  letter-spacing: .02em;
+}
+
+@media (max-width: 480px) {
+  .hi-header { padding: 1.2rem 1rem .6rem; }
+  .hi-title { font-size: 1.05rem; }
+  .hi-notice { margin: 0 1rem .6rem; }
+  .hi-section { padding: .4rem 1rem; }
+  .hi-overview { padding: .6rem 1rem; }
+}
