@@ -3280,6 +3280,69 @@ footer a:hover { color: var(--accent-2); }
   .tweet-actions { border-top-color: #333; }
 }
 
+
+/* ── Per-type bespoke: Quotation — typographic quote poster ── */
+
+.card.quote-poster { background: #fff; border-color: rgba(0,0,0,.06); }
+.card.quote-poster .hd.hidden { display: none; }
+.card.quote-poster .bd { padding: 2.5rem 2rem 2rem; background: #fff; }
+.card.quote-poster .bd::before { display: none; }
+
+.quote-mark {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 6rem;
+  line-height: 1;
+  color: var(--accent, #7c2d12);
+  opacity: .18;
+  margin-bottom: -.8rem;
+  user-select: none;
+}
+
+.quote-text {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.4rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: #1a1a1a;
+  margin: 0 0 1.4rem;
+  padding: 0;
+  border: none;
+  quotes: none;
+}
+
+.quote-attribution {
+  font-variant: small-caps;
+  font-size: .9rem;
+  letter-spacing: .04em;
+  color: #444;
+  margin-bottom: .3rem;
+}
+
+.quote-date {
+  font-size: .75rem;
+  color: #aaa;
+  margin-bottom: 1.4rem;
+}
+
+.quote-footnote {
+  font-size: .78rem;
+  line-height: 1.5;
+  color: #888;
+  border-top: 1px solid #eee;
+  padding-top: .8rem;
+  margin: 0;
+}
+
+/* Dark mode quote poster */
+@media (prefers-color-scheme: dark) {
+  .card.quote-poster { background: #1c1c1e; border-color: rgba(255,255,255,.06); }
+  .card.quote-poster .bd { background: #1c1c1e; }
+  .quote-text { color: #e8e8e8; }
+  .quote-attribution { color: #aaa; }
+  .quote-date { color: #555; }
+  .quote-footnote { color: #666; border-top-color: #333; }
+}
+
 /* ──────────────────────────────────────────────
    Responsive / Mobile — small-screen polish.
    Stacks label/value grid, scales header,
