@@ -4546,3 +4546,116 @@ footer a:hover { color: var(--accent-2); }
   .car-desc { padding: 0 1rem .6rem; }
   .car-cta { margin: .4rem 1rem 1rem; }
 }
+
+/* ── DATASET (open-data portal card) ── */
+.card.dataset-card {
+  background: var(--card);
+  border-radius: var(--radius);
+}
+.card.dataset-card .hd.hidden { display: none; }
+
+.ds-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ink);
+  padding: 1.5rem 1.5rem .6rem;
+  line-height: 1.25;
+}
+
+.ds-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  padding: 0 1.5rem .8rem;
+}
+.ds-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: .72rem;
+  font-weight: 500;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  padding: .2rem .55rem;
+  border-radius: 4px;
+  letter-spacing: .01em;
+}
+
+.ds-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: .5rem;
+  padding: 0 1.5rem .8rem;
+}
+.ds-meta-cell {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: .5rem .7rem;
+}
+.ds-meta-label {
+  font-size: .66rem;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--muted-2);
+  font-weight: 600;
+  margin-bottom: .15rem;
+}
+.ds-meta-value {
+  font-size: .84rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.ds-license-badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: rgba(5,150,105,.08);
+  border: 1px solid rgba(5,150,105,.2);
+  padding: .15rem .5rem;
+  border-radius: 4px;
+  text-decoration: none;
+}
+.ds-license-badge:hover {
+  background: rgba(5,150,105,.14);
+}
+
+.ds-desc {
+  font-size: .84rem;
+  line-height: 1.6;
+  color: var(--muted);
+  padding: 0 1.5rem .8rem;
+}
+
+.ds-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  margin: .2rem 1.5rem 1.2rem;
+  padding: .7rem;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: .9rem;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: filter .15s, transform .1s;
+}
+.ds-cta:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+.ds-cta-icon {
+  font-size: 1.1em;
+}
+
+@media (max-width: 480px) {
+  .ds-title { padding: 1.2rem 1rem .5rem; font-size: 1.15rem; }
+  .ds-tags { padding: 0 1rem .6rem; }
+  .ds-meta-grid { grid-template-columns: 1fr; padding: 0 1rem .6rem; }
+  .ds-desc { padding: 0 1rem .6rem; }
+  .ds-cta { margin: .2rem 1rem 1rem; }
+}

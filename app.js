@@ -2506,6 +2506,92 @@
       handled.add("hasMenuSection"); handled.add("provider"); handled.add("url");
     }
 
+    // ── DATASET (open-data portal card) ──
+    if (cfg.type === "Dataset") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("dataset-card");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Remove generic hero
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount) heroMount.querySelector('.hero')?.remove();
+
+      // ── Dataset name big ──
+      const title = data[cfg.titleProp];
+      if (title) {
+        const nameEl = document.createElement("div"); nameEl.className = "ds-title";
+        nameEl.textContent = title;
+        view.appendChild(nameEl);
+      }
+
+      // ── Keyword chips ──
+      const kw = data["keywords"];
+      if (kw) {
+        const tags = typeof kw === "string" ? kw.split(/,\s*/) : (Array.isArray(kw) ? kw : [kw]);
+        const tagWrap = document.createElement("div"); tagWrap.className = "ds-tags";
+        tags.forEach(t => {
+          t = String(t).trim();
+          if (!t) return;
+          const chip = document.createElement("span"); chip.className = "ds-tag";
+          chip.textContent = t;
+          tagWrap.appendChild(chip);
+        });
+        view.appendChild(tagWrap);
+      }
+
+      // ── Metadata grid ──
+      const metaGrid = document.createElement("div"); metaGrid.className = "ds-meta-grid";
+
+      const creator = data["creator"];
+      if (creator) {
+        const cell = document.createElement("div"); cell.className = "ds-meta-cell";
+        cell.innerHTML = "<div class=\"ds-meta-label\">Creator</div><div class=\"ds-meta-value\">" + creator + "</div>";
+        metaGrid.appendChild(cell);
+      }
+
+      const datePub = data["datePublished"];
+      if (datePub) {
+        const d = formatDate(datePub);
+        const cell = document.createElement("div"); cell.className = "ds-meta-cell";
+        cell.innerHTML = "<div class=\"ds-meta-label\">Published</div><div class=\"ds-meta-value\">" + (d || datePub) + "</div>";
+        metaGrid.appendChild(cell);
+      }
+
+      const lic = data["license"];
+      if (lic) {
+        const cell = document.createElement("div"); cell.className = "ds-meta-cell";
+        const shortLic = lic.split("/").filter(Boolean).pop() || lic;
+        cell.innerHTML = "<div class=\"ds-meta-label\">License</div><a class=\"ds-license-badge\" href=\"" + lic + "\" target=\"_blank\" rel=\"noopener\">" + shortLic + "</a>";
+        metaGrid.appendChild(cell);
+      }
+
+      if (metaGrid.children.length) view.appendChild(metaGrid);
+
+      // ── Description ──
+      const desc = data["description"];
+      if (desc) {
+        const descEl = document.createElement("div"); descEl.className = "ds-desc";
+        descEl.textContent = desc;
+        view.appendChild(descEl);
+      }
+
+      // ── Download / API CTA ──
+      const url = data["url"];
+      if (url) {
+        const cta = document.createElement("a"); cta.className = "ds-cta";
+        cta.href = url; cta.target = "_blank"; cta.rel = "noopener";
+        cta.innerHTML = "<span class=\"ds-cta-icon\">\u2B07</span><span>Download Dataset</span>";
+        view.appendChild(cta);
+      }
+
+      handled.add("name"); handled.add("image"); handled.add("description");
+      handled.add("creator"); handled.add("datePublished"); handled.add("license");
+      handled.add("keywords"); handled.add("url");
+    }
+
     // ── CAR (premium car listing) ──
     if (cfg.type === "Car") {
       const card = document.querySelector(".card");
