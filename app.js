@@ -2121,6 +2121,96 @@
       handled.add("priceCurrency"); handled.add("dateIssued");
     }
 
+    // ── SOCIAL MEDIA POSTING (tweet card) ──
+    if (cfg.type === "SocialMediaPosting") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("tweet-card");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Remove generic hero if present
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount) heroMount.querySelector(".hero")?.remove();
+
+      // Author header row: avatar + name/handle
+      const header = document.createElement("div"); header.className = "tweet-header";
+
+      // Avatar circle with initial
+      const authorRaw = data["author"];
+      const authorName = (typeof authorRaw === "object" && authorRaw !== null) ? (authorRaw.name || "") : (authorRaw || "");
+      const initial = authorName ? authorName.charAt(0).toUpperCase() : "?";
+      const avatar = document.createElement("div"); avatar.className = "tweet-avatar";
+      avatar.textContent = initial;
+      header.appendChild(avatar);
+
+      // Name + handle
+      const nameBlock = document.createElement("div"); nameBlock.className = "tweet-name-block";
+      const nameEl = document.createElement("span"); nameEl.className = "tweet-author-name";
+      nameEl.textContent = authorName;
+      const handle = document.createElement("span"); handle.className = "tweet-handle";
+      // Derive a pseudo-handle from the name
+      const pseudoHandle = authorName ? "@" + authorName.toLowerCase().replace(/\s+/g, ".").replace(/[^a-z0-9.]/g, "") : "@unknown";
+      handle.textContent = pseudoHandle;
+      nameBlock.append(nameEl, handle);
+      header.appendChild(nameBlock);
+
+      // Icon badge top-right
+      const iconBadge = document.createElement("span"); iconBadge.className = "tweet-icon-badge";
+      iconBadge.textContent = cfg.icon || "💬";
+      header.appendChild(iconBadge);
+
+      view.appendChild(header);
+
+      // Post body — large, tweet-style
+      const body = data["articleBody"];
+      if (body) {
+        const postText = document.createElement("div"); postText.className = "tweet-body";
+        postText.textContent = body;
+        view.appendChild(postText);
+      }
+
+      // Image (if present) as inline media
+      const imgUrl = data["image"];
+      if (imgUrl) {
+        const mediaWrap = document.createElement("div"); mediaWrap.className = "tweet-media";
+        const img = document.createElement("img"); img.src = imgUrl; img.alt = data["name"] || "";
+        img.loading = "lazy";
+        mediaWrap.appendChild(img);
+        view.appendChild(mediaWrap);
+      }
+
+      // Timestamp
+      const datePub = data["datePublished"];
+      if (datePub) {
+        const d = new Date(datePub);
+        const formatted = isNaN(d.getTime()) ? datePub : d.toLocaleString("en-GB", { hour: "2-digit", minute: "2-digit", day: "numeric", month: "short", year: "numeric" });
+        const timeEl = document.createElement("div"); timeEl.className = "tweet-time";
+        timeEl.textContent = formatted;
+        view.appendChild(timeEl);
+      }
+
+      // Action icons row (non-functional, decorative)
+      const actions = document.createElement("div"); actions.className = "tweet-actions";
+      const acts = [
+        { icon: "\u{1F4AC}", label: "Reply" },
+        { icon: "\u{1F504}", label: "Repost" },
+        { icon: "\u2764\uFE0F", label: "Like" },
+        { icon: "\u{1F4E4}", label: "Share" }
+      ];
+      acts.forEach(a => {
+        const btn = document.createElement("span"); btn.className = "tweet-action";
+        btn.innerHTML = "<span class=\"tweet-action-icon\">" + a.icon + "</span>";
+        btn.setAttribute("title", a.label);
+        actions.appendChild(btn);
+      });
+      view.appendChild(actions);
+
+      handled.add("name"); handled.add("image"); handled.add("description");
+      handled.add("articleBody"); handled.add("author"); handled.add("datePublished"); handled.add("url");
+    }
+
     return handled;
   }
 
