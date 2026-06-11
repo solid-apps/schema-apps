@@ -2268,6 +2268,88 @@
       handled.add("text"); handled.add("author"); handled.add("dateCreated");
     }
 
+    // ── FLIGHT (boarding pass) ──
+    if (cfg.type === "Flight") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("boarding-pass");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Remove generic hero if present
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount) heroMount.querySelector(".hero")?.remove();
+
+      // Helper: extract IATA code from string like "Name (CODE)"
+      const extractCode = (s) => { const m = (s || "").match(/\(([A-Z]{3})\)/); return m ? m[1] : s; };
+      const extractCity = (s) => { const m = (s || "").match(/^(.+?)\s*\([A-Z]{3}\)/); return m ? m[1].trim() : s; };
+
+      // Top strip: airline + flight number
+      const strip = document.createElement("div"); strip.className = "bp-strip";
+      const airline = data["provider"] || "";
+      const flightNum = data["flightNumber"] || "";
+      strip.innerHTML = "<span class=\"bp-airline\">" + airline + "</span><span class=\"bp-flight-num\">" + flightNum + "</span>";
+      view.appendChild(strip);
+
+      // Route section: DEPARTURE → ARRIVAL
+      const route = document.createElement("div"); route.className = "bp-route";
+
+      const depCode = extractCode(data["departureAirport"]);
+      const depCity = extractCity(data["departureAirport"]);
+      const depTime = data["departureTime"] || "";
+
+      const arrCode = extractCode(data["arrivalAirport"]);
+      const arrCity = extractCity(data["arrivalAirport"]);
+      const arrTime = data["arrivalTime"] || "";
+
+      // Departure column
+      const depCol = document.createElement("div"); depCol.className = "bp-airport-col";
+      depCol.innerHTML = "<div class=\"bp-code\">" + depCode + "</div><div class=\"bp-city\">" + depCity + "</div><div class=\"bp-time\">" + depTime + "</div>";
+      route.appendChild(depCol);
+
+      // Plane arrow in the middle
+      const arrow = document.createElement("div"); arrow.className = "bp-arrow";
+      arrow.innerHTML = "<span class=\"bp-plane\">\u2708\uFE0F</span><div class=\"bp-dots\"></div>";
+      route.appendChild(arrow);
+
+      // Arrival column
+      const arrCol = document.createElement("div"); arrCol.className = "bp-airport-col";
+      arrCol.innerHTML = "<div class=\"bp-code\">" + arrCode + "</div><div class=\"bp-city\">" + arrCity + "</div><div class=\"bp-time\">" + arrTime + "</div>";
+      route.appendChild(arrCol);
+
+      view.appendChild(route);
+
+      // Dashed tear line
+      const tear = document.createElement("div"); tear.className = "bp-tear";
+      const notchL = document.createElement("span"); notchL.className = "bp-notch";
+      const notchR = document.createElement("span"); notchR.className = "bp-notch";
+      tear.append(notchL, notchR);
+      view.appendChild(tear);
+
+      // Bottom: barcode strip + description
+      const bottom = document.createElement("div"); bottom.className = "bp-bottom";
+
+      // Fake barcode via CSS
+      const barcode = document.createElement("div"); barcode.className = "bp-barcode";
+      bottom.appendChild(barcode);
+
+      // Description as small text
+      const desc = data["description"];
+      if (desc) {
+        const descEl = document.createElement("p"); descEl.className = "bp-desc";
+        descEl.textContent = desc;
+        bottom.appendChild(descEl);
+      }
+
+      view.appendChild(bottom);
+
+      handled.add("name"); handled.add("image"); handled.add("description");
+      handled.add("flightNumber"); handled.add("provider");
+      handled.add("departureAirport"); handled.add("arrivalAirport");
+      handled.add("departureTime"); handled.add("arrivalTime");
+    }
+
     return handled;
   }
 
