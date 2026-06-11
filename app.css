@@ -4335,3 +4335,109 @@ footer a:hover { color: var(--accent-2); }
   .menu-intro { padding: 0 1rem .6rem; }
   .menu-sections { padding: .4rem 1rem; }
 }
+
+/* ── NEWSARTICLE (newspaper front page) ── */
+.card.front-page {
+  background: var(--card);
+  border-radius: var(--radius);
+}
+.card.front-page .hd.hidden { display: none; }
+
+.fp-masthead {
+  padding: 1.5rem 1.5rem 0;
+}
+.fp-rule-top {
+  height: 3px;
+  background: var(--ink);
+  margin-bottom: .4rem;
+}
+.fp-rule-bottom {
+  height: 1px;
+  background: var(--ink);
+  margin-top: .4rem;
+}
+.fp-dateline {
+  text-align: center;
+  font-family: var(--mono);
+  font-size: .72rem;
+  letter-spacing: .06em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.fp-headline {
+  font-family: "Playfair Display", "Georgia", "Times New Roman", serif;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -.01em;
+  color: var(--ink);
+  text-align: center;
+  padding: .8rem 1.2rem .5rem;
+}
+
+.fp-standfirst {
+  font-family: "Playfair Display", "Georgia", "Times New Roman", serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--ink-2);
+  text-align: center;
+  padding: 0 2rem .8rem;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.fp-body {
+  column-count: 2;
+  column-gap: 1.8rem;
+  column-rule: 1px solid var(--line);
+  padding: .4rem 1.5rem .8rem;
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: .88rem;
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+.fp-body p {
+  margin: 0 0 .6rem;
+  text-indent: 1.2rem;
+}
+.fp-body p:first-child {
+  text-indent: 0;
+}
+.fp-body p:first-child::first-letter {
+  font-size: 2.8em;
+  float: left;
+  line-height: .85;
+  margin-right: .1em;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.fp-byline {
+  text-align: center;
+  font-variant: small-caps;
+  font-size: .78rem;
+  letter-spacing: .08em;
+  color: var(--muted);
+  padding: .6rem 0 .2rem;
+  border-top: 1px solid var(--line);
+  margin: .4rem 1.5rem 0;
+}
+
+.fp-source {
+  display: block;
+  text-align: center;
+  padding: .6rem 0 1rem;
+  font-size: .82rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+.fp-source:hover { text-decoration: underline; }
+
+@media (max-width: 600px) {
+  .fp-body { column-count: 1; padding: .4rem 1rem .8rem; }
+  .fp-headline { font-size: 1.5rem; padding: .6rem 1rem .4rem; }
+  .fp-standfirst { padding: 0 1rem .6rem; }
+  .fp-masthead { padding: 1rem 1rem 0; }
+}
