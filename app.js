@@ -2426,6 +2426,106 @@
       handled.add("expectedArrivalUntil"); handled.add("itemShipped"); handled.add("deliveryAddress");
     }
 
+    // ── ORDER (confirmation email card) ──
+    if (cfg.type === "Order") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("order-card");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Remove generic hero if present
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount) heroMount.querySelector('.hero')?.remove();
+
+      // ── Confirmation header: big checkmark + title ──
+      const confHeader = document.createElement("div"); confHeader.className = "order-conf-header";
+
+      // Animated checkmark circle
+      const checkCircle = document.createElement("div"); checkCircle.className = "order-check";
+      checkCircle.innerHTML = "\u2713";
+      confHeader.appendChild(checkCircle);
+
+      // "Order Confirmed" label
+      const confLabel = document.createElement("div"); confLabel.className = "order-conf-label";
+      confLabel.textContent = "Order Confirmed";
+      confHeader.appendChild(confLabel);
+
+      // Order name as subtitle
+      const orderName = data["name"];
+      if (orderName) {
+        const nameEl = document.createElement("div"); nameEl.className = "order-conf-name";
+        nameEl.textContent = orderName;
+        confHeader.appendChild(nameEl);
+      }
+
+      view.appendChild(confHeader);
+
+      // ── Order number chip (monospace) ──
+      const orderNum = data["orderNumber"];
+      if (orderNum) {
+        const chip = document.createElement("div"); chip.className = "order-number-chip";
+        chip.textContent = orderNum;
+        view.appendChild(chip);
+      }
+
+      // ── Status pill ──
+      const status = data["orderStatus"];
+      if (status) {
+        const pill = document.createElement("div"); pill.className = "order-status-pill";
+        // Extract short label from URL like https://schema.org/OrderProcessing
+        const shortStatus = status.split("/").pop().replace("Order", "");
+        pill.textContent = shortStatus;
+        // Color by status
+        if (status.includes("Delivered") || status.includes("Complete")) pill.classList.add("order-status-green");
+        else if (status.includes("Cancelled")) pill.classList.add("order-status-red");
+        else pill.classList.add("order-status-amber");
+        view.appendChild(pill);
+      }
+
+      // ── Summary box: seller + date ──
+      const summaryBox = document.createElement("div"); summaryBox.className = "order-summary-box";
+
+      const seller = data["seller"];
+      if (seller) {
+        const row = document.createElement("div"); row.className = "order-summary-row";
+        row.innerHTML = "<span class=\"order-summary-label\">Seller</span><span class=\"order-summary-value\">" + seller + "</span>";
+        summaryBox.appendChild(row);
+      }
+
+      const orderDate = data["orderDate"];
+      if (orderDate) {
+        const d = formatDate(orderDate);
+        const row = document.createElement("div"); row.className = "order-summary-row";
+        row.innerHTML = "<span class=\"order-summary-label\">Date</span><span class=\"order-summary-value\">" + (d || orderDate) + "</span>";
+        summaryBox.appendChild(row);
+      }
+
+      if (summaryBox.children.length) view.appendChild(summaryBox);
+
+      // Description as a note
+      const desc = data["description"];
+      if (desc) {
+        const note = document.createElement("div"); note.className = "order-note";
+        note.textContent = desc;
+        view.appendChild(note);
+      }
+
+      // Track Order CTA
+      const url = data["url"];
+      if (url) {
+        const cta = document.createElement("a"); cta.className = "order-cta";
+        cta.href = url; cta.target = "_blank"; cta.rel = "noopener";
+        cta.innerHTML = "<span class=\"order-cta-text\">Track Order</span><span class=\"order-cta-arrow\">\u2192</span>";
+        view.appendChild(cta);
+      }
+
+      handled.add("name"); handled.add("image"); handled.add("description");
+      handled.add("orderNumber"); handled.add("orderStatus"); handled.add("orderDate");
+      handled.add("seller"); handled.add("url");
+    }
+
     // ── QUESTION (Stack Overflow Q&A card) ──
     if (cfg.type === "Question") {
       const card = document.querySelector(".card");
