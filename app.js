@@ -2506,6 +2506,91 @@
       handled.add("hasMenuSection"); handled.add("provider"); handled.add("url");
     }
 
+    // ── NEWSARTICLE (newspaper front page) ──
+    if (cfg.type === "NewsArticle") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("front-page");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Remove generic hero if present
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount) heroMount.querySelector('.hero')?.remove();
+
+      // ── Masthead rule with dateline ──
+      const masthead = document.createElement("div"); masthead.className = "fp-masthead";
+      const rule = document.createElement("div"); rule.className = "fp-rule-top";
+      masthead.appendChild(rule);
+
+      const dateline = data["dateline"];
+      const datePub = data["datePublished"];
+      const author = data["author"];
+      const metaParts = [];
+      if (dateline) metaParts.push(dateline);
+      if (datePub) { const d = formatDate(datePub); metaParts.push(d || datePub); }
+      if (author) metaParts.push(author);
+      if (metaParts.length) {
+        const meta = document.createElement("div"); meta.className = "fp-dateline";
+        meta.textContent = metaParts.join(" \u00b7 ");
+        masthead.appendChild(meta);
+      }
+      const rule2 = document.createElement("div"); rule2.className = "fp-rule-bottom";
+      masthead.appendChild(rule2);
+      view.appendChild(masthead);
+
+      // ── Huge serif headline ──
+      const headline = data[cfg.titleProp];
+      if (headline) {
+        const h1 = document.createElement("h1"); h1.className = "fp-headline";
+        h1.textContent = headline;
+        view.appendChild(h1);
+      }
+
+      // ── Standfirst / lead in larger text ──
+      const standfirst = data["description"];
+      if (standfirst) {
+        const lead = document.createElement("div"); lead.className = "fp-standfirst";
+        lead.textContent = standfirst;
+        view.appendChild(lead);
+      }
+
+      // ── Body in two CSS columns ──
+      const body = data["articleBody"];
+      if (body) {
+        const bodyEl = document.createElement("div"); bodyEl.className = "fp-body";
+        const paras = body.split(/\n\n+/);
+        paras.forEach(p => {
+          if (!p.trim()) return;
+          const el = document.createElement("p");
+          el.textContent = p.trim();
+          bodyEl.appendChild(el);
+        });
+        view.appendChild(bodyEl);
+      }
+
+      // ── Byline in small caps ──
+      if (author) {
+        const byline = document.createElement("div"); byline.className = "fp-byline";
+        byline.textContent = author;
+        view.appendChild(byline);
+      }
+
+      // Source CTA
+      const url = data["url"];
+      if (url) {
+        const cta = document.createElement("a"); cta.className = "fp-source";
+        cta.href = url; cta.target = "_blank"; cta.rel = "noopener";
+        cta.textContent = "Read Full Article \u2192";
+        view.appendChild(cta);
+      }
+
+      handled.add("name"); handled.add("image"); handled.add("description");
+      handled.add("articleBody"); handled.add("author"); handled.add("datePublished");
+      handled.add("dateline"); handled.add("url");
+    }
+
     // ── INVOICE (real invoice document) ──
     if (cfg.type === "Invoice") {
       const card = document.querySelector(".card");
