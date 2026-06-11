@@ -3343,6 +3343,152 @@ footer a:hover { color: var(--accent-2); }
   .quote-footnote { color: #666; border-top-color: #333; }
 }
 
+
+/* ── Per-type bespoke: Flight — boarding pass ── */
+
+.card.boarding-pass { background: #fff; border-color: rgba(0,0,0,.1); }
+.card.boarding-pass .hd.hidden { display: none; }
+.card.boarding-pass .bd { padding: 0; background: #fff; }
+.card.boarding-pass .bd::before { display: none; }
+
+/* Top strip: airline + flight number */
+.bp-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .8rem 1.4rem;
+  background: #111;
+  color: #fff;
+}
+.bp-airline { font-size: .8rem; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; }
+.bp-flight-num { font-family: "SF Mono", "Fira Code", monospace; font-size: .85rem; font-weight: 700; letter-spacing: .05em; }
+
+/* Route section */
+.bp-route {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.8rem 1.4rem 1.4rem;
+  gap: 1rem;
+}
+.bp-airport-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+}
+.bp-code {
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #111;
+  letter-spacing: .02em;
+}
+.bp-city {
+  font-size: .7rem;
+  color: #888;
+  margin-top: .2rem;
+  text-align: center;
+  max-width: 120px;
+}
+.bp-time {
+  font-size: .85rem;
+  font-weight: 600;
+  color: #444;
+  margin-top: .3rem;
+}
+
+/* Plane + dotted line */
+.bp-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 60px;
+}
+.bp-plane { font-size: 1.3rem; margin-bottom: .3rem; }
+.bp-dots {
+  width: 100%;
+  height: 0;
+  border-top: 2.5px dotted rgba(0,0,0,.2);
+}
+
+/* Tear line */
+.bp-tear {
+  position: relative;
+  border-top: 2px dashed rgba(0,0,0,.15);
+  margin: 0;
+}
+.bp-notch {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--app-bg, #f0f0f0);
+  top: -10px;
+}
+.bp-notch:first-child { left: -10px; }
+.bp-notch:last-child { right: -10px; }
+
+/* Bottom section */
+.bp-bottom {
+  padding: 1rem 1.4rem 1.2rem;
+}
+
+/* Fake barcode strip */
+.bp-barcode {
+  height: 36px;
+  background: repeating-linear-gradient(
+    90deg,
+    #111 0px, #111 2px,
+    transparent 2px, transparent 4px,
+    #111 4px, #111 5px,
+    transparent 5px, transparent 8px,
+    #111 8px, #111 9px,
+    transparent 9px, transparent 11px,
+    #111 11px, #111 14px,
+    transparent 14px, transparent 16px
+  );
+  border-radius: 3px;
+  margin-bottom: .8rem;
+  opacity: .75;
+}
+
+.bp-desc {
+  font-size: .78rem;
+  line-height: 1.5;
+  color: #888;
+  margin: 0;
+}
+
+/* Dark mode boarding pass */
+@media (prefers-color-scheme: dark) {
+  .card.boarding-pass { background: #1c1c1e; border-color: rgba(255,255,255,.06); }
+  .card.boarding-pass .bd { background: #1c1c1e; }
+  .bp-strip { background: #f5f5f5; color: #111; }
+  .bp-code { color: #f5f5f5; }
+  .bp-city { color: #666; }
+  .bp-time { color: #ccc; }
+  .bp-dots { border-top-color: rgba(255,255,255,.15); }
+  .bp-tear { border-top-color: rgba(255,255,255,.1); }
+  .bp-notch { background: #0d0d0d; }
+  .bp-barcode {
+    background: repeating-linear-gradient(
+      90deg,
+      #f5f5f5 0px, #f5f5f5 2px,
+      transparent 2px, transparent 4px,
+      #f5f5f5 4px, #f5f5f5 5px,
+      transparent 5px, transparent 8px,
+      #f5f5f5 8px, #f5f5f5 9px,
+      transparent 9px, transparent 11px,
+      #f5f5f5 11px, #f5f5f5 14px,
+      transparent 14px, transparent 16px
+    );
+    opacity: .6;
+  }
+  .bp-desc { color: #666; }
+}
+
 /* ──────────────────────────────────────────────
    Responsive / Mobile — small-screen polish.
    Stacks label/value grid, scales header,
