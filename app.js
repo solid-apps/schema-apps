@@ -2506,6 +2506,89 @@
       handled.add("hasMenuSection"); handled.add("provider"); handled.add("url");
     }
 
+    // ── EMAILMESSAGE (email client reading pane) ──
+    if (cfg.type === "EmailMessage") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("email-pane");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Remove generic hero
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount) heroMount.querySelector('.hero')?.remove();
+
+      // ── Subject line big at top, date right-aligned ──
+      const header = document.createElement("div"); header.className = "em-header";
+      const subject = data[cfg.titleProp];
+      if (subject) {
+        const subjEl = document.createElement("div"); subjEl.className = "em-subject";
+        subjEl.textContent = subject;
+        header.appendChild(subjEl);
+      }
+      const dateSent = data["dateSent"];
+      if (dateSent) {
+        const d = formatDate(dateSent);
+        const dateEl = document.createElement("div"); dateEl.className = "em-date";
+        dateEl.textContent = d || dateSent;
+        header.appendChild(dateEl);
+      }
+      view.appendChild(header);
+
+      // ── From row with avatar initial circle ──
+      const sender = data["sender"];
+      const senderName = (typeof sender === "object" && sender !== null) ? (sender.name || "") : (sender || "");
+      if (senderName) {
+        const row = document.createElement("div"); row.className = "em-participant";
+        const avatar = document.createElement("div"); avatar.className = "em-avatar";
+        avatar.textContent = senderName.charAt(0).toUpperCase();
+        const info = document.createElement("div"); info.className = "em-participant-info";
+        info.innerHTML = "<div class=\"em-participant-role\">From</div><div class=\"em-participant-name\">" + senderName + "</div>";
+        row.appendChild(avatar);
+        row.appendChild(info);
+        view.appendChild(row);
+      }
+
+      // ── To row ──
+      const toRecipient = data["toRecipient"];
+      const toName = (typeof toRecipient === "object" && toRecipient !== null) ? (toRecipient.name || "") : (toRecipient || "");
+      if (toName) {
+        const row = document.createElement("div"); row.className = "em-participant";
+        const avatar = document.createElement("div"); avatar.className = "em-avatar em-avatar-to";
+        avatar.textContent = toName.charAt(0).toUpperCase();
+        const info = document.createElement("div"); info.className = "em-participant-info";
+        info.innerHTML = "<div class=\"em-participant-role\">To</div><div class=\"em-participant-name\">" + toName + "</div>";
+        row.appendChild(avatar);
+        row.appendChild(info);
+        view.appendChild(row);
+      }
+
+      // ── Divider ──
+      const divider = document.createElement("div"); divider.className = "em-divider";
+      view.appendChild(divider);
+
+      // ── Email body (description) ──
+      const desc = data["description"];
+      if (desc) {
+        const body = document.createElement("div"); body.className = "em-body";
+        body.textContent = desc;
+        view.appendChild(body);
+      }
+
+      // Excerpt as preview text
+      const text = data["text"];
+      if (text) {
+        const excerpt = document.createElement("div"); excerpt.className = "em-excerpt";
+        excerpt.textContent = text;
+        view.appendChild(excerpt);
+      }
+
+      handled.add("name"); handled.add("image"); handled.add("description");
+      handled.add("sender"); handled.add("toRecipient"); handled.add("dateSent");
+      handled.add("text");
+    }
+
     // ── DATASET (open-data portal card) ──
     if (cfg.type === "Dataset") {
       const card = document.querySelector(".card");
