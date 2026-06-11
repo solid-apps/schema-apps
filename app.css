@@ -4057,3 +4057,145 @@ footer a:hover { color: var(--accent-2); }
   .order-conf-label { font-size: 1.15rem; }
   .order-summary-box { padding: .8rem; }
 }
+
+/* ── INVOICE (real invoice document) ── */
+.card.invoice-doc {
+  background: var(--card);
+  border-radius: var(--radius);
+  font-family: var(--font);
+}
+.card.invoice-doc .hd.hidden { display: none; }
+
+.inv-header {
+  padding: 1.8rem 1.5rem 1rem;
+}
+.inv-label {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: .18em;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+.inv-number {
+  font-family: var(--mono);
+  font-size: .85rem;
+  color: var(--muted);
+  margin-top: .3rem;
+  letter-spacing: .02em;
+}
+
+.inv-parties {
+  display: flex;
+  gap: 1rem;
+  padding: 0 1.5rem;
+  margin-bottom: 1.2rem;
+}
+.inv-party {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: .8rem 1rem;
+}
+.inv-party-label {
+  font-size: .7rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted-2);
+  font-weight: 600;
+  margin-bottom: .25rem;
+}
+.inv-party-name {
+  font-size: .92rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.inv-amount-block {
+  text-align: center;
+  padding: 1.4rem 1.5rem;
+  margin: 0 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+.inv-amount-label {
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted-2);
+  font-weight: 600;
+  margin-bottom: .3rem;
+}
+.inv-amount-val {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -.02em;
+  line-height: 1.1;
+}
+.inv-due-date {
+  font-size: .82rem;
+  color: var(--muted);
+  margin-top: .35rem;
+}
+
+/* Stamped-look status pill */
+.inv-status-stamp {
+  display: inline-block;
+  margin: 1.2rem auto 0;
+  padding: .4rem 1.3rem;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  border: 2.5px solid;
+  border-radius: 6px;
+  transform: rotate(-3deg);
+  opacity: .85;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+.inv-status-paid {
+  color: #166534;
+  border-color: #166534;
+  background: rgba(22,101,52,.06);
+}
+.inv-status-due {
+  color: #92400e;
+  border-color: #92400e;
+  background: rgba(146,64,14,.06);
+}
+.inv-status-overdue {
+  color: #991b1b;
+  border-color: #991b1b;
+  background: rgba(153,27,27,.06);
+}
+
+.inv-notes {
+  padding: 1rem 1.5rem;
+  margin-top: .8rem;
+}
+.inv-notes-label {
+  font-size: .7rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted-2);
+  font-weight: 600;
+  margin-bottom: .3rem;
+}
+.inv-notes-body {
+  font-size: .84rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+@media (max-width: 480px) {
+  .inv-header { padding: 1.2rem 1rem .6rem; }
+  .inv-label { font-size: 1.3rem; }
+  .inv-parties { flex-direction: column; padding: 0 1rem; }
+  .inv-amount-block { margin: 0 1rem; }
+  .inv-amount-val { font-size: 1.9rem; }
+  .inv-notes { padding: 1rem; }
+}

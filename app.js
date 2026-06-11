@@ -2426,6 +2426,107 @@
       handled.add("expectedArrivalUntil"); handled.add("itemShipped"); handled.add("deliveryAddress");
     }
 
+    // ── INVOICE (real invoice document) ──
+    if (cfg.type === "Invoice") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("invoice-doc");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Remove generic hero if present
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount) heroMount.querySelector('.hero')?.remove();
+
+      // ── INVOICE header: big spaced caps + invoice number ──
+      const invHeader = document.createElement("div"); invHeader.className = "inv-header";
+      const invLabel = document.createElement("div"); invLabel.className = "inv-label";
+      invLabel.textContent = "INVOICE";
+      invHeader.appendChild(invLabel);
+
+      const invNum = data["name"];
+      if (invNum) {
+        const numEl = document.createElement("div"); numEl.className = "inv-number";
+        numEl.textContent = invNum;
+        invHeader.appendChild(numEl);
+      }
+      view.appendChild(invHeader);
+
+      // ── From / To two-column block ──
+      const partiesRow = document.createElement("div"); partiesRow.className = "inv-parties";
+
+      const provider = data["provider"];
+      if (provider) {
+        const from = document.createElement("div"); from.className = "inv-party";
+        from.innerHTML = "<div class=\"inv-party-label\">From</div><div class=\"inv-party-name\">" + provider + "</div>";
+        partiesRow.appendChild(from);
+      }
+
+      const customer = data["customer"];
+      if (customer) {
+        const to = document.createElement("div"); to.className = "inv-party";
+        to.innerHTML = "<div class=\"inv-party-label\">To</div><div class=\"inv-party-name\">" + customer + "</div>";
+        partiesRow.appendChild(to);
+      }
+
+      if (partiesRow.children.length) view.appendChild(partiesRow);
+
+      // ── Amount due — HUGE ──
+      const totalDue = data["totalPaymentDue"];
+      if (totalDue) {
+        const amountBlock = document.createElement("div"); amountBlock.className = "inv-amount-block";
+        const amountLabel = document.createElement("div"); amountLabel.className = "inv-amount-label";
+        amountLabel.textContent = "Amount Due";
+        const amountVal = document.createElement("div"); amountVal.className = "inv-amount-val";
+        amountVal.textContent = totalDue;
+        amountBlock.appendChild(amountLabel);
+        amountBlock.appendChild(amountVal);
+
+        // Due date underneath
+        const dueDate = data["paymentDueDate"];
+        if (dueDate) {
+          const d = formatDate(dueDate);
+          const dueEl = document.createElement("div"); dueEl.className = "inv-due-date";
+          dueEl.textContent = "Due " + (d || dueDate);
+          amountBlock.appendChild(dueEl);
+        }
+
+        view.appendChild(amountBlock);
+      }
+
+      // ── Payment status — stamped pill ──
+      const status = data["paymentStatus"];
+      if (status) {
+        const pill = document.createElement("div"); pill.className = "inv-status-stamp";
+        const shortStatus = status.split("/").pop().replace("Payment", "");
+        pill.textContent = shortStatus.toUpperCase();
+        if (status.includes("Paid") || status.includes("Complete")) pill.classList.add("inv-status-paid");
+        else if (status.includes("Due") || status.includes("Pending")) pill.classList.add("inv-status-due");
+        else if (status.includes("Overdue") || status.includes("Cancelled")) pill.classList.add("inv-status-overdue");
+        else pill.classList.add("inv-status-due");
+        view.appendChild(pill);
+      }
+
+      // ── Description as notes ──
+      const desc = data["description"];
+      if (desc) {
+        const notes = document.createElement("div"); notes.className = "inv-notes";
+        const notesLabel = document.createElement("div"); notesLabel.className = "inv-notes-label";
+        notesLabel.textContent = "Notes";
+        const notesBody = document.createElement("div"); notesBody.className = "inv-notes-body";
+        notesBody.textContent = desc;
+        notes.appendChild(notesLabel);
+        notes.appendChild(notesBody);
+        view.appendChild(notes);
+      }
+
+      handled.add("name"); handled.add("image"); handled.add("description");
+      handled.add("totalPaymentDue"); handled.add("paymentDueDate");
+      handled.add("paymentStatus");
+      handled.add("provider"); handled.add("customer");
+    }
+
     // ── ORDER (confirmation email card) ──
     if (cfg.type === "Order") {
       const card = document.querySelector(".card");
