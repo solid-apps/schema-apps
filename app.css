@@ -3095,7 +3095,7 @@ footer a:hover { color: var(--accent-2); }
   align-items: center;
   justify-content: center;
   border-left: 2.5px dashed rgba(0,0,0,.15);
-  margin: 1.2rem 0;
+  margin: 1.6rem 0;
 }
 .ticket-notch {
   position: absolute;
@@ -3110,16 +3110,16 @@ footer a:hover { color: var(--accent-2); }
 
 /* Stub side (right) */
 .ticket-side {
-  width: 150px;
-  min-width: 130px;
+  width: 180px;
+  min-width: 160px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1.4rem 1rem;
+  padding: 1.6rem 1.2rem;
   text-align: center;
   position: relative;
-  gap: .6rem;
+  gap: .7rem;
 }
 .ticket-number {
   font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
@@ -3129,6 +3129,7 @@ footer a:hover { color: var(--accent-2); }
   color: #888;
   transform: rotate(90deg);
   white-space: nowrap;
+  margin-bottom: .8rem;
 }
 .ticket-price-badge {
   background: #111;
@@ -3141,21 +3142,23 @@ footer a:hover { color: var(--accent-2); }
 .ticket-price-val { font-size: 1.2rem; }
 .ticket-price-cur { font-size: .65rem; opacity: .7; }
 .ticket-admit {
-  font-size: .6rem;
+  font-size: .78rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: .15em;
-  color: #bbb;
+  letter-spacing: .18em;
+  color: #aaa;
   border-top: 1px solid #e0e0e0;
-  padding-top: .5rem;
+  padding-top: .6rem;
   width: 100%;
 }
 .ticket-watermark {
   position: absolute;
-  bottom: .4rem;
-  right: .5rem;
+  bottom: .8rem;
+  right: .8rem;
   font-size: 2.2rem;
-  opacity: .08;
+  opacity: .06;
   line-height: 1;
+  pointer-events: none;
 }
 
 /* Dark mode ticket */
@@ -3884,7 +3887,7 @@ footer a:hover { color: var(--accent-2); }
   .ticket-notch { top: -10px; left: auto; position: absolute; }
   .ticket-notch:first-child { left: -10px; top: -10px; }
   .ticket-notch:last-child { right: -10px; left: auto; bottom: -10px; }
-  .ticket-side { width: auto; padding: 1rem 1.2rem; flex-direction: row; justify-content: space-around; }
-  .ticket-number { transform: none; }
+  .ticket-side { width: auto; padding: 1.2rem 1.4rem; flex-direction: row; justify-content: space-around; }
+  .ticket-number { transform: none; margin-bottom: 0; }
   .ticket-admit { border-top: none; border-left: 1px solid #e0e0e0; padding-top: 0; padding-left: .5rem; width: auto; }
 }
