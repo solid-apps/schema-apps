@@ -3028,6 +3028,154 @@ footer a:hover { color: var(--accent-2); }
   .app-store-chip { background: #2a2a2e; border-color: rgba(255,255,255,.08); }
 }
 
+
+/* ── Per-type bespoke: Ticket — tear-off stub ── */
+
+.card.ticket-stub { background: #fff; border-color: rgba(0,0,0,.12); overflow: visible; }
+.card.ticket-stub .hd.hidden { display: none; }
+.card.ticket-stub .bd { padding: 0; background: #fff; }
+.card.ticket-stub .bd::before { display: none; }
+
+.ticket-layout {
+  display: flex;
+  border-radius: .75rem;
+  overflow: hidden;
+  background: #fff;
+  position: relative;
+}
+
+/* Main body (left side) */
+.ticket-main {
+  flex: 1;
+  padding: 1.8rem 1.6rem;
+  min-width: 0;
+}
+.ticket-event {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0 0 .6rem;
+  color: #111;
+}
+.ticket-desc {
+  font-size: .85rem;
+  line-height: 1.55;
+  color: #555;
+  margin: 0 0 1rem;
+}
+
+.ticket-meta-grid {
+  display: flex;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+}
+.ticket-meta-cell {
+  display: flex;
+  flex-direction: column;
+  gap: .15rem;
+}
+.ticket-meta-cell small {
+  font-size: .7rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: #999;
+}
+.ticket-meta-cell span {
+  font-size: .9rem;
+  font-weight: 600;
+  color: #222;
+}
+
+/* Perforation divider */
+.ticket-perf {
+  width: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-left: 2.5px dashed rgba(0,0,0,.15);
+  margin: 1.2rem 0;
+}
+.ticket-notch {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--app-bg, #f0f0f0);
+  left: -10px;
+}
+.ticket-notch:first-child { top: -10px; }
+.ticket-notch:last-child { bottom: -10px; }
+
+/* Stub side (right) */
+.ticket-side {
+  width: 150px;
+  min-width: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.4rem 1rem;
+  text-align: center;
+  position: relative;
+  gap: .6rem;
+}
+.ticket-number {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: #888;
+  transform: rotate(90deg);
+  white-space: nowrap;
+}
+.ticket-price-badge {
+  background: #111;
+  color: #fff;
+  padding: .45rem .9rem;
+  border-radius: .4rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.ticket-price-val { font-size: 1.2rem; }
+.ticket-price-cur { font-size: .65rem; opacity: .7; }
+.ticket-admit {
+  font-size: .6rem;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  color: #bbb;
+  border-top: 1px solid #e0e0e0;
+  padding-top: .5rem;
+  width: 100%;
+}
+.ticket-watermark {
+  position: absolute;
+  bottom: .4rem;
+  right: .5rem;
+  font-size: 2.2rem;
+  opacity: .08;
+  line-height: 1;
+}
+
+/* Dark mode ticket */
+@media (prefers-color-scheme: dark) {
+  .card.ticket-stub { background: #1c1c1e; border-color: rgba(255,255,255,.08); }
+  .card.ticket-stub .bd { background: #1c1c1e; }
+  .ticket-layout { background: #1c1c1e; }
+  .ticket-event { color: #f5f5f5; }
+  .ticket-desc { color: #999; }
+  .ticket-meta-cell small { color: #666; }
+  .ticket-meta-cell span { color: #ddd; }
+  .ticket-perf { border-left-color: rgba(255,255,255,.12); }
+  .ticket-notch { background: #0d0d0d; }
+  .ticket-number { color: #666; }
+  .ticket-price-badge { background: #f5f5f5; color: #111; }
+  .ticket-admit { color: #555; border-top-color: #333; }
+  .ticket-watermark { opacity: .05; }
+}
+
+
 /* ──────────────────────────────────────────────
    Responsive / Mobile — small-screen polish.
    Stacks label/value grid, scales header,
@@ -3207,4 +3355,15 @@ footer a:hover { color: var(--accent-2); }
   .faq-title { font-size: 1.15rem; padding-left: 1.2rem; padding-right: 1.2rem; }
   .faq-desc { padding-left: 1.2rem; padding-right: 1.2rem; }
   .faq-accordion { padding-left: 1.2rem; padding-right: 1.2rem; }
+  /* Ticket mobile — stack vertically */
+  .ticket-layout { flex-direction: column; }
+  .ticket-main { padding: 1.2rem; }
+  .ticket-event { font-size: 1.2rem; }
+  .ticket-perf { border-left: none; border-top: 2.5px dashed rgba(0,0,0,.15); width: auto; height: 0; margin: 0 1.2rem; flex-direction: row; }
+  .ticket-notch { top: -10px; left: auto; position: absolute; }
+  .ticket-notch:first-child { left: -10px; top: -10px; }
+  .ticket-notch:last-child { right: -10px; left: auto; bottom: -10px; }
+  .ticket-side { width: auto; padding: 1rem 1.2rem; flex-direction: row; justify-content: space-around; }
+  .ticket-number { transform: none; }
+  .ticket-admit { border-top: none; border-left: 1px solid #e0e0e0; padding-top: 0; padding-left: .5rem; width: auto; }
 }

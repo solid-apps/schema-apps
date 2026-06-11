@@ -2023,6 +2023,104 @@
       handled.add("mainEntity");
     }
 
+    // ── TICKET (tear-off stub) ──
+    if (cfg.type === "Ticket") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("ticket-stub");
+
+      // Hide normal header — we build our own
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Remove generic hero if present
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount) heroMount.querySelector(".hero")?.remove();
+
+      // ── Stub layout ──
+      const stub = document.createElement("div"); stub.className = "ticket-layout";
+
+      // Left: main ticket body
+      const main = document.createElement("div"); main.className = "ticket-main";
+
+      // Event name as big title
+      const eventName = data["name"] || "";
+      if (eventName) {
+        const h1 = document.createElement("h1"); h1.className = "ticket-event";
+        h1.textContent = eventName;
+        main.appendChild(h1);
+      }
+
+      // Description as subtitle
+      const desc = data["description"];
+      if (desc) {
+        const p = document.createElement("p"); p.className = "ticket-desc";
+        p.textContent = desc;
+        main.appendChild(p);
+      }
+
+      // Meta grid: attendee + issued date
+      const metaGrid = document.createElement("div"); metaGrid.className = "ticket-meta-grid";
+      const underName = data["underName"];
+      if (underName) {
+        const cell = document.createElement("div"); cell.className = "ticket-meta-cell";
+        cell.innerHTML = "<small>Attendee</small><span>" + underName + "</span>";
+        metaGrid.appendChild(cell);
+      }
+      const dateIssued = data["dateIssued"];
+      if (dateIssued) {
+        const cell = document.createElement("div"); cell.className = "ticket-meta-cell";
+        const d = new Date(dateIssued);
+        const formatted = isNaN(d.getTime()) ? dateIssued : d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+        cell.innerHTML = "<small>Issued</small><span>" + formatted + "</span>";
+        metaGrid.appendChild(cell);
+      }
+      if (metaGrid.children.length) main.appendChild(metaGrid);
+
+      // ── Perforation divider ──
+      const perf = document.createElement("div"); perf.className = "ticket-perf";
+      const notchL = document.createElement("span"); notchL.className = "ticket-notch";
+      const notchR = document.createElement("span"); notchR.className = "ticket-notch";
+      perf.append(notchL, notchR);
+
+      // ── Right: stub side ──
+      const side = document.createElement("div"); side.className = "ticket-side";
+
+      // Ticket number in monospace
+      const ticketNum = data["ticketNumber"];
+      if (ticketNum) {
+        const numEl = document.createElement("div"); numEl.className = "ticket-number";
+        numEl.textContent = ticketNum;
+        side.appendChild(numEl);
+      }
+
+      // Price badge
+      const totalPrice = data["totalPrice"];
+      const priceCurrency = data["priceCurrency"];
+      if (totalPrice) {
+        const priceEl = document.createElement("div"); priceEl.className = "ticket-price-badge";
+        const currencySymbol = priceCurrency === "CZK" ? "Kč" : (priceCurrency || "");
+        priceEl.innerHTML = "<span class=\"ticket-price-val\">" + totalPrice + "</span><span class=\"ticket-price-cur\"> " + currencySymbol + "</span>";
+        side.appendChild(priceEl);
+      }
+
+      // ADMIT ONE label
+      const admit = document.createElement("div"); admit.className = "ticket-admit";
+      admit.textContent = "ADMIT ONE";
+      side.appendChild(admit);
+
+      // Icon watermark
+      const watermark = document.createElement("div"); watermark.className = "ticket-watermark";
+      watermark.textContent = cfg.icon || "🎟️";
+      side.appendChild(watermark);
+
+      stub.append(main, perf, side);
+      view.appendChild(stub);
+
+      handled.add("name"); handled.add("image"); handled.add("description");
+      handled.add("ticketNumber"); handled.add("underName"); handled.add("totalPrice");
+      handled.add("priceCurrency"); handled.add("dateIssued");
+    }
+
     return handled;
   }
 
