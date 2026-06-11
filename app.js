@@ -2426,6 +2426,68 @@
       handled.add("expectedArrivalUntil"); handled.add("itemShipped"); handled.add("deliveryAddress");
     }
 
+    // ── QUESTION (Stack Overflow Q&A card) ──
+    if (cfg.type === "Question") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("qa-card");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Remove generic hero if present
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount) heroMount.querySelector(".hero")?.remove();
+
+      // Stat chips row
+      const stats = document.createElement("div"); stats.className = "qa-stats";
+      const answers = data["answerCount"] || "0";
+      const hasAccepted = !!data["acceptedAnswer"];
+      stats.innerHTML = "<div class=\"qa-chip\"><span class=\"qa-chip-num\">" + answers + "</span><span class=\"qa-chip-label\">answers</span></div>" + (hasAccepted ? "<div class=\"qa-chip qa-chip-accepted\"><span class=\"qa-chip-num\">\u2713</span><span class=\"qa-chip-label\">accepted</span></div>" : "");
+      view.appendChild(stats);
+
+      // Question title
+      const qTitle = data["name"];
+      if (qTitle) {
+        const h = document.createElement("h2"); h.className = "qa-title";
+        h.textContent = qTitle;
+        view.appendChild(h);
+      }
+
+      // Question body
+      const qBody = data["text"];
+      if (qBody) {
+        const body = document.createElement("div"); body.className = "qa-body";
+        body.textContent = qBody;
+        view.appendChild(body);
+      }
+
+      // Author + date meta line
+      const authorRaw = data["author"];
+      const authorName = (typeof authorRaw === "object" && authorRaw !== null) ? (authorRaw.name || "") : (authorRaw || "");
+      const dateCreated = data["dateCreated"];
+      let dateStr = "";
+      if (dateCreated) {
+        const d = new Date(dateCreated);
+        dateStr = isNaN(d.getTime()) ? dateCreated : d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+      }
+      const meta = document.createElement("div"); meta.className = "qa-meta";
+      meta.innerHTML = (authorName ? "asked by <strong>" + authorName + "</strong>" : "") + (dateStr ? " on " + dateStr : "");
+      view.appendChild(meta);
+
+      // Accepted answer panel
+      const accepted = data["acceptedAnswer"];
+      if (accepted) {
+        const panel = document.createElement("div"); panel.className = "qa-accepted";
+        panel.innerHTML = "<div class=\"qa-accepted-head\">\u2705 Accepted Answer</div><div class=\"qa-accepted-body\">" + accepted + "</div>";
+        view.appendChild(panel);
+      }
+
+      handled.add("name"); handled.add("image"); handled.add("description");
+      handled.add("text"); handled.add("author"); handled.add("dateCreated");
+      handled.add("answerCount"); handled.add("acceptedAnswer");
+    }
+
     return handled;
   }
 
