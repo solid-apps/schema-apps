@@ -2506,6 +2506,88 @@
       handled.add("hasMenuSection"); handled.add("provider"); handled.add("url");
     }
 
+    // ── CAR (premium car listing) ──
+    if (cfg.type === "Car") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("car-listing");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Remove generic hero if present, we'll build our own
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount) heroMount.querySelector('.hero')?.remove();
+
+      // ── Photo hero ──
+      const img = data["image"];
+      if (img) {
+        const hero = document.createElement("div"); hero.className = "car-hero";
+        const imgEl = document.createElement("img"); imgEl.className = "car-hero-img";
+        imgEl.src = img; imgEl.alt = data[cfg.titleProp] || "Car photo";
+        imgEl.loading = "lazy";
+        hero.appendChild(imgEl);
+        // Brand badge overlay
+        const brand = data["brand"];
+        if (brand) {
+          const badge = document.createElement("div"); badge.className = "car-brand-badge";
+          badge.textContent = brand;
+          hero.appendChild(badge);
+        }
+        view.appendChild(hero);
+      }
+
+      // ── Name big over price-style banner ──
+      const title = data[cfg.titleProp];
+      if (title) {
+        const nameEl = document.createElement("div"); nameEl.className = "car-title";
+        nameEl.textContent = title;
+        view.appendChild(nameEl);
+      }
+
+      // ── Spec grid of labeled boxes ──
+      const specItems = [];
+      const year = data["vehicleModelDate"];
+      if (year) specItems.push({ label: "Year", value: year });
+      const fuel = data["fuelType"];
+      if (fuel) specItems.push({ label: "Fuel", value: fuel });
+      const colour = data["color"];
+      if (colour) specItems.push({ label: "Colour", value: colour });
+      const model = data["model"];
+      if (model) specItems.push({ label: "Model", value: model });
+
+      if (specItems.length) {
+        const grid = document.createElement("div"); grid.className = "car-spec-grid";
+        specItems.forEach(s => {
+          const chip = document.createElement("div"); chip.className = "car-spec-chip";
+          chip.innerHTML = "<div class=\"car-spec-label\">" + s.label + "</div><div class=\"car-spec-value\">" + s.value + "</div>";
+          grid.appendChild(chip);
+        });
+        view.appendChild(grid);
+      }
+
+      // ── Description ──
+      const desc = data["description"];
+      if (desc) {
+        const descEl = document.createElement("div"); descEl.className = "car-desc";
+        descEl.textContent = desc;
+        view.appendChild(descEl);
+      }
+
+      // ── View Advert CTA ──
+      const url = data["url"];
+      if (url) {
+        const cta = document.createElement("a"); cta.className = "car-cta";
+        cta.href = url; cta.target = "_blank"; cta.rel = "noopener";
+        cta.textContent = "View Advert →";
+        view.appendChild(cta);
+      }
+
+      handled.add("name"); handled.add("image"); handled.add("description");
+      handled.add("brand"); handled.add("model"); handled.add("vehicleModelDate");
+      handled.add("fuelType"); handled.add("color"); handled.add("url");
+    }
+
     // ── NEWSARTICLE (newspaper front page) ──
     if (cfg.type === "NewsArticle") {
       const card = document.querySelector(".card");

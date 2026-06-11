@@ -4441,3 +4441,108 @@ footer a:hover { color: var(--accent-2); }
   .fp-standfirst { padding: 0 1rem .6rem; }
   .fp-masthead { padding: 1rem 1rem 0; }
 }
+
+/* ── CAR (premium car listing) ── */
+.card.car-listing {
+  background: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.card.car-listing .hd.hidden { display: none; }
+
+.car-hero {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: #1a1a1e;
+}
+.car-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.car-brand-badge {
+  position: absolute;
+  top: .8rem;
+  left: .8rem;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(8px);
+  color: var(--ink);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: .3rem .7rem;
+  border-radius: 6px;
+}
+
+.car-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink);
+  padding: 1rem 1.5rem .6rem;
+  line-height: 1.25;
+  background: linear-gradient(180deg, rgba(30,64,175,.06) 0%, transparent 100%);
+}
+
+.car-spec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: .6rem;
+  padding: 0 1.5rem .8rem;
+}
+
+.car-spec-chip {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: .55rem .7rem;
+  text-align: center;
+}
+.car-spec-label {
+  font-size: .68rem;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--muted-2);
+  font-weight: 600;
+  margin-bottom: .15rem;
+}
+.car-spec-value {
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.car-desc {
+  font-size: .84rem;
+  line-height: 1.6;
+  color: var(--muted);
+  padding: 0 1.5rem .8rem;
+}
+
+.car-cta {
+  display: block;
+  text-align: center;
+  margin: .4rem 1.5rem 1.2rem;
+  padding: .7rem;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: .9rem;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: filter .15s, transform .1s;
+}
+.car-cta:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 480px) {
+  .car-spec-grid { grid-template-columns: 1fr 1fr; padding: 0 1rem .6rem; }
+  .car-title { padding: .8rem 1rem .5rem; font-size: 1.1rem; }
+  .car-desc { padding: 0 1rem .6rem; }
+  .car-cta { margin: .4rem 1rem 1rem; }
+}
