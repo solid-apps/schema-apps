@@ -3388,6 +3388,89 @@
       }
     }
 
+    // ── PAINTING (Museum Gallery Placard) ──
+    if (cfg.type === "Painting") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("museum-placard");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Remove generic hero — we build our own gallery wall
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount) heroMount.querySelector('.hero')?.remove();
+
+      // ── Gallery wall with painting centered as if hung ──
+      const wall = document.createElement("div"); wall.className = "mp-wall";
+      const imgUrl = data["image"];
+      if (imgUrl) {
+        const frame = document.createElement("div"); frame.className = "mp-frame";
+        const img = document.createElement("img"); img.className = "mp-painting";
+        img.src = imgUrl; img.alt = data[cfg.titleProp] || "";
+        img.loading = "lazy";
+        frame.appendChild(img);
+        wall.appendChild(frame);
+      }
+      heroMount.appendChild(wall);
+      handled.add("image");
+      handled.add("name");
+
+      // ── Museum plaque below the painting ──
+      const plaque = document.createElement("div"); plaque.className = "mp-plaque";
+
+      // Artist name in bold
+      const artist = data["artist"];
+      if (artist) {
+        const artistEl = document.createElement("div"); artistEl.className = "mp-artist";
+        artistEl.textContent = artist;
+        plaque.appendChild(artistEl);
+        handled.add("artist");
+      }
+
+      // Title in italic
+      const title = data[cfg.titleProp];
+      if (title) {
+        const titleEl = document.createElement("div"); titleEl.className = "mp-title";
+        titleEl.textContent = title;
+        plaque.appendChild(titleEl);
+      }
+
+      // Date created + medium in small caps muted text
+      const metaParts = [];
+      const dateCreated = data["dateCreated"];
+      if (dateCreated) {
+        metaParts.push(dateCreated);
+        handled.add("dateCreated");
+      }
+      const medium = data["artMedium"];
+      if (medium) {
+        metaParts.push(medium);
+        handled.add("artMedium");
+      }
+      if (metaParts.length) {
+        const meta = document.createElement("div"); meta.className = "mp-meta";
+        meta.textContent = metaParts.join(", ");
+        plaque.appendChild(meta);
+      }
+
+      view.appendChild(plaque);
+
+      // ── Description as curator's notes ──
+      const desc = data["description"];
+      if (desc) {
+        const notes = document.createElement("div"); notes.className = "mp-curatorial";
+        const label = document.createElement("div"); label.className = "mp-curatorial-label";
+        label.textContent = "About the Work";
+        notes.appendChild(label);
+        const body = document.createElement("p"); body.className = "mp-curatorial-body";
+        body.textContent = desc;
+        notes.appendChild(body);
+        view.appendChild(notes);
+        handled.add("description");
+      }
+    }
+
     return handled;
   }
 
