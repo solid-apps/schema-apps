@@ -3741,6 +3741,95 @@
       }
     }
 
+    // ── MUSICPLAYLIST (Spotify Playlist page) ──
+    if (cfg.type === "MusicPlaylist") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("playlist-page");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Remove generic hero
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount) heroMount.querySelector('.hero')?.remove();
+
+      // ── Banner with cover art + overlay ──
+      const plBanner = document.createElement("div"); plBanner.className = "pl-banner";
+      const imgUrl = data["image"];
+      if (imgUrl) {
+        const img = document.createElement("img"); img.className = "pl-cover";
+        img.src = imgUrl; img.alt = data[cfg.titleProp] || "";
+        img.loading = "lazy";
+        plBanner.appendChild(img);
+        const scrim = document.createElement("div"); scrim.className = "pl-scrim";
+        plBanner.appendChild(scrim);
+        handled.add("image");
+      }
+
+      const plOverlay = document.createElement("div"); plOverlay.className = "pl-overlay";
+      const plBadge = document.createElement("div"); plBadge.className = "pl-badge";
+      plBadge.textContent = "\u{1F3B5} Playlist";
+      plOverlay.appendChild(plBadge);
+      const h1 = document.createElement("h1"); h1.className = "pl-title";
+      h1.textContent = data[cfg.titleProp] || "";
+      plOverlay.appendChild(h1);
+
+      // Meta line: track count + curator
+      const metaParts = [];
+      const numTracks = data["numTracks"];
+      if (numTracks != null) {
+        metaParts.push(numTracks + " track" + (numTracks !== 1 ? "s" : ""));
+        handled.add("numTracks");
+      }
+      const author = data["author"];
+      if (author) {
+        metaParts.push("by " + author);
+        handled.add("author");
+      }
+      if (metaParts.length) {
+        const meta = document.createElement("div"); meta.className = "pl-meta";
+        meta.textContent = metaParts.join("  \u00b7  ");
+        plOverlay.appendChild(meta);
+      }
+      plBanner.appendChild(plOverlay);
+      heroMount.appendChild(plBanner);
+      handled.add("name");
+
+      // ── Green circular play button ──
+      const url = data["url"];
+      const playRow = document.createElement("div"); playRow.className = "pl-play-row";
+      const playBtn = document.createElement("button"); playBtn.className = "pl-play-btn";
+      playBtn.type = "button";
+      playBtn.setAttribute("aria-label", "Play");
+      playBtn.innerHTML = "<span class=\"pl-play-icon\">\u25B6</span>";
+      playRow.appendChild(playBtn);
+      if (url) {
+        playBtn.style.cursor = "pointer";
+        playBtn.addEventListener("click", () => window.open(url, "_blank"));
+        const link = document.createElement("a"); link.className = "pl-listen-link";
+        link.href = url; link.target = "_blank"; link.rel = "noopener";
+        link.textContent = "Open in player \u2192";
+        playRow.appendChild(link);
+        handled.add("url");
+      }
+      view.appendChild(playRow);
+
+      // ── Description as playlist blurb ──
+      const desc = data["description"];
+      if (desc) {
+        const blurb = document.createElement("div"); blurb.className = "pl-blurb";
+        const label = document.createElement("div"); label.className = "pl-blurb-label";
+        label.textContent = "About this playlist";
+        blurb.appendChild(label);
+        const body = document.createElement("p"); body.className = "pl-blurb-body";
+        body.textContent = desc;
+        blurb.appendChild(body);
+        view.appendChild(blurb);
+        handled.add("description");
+      }
+    }
+
     return handled;
   }
 

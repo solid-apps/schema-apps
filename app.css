@@ -5724,3 +5724,158 @@ footer a:hover { color: var(--accent-2); }
   .ti-overview { padding: .5rem 1rem .6rem; }
   .ti-book-cta { margin: .3rem 1rem .8rem; }
 }
+
+/* ── MusicPlaylist — Spotify Playlist page ── */
+.card.playlist-page {
+  background: #121212;
+  border-color: rgba(255,255,255,.06);
+  box-shadow:
+    0 2px 8px rgba(0,0,0,.4),
+    0 12px 40px rgba(0,0,0,.5);
+  overflow: hidden;
+}
+.card.playlist-page .hd.hidden { display: none; }
+
+/* Banner with cover art */
+.pl-banner {
+  position: relative;
+  min-height: 280px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.pl-cover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.pl-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+    rgba(18,18,18,.2) 0%,
+    rgba(18,18,18,.4) 50%,
+    rgba(18,18,18,.85) 85%,
+    rgba(18,18,18,.98) 100%);
+  pointer-events: none;
+}
+.pl-overlay {
+  position: relative;
+  z-index: 2;
+  padding: 0 1.5rem 1.2rem;
+  width: 100%;
+}
+.pl-badge {
+  font-size: .72rem;
+  font-weight: 700;
+  color: rgba(255,255,255,.5);
+  margin-bottom: .4rem;
+  letter-spacing: .02em;
+}
+.pl-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  margin: 0 0 .4rem;
+  text-shadow: 0 2px 16px rgba(0,0,0,.6);
+}
+.pl-meta {
+  font-size: .8rem;
+  color: rgba(255,255,255,.5);
+}
+
+/* Body area — dark */
+.card.playlist-page .bd {
+  background: #121212;
+  color: rgba(255,255,255,.7);
+  padding-top: .4rem;
+}
+.card.playlist-page .bd::before {
+  display: none;
+}
+
+/* Play button row */
+.pl-play-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: .4rem 1.5rem .6rem;
+}
+.pl-play-btn {
+  width: 3.5rem; height: 3.5rem;
+  border-radius: 50%;
+  border: none;
+  background: #1db954;
+  color: #000;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(29,185,84,.4);
+  transition: transform .1s, background .15s;
+}
+.pl-play-btn:hover {
+  background: #1ed760;
+  transform: scale(1.05);
+}
+.pl-play-icon {
+  font-size: 1rem;
+  margin-left: .15rem; /* optical centering of triangle */
+}
+.pl-listen-link {
+  font-size: .8rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.5);
+  text-decoration: none;
+  transition: color .15s;
+}
+.pl-listen-link:hover {
+  color: #fff;
+}
+
+/* Playlist blurb */
+.pl-blurb {
+  padding: .4rem 1.5rem 1rem;
+}
+.pl-blurb-label {
+  font-size: .7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: rgba(255,255,255,.4);
+  margin-bottom: .4rem;
+}
+.pl-blurb-body {
+  font-size: .84rem;
+  line-height: 1.75;
+  color: rgba(255,255,255,.6);
+  margin: 0;
+}
+
+/* Edit/JSON-LD disclosure in dark theme */
+.card.playlist-page details {
+  border-color: rgba(255,255,255,.08);
+}
+.card.playlist-page summary {
+  color: rgba(255,255,255,.35);
+}
+.card.playlist-page .row .k {
+  color: rgba(255,255,255,.35);
+}
+.card.playlist-page .row .v {
+  color: rgba(255,255,255,.7);
+}
+
+@media (max-width: 480px) {
+  .pl-banner { min-height: 220px; }
+  .pl-title { font-size: 1.4rem; }
+  .pl-overlay { padding: 0 1rem .8rem; }
+  .pl-play-row { padding: .3rem 1rem .5rem; }
+  .pl-play-btn { width: 3rem; height: 3rem; }
+  .pl-blurb { padding: .3rem 1rem .8rem; }
+}
