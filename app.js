@@ -3171,6 +3171,115 @@
       handled.add("answerCount"); handled.add("acceptedAnswer");
     }
 
+    // ── VIDEOGAME (Steam store page) ──
+    if (cfg.type === "VideoGame") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("game-store");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Remove generic hero — we build our own banner
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount) heroMount.querySelector('.hero')?.remove();
+
+      // ── Game art banner with title overlay ──
+      const imgUrl = data["image"];
+      if (imgUrl) {
+        const banner = document.createElement("div"); banner.className = "gs-banner";
+        const img = document.createElement("img"); img.className = "gs-banner-img";
+        img.src = imgUrl; img.alt = data[cfg.titleProp] || "";
+        img.loading = "lazy";
+        banner.appendChild(img);
+
+        // Scrim for legibility
+        const scrim = document.createElement("div"); scrim.className = "gs-scrim";
+        banner.appendChild(scrim);
+
+        // Title overlay
+        const titleOverlay = document.createElement("div"); titleOverlay.className = "gs-banner-overlay";
+        const h1 = document.createElement("h1"); h1.className = "gs-title";
+        h1.textContent = data[cfg.titleProp] || "";
+        titleOverlay.appendChild(h1);
+
+        // Release year + publisher as small meta inside banner
+        const metaParts = [];
+        const pub = data["publisher"];
+        if (pub) metaParts.push(pub);
+        const rel = data["datePublished"];
+        if (rel) {
+          const d = new Date(rel);
+          const yr = isNaN(d.getTime()) ? rel : d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+          metaParts.push(yr);
+        }
+        if (metaParts.length) {
+          const meta = document.createElement("div"); meta.className = "gs-banner-meta";
+          meta.textContent = metaParts.join("  ·  ");
+          titleOverlay.appendChild(meta);
+        }
+
+        banner.appendChild(titleOverlay);
+        heroMount.appendChild(banner);
+        handled.add("image");
+        handled.add("name");
+        handled.add("publisher");
+        handled.add("datePublished");
+      }
+
+      // ── Tag chips: genre + platform ──
+      const tagItems = [];
+      const genre = data["genre"];
+      if (genre) {
+        genre.split(",").forEach(g => tagItems.push({ label: g.trim(), cls: "gs-tag-genre" }));
+      }
+      const platform = data["gamePlatform"];
+      if (platform) {
+        platform.split(",").forEach(p => tagItems.push({ label: p.trim(), cls: "gs-tag-platform" }));
+      }
+      if (tagItems.length) {
+        const tags = document.createElement("div"); tags.className = "gs-tags";
+        tagItems.forEach(t => {
+          const tag = document.createElement("span"); tag.className = "gs-tag " + t.cls;
+          tag.textContent = t.label;
+          tags.appendChild(tag);
+        });
+        view.appendChild(tags);
+        handled.add("genre");
+        handled.add("gamePlatform");
+      }
+
+      // ── Price box + Add to Cart ──
+      const priceBox = document.createElement("div"); priceBox.className = "gs-price-box";
+      const url = data["url"];
+      // Use the URL as a link wrapper if available
+      const cartBtn = document.createElement("button"); cartBtn.className = "gs-cart-btn";
+      cartBtn.type = "button";
+      cartBtn.innerHTML = "<span class=\"gs-cart-icon\">🛒</span> Add to Cart";
+      priceBox.appendChild(cartBtn);
+      view.appendChild(priceBox);
+      if (url) {
+        // Make the whole price box clickable
+        priceBox.style.cursor = "pointer";
+        priceBox.addEventListener("click", () => window.open(url, "_blank"));
+        handled.add("url");
+      }
+
+      // ── Description as store blurb ──
+      const desc = data["description"];
+      if (desc) {
+        const blurb = document.createElement("div"); blurb.className = "gs-blurb";
+        const label = document.createElement("div"); label.className = "gs-blurb-label";
+        label.textContent = "About This Game";
+        blurb.appendChild(label);
+        const body = document.createElement("p"); body.className = "gs-blurb-body";
+        body.textContent = desc;
+        blurb.appendChild(body);
+        view.appendChild(blurb);
+        handled.add("description");
+      }
+    }
+
     return handled;
   }
 

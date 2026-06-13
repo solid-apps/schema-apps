@@ -4856,3 +4856,174 @@ footer a:hover { color: var(--accent-2); }
   .hi-section { padding: .4rem 1rem; }
   .hi-overview { padding: .6rem 1rem; }
 }
+
+/* ── VideoGame — Steam store page ── */
+.card.game-store {
+  background: #1b2838;
+  border-color: rgba(255,255,255,.06);
+  box-shadow:
+    0 2px 8px rgba(0,0,0,.4),
+    0 12px 40px rgba(0,0,0,.5);
+  overflow: hidden;
+}
+.card.game-store .hd.hidden { display: none; }
+
+/* Banner with game art */
+.gs-banner {
+  position: relative;
+  height: 360px;
+  overflow: hidden;
+  margin: 0;
+}
+.gs-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Dark gradient scrim for text legibility */
+.gs-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom,
+      rgba(27,40,56,0) 0%,
+      rgba(27,40,56,.15) 40%,
+      rgba(27,40,56,.7) 70%,
+      rgba(27,40,56,.97) 95%,
+      rgba(27,40,56,1) 100%
+    );
+  pointer-events: none;
+}
+
+/* Title + meta overlay on banner */
+.gs-banner-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0 1.5rem 1.2rem;
+  z-index: 2;
+}
+.gs-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  margin: 0 0 .35rem;
+  text-shadow: 0 2px 16px rgba(0,0,0,.6);
+}
+.gs-banner-meta {
+  font-size: .8rem;
+  color: rgba(255,255,255,.5);
+  letter-spacing: .03em;
+}
+
+/* Body area — dark Steam surface */
+.card.game-store .bd {
+  background: #1b2838;
+  color: rgba(255,255,255,.8);
+  padding-top: .6rem;
+}
+.card.game-store .bd::before {
+  display: none;
+}
+
+/* Tag chips */
+.gs-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem;
+  margin-bottom: .8rem;
+}
+.gs-tag {
+  font-size: .72rem;
+  font-weight: 600;
+  padding: .25rem .6rem;
+  border-radius: 3px;
+  letter-spacing: .02em;
+}
+.gs-tag-genre {
+  background: rgba(102,192,244,.12);
+  color: #66c0f4;
+  border: 1px solid rgba(102,192,244,.2);
+}
+.gs-tag-platform {
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.5);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+/* Price box + Add to Cart */
+.gs-price-box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: .4rem 0 .8rem;
+}
+.gs-cart-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  background: linear-gradient(to bottom, #75b022 5%, #588a1b 95%);
+  color: #d2efa0;
+  font-size: .85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  padding: .55rem 1.4rem;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  text-shadow: 0 1px 2px rgba(0,0,0,.3);
+  box-shadow: 0 2px 6px rgba(0,0,0,.3);
+  transition: background .15s;
+}
+.gs-cart-btn:hover {
+  background: linear-gradient(to bottom, #8ed629 5%, #6ba022 95%);
+  color: #fff;
+}
+.gs-cart-icon {
+  font-size: .9rem;
+}
+
+/* Store blurb */
+.gs-blurb {
+  padding: .6rem 0 1rem;
+}
+.gs-blurb-label {
+  font-size: .9rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: .5rem;
+  letter-spacing: .01em;
+}
+.gs-blurb-body {
+  font-size: .84rem;
+  line-height: 1.75;
+  color: rgba(255,255,255,.65);
+  margin: 0;
+}
+
+/* Edit/JSON-LD disclosure in dark theme */
+.card.game-store details {
+  border-color: rgba(255,255,255,.08);
+}
+.card.game-store summary {
+  color: rgba(255,255,255,.4);
+}
+.card.game-store .row .k {
+  color: rgba(255,255,255,.4);
+}
+.card.game-store .row .v {
+  color: rgba(255,255,255,.75);
+}
+
+@media (max-width: 480px) {
+  .gs-banner { height: 240px; }
+  .gs-title { font-size: 1.5rem; }
+  .gs-banner-overlay { padding: 0 1rem .8rem; }
+  .gs-blurb { padding: .4rem 0 .8rem; }
+}
