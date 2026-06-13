@@ -3280,6 +3280,114 @@
       }
     }
 
+    // ── SPORTSEVENT (Matchday Scoreboard) ──
+    if (cfg.type === "SportsEvent") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("scoreboard");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Remove generic hero — we build our own
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount) heroMount.querySelector('.hero')?.remove();
+
+      // ── Bold header band with competition name ──
+      const eventName = data[cfg.titleProp] || "";
+      const headerBand = document.createElement("div"); headerBand.className = "sb-header-band";
+      const iconSpan = document.createElement("span"); iconSpan.className = "sb-header-icon";
+      iconSpan.textContent = (cfg.icon || "⚽") + " ";
+      headerBand.appendChild(iconSpan);
+      const bandTitle = document.createElement("span"); bandTitle.className = "sb-header-title";
+      bandTitle.textContent = eventName;
+      headerBand.appendChild(bandTitle);
+      heroMount.appendChild(headerBand);
+      handled.add("name"); handled.add("image");
+
+      // ── Big centered VS row ──
+      // Try to infer home vs away from the name (e.g. "Team A vs Team B")
+      let homeName = "", awayName = "";
+      const vsMatch = eventName.match(/(.+?)\s+(?:vs?\.?|[:–\-])\s+(.+)/i);
+      if (vsMatch) {
+        homeName = vsMatch[1].trim();
+        awayName = vsMatch[2].trim();
+      }
+      const vsRow = document.createElement("div"); vsRow.className = "sb-vs-row";
+      if (homeName && awayName) {
+        const homeEl = document.createElement("div"); homeEl.className = "sb-team sb-team-home";
+        homeEl.textContent = homeName;
+        const vsBadge = document.createElement("div"); vsBadge.className = "sb-vs-badge";
+        vsBadge.textContent = "VS";
+        const awayEl = document.createElement("div"); awayEl.className = "sb-team sb-team-away";
+        awayEl.textContent = awayName;
+        vsRow.append(homeEl, vsBadge, awayEl);
+      } else {
+        // No VS pattern — just show the event name large
+        const eventEl = document.createElement("div"); eventEl.className = "sb-event-big";
+        eventEl.textContent = eventName;
+        vsRow.appendChild(eventEl);
+      }
+      view.appendChild(vsRow);
+
+      // ── Fixture info strip: date + venue + organizer ──
+      const fixtureStrip = document.createElement("div"); fixtureStrip.className = "sb-fixture-strip";
+
+      const startDate = data["startDate"];
+      if (startDate) {
+        const d = new Date(startDate);
+        const dateStr = isNaN(d.getTime()) ? startDate : d.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", year: "numeric" });
+        const timeStr = isNaN(d.getTime()) ? "" : d.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+        const dateRow = document.createElement("div"); dateRow.className = "sb-fixture-row";
+        dateRow.innerHTML = "<span class=\"sb-fixture-icon\">Ὄ5</span> <span>" + dateStr + (timeStr ? " · " + timeStr : "") + "</span>";
+        fixtureStrip.appendChild(dateRow);
+        handled.add("startDate");
+      }
+      const endDate = data["endDate"];
+      if (endDate) handled.add("endDate");
+
+      const loc = data["location"];
+      if (loc) {
+        const locRow = document.createElement("div"); locRow.className = "sb-fixture-row";
+        locRow.innerHTML = "<span class=\"sb-fixture-icon\">📍</span> <span>" + loc + "</span>";
+        fixtureStrip.appendChild(locRow);
+        handled.add("location");
+      }
+
+      const org = data["organizer"];
+      if (org) {
+        const orgRow = document.createElement("div"); orgRow.className = "sb-fixture-row";
+        orgRow.innerHTML = "<span class=\"sb-fixture-icon\">🎫</span> <span>" + org + "</span>";
+        fixtureStrip.appendChild(orgRow);
+        handled.add("organizer");
+      }
+      if (fixtureStrip.children.length) view.appendChild(fixtureStrip);
+
+      // ── Get Tickets CTA ──
+      const url = data["url"];
+      if (url) {
+        const cta = document.createElement("a"); cta.className = "sb-tickets-cta";
+        cta.href = url; cta.target = "_blank"; cta.rel = "noopener";
+        cta.innerHTML = "Get Tickets <span>→</span>";
+        view.appendChild(cta);
+        handled.add("url");
+      }
+
+      // ── Description as match overview ──
+      const desc = data["description"];
+      if (desc) {
+        const overview = document.createElement("div"); overview.className = "sb-overview";
+        const label = document.createElement("div"); label.className = "sb-overview-label";
+        label.textContent = "Match Overview";
+        overview.appendChild(label);
+        const body = document.createElement("p"); body.className = "sb-overview-body";
+        body.textContent = desc;
+        overview.appendChild(body);
+        view.appendChild(overview);
+        handled.add("description");
+      }
+    }
+
     return handled;
   }
 

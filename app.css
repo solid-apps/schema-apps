@@ -5027,3 +5027,142 @@ footer a:hover { color: var(--accent-2); }
   .gs-banner-overlay { padding: 0 1rem .8rem; }
   .gs-blurb { padding: .4rem 0 .8rem; }
 }
+
+/* ── SportsEvent — Matchday Scoreboard ── */
+.card.scoreboard {
+  border-color: rgba(22,163,74,.15);
+  overflow: hidden;
+}
+.card.scoreboard .hd.hidden { display: none; }
+
+/* Header band — bold competition name */
+.sb-header-band {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .8rem 1.5rem;
+  background: linear-gradient(135deg, #14532d 0%, #166534 50%, #15803d 100%);
+  color: #fff;
+}
+.sb-header-icon {
+  font-size: 1.1rem;
+}
+.sb-header-title {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: .01em;
+  text-shadow: 0 1px 4px rgba(0,0,0,.3);
+}
+
+/* VS row — big centered matchup */
+.sb-vs-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem 1.5rem 1.5rem;
+}
+.sb-team {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--ink);
+  text-align: center;
+  flex: 1;
+  line-height: 1.2;
+}
+.sb-team-home { text-align: right; }
+.sb-team-away { text-align: left; }
+.sb-vs-badge {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem; height: 3rem;
+  border-radius: 50%;
+  background: #166534;
+  color: #fff;
+  font-size: .75rem;
+  font-weight: 900;
+  letter-spacing: .05em;
+  box-shadow: 0 2px 8px rgba(22,101,52,.4);
+}
+.sb-event-big {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--ink);
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Fixture info strip */
+.sb-fixture-strip {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  padding: .6rem 1.5rem 1rem;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: rgba(22,163,74,.03);
+}
+.sb-fixture-row {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .82rem;
+  color: var(--ink-2);
+}
+.sb-fixture-icon {
+  font-size: .9rem;
+  width: 1.4rem;
+  text-align: center;
+}
+
+/* Get Tickets CTA */
+.sb-tickets-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  margin: .6rem 1.5rem;
+  padding: .55rem 1.4rem;
+  background: linear-gradient(to bottom, #16a34a 5%, #15803d 95%);
+  color: #fff;
+  font-size: .85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  border-radius: 4px;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(22,101,52,.3);
+  transition: background .15s;
+}
+.sb-tickets-cta:hover {
+  background: linear-gradient(to bottom, #22c55e 5%, #16a34a 95%);
+}
+
+/* Match overview */
+.sb-overview {
+  padding: .4rem 1.5rem 1rem;
+}
+.sb-overview-label {
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: .4rem;
+}
+.sb-overview-body {
+  font-size: .84rem;
+  line-height: 1.7;
+  color: var(--muted);
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .sb-header-band { padding: .6rem 1rem; }
+  .sb-header-title { font-size: .85rem; }
+  .sb-vs-row { gap: .8rem; padding: 1.5rem 1rem 1rem; }
+  .sb-team { font-size: 1.1rem; }
+  .sb-vs-badge { width: 2.5rem; height: 2.5rem; font-size: .65rem; }
+  .sb-fixture-strip { padding: .5rem 1rem .8rem; }
+  .sb-tickets-cta { margin: .5rem 1rem; }
+  .sb-overview { padding: .4rem 1rem .8rem; }
+}
