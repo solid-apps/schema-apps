@@ -3640,6 +3640,107 @@
       }
     }
 
+    // ── TOURISTTRIP (Travel Itinerary) ──
+    if (cfg.type === "TouristTrip") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("itinerary-card");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Remove generic hero
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount) heroMount.querySelector('.hero')?.remove();
+
+      // ── Hero header with trip name + image ──
+      const tiHeader = document.createElement("div"); tiHeader.className = "ti-hero";
+      const imgUrl = data["image"];
+      if (imgUrl) {
+        const img = document.createElement("img"); img.className = "ti-hero-img";
+        img.src = imgUrl; img.alt = data[cfg.titleProp] || "";
+        img.loading = "lazy";
+        tiHeader.appendChild(img);
+        const scrim = document.createElement("div"); scrim.className = "ti-hero-scrim";
+        tiHeader.appendChild(scrim);
+        handled.add("image");
+      }
+      const tiOverlay = document.createElement("div"); tiOverlay.className = "ti-hero-overlay";
+      const tiIcon = document.createElement("span"); tiIcon.className = "ti-hero-icon";
+      tiIcon.textContent = "\u{1F9C3}";
+      tiOverlay.appendChild(tiIcon);
+      const h1 = document.createElement("h1"); h1.className = "ti-hero-title";
+      h1.textContent = data[cfg.titleProp] || "";
+      tiOverlay.appendChild(h1);
+      tiHeader.appendChild(tiOverlay);
+      heroMount.appendChild(tiHeader);
+      handled.add("name");
+
+      // ── Trip-style chips from touristType ──
+      const touristType = data["touristType"];
+      if (touristType) {
+        const chipRow = document.createElement("div"); chipRow.className = "ti-trip-chips";
+        touristType.split(",").forEach(t => {
+          const chip = document.createElement("span"); chip.className = "ti-trip-chip";
+          chip.innerHTML = "<span class=\"ti-chip-icon\">\u{1F6E9}\uFE0F</span> " + t.trim();
+          chipRow.appendChild(chip);
+        });
+        view.appendChild(chipRow);
+        handled.add("touristType");
+      }
+
+      // ── Day-by-day timeline from description ──
+      const desc = data["description"];
+      if (desc) {
+        // Parse "Day one: ... Day two: ..." or "Day 1: ... Day 2: ..." patterns
+        const dayParts = desc.split(/\s*Day\s+(?:one|two|three|four|five|six|seven|eight|1|2|3|4|5|6|7|8)[:.]?\s*/i)
+          .filter(s => s.trim());
+        const dayLabels = desc.match(/Day\s+(?:one|two|three|four|five|six|seven|eight|1|2|3|4|5|6|7|8)[:.]?/gi);
+
+        if (dayParts.length >= 2 && dayLabels && dayLabels.length >= 2) {
+          // Render as vertical timeline
+          const timeline = document.createElement("div"); timeline.className = "ti-timeline";
+          dayParts.forEach((text, i) => {
+            const stop = document.createElement("div"); stop.className = "ti-timeline-stop";
+            const dot = document.createElement("div"); dot.className = "ti-timeline-dot";
+            dot.textContent = String(i + 1);
+            stop.appendChild(dot);
+            const content = document.createElement("div"); content.className = "ti-timeline-content";
+            const label = document.createElement("div"); label.className = "ti-timeline-label";
+            label.textContent = dayLabels[i] ? dayLabels[i].replace(/[:.]?$/, "") : ("Day " + (i + 1));
+            content.appendChild(label);
+            const body = document.createElement("p"); body.className = "ti-timeline-body";
+            body.textContent = text.trim();
+            content.appendChild(body);
+            stop.appendChild(content);
+            timeline.appendChild(stop);
+          });
+          view.appendChild(timeline);
+        } else {
+          // No day pattern — show as overview
+          const overview = document.createElement("div"); overview.className = "ti-overview";
+          const label = document.createElement("div"); label.className = "ti-section-label";
+          label.textContent = "Trip Overview";
+          overview.appendChild(label);
+          const body = document.createElement("p"); body.className = "ti-overview-body";
+          body.textContent = desc;
+          overview.appendChild(body);
+          view.appendChild(overview);
+        }
+        handled.add("description");
+      }
+
+      // ── Book This Trip CTA ──
+      const url = data["url"];
+      if (url) {
+        const cta = document.createElement("a"); cta.className = "ti-book-cta";
+        cta.href = url; cta.target = "_blank"; cta.rel = "noopener";
+        cta.innerHTML = "\u2708\uFE0F Book This Trip <span>\u2192</span>";
+        view.appendChild(cta);
+        handled.add("url");
+      }
+    }
+
     return handled;
   }
 
