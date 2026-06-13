@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MusicHall — schema.org app</title>
+<link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+<!-- JSON-LD data island -->
+<script type="application/ld+json" id="data">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicHall",
+  "name": "Carnegie Hall",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Carnegie_Hall_Tower.jpg/640px-Carnegie_Hall_Tower.jpg",
+  "description": "Historic concert venue in Midtown Manhattan, New York City, renowned for its acoustics and iconic performances since 1891.",
+  "address": "881 7th Ave, New York, NY 10019, USA",
+  "telephone": "+1 212-247-7800",
+  "openingHours": "Mo-Su 10:00-18:00",
+  "maximumAttendeeCapacity": "2804",
+  "url": "https://www.carnegiehall.org"
+}
+</script>
+
+<main id="app"></main>
+
+<!-- per-type config: this is the ONLY thing that changes between apps -->
+<script>
+  window.APP = {
+    type: "MusicHall",
+    titleProp: "name",
+    icon: "\u{1F3BC}",
+    accent: "#7c3aed",
+    fields: [
+      { prop: "name",        label: "Name",      type: "text" },
+      { prop: "image",       label: "Photo",     type: "image" },
+      { prop: "description", label: "About",     type: "textarea" },
+      { prop: "address",     label: "Address",   type: "text" },
+      { prop: "telephone",   label: "Telephone", type: "tel" },
+      { prop: "openingHours", label: "Opening Hours", type: "text" },
+      { prop: "maximumAttendeeCapacity", label: "Capacity", type: "text" },
+      { prop: "url",         label: "Website",   type: "url" },
+    ],
+  };
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
