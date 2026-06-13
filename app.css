@@ -5077,14 +5077,17 @@ footer a:hover { color: var(--accent-2); }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 3rem; height: 3rem;
+  width: 3.5rem; height: 3.5rem;
   border-radius: 50%;
-  background: #166534;
+  background: linear-gradient(135deg, #166534, #15803d);
   color: #fff;
-  font-size: .75rem;
+  font-size: .85rem;
   font-weight: 900;
-  letter-spacing: .05em;
-  box-shadow: 0 2px 8px rgba(22,101,52,.4);
+  letter-spacing: .08em;
+  box-shadow:
+    0 4px 14px rgba(22,101,52,.45),
+    inset 0 1px 0 rgba(255,255,255,.15);
+  border: 2px solid rgba(255,255,255,.1);
 }
 .sb-event-big {
   font-size: 1.6rem;
@@ -5092,6 +5095,11 @@ footer a:hover { color: var(--accent-2); }
   color: var(--ink);
   text-align: center;
   line-height: 1.2;
+}
+.sb-event-ball {
+  font-size: 2.5rem;
+  line-height: 1;
+  margin-bottom: .3rem;
 }
 
 /* Fixture info strip */

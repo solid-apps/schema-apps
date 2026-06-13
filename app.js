@@ -3323,9 +3323,12 @@
         awayEl.textContent = awayName;
         vsRow.append(homeEl, vsBadge, awayEl);
       } else {
-        // No VS pattern — just show the event name large
+        // No VS pattern — show event name large with ball icon above
+        const ballIcon = document.createElement("div"); ballIcon.className = "sb-event-ball";
+        ballIcon.textContent = "\u26bd";
         const eventEl = document.createElement("div"); eventEl.className = "sb-event-big";
         eventEl.textContent = eventName;
+        vsRow.appendChild(ballIcon);
         vsRow.appendChild(eventEl);
       }
       view.appendChild(vsRow);
@@ -3339,7 +3342,7 @@
         const dateStr = isNaN(d.getTime()) ? startDate : d.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", year: "numeric" });
         const timeStr = isNaN(d.getTime()) ? "" : d.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
         const dateRow = document.createElement("div"); dateRow.className = "sb-fixture-row";
-        dateRow.innerHTML = "<span class=\"sb-fixture-icon\">Ὄ5</span> <span>" + dateStr + (timeStr ? " · " + timeStr : "") + "</span>";
+        dateRow.innerHTML = "<span class=\"sb-fixture-icon\">\u{1F4C5}</span> <span>" + dateStr + (timeStr ? " · " + timeStr : "") + "</span>";
         fixtureStrip.appendChild(dateRow);
         handled.add("startDate");
       }
