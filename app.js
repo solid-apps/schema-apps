@@ -3830,6 +3830,112 @@
       }
     }
 
+    // ── AGGREGATEOFFER (Price-Comparison card) ──
+    if (cfg.type === "AggregateOffer") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("price-compare");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Remove generic hero
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount) heroMount.querySelector('.hero')?.remove();
+
+      // ── Clean retail header ──
+      const pcHeader = document.createElement("div"); pcHeader.className = "pc-header";
+      const pcIcon = document.createElement("div"); pcIcon.className = "pc-icon";
+      pcIcon.textContent = "\u{1F4B0}";
+      pcHeader.appendChild(pcIcon);
+      const pcHeaderText = document.createElement("div"); pcHeaderText.className = "pc-header-text";
+      const h1 = document.createElement("h1"); h1.className = "pc-title";
+      h1.textContent = data[cfg.titleProp] || "";
+      pcHeaderText.appendChild(h1);
+      // Seller as subtitle if available
+      const seller = data["seller"];
+      let sellerName = "";
+      if (seller) {
+        if (typeof seller === "object" && seller.name) sellerName = seller.name;
+        else if (typeof seller === "string") sellerName = seller;
+      }
+      if (sellerName) {
+        const sub = document.createElement("div"); sub.className = "pc-seller";
+        sub.textContent = sellerName;
+        pcHeaderText.appendChild(sub);
+        handled.add("seller");
+      }
+      pcHeader.appendChild(pcHeaderText);
+      heroMount.appendChild(pcHeader);
+      handled.add("name"); handled.add("image");
+
+      // ── Big price range box ──
+      const lowPrice = data["lowPrice"];
+      const highPrice = data["highPrice"];
+      const currency = data["priceCurrency"];
+      if (lowPrice || highPrice) {
+        const priceBox = document.createElement("div"); priceBox.className = "pc-price-box";
+
+        if (lowPrice) {
+          const lowEl = document.createElement("div"); lowEl.className = "pc-price-low";
+          const lowLabel = document.createElement("span"); lowLabel.className = "pc-price-label";
+          lowLabel.textContent = "FROM";
+          const lowVal = document.createElement("span"); lowVal.className = "pc-price-val";
+          lowVal.textContent = lowPrice;
+          lowEl.append(lowLabel, lowVal);
+          priceBox.appendChild(lowEl);
+          handled.add("lowPrice");
+        }
+
+        if (highPrice) {
+          const highEl = document.createElement("div"); highEl.className = "pc-price-high";
+          const highLabel = document.createElement("span"); highLabel.className = "pc-price-label";
+          highLabel.textContent = "UP TO";
+          const highVal = document.createElement("span"); highVal.className = "pc-price-val-high";
+          highVal.textContent = highPrice;
+          highEl.append(highLabel, highVal);
+          priceBox.appendChild(highEl);
+          handled.add("highPrice");
+        }
+
+        view.appendChild(priceBox);
+      }
+      if (currency) handled.add("priceCurrency");
+
+      // ── Offer count chip ──
+      const offerCount = data["offerCount"];
+      if (offerCount != null) {
+        const chip = document.createElement("div"); chip.className = "pc-offer-chip";
+        chip.innerHTML = "<span class=\"pc-offer-icon\">\u{1F4C4}</span> " + offerCount + " seller" + (offerCount !== 1 ? "s" : "");
+        view.appendChild(chip);
+        handled.add("offerCount");
+      }
+
+      // ── Description as price insights ──
+      const desc = data["description"];
+      if (desc) {
+        const insights = document.createElement("div"); insights.className = "pc-insights";
+        const label = document.createElement("div"); label.className = "pc-section-label";
+        label.textContent = "Price Insights";
+        insights.appendChild(label);
+        const body = document.createElement("p"); body.className = "pc-insights-body";
+        body.textContent = desc;
+        insights.appendChild(body);
+        view.appendChild(insights);
+        handled.add("description");
+      }
+
+      // ── See All Deals CTA ──
+      const url = data["url"];
+      if (url) {
+        const cta = document.createElement("a"); cta.className = "pc-cta";
+        cta.href = url; cta.target = "_blank"; cta.rel = "noopener";
+        cta.innerHTML = "See All Deals <span>\u2192</span>";
+        view.appendChild(cta);
+        handled.add("url");
+      }
+    }
+
     return handled;
   }
 
