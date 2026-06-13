@@ -5291,3 +5291,116 @@ footer a:hover { color: var(--accent-2); }
   .mp-title { font-size: 1rem; }
   .mp-curatorial { padding: .6rem 1rem .8rem; }
 }
+
+/* ── Drug — Medication Information Leaflet ── */
+.card.med-leaflet {
+  border-color: rgba(8,145,178,.12);
+}
+.card.med-leaflet .hd.hidden { display: none; }
+
+/* Clinical header */
+.ml-header {
+  display: flex;
+  align-items: flex-start;
+  gap: .8rem;
+  padding: 1.2rem 1.5rem .8rem;
+}
+.ml-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: .15rem;
+}
+.ml-header-text {
+  flex: 1;
+}
+.ml-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.25;
+  margin: 0 0 .2rem;
+}
+.ml-active {
+  font-size: .82rem;
+  font-weight: 600;
+  color: #0891b2;
+}
+
+/* Spec strip — outlined boxes */
+.ml-spec-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  padding: .4rem 1.5rem .8rem;
+}
+.ml-spec-box {
+  flex: 1 1 0;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: .5rem .7rem;
+  background: rgba(8,145,178,.02);
+}
+.ml-spec-label {
+  font-size: .62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--muted-2);
+  margin-bottom: .2rem;
+}
+.ml-spec-val {
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  line-height: 1.35;
+}
+
+/* Informational notice */
+.ml-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: .4rem;
+  margin: 0 1.5rem .8rem;
+  padding: .55rem .8rem;
+  background: rgba(8,145,178,.06);
+  border: 1px solid rgba(8,145,178,.12);
+  border-radius: 6px;
+  font-size: .76rem;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+.ml-notice-icon {
+  flex-shrink: 0;
+  font-size: .85rem;
+  line-height: 1.4;
+}
+
+/* Patient info body */
+.ml-body {
+  padding: .2rem 1.5rem 1rem;
+}
+.ml-body-label {
+  font-size: .7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--muted-2);
+  margin-bottom: .4rem;
+}
+.ml-body-text {
+  font-size: .84rem;
+  line-height: 1.75;
+  color: var(--muted);
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .ml-header { padding: 1rem 1rem .6rem; gap: .6rem; }
+  .ml-name { font-size: 1.05rem; }
+  .ml-spec-strip { padding: .3rem 1rem .6rem; }
+  .ml-spec-box { flex: 1 1 100%; }
+  .ml-notice { margin: 0 1rem .6rem; }
+  .ml-body { padding: .2rem 1rem .8rem; }
+}

@@ -3474,6 +3474,80 @@
       }
     }
 
+    // ── DRUG (Medication Information Leaflet) ──
+    if (cfg.type === "Drug") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("med-leaflet");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Remove generic hero
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount) heroMount.querySelector('.hero')?.remove();
+
+      // ── Clean clinical header: drug name + active ingredient subtitle ──
+      const mlHeader = document.createElement("div"); mlHeader.className = "ml-header";
+      const mlIcon = document.createElement("div"); mlIcon.className = "ml-icon";
+      mlIcon.textContent = "\u{1F48A}";
+      mlHeader.appendChild(mlIcon);
+      const mlHeaderText = document.createElement("div"); mlHeaderText.className = "ml-header-text";
+      const drugName = data[cfg.titleProp] || "";
+      const h1 = document.createElement("h1"); h1.className = "ml-name";
+      h1.textContent = drugName;
+      mlHeaderText.appendChild(h1);
+      const activeIng = data["activeIngredient"];
+      if (activeIng) {
+        const sub = document.createElement("div"); sub.className = "ml-active";
+        sub.textContent = activeIng;
+        mlHeaderText.appendChild(sub);
+        handled.add("activeIngredient");
+      }
+      mlHeader.appendChild(mlHeaderText);
+      heroMount.appendChild(mlHeader);
+      handled.add("name"); handled.add("image");
+
+      // ── Spec strip: dosage form, prescription status, drug class as outlined boxes ──
+      const specItems = [];
+      const dosageForm = data["dosageForm"];
+      if (dosageForm) specItems.push({ label: "Dosage Form", val: dosageForm, prop: "dosageForm" });
+      const rxStatus = data["prescriptionStatus"];
+      if (rxStatus) specItems.push({ label: "Prescription", val: rxStatus, prop: "prescriptionStatus" });
+      const drugClass = data["drugClass"];
+      if (drugClass) specItems.push({ label: "Drug Class", val: drugClass, prop: "drugClass" });
+
+      if (specItems.length) {
+        const specStrip = document.createElement("div"); specStrip.className = "ml-spec-strip";
+        specItems.forEach(s => {
+          const box = document.createElement("div"); box.className = "ml-spec-box";
+          box.innerHTML = "<div class=\"ml-spec-label\">" + s.label + "</div><div class=\"ml-spec-val\">" + s.val + "</div>";
+          specStrip.appendChild(box);
+          handled.add(s.prop);
+        });
+        view.appendChild(specStrip);
+      }
+
+      // ── Informational-only notice ──
+      const notice = document.createElement("div"); notice.className = "ml-notice";
+      notice.innerHTML = "<span class=\"ml-notice-icon\">\u2139\uFE0F</span> <span>Informational only \u2014 always read the patient information leaflet. Consult a pharmacist or physician if unsure.</span>";
+      view.appendChild(notice);
+
+      // ── Description as patient-info body ──
+      const desc = data["description"];
+      if (desc) {
+        const body = document.createElement("div"); body.className = "ml-body";
+        const label = document.createElement("div"); label.className = "ml-body-label";
+        label.textContent = "Patient Information";
+        body.appendChild(label);
+        const text = document.createElement("p"); text.className = "ml-body-text";
+        text.textContent = desc;
+        body.appendChild(text);
+        view.appendChild(body);
+        handled.add("description");
+      }
+    }
+
     return handled;
   }
 
