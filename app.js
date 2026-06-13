@@ -3548,6 +3548,98 @@
       }
     }
 
+    // ── OCCUPATION (Career Profile card) ──
+    if (cfg.type === "Occupation") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("career-card");
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Remove generic hero
+      const heroMount = document.getElementById("hero-mount");
+      if (heroMount) heroMount.querySelector('.hero')?.remove();
+
+      // ── Header: job title big + category chip ──
+      const ccHeader = document.createElement("div"); ccHeader.className = "cc-header";
+      const ccIcon = document.createElement("div"); ccIcon.className = "cc-icon";
+      ccIcon.textContent = "\u{1F4BC}";
+      ccHeader.appendChild(ccIcon);
+      const ccHeaderText = document.createElement("div"); ccHeaderText.className = "cc-header-text";
+      const h1 = document.createElement("h1"); h1.className = "cc-title";
+      h1.textContent = data[cfg.titleProp] || "";
+      ccHeaderText.appendChild(h1);
+      const occCat = data["occupationalCategory"];
+      if (occCat) {
+        const catChip = document.createElement("span"); catChip.className = "cc-cat-chip";
+        catChip.textContent = occCat;
+        ccHeaderText.appendChild(catChip);
+        handled.add("occupationalCategory");
+      }
+      ccHeader.appendChild(ccHeaderText);
+      heroMount.appendChild(ccHeader);
+      handled.add("name"); handled.add("image");
+
+      // ── Prominent salary band ──
+      const salary = data["estimatedSalary"];
+      if (salary) {
+        const salaryBox = document.createElement("div"); salaryBox.className = "cc-salary-box";
+        salaryBox.innerHTML = "<div class=\"cc-salary-label\">\u{1F4B0} Estimated Salary</div><div class=\"cc-salary-val\">" + salary + "</div>";
+        view.appendChild(salaryBox);
+        handled.add("estimatedSalary");
+      }
+
+      // ── Skills as tag chips ──
+      const skills = data["skills"];
+      if (skills) {
+        const skillSection = document.createElement("div"); skillSection.className = "cc-skill-section";
+        const label = document.createElement("div"); label.className = "cc-section-label";
+        label.textContent = "Key Skills";
+        skillSection.appendChild(label);
+        const chipRow = document.createElement("div"); chipRow.className = "cc-skill-chips";
+        skills.split(",").forEach(s => {
+          const chip = document.createElement("span"); chip.className = "cc-skill-chip";
+          chip.textContent = s.trim();
+          chipRow.appendChild(chip);
+        });
+        skillSection.appendChild(chipRow);
+        view.appendChild(skillSection);
+        handled.add("skills");
+      }
+
+      // ── Qualifications as a bulleted list ──
+      const quals = data["qualifications"];
+      if (quals) {
+        const qualSection = document.createElement("div"); qualSection.className = "cc-qual-section";
+        const label = document.createElement("div"); label.className = "cc-section-label";
+        label.textContent = "Qualifications";
+        qualSection.appendChild(label);
+        const ul = document.createElement("ul"); ul.className = "cc-qual-list";
+        quals.split(";").forEach(q => {
+          const li = document.createElement("li"); li.textContent = q.trim();
+          ul.appendChild(li);
+        });
+        qualSection.appendChild(ul);
+        view.appendChild(qualSection);
+        handled.add("qualifications");
+      }
+
+      // ── Description as role overview ──
+      const desc = data["description"];
+      if (desc) {
+        const overview = document.createElement("div"); overview.className = "cc-overview";
+        const label = document.createElement("div"); label.className = "cc-section-label";
+        label.textContent = "Role Overview";
+        overview.appendChild(label);
+        const body = document.createElement("p"); body.className = "cc-overview-body";
+        body.textContent = desc;
+        overview.appendChild(body);
+        view.appendChild(overview);
+        handled.add("description");
+      }
+    }
+
     return handled;
   }
 
