@@ -6,23 +6,34 @@
 <title>MusicHall — schema.org app</title>
 <link rel="stylesheet" href="./app.css" />
 <style>
-/* music-hall premium treatment — this app only, layered after app.css */
-body{ background:radial-gradient(1100px 560px at 50% -8%,#efeafc 0,#f4f5f9 48%,#eef0f6 100%)!important; }
-.wrap{ max-width:660px!important; padding-top:48px!important; }
-.card{ border-radius:22px!important; box-shadow:0 1px 2px rgba(26,21,48,.05),0 26px 64px -22px rgba(76,29,149,.42)!important; }
-.hd{ background:linear-gradient(135deg,#4c1d95 0,#6d28d9 50%,#8b5cf6 100%)!important; padding:40px 42px 32px!important; }
-.hd::after{ content:"\266B"!important; position:absolute!important; right:6px!important; bottom:-40px!important; font-size:180px!important; line-height:1!important; opacity:.12!important; transform:rotate(-8deg)!important; color:#fff!important; pointer-events:none; }
-.hd .icon{ background:rgba(255,255,255,.24)!important; box-shadow:inset 0 0 0 1px rgba(255,255,255,.45)!important; opacity:1!important; }
-.hd .type{ letter-spacing:.24em!important; opacity:.92!important; font-weight:600!important; }
-.hd .title{ font-family:Georgia,"Times New Roman",serif!important; font-size:2.55rem!important; line-height:1.08!important; letter-spacing:-.01em!important; margin-top:.18em!important; }
-.bd{ padding:8px 42px 30px!important; }
-.row{ padding:16px 0!important; }
-.row .k{ letter-spacing:.13em!important; }
-.row .v{ font-size:15.5px!important; line-height:1.5!important; }
+/* ===== Variant A: Opulent Playbill — Gilded-Age concert hall ===== */
+body{ background:radial-gradient(1200px 720px at 50% -10%,#2a1418 0,#160a0c 55%,#0d0607 100%)!important; }
+.wrap{ max-width:640px!important; padding-top:54px!important; }
+.card{ background:#fbf7ef!important; border-radius:14px!important; overflow:hidden!important;
+  box-shadow:0 0 0 1px rgba(201,162,75,.3),0 32px 74px -24px rgba(0,0,0,.72)!important; }
+.hd{ background:linear-gradient(160deg,#6e1423 0,#4a0d18 100%)!important; padding:42px 42px 30px!important;
+  box-shadow:inset 0 3px 0 #c9a24b, inset 0 6px 0 #4a0d18, inset 0 0 90px rgba(0,0,0,.4)!important; }
+.hd::before{ content:""!important; position:absolute!important; inset:0!important;
+  background:repeating-linear-gradient(90deg,rgba(0,0,0,.14) 0 2px,transparent 2px 14px)!important; opacity:.55!important; pointer-events:none; }
+.hd::after{ content:"\266B"!important; position:absolute!important; right:16px!important; bottom:-28px!important;
+  font-size:150px!important; line-height:1!important; color:#c9a24b!important; opacity:.2!important; transform:rotate(-6deg)!important; }
+.hd .icon{ background:rgba(201,162,75,.18)!important; box-shadow:inset 0 0 0 1px rgba(201,162,75,.65)!important;
+  color:#f3e3b8!important; opacity:1!important; }
+.hd .type{ color:#e6c97a!important; letter-spacing:.34em!important; font-weight:600!important; opacity:1!important; }
+.hd .title{ font-family:"Hoefler Text",Georgia,"Times New Roman",serif!important; font-size:2.7rem!important;
+  line-height:1.05!important; color:#fdf6e6!important; letter-spacing:.01em!important; margin-top:.2em!important;
+  text-decoration:none!important; border:0!important; text-shadow:0 1px 0 rgba(0,0,0,.3)!important; }
+.bd{ background:#fbf7ef!important; padding:14px 42px 30px!important; }
+.bd::before{ display:none!important; }
+.row{ padding:16px 0!important; border-bottom:1px solid #ece1c9!important; }
+.row .k{ color:#9a7b2e!important; letter-spacing:.16em!important; font-weight:600!important; }
+.row .k::before{ background:#c9a24b!important; }
+.row .v{ color:#33231c!important; font-size:15.5px!important; line-height:1.55!important; }
+.row .v a{ color:#7a1f26!important; font-weight:600!important; text-decoration:none!important;
+  border-bottom:1px solid rgba(122,31,38,.35)!important; }
 </style>
 </head>
 <body>
-<!-- JSON-LD data island -->
 <script type="application/ld+json" id="data">
 {
   "@context": "https://schema.org",
@@ -36,16 +47,10 @@ body{ background:radial-gradient(1100px 560px at 50% -8%,#efeafc 0,#f4f5f9 48%,#
   "url": "https://www.carnegiehall.org"
 }
 </script>
-
 <main id="app"></main>
-
-<!-- per-type config: this is the ONLY thing that changes between apps -->
 <script>
   window.APP = {
-    type: "MusicHall",
-    titleProp: "name",
-    icon: "\u{1F3BC}",
-    accent: "#7c3aed",
+    type: "MusicHall", titleProp: "name", icon: "\u{1F3BC}", accent: "#7a1f26",
     fields: [
       { prop: "name",        label: "Name",      type: "text" },
       { prop: "description", label: "About",     type: "textarea" },
