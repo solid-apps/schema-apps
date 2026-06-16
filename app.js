@@ -721,6 +721,99 @@
       }
     }
 
+    // ── PHOTOGRAPH (fine-art gallery print) ──
+    if (cfg.type === "Photograph") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("gallery-print");
+
+      const heroMount = document.getElementById("hero-mount");
+      const typeLabel = document.getElementById("type-label");
+
+      // Remove generic hero
+      heroMount.querySelector(".hero")?.remove();
+
+      // ── Museum-dark gallery field with the photo as centerpiece ──
+      var imageData = data["image"];
+      var photoName = data["name"] || "Untitled";
+
+      var gallery = document.createElement("div");
+      gallery.className = "gallery-stage";
+
+      if (imageData) {
+        var photoWrap = document.createElement("div");
+        photoWrap.className = "gallery-photo-wrap";
+        photoWrap.setAttribute("data-prop", "image");
+        photoWrap.setAttribute("title", "Click to change image URL");
+        photoWrap.setAttribute("tabindex", "0");
+        var img = document.createElement("img");
+        img.className = "gallery-photo";
+        img.src = imageData;
+        img.alt = photoName;
+        img.loading = "lazy";
+        photoWrap.appendChild(img);
+        gallery.appendChild(photoWrap);
+      }
+
+      // Print label — like a museum wall card
+      var label = document.createElement("div");
+      label.className = "gallery-label";
+
+      // Title in italics (fine-art style)
+      var titleLabel = document.createElement("div");
+      titleLabel.className = "gallery-label-title";
+      titleLabel.textContent = photoName;
+      label.appendChild(titleLabel);
+
+      // Photographer
+      var creator = data["creator"];
+      if (creator) {
+        var creatorEl = document.createElement("div");
+        creatorEl.className = "gallery-label-artist";
+        creatorEl.textContent = creator;
+        label.appendChild(creatorEl);
+      }
+
+      // Meta line: date · location
+      var metaParts = [];
+      var dateCreated = data["dateCreated"];
+      if (dateCreated) {
+        var yr = dateCreated.match(/(\d{4})/);
+        if (yr) metaParts.push(yr[1]);
+      }
+      var loc = data["contentLocation"];
+      if (loc) metaParts.push(loc);
+      if (metaParts.length) {
+        var metaEl = document.createElement("div");
+        metaEl.className = "gallery-label-meta";
+        metaEl.textContent = metaParts.join("  \u{00B7}  ");
+        label.appendChild(metaEl);
+      }
+
+      gallery.appendChild(label);
+      heroMount.appendChild(gallery);
+
+      // Hide normal header
+      var hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Mark all handled props
+      handled.add("name");
+      handled.add("image");
+      handled.add("creator");
+      handled.add("dateCreated");
+      handled.add("contentLocation");
+
+      // Description as artist statement / wall text
+      var desc = data["description"];
+      if (desc) {
+        var wall = document.createElement("div");
+        wall.className = "gallery-wall-text";
+        wall.textContent = desc;
+        view.appendChild(wall);
+        handled.add("description");
+      }
+    }
+
     // ── PRODUCT (Apple product page) ──
     if (cfg.type === "Product") {
       const card = document.querySelector(".card");
