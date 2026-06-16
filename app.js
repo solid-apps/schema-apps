@@ -721,6 +721,99 @@
       }
     }
 
+    // ── BRAND (bold brand identity hero) ──
+    if (cfg.type === "Brand") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("brand-hero");
+
+      const heroMount = document.getElementById("hero-mount");
+      const typeLabel = document.getElementById("type-label");
+
+      // Remove generic hero
+      heroMount.querySelector(".hero")?.remove();
+
+      // ── Color block using accent as brand color ──
+      var brandBlock = document.createElement("div");
+      brandBlock.className = "brand-block";
+
+      // Logo/image if present — rendered as a framed mark
+      var imageData = data["image"];
+      if (imageData) {
+        var logoWrap = document.createElement("div");
+        logoWrap.className = "brand-logo-wrap";
+        logoWrap.setAttribute("data-prop", "image");
+        logoWrap.setAttribute("title", "Click to change image URL");
+        logoWrap.setAttribute("tabindex", "0");
+        var img = document.createElement("img");
+        img.className = "brand-logo";
+        img.src = imageData;
+        img.alt = data["name"] || "Brand logo";
+        img.loading = "lazy";
+        logoWrap.appendChild(img);
+        brandBlock.appendChild(logoWrap);
+      }
+
+      // Brand name HUGE
+      var nameEl = document.createElement("h1");
+      nameEl.className = "brand-name";
+      nameEl.textContent = data["name"] || "";
+      brandBlock.appendChild(nameEl);
+
+      // Slogan as hero tagline
+      var slogan = data["slogan"];
+      if (slogan) {
+        var sloganEl = document.createElement("p");
+        sloganEl.className = "brand-slogan";
+        sloganEl.textContent = slogan;
+        brandBlock.appendChild(sloganEl);
+      }
+
+      // Type badge
+      var badge = document.createElement("span");
+      badge.className = "brand-type-badge";
+      badge.textContent = "\u{2122}\u{00A0}" + (typeLabel ? typeLabel.textContent : "Brand");
+      brandBlock.appendChild(badge);
+
+      heroMount.appendChild(brandBlock);
+
+      // Hide normal header
+      var hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Mark handled props
+      handled.add("name");
+      handled.add("image");
+      handled.add("slogan");
+
+      // ── Body: description + website CTA ──
+
+      // Description as brand story
+      var desc = data["description"];
+      if (desc) {
+        var story = document.createElement("div");
+        story.className = "brand-story";
+        story.textContent = desc;
+        view.appendChild(story);
+        handled.add("description");
+      }
+
+      // Website CTA
+      var url = data["url"];
+      if (url) {
+        var ctaWrap = document.createElement("div");
+        ctaWrap.className = "brand-cta-wrap";
+        var cta = document.createElement("a");
+        cta.className = "brand-cta";
+        cta.href = url;
+        cta.target = "_blank";
+        cta.rel = "noopener";
+        cta.textContent = "\u{1F310} Visit website";
+        ctaWrap.appendChild(cta);
+        view.appendChild(ctaWrap);
+        handled.add("url");
+      }
+    }
+
     // ── PHOTOGRAPH (fine-art gallery print) ──
     if (cfg.type === "Photograph") {
       const card = document.querySelector(".card");
