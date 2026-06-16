@@ -298,23 +298,83 @@
   function renderTypeSpecific(view, heroRendered) {
     const handled = new Set();
 
-    // ── RECIPE ──
+    // ── RECIPE (recipe-card layout) ──
     if (cfg.type === "Recipe") {
-      // Stats strip: prep, cook, yield
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("recipe-card");
+
+      const heroMount = document.getElementById("hero-mount");
+      const typeLabel = document.getElementById("type-label");
+
+      // Remove generic hero so we can build our own
+      heroMount.querySelector(".hero")?.remove();
+
+      // ── Hero: food photo with overlay ──
+      const imageData = data["image"];
+      if (imageData) {
+        const hero = document.createElement("div"); hero.className = "recipe-hero";
+        hero.setAttribute("data-prop", "image");
+        hero.setAttribute("title", "Click to change image URL");
+        hero.setAttribute("tabindex", "0");
+
+        const img = document.createElement("img");
+        img.className = "recipe-hero-img";
+        img.src = imageData;
+        img.alt = data["name"] || "Recipe photo";
+        img.loading = "lazy";
+        hero.appendChild(img);
+
+        // Warm gradient scrim
+        const scrim = document.createElement("div"); scrim.className = "recipe-scrim";
+        hero.appendChild(scrim);
+
+        // Overlay content
+        const overlay = document.createElement("div"); overlay.className = "recipe-overlay";
+
+        const badge = document.createElement("span"); badge.className = "recipe-badge";
+        badge.textContent = "\u{1F374}\u{00A0}" + (typeLabel ? typeLabel.textContent : "Recipe");
+        overlay.appendChild(badge);
+
+        const h1 = document.createElement("h1"); h1.className = "recipe-title";
+        h1.textContent = data["name"] || "";
+        overlay.appendChild(h1);
+
+        const desc = data["description"];
+        if (desc) {
+          const descEl = document.createElement("p"); descEl.className = "recipe-desc";
+          descEl.textContent = desc;
+          overlay.appendChild(descEl);
+          handled.add("description");
+        }
+
+        hero.appendChild(overlay);
+        heroMount.appendChild(hero);
+      }
+
+      // Hide normal header since title is in the hero
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      handled.add("name");
+      handled.add("image");
+
+      // ── Stats strip: prep, cook, yield ──
       const stats = [];
       const prep = data["prepTime"];
-      if (prep) { const d = formatDuration(prep); if (d) stats.push({ label: "Prep", val: d }); }
+      if (prep) { const d = formatDuration(prep); if (d) stats.push({ icon: "\u{23F1}\u{FE0F}", label: "Prep", val: d }); }
       const cook = data["cookTime"];
-      if (cook) { const d = formatDuration(cook); if (d) stats.push({ label: "Cook", val: d }); }
+      if (cook) { const d = formatDuration(cook); if (d) stats.push({ icon: "\u{1F525}", label: "Cook", val: d }); }
       const yield_ = data["recipeYield"];
-      if (yield_) stats.push({ label: "Yield", val: yield_ });
+      if (yield_) stats.push({ icon: "\u{1F37D}\u{FE0F}", label: "Yields", val: yield_ });
 
       if (stats.length) {
-        const strip = document.createElement("div"); strip.className = "stats-strip";
-        stats.forEach((s, i) => {
-          if (i > 0) { const sep = document.createElement("span"); sep.className = "stats-sep"; strip.appendChild(sep); }
-          const chip = document.createElement("span"); chip.className = "stat-chip";
-          chip.innerHTML = "<small>" + s.label + "</small>" + s.val;
+        const strip = document.createElement("div"); strip.className = "recipe-stats";
+        stats.forEach((s) => {
+          const chip = document.createElement("div"); chip.className = "recipe-stat";
+          const iconSpan = document.createElement("span"); iconSpan.className = "recipe-stat-icon"; iconSpan.textContent = s.icon;
+          const textSpan = document.createElement("span"); textSpan.className = "recipe-stat-text";
+          textSpan.innerHTML = "<small>" + s.label + "</small>" + s.val;
+          chip.append(iconSpan, textSpan);
           strip.appendChild(chip);
         });
         view.appendChild(strip);
@@ -323,18 +383,21 @@
       if (cook) handled.add("cookTime");
       if (yield_) handled.add("recipeYield");
 
-      // Ingredients checklist
+      // ── Ingredients checklist ──
       const ingredients = data["recipeIngredient"];
       if (ingredients) {
-        const items = typeof ingredients === "string" ? ingredients.split(/,(?=[\s])/) : (Array.isArray(ingredients) ? ingredients : [ingredients]);
-        const section = document.createElement("div"); section.className = "section-block";
-        const h = document.createElement("div"); h.className = "section-label"; h.textContent = "Ingredients";
+        const items = typeof ingredients === "string"
+          ? ingredients.split(/,(?=\s)/)
+          : (Array.isArray(ingredients) ? ingredients : [ingredients]);
+        const section = document.createElement("div"); section.className = "recipe-section";
+        const h = document.createElement("div"); h.className = "recipe-section-title";
+        h.textContent = "\u{1F4E6} Ingredients";
         section.appendChild(h);
-        const ul = document.createElement("ul"); ul.className = "checklist";
+        const ul = document.createElement("ul"); ul.className = "recipe-checklist";
         items.forEach((item) => {
-          const li = document.createElement("li");
-          const cb = document.createElement("span"); cb.className = "check-box";
-          const txt = document.createElement("span"); txt.className = "check-text"; txt.textContent = item.trim();
+          const li = document.createElement("li"); li.className = "recipe-check-item";
+          const cb = document.createElement("span"); cb.className = "recipe-check-box";
+          const txt = document.createElement("span"); txt.className = "recipe-check-text"; txt.textContent = item.trim();
           li.append(cb, txt);
           li.addEventListener("click", () => li.classList.toggle("checked"));
           ul.appendChild(li);
@@ -344,16 +407,23 @@
         handled.add("recipeIngredient");
       }
 
-      // Instructions numbered list
+      // ── Method: numbered steps ──
       const instr = data["recipeInstructions"];
       if (instr) {
-        const steps = typeof instr === "string" ? instr.split(/\n|\.\s+(?=[A-Z])/).filter(s => s.trim()) : (Array.isArray(instr) ? instr : [instr]);
-        const section = document.createElement("div"); section.className = "section-block";
-        const h = document.createElement("div"); h.className = "section-label"; h.textContent = "Instructions";
+        const steps = typeof instr === "string"
+          ? instr.split(/\n/).filter((s) => s.trim())
+          : (Array.isArray(instr) ? instr : [instr]);
+        const section = document.createElement("div"); section.className = "recipe-section";
+        const h = document.createElement("div"); h.className = "recipe-section-title";
+        h.textContent = "\u{1F4DD} Method";
         section.appendChild(h);
-        const ol = document.createElement("ol"); ol.className = "step-list";
+        const ol = document.createElement("ol"); ol.className = "recipe-steps";
         steps.forEach((step) => {
-          const li = document.createElement("li"); li.textContent = step.trim().replace(/^\d+\.\s*/, "");
+          const li = document.createElement("li"); li.className = "recipe-step";
+          const num = document.createElement("span"); num.className = "recipe-step-num";
+          const txt = document.createElement("span"); txt.className = "recipe-step-text";
+          txt.textContent = step.trim().replace(/^\d+\.\s*/, "");
+          li.append(num, txt);
           ol.appendChild(li);
         });
         section.appendChild(ol);
