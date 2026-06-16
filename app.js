@@ -573,6 +573,154 @@
       }
     }
 
+    // ── TVSERIES (Netflix-style streaming page) ──
+    if (cfg.type === "TVSeries") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("streaming-page");
+
+      const heroMount = document.getElementById("hero-mount");
+      const typeLabel = document.getElementById("type-label");
+      const iconEl = document.getElementById("icon");
+
+      // Remove generic hero so we can build our own
+      heroMount.querySelector(".hero")?.remove();
+
+      // ── Dark immersive hero ──
+      const imageData = data["image"];
+      const hero = document.createElement("div"); hero.className = "streaming-hero";
+      hero.setAttribute("data-prop", "image");
+      hero.setAttribute("title", "Click to change image URL");
+      hero.setAttribute("tabindex", "0");
+
+      if (imageData) {
+        const img = document.createElement("img");
+        img.className = "streaming-hero-img";
+        img.src = imageData;
+        img.alt = data["name"] || "Series art";
+        img.loading = "lazy";
+        hero.appendChild(img);
+      }
+
+      // Dark gradient scrim
+      const scrim = document.createElement("div"); scrim.className = "streaming-scrim";
+      hero.appendChild(scrim);
+
+      // Overlay content
+      const overlay = document.createElement("div"); overlay.className = "streaming-overlay";
+
+      // Type badge
+      const badge = document.createElement("span"); badge.className = "streaming-badge";
+      badge.textContent = "\u{1F4FA}\u{00A0}" + (typeLabel ? typeLabel.textContent : "TV Series");
+      overlay.appendChild(badge);
+
+      // Title — huge
+      const h1 = document.createElement("h1"); h1.className = "streaming-title";
+      h1.textContent = data["name"] || "";
+      overlay.appendChild(h1);
+
+      // Meta row: year · seasons · episodes · genre
+      const metaParts = [];
+      const start = data["startDate"];
+      if (start) { const yr = start.match(/(\d{4})/); if (yr) metaParts.push(yr[1]); }
+      const seasons = data["numberOfSeasons"];
+      if (seasons) metaParts.push(seasons + " Season" + (seasons !== "1" ? "s" : ""));
+      const episodes = data["numberOfEpisodes"];
+      if (episodes) metaParts.push(episodes + " Episode" + (episodes !== "1" ? "s" : ""));
+      const genre = data["genre"];
+      if (genre) metaParts.push(genre.split(",")[0].trim());
+      if (metaParts.length) {
+        const meta = document.createElement("div"); meta.className = "streaming-meta";
+        meta.textContent = metaParts.join("  \u{00B7}  ");
+        overlay.appendChild(meta);
+      }
+
+      // Play button
+      const url = data["url"];
+      const playBtn = document.createElement("button");
+      playBtn.className = "streaming-play-btn";
+      playBtn.innerHTML = "\u{25B6}\u{FE0F} Play";
+      if (url) {
+        playBtn.addEventListener("click", () => window.open(url, "_blank"));
+      }
+      overlay.appendChild(playBtn);
+
+      // Synopsis
+      const desc = data["description"];
+      if (desc) {
+        const synopsis = document.createElement("p"); synopsis.className = "streaming-synopsis";
+        synopsis.textContent = desc;
+        overlay.appendChild(synopsis);
+      }
+
+      hero.appendChild(overlay);
+      heroMount.appendChild(hero);
+
+      // Hide normal header
+      const hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Mark all handled props
+      handled.add("name");
+      handled.add("image");
+      handled.add("description");
+      handled.add("genre");
+      handled.add("numberOfSeasons");
+      handled.add("numberOfEpisodes");
+      handled.add("startDate");
+      handled.add("url");
+
+      // ── Body: director + genre tags + episodes overview ──
+
+      // Director credit
+      const director = data["director"];
+      if (director) {
+        const credit = document.createElement("div"); credit.className = "streaming-credit";
+        credit.innerHTML = "<span class=\"streaming-credit-label\">Directed by</span><span class=\"streaming-credit-name\">" + director + "</span>";
+        view.appendChild(credit);
+        handled.add("director");
+      }
+
+      // Genre tags
+      if (genre) {
+        const tags = document.createElement("div"); tags.className = "streaming-tags";
+        genre.split(",").forEach(function(g) {
+          var tag = document.createElement("span");
+          tag.className = "streaming-tag";
+          tag.textContent = g.trim();
+          tags.appendChild(tag);
+        });
+        view.appendChild(tags);
+      }
+
+      // Episodes overview card
+      if (seasons || episodes) {
+        const infoBar = document.createElement("div");
+        infoBar.className = "streaming-info-bar";
+        if (seasons) {
+          const chip = document.createElement("div"); chip.className = "streaming-info-chip";
+          chip.innerHTML = "<span class=\"streaming-info-num\">" + seasons + "</span><span class=\"streaming-info-label\">Season" + (seasons !== "1" ? "s" : "") + "</span>";
+          infoBar.appendChild(chip);
+        }
+        if (episodes) {
+          const chip = document.createElement("div"); chip.className = "streaming-info-chip";
+          chip.innerHTML = "<span class=\"streaming-info-num\">" + episodes + "</span><span class=\"streaming-info-label\">Episode" + (episodes !== "1" ? "s" : "") + "</span>";
+          infoBar.appendChild(chip);
+        }
+        var endD = data["endDate"];
+        if (start) {
+          var dateText = formatDate(start);
+          if (endD) dateText = dateText + " \u{2013} " + formatDate(endD);
+          else dateText = dateText + " \u{2013} Present";
+          var dateChip = document.createElement("div");
+          dateChip.className = "streaming-info-chip";
+          dateChip.innerHTML = "<span class=\"streaming-info-num\" style=\"font-size:.85rem\">" + dateText + "</span>";
+          infoBar.appendChild(dateChip);
+        }
+        view.appendChild(infoBar);
+        handled.add("endDate");
+      }
+    }
+
     // ── PRODUCT (Apple product page) ──
     if (cfg.type === "Product") {
       const card = document.querySelector(".card");
