@@ -721,6 +721,116 @@
       }
     }
 
+    // ── MAP (stylish wayfinding card) ──
+    if (cfg.type === "Map") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("wayfinding");
+
+      const heroMount = document.getElementById("hero-mount");
+      const typeLabel = document.getElementById("type-label");
+      const iconEl = document.getElementById("icon");
+
+      // Remove generic hero
+      heroMount.querySelector(".hero")?.remove();
+
+      // ── Cartographic frame around the map image ──
+      var imageData = data["image"];
+      var mapName = data["name"] || "";
+
+      var mapFrame = document.createElement("div");
+      mapFrame.className = "map-frame";
+
+      if (imageData) {
+        var imgWrap = document.createElement("div");
+        imgWrap.className = "map-img-wrap";
+        imgWrap.setAttribute("data-prop", "image");
+        imgWrap.setAttribute("title", "Click to change image URL");
+        imgWrap.setAttribute("tabindex", "0");
+        var img = document.createElement("img");
+        img.className = "map-img";
+        img.src = imageData;
+        img.alt = mapName;
+        img.loading = "lazy";
+        imgWrap.appendChild(img);
+        mapFrame.appendChild(imgWrap);
+      }
+
+      // Location header with pin + place name
+      var locBar = document.createElement("div");
+      locBar.className = "map-loc-bar";
+
+      var pin = document.createElement("span");
+      pin.className = "map-pin";
+      pin.textContent = "\u{1F4CD}";
+      locBar.appendChild(pin);
+
+      var nameSpan = document.createElement("span");
+      nameSpan.className = "map-loc-name";
+      nameSpan.textContent = mapName;
+      locBar.appendChild(nameSpan);
+
+      // Map-type chip
+      var mapType = data["mapType"];
+      if (mapType) {
+        var typeChip = document.createElement("span");
+        typeChip.className = "map-type-chip";
+        typeChip.textContent = mapType;
+        locBar.appendChild(typeChip);
+        handled.add("mapType");
+      }
+
+      mapFrame.appendChild(locBar);
+
+      heroMount.appendChild(mapFrame);
+
+      // Hide normal header
+      var hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Mark handled props
+      handled.add("name");
+      handled.add("image");
+
+      // ── Body: description + meta + CTA ──
+
+      // Description
+      var desc = data["description"];
+      if (desc) {
+        var descEl = document.createElement("div");
+        descEl.className = "map-description";
+        descEl.textContent = desc;
+        view.appendChild(descEl);
+        handled.add("description");
+      }
+
+      // Last updated meta
+      var dateMod = data["dateModified"];
+      if (dateMod) {
+        var updated = document.createElement("div");
+        updated.className = "map-updated";
+        var formatted = formatDate(dateMod);
+        updated.innerHTML = "<span class=\"map-updated-label\">Last updated</span> " + (formatted || dateMod);
+        view.appendChild(updated);
+        handled.add("dateModified");
+      }
+
+      // View full map CTA
+      var url = data["url"];
+      if (url) {
+        var ctaWrap = document.createElement("div");
+        ctaWrap.className = "map-cta-wrap";
+        var cta = document.createElement("a");
+        cta.className = "map-cta";
+        cta.href = url;
+        cta.target = "_blank";
+        cta.rel = "noopener";
+        cta.innerHTML = "\u{1F5FA}\u{FE0F} View full map";
+        ctaWrap.appendChild(cta);
+        view.appendChild(ctaWrap);
+        handled.add("url");
+      }
+    }
+
     // ── BRAND (bold brand identity hero) ──
     if (cfg.type === "Brand") {
       const card = document.querySelector(".card");
