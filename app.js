@@ -721,6 +721,109 @@
       }
     }
 
+    // ── MUSICGROUP (artist/band hero page) ──
+    if (cfg.type === "MusicGroup") {
+      const card = document.querySelector(".card");
+      if (card) card.classList.add("artist-hero");
+
+      const heroMount = document.getElementById("hero-mount");
+      const typeLabel = document.getElementById("type-label");
+
+      // Remove generic hero
+      heroMount.querySelector(".hero")?.remove();
+
+      // ── Big banner hero ──
+      var imageData = data["image"];
+      var bandName = data["name"] || "";
+
+      var hero = document.createElement("div");
+      hero.className = "artist-banner";
+
+      if (imageData) {
+        var img = document.createElement("img");
+        img.className = "artist-banner-img";
+        img.src = imageData;
+        img.alt = bandName;
+        img.loading = "lazy";
+        hero.appendChild(img);
+      }
+
+      // Scrim
+      var scrim = document.createElement("div");
+      scrim.className = "artist-scrim";
+      hero.appendChild(scrim);
+
+      // Overlay content
+      var overlay = document.createElement("div");
+      overlay.className = "artist-overlay";
+
+      // Genre badge row at top
+      var genre = data["genre"];
+      if (genre) {
+        var genreRow = document.createElement("div");
+        genreRow.className = "artist-genre-row";
+        genre.split(",").forEach(function(g) {
+          var chip = document.createElement("span");
+          chip.className = "artist-genre-chip";
+          chip.textContent = g.trim();
+          genreRow.appendChild(chip);
+        });
+        overlay.appendChild(genreRow);
+      }
+
+      // Band name HUGE
+      var h1 = document.createElement("h1");
+      h1.className = "artist-name";
+      h1.textContent = bandName;
+      overlay.appendChild(h1);
+
+      // Founding year
+      var founded = data["foundingDate"];
+      if (founded) {
+        var meta = document.createElement("div");
+        meta.className = "artist-meta";
+        var yr = founded.match(/(\d{4})/);
+        meta.textContent = yr ? "Est. " + yr[1] : founded;
+        overlay.appendChild(meta);
+      }
+
+      // Listen CTA
+      var url = data["url"];
+      if (url) {
+        var cta = document.createElement("a");
+        cta.className = "artist-listen-btn";
+        cta.href = url;
+        cta.target = "_blank";
+        cta.rel = "noopener";
+        cta.innerHTML = "\u{1F3B5} Listen";
+        overlay.appendChild(cta);
+      }
+
+      hero.appendChild(overlay);
+      heroMount.appendChild(hero);
+
+      // Hide normal header
+      var hd = document.querySelector(".hd");
+      if (hd) hd.classList.add("hidden");
+
+      // Mark handled props
+      handled.add("name");
+      handled.add("image");
+      handled.add("genre");
+      handled.add("foundingDate");
+      handled.add("url");
+
+      // ── Body: bio ──
+      var desc = data["description"];
+      if (desc) {
+        var bio = document.createElement("div");
+        bio.className = "artist-bio";
+        bio.textContent = desc;
+        view.appendChild(bio);
+        handled.add("description");
+      }
+    }
+
     // ── MAP (stylish wayfinding card) ──
     if (cfg.type === "Map") {
       const card = document.querySelector(".card");
